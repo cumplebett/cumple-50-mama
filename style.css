@@ -1,644 +1,389 @@
-:root {
-    --red: #e5092f;
-    --red-dark: #b80725;
-    --red-light: #ff3153;
-
-    --black: #0b0b0d;
-    --dark: #141417;
-    --dark-card: #1c1c21;
-
-    --white: #ffffff;
-    --gray: #a7a7ad;
-
-    --border: rgba(255, 255, 255, 0.09);
-
-    --radius: 18px;
-}
-
-
 /* =========================================
-   RESET
+   RONDO CIRCULAR
    ========================================= */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-
-    background:
-        radial-gradient(
-            circle at top right,
-            rgba(229, 9, 47, 0.15),
-            transparent 35%
-        ),
-        var(--black);
-
-    color: var(--white);
-
-    min-height: 100vh;
-}
-
-button {
-    font-family: inherit;
-}
-
-
-/* =========================================
-   HEADER
-   ========================================= */
-
-.header {
-    background: rgba(11, 11, 13, 0.92);
-
-    border-bottom: 1px solid var(--border);
-
-    padding: 22px 6%;
-
-    position: sticky;
-    top: 0;
-
-    z-index: 50;
-
-    backdrop-filter: blur(12px);
-}
-
-.header-content {
-    max-width: 1200px;
-
-    margin: auto;
-
+.rondo-layout {
     display: flex;
-
+    gap: 30px;
     align-items: center;
-
-    gap: 16px;
-}
-
-.heart {
-    color: var(--red);
-
-    font-size: 42px;
-
-    line-height: 1;
-}
-
-.eyebrow {
-    color: var(--red-light);
-
-    font-size: 11px;
-
-    font-weight: 700;
-
-    letter-spacing: 3px;
-
-    margin-bottom: 5px;
-}
-
-.header h1 {
-    font-size: clamp(22px, 3vw, 34px);
-
-    font-weight: 900;
-
-    letter-spacing: -1px;
+    justify-content: center;
 }
 
 
 /* =========================================
-   CONTENEDOR
+   CONTENEDOR DEL ROSCO
    ========================================= */
 
-.container {
-    width: min(1200px, 88%);
-
-    margin: 0 auto;
-
-    padding: 65px 0 80px;
-}
-
-
-/* =========================================
-   BIENVENIDA
-   ========================================= */
-
-.welcome {
-    text-align: center;
-
-    margin-bottom: 55px;
-}
-
-.subtitle {
-    color: var(--red-light);
-
-    text-transform: uppercase;
-
-    letter-spacing: 3px;
-
-    font-size: 13px;
-
-    font-weight: 700;
-
-    margin-bottom: 12px;
-}
-
-.welcome h2 {
-    font-size: clamp(32px, 5vw, 58px);
-
-    line-height: 1;
-
-    font-weight: 900;
-
-    margin-bottom: 18px;
-}
-
-.welcome > p:last-child {
-    color: var(--gray);
-
-    font-size: 17px;
-}
-
-
-/* =========================================
-   TÍTULOS
-   ========================================= */
-
-.section-title {
+.rosco-wrapper {
+    position: relative;
+    width: min(700px, 75vw);
+    aspect-ratio: 1 / 1;
     display: flex;
-
     align-items: center;
-
-    gap: 10px;
-
-    margin-bottom: 22px;
-}
-
-.section-title span {
-    font-size: 22px;
-}
-
-.section-title h3 {
-    font-size: 20px;
-
-    font-weight: 800;
+    justify-content: center;
 }
 
 
 /* =========================================
-   MARCADOR
+   ROSCO
    ========================================= */
 
-.scoreboard {
-    margin-bottom: 65px;
-}
-
-.teams {
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 18px;
-}
-
-.team-card {
-    background: var(--dark-card);
-
-    border: 1px solid var(--border);
-
-    border-radius: var(--radius);
-
-    padding: 30px 20px;
-
-    text-align: center;
-
-    transition: 0.25s ease;
-}
-
-.team-card:hover {
-    transform: translateY(-4px);
-
-    border-color: rgba(255,255,255,0.18);
-}
-
-.team-icon {
-    font-size: 28px;
-
-    margin-bottom: 12px;
-}
-
-.team-card h4 {
-    font-size: 18px;
-
-    margin-bottom: 14px;
-}
-
-.score {
-    display: block;
-
-    font-size: 48px;
-
-    line-height: 1;
-
-    font-weight: 900;
-
-    color: var(--red);
-}
-
-.team-card small {
-    display: block;
-
-    color: var(--gray);
-
-    margin-top: 7px;
-}
-
-
-/* =========================================
-   JUEGOS
-   ========================================= */
-
-.games {
-    margin-bottom: 65px;
-}
-
-.games-grid {
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 18px;
-}
-
-.game-card {
+.rosco {
+    position: relative;
     width: 100%;
+    height: 100%;
+    display: block;
+}
 
-    border: 1px solid var(--border);
 
-    border-radius: var(--radius);
+/* =========================================
+   LETRAS
+   ========================================= */
 
-    background: var(--dark-card);
+.letter {
+    position: absolute;
 
-    color: var(--white);
+    width: 52px;
+    height: 52px;
 
-    padding: 25px;
+    border-radius: 50%;
+
+    border: 3px solid #ffffff;
+
+    background: #0B0B0B;
+
+    color: #ffffff;
+
+    font-size: 20px;
+    font-weight: 900;
 
     display: flex;
-
     align-items: center;
-
-    gap: 16px;
-
-    text-align: left;
+    justify-content: center;
 
     cursor: pointer;
 
-    transition: 0.25s ease;
+    transform: translate(-50%, -50%);
+
+    transition:
+        transform 0.15s ease,
+        background 0.15s ease,
+        color 0.15s ease,
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
+
+    z-index: 5;
 }
 
-.game-card:hover {
-    transform: translateY(-4px);
 
-    border-color: var(--red);
+.letter:hover {
+    transform: translate(-50%, -50%) scale(1.12);
 
-    background: #21171a;
-}
+    border-color: #B6FF00;
 
-.game-icon {
-    min-width: 52px;
-
-    height: 52px;
-
-    display: grid;
-
-    place-items: center;
-
-    border-radius: 14px;
-
-    background: rgba(229, 9, 47, 0.12);
-
-    font-size: 25px;
-}
-
-.game-card h4 {
-    font-size: 18px;
-
-    margin-bottom: 5px;
-}
-
-.game-card p {
-    color: var(--gray);
-
-    font-size: 13px;
-}
-
-.arrow {
-    margin-left: auto;
-
-    font-size: 25px;
-
-    color: var(--red-light);
+    box-shadow:
+        0 0 15px rgba(182, 255, 0, 0.5);
 }
 
 
 /* =========================================
-   TABLA
+   LETRA ACTUAL
    ========================================= */
 
-.details {
-    margin-bottom: 40px;
+.letter.current {
+    background: #B6FF00;
+
+    color: #0B0B0B;
+
+    border-color: #B6FF00;
+
+    box-shadow:
+        0 0 25px rgba(182, 255, 0, 0.8);
+
+    transform:
+        translate(-50%, -50%)
+        scale(1.15);
 }
 
-.table-wrapper {
-    width: 100%;
 
-    overflow-x: auto;
+/* =========================================
+   RESPUESTA CORRECTA
+   ========================================= */
 
-    border: 1px solid var(--border);
+.letter.correct {
+    background: #18C964;
 
-    border-radius: var(--radius);
+    border-color: #18C964;
+
+    color: #ffffff;
+
+    box-shadow:
+        0 0 12px rgba(24, 201, 100, 0.5);
 }
 
-table {
-    width: 100%;
 
-    border-collapse: collapse;
+/* =========================================
+   RESPUESTA INCORRECTA
+   ========================================= */
 
-    min-width: 650px;
+.letter.wrong {
+    background: #E53935;
 
-    background: var(--dark-card);
+    border-color: #E53935;
+
+    color: #ffffff;
+
+    box-shadow:
+        0 0 12px rgba(229, 57, 53, 0.5);
 }
 
-th,
-td {
-    padding: 18px 20px;
+
+/* =========================================
+   PASAPALABRA
+   ========================================= */
+
+.letter.pass {
+    background: #FFD600;
+
+    border-color: #FFD600;
+
+    color: #0B0B0B;
+
+    box-shadow:
+        0 0 12px rgba(255, 214, 0, 0.5);
+}
+
+
+/* =========================================
+   CENTRO DEL ROSCO
+   ========================================= */
+
+.rondo-center {
+    position: absolute;
+
+    width: 390px;
+    min-height: 300px;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background: #111111;
+
+    border: 2px solid #333333;
+
+    border-radius: 28px;
+
+    padding: 30px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
 
     text-align: center;
 
-    border-bottom: 1px solid var(--border);
+    z-index: 10;
+
+    box-shadow:
+        0 15px 50px rgba(0, 0, 0, 0.5);
 }
 
-th {
-    color: var(--gray);
 
+/* =========================================
+   LETRA DE LA PREGUNTA
+   ========================================= */
+
+#question-letter {
+    font-size: 42px;
+
+    font-weight: 1000;
+
+    color: #B6FF00;
+
+    line-height: 1;
+
+    margin-bottom: 8px;
+}
+
+
+/* =========================================
+   TIPO DE PREGUNTA
+   ========================================= */
+
+#question-type {
     font-size: 13px;
+
+    font-weight: 800;
+
+    color: #999999;
 
     text-transform: uppercase;
-
-    letter-spacing: 0.5px;
-}
-
-td {
-    font-size: 15px;
-}
-
-tbody tr:last-child td {
-    border-bottom: none;
-}
-
-.total {
-    color: var(--red-light);
-
-    font-size: 20px;
-
-    font-weight: 900;
-}
-
-
-/* =========================================
-   FOOTER
-   ========================================= */
-
-footer {
-    border-top: 1px solid var(--border);
-
-    text-align: center;
-
-    padding: 25px;
-
-    color: var(--gray);
-
-    font-size: 13px;
-}
-
-
-/* =========================================
-   MODAL GENERAL
-   ========================================= */
-
-.modal {
-    position: fixed;
-
-    inset: 0;
-
-    background: rgba(0,0,0,0.78);
-
-    display: none;
-
-    place-items: center;
-
-    padding: 20px;
-
-    z-index: 100;
-}
-
-.modal.active {
-    display: grid;
-}
-
-.modal-content {
-    position: relative;
-
-    width: min(500px, 100%);
-
-    background: var(--dark-card);
-
-    border: 1px solid var(--border);
-
-    border-radius: 24px;
-
-    padding: 45px 30px;
-
-    text-align: center;
-
-    box-shadow: 0 25px 80px rgba(0,0,0,0.5);
-}
-
-.modal-content > div:first-of-type {
-    font-size: 50px;
 
     margin-bottom: 15px;
 }
 
-.modal-content h2 {
-    font-size: 30px;
 
-    margin-bottom: 10px;
-}
+/* =========================================
+   PREGUNTA
+   ========================================= */
 
-.modal-content p {
-    color: var(--gray);
+#question-text {
+    font-size: 18px;
 
-    margin-bottom: 28px;
-}
-
-.close-button {
-    border: none;
-
-    background: transparent;
-
-    color: var(--gray);
-
-    font-size: 30px;
-
-    cursor: pointer;
-}
-
-.modal-content .close-button {
-    position: absolute;
-
-    right: 18px;
-
-    top: 15px;
-}
-
-.close-button:hover {
-    color: var(--white);
-}
-
-.back-button {
-    border: none;
-
-    border-radius: 10px;
-
-    background: var(--red);
-
-    color: white;
-
-    padding: 13px 22px;
+    line-height: 1.4;
 
     font-weight: 700;
 
-    cursor: pointer;
-}
+    color: #ffffff;
 
-.back-button:hover {
-    background: var(--red-light);
-}
+    max-width: 330px;
 
-
-/* =========================================
-   RONDO
-   ========================================= */
-
-.rondo-modal {
-    position: fixed;
-
-    inset: 0;
-
-    background: rgba(5,5,7,0.97);
-
-    display: none;
-
-    z-index: 200;
-
-    overflow-y: auto;
-}
-
-.rondo-modal.active {
-    display: block;
-}
-
-.rondo-content {
-    width: min(1450px, 94%);
-
-    margin: 0 auto;
-
-    padding: 28px 0 45px;
+    margin-bottom: 25px;
 }
 
 
 /* =========================================
-   CABECERA RONDO
+   BOTONES DE RESPUESTA
    ========================================= */
 
-.rondo-topbar {
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    border-bottom: 1px solid var(--border);
-
-    padding-bottom: 20px;
-}
-
-.rondo-topbar h2 {
-    font-size: clamp(30px, 4vw, 46px);
-
-    font-weight: 900;
-}
-
-.rondo-close {
-    font-size: 38px;
-}
-
-
-/* =========================================
-   TABS ROSCOS
-   ========================================= */
-
-.rondo-tabs {
+.answer-buttons {
     display: flex;
 
     gap: 10px;
 
-    padding: 20px 0;
+    justify-content: center;
+
+    width: 100%;
 }
 
-.rondo-tab {
-    border: 1px solid var(--border);
 
-    background: var(--dark-card);
+.answer-buttons button {
+    border: none;
 
-    color: var(--gray);
+    border-radius: 12px;
 
-    border-radius: 10px;
+    min-width: 95px;
 
-    padding: 11px 20px;
+    padding: 12px 14px;
 
-    font-weight: 800;
+    font-size: 13px;
+
+    font-weight: 900;
 
     cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        filter 0.15s ease;
 }
 
-.rondo-tab.active {
-    color: var(--white);
 
-    background: var(--red);
+.answer-buttons button:hover {
+    transform: translateY(-2px);
 
-    border-color: var(--red);
+    filter: brightness(1.1);
+}
+
+
+/* VERDE */
+
+.btn-correct {
+    background: #18C964;
+
+    color: #ffffff;
+}
+
+
+/* AMARILLO */
+
+.btn-pass {
+    background: #FFD600;
+
+    color: #0B0B0B;
+}
+
+
+/* ROJO */
+
+.btn-wrong {
+    background: #E53935;
+
+    color: #ffffff;
 }
 
 
 /* =========================================
-   ESTRUCTURA RONDO
+   POSICIONES CIRCULARES
    ========================================= */
 
-.rondo-layout {
-    display: grid;
+/*
+   26 letras.
+   Cada letra ocupa un punto del círculo.
+*/
 
-    grid-template-columns: 250px 1fr;
+.letter:nth-child(1)  { left: 50%; top: 2%; }
 
-    gap: 30px;
+.letter:nth-child(2)  { left: 62%; top: 4.8%; }
 
-    align-items: start;
+.letter:nth-child(3)  { left: 73%; top: 9%; }
+
+.letter:nth-child(4)  { left: 82%; top: 16%; }
+
+.letter:nth-child(5)  { left: 89%; top: 25%; }
+
+.letter:nth-child(6)  { left: 94%; top: 36%; }
+
+.letter:nth-child(7)  { left: 97%; top: 48%; }
+
+.letter:nth-child(8)  { left: 96%; top: 60%; }
+
+.letter:nth-child(9)  { left: 92%; top: 71%; }
+
+.letter:nth-child(10) { left: 86%; top: 81%; }
+
+.letter:nth-child(11) { left: 77%; top: 89%; }
+
+.letter:nth-child(12) { left: 66%; top: 95%; }
+
+.letter:nth-child(13) { left: 54%; top: 98%; }
+
+.letter:nth-child(14) { left: 42%; top: 98%; }
+
+.letter:nth-child(15) { left: 30%; top: 95%; }
+
+.letter:nth-child(16) { left: 19%; top: 89%; }
+
+.letter:nth-child(17) { left: 10%; top: 81%; }
+
+.letter:nth-child(18) { left: 4%; top: 71%; }
+
+.letter:nth-child(19) { left: 1%; top: 60%; }
+
+.letter:nth-child(20) { left: 3%; top: 48%; }
+
+.letter:nth-child(21) { left: 6%; top: 36%; }
+
+.letter:nth-child(22) { left: 11%; top: 25%; }
+
+.letter:nth-child(23) { left: 18%; top: 16%; }
+
+.letter:nth-child(24) { left: 27%; top: 9%; }
+
+.letter:nth-child(25) { left: 38%; top: 4.8%; }
+
+.letter:nth-child(26) { left: 50%; top: 2%; }
+
+
+/* =========================================
+   CORRECCIÓN PARA LA ÚLTIMA LETRA
+   ========================================= */
+
+.letter:nth-child(26) {
+    left: 50%;
+    top: 2%;
 }
 
 
@@ -647,306 +392,7 @@ footer {
    ========================================= */
 
 .rondo-sidebar {
-    background: var(--dark-card);
-
-    border: 1px solid var(--border);
-
-    border-radius: 20px;
-
-    padding: 22px;
-}
-
-.side-label {
-    color: var(--gray);
-
-    font-size: 11px;
-
-    font-weight: 800;
-
-    letter-spacing: 1.5px;
-
-    margin-bottom: 10px;
-}
-
-.turn-team {
-    font-size: 23px;
-
-    font-weight: 900;
-
-    margin-bottom: 18px;
-}
-
-.team-select {
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 7px;
-}
-
-.team-select-btn {
-    border: 1px solid var(--border);
-
-    background: #111114;
-
-    color: var(--gray);
-
-    border-radius: 8px;
-
-    padding: 10px 4px;
-
-    cursor: pointer;
-
-    font-weight: 800;
-}
-
-.team-select-btn.selected {
-    color: var(--white);
-
-    border-color: var(--red);
-
-    background: rgba(229,9,47,0.16);
-}
-
-
-/* =========================================
-   PUNTAJE DEL EQUIPO
-   ========================================= */
-
-.rondo-score-box {
-    margin-top: 22px;
-
-    padding: 18px;
-
-    background: #111114;
-
-    border-radius: 14px;
-
-    text-align: center;
-}
-
-.rondo-score-box span {
-    display: block;
-
-    color: var(--gray);
-
-    font-size: 12px;
-
-    margin-bottom: 5px;
-}
-
-.rondo-score-box strong {
-    font-size: 38px;
-
-    color: var(--red-light);
-}
-
-
-/* =========================================
-   INSTRUCCIONES
-   ========================================= */
-
-.rondo-instructions {
-    margin-top: 20px;
-
-    padding-top: 18px;
-
-    border-top: 1px solid var(--border);
-
-    color: var(--gray);
-
-    font-size: 12px;
-
-    line-height: 1.6;
-}
-
-.rondo-instructions strong {
-    color: var(--white);
-
-    display: block;
-
-    margin-bottom: 7px;
-}
-
-
-/* =========================================
-   ROSCO
-   ========================================= */
-
-.rondo-main {
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    gap: 30px;
-}
-
-.rosco {
-    width: min(620px, 90vw);
-
-    display: grid;
-
-    grid-template-columns: repeat(7, 1fr);
-
-    gap: 9px;
-
-    justify-content: center;
-}
-
-.letter {
-    aspect-ratio: 1;
-
-    border-radius: 50%;
-
-    border: 2px solid #3b3b42;
-
-    background: #202025;
-
-    color: var(--white);
-
-    display: grid;
-
-    place-items: center;
-
-    font-size: clamp(14px, 2vw, 22px);
-
-    font-weight: 900;
-
-    cursor: pointer;
-
-    transition: 0.18s ease;
-}
-
-.letter:hover {
-    transform: scale(1.08);
-
-    border-color: var(--red-light);
-}
-
-.letter.current {
-    background: var(--red);
-
-    border-color: var(--red-light);
-
-    transform: scale(1.08);
-}
-
-.letter.correct {
-    background: #168a4b;
-
-    border-color: #28c76f;
-}
-
-.letter.wrong {
-    background: #9e1730;
-
-    border-color: #d93a5a;
-}
-
-.letter.pass {
-    background: #665019;
-
-    border-color: #d6ad45;
-}
-
-
-/* =========================================
-   PREGUNTA
-   ========================================= */
-
-.question-card {
-    width: min(900px, 100%);
-
-    background: var(--dark-card);
-
-    border: 1px solid var(--border);
-
-    border-radius: 24px;
-
-    padding: 30px;
-
-    text-align: center;
-}
-
-.question-letter {
-    color: var(--red-light);
-
-    font-size: 48px;
-
-    font-weight: 900;
-
-    line-height: 1;
-}
-
-.question-type {
-    color: var(--gray);
-
-    font-size: 11px;
-
-    font-weight: 800;
-
-    letter-spacing: 2px;
-
-    margin: 10px 0 18px;
-}
-
-#question-text {
-    min-height: 58px;
-
-    font-size: clamp(18px, 2.5vw, 25px);
-
-    line-height: 1.35;
-
-    font-weight: 700;
-}
-
-
-/* =========================================
-   BOTONES
-   ========================================= */
-
-.answer-actions {
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 10px;
-
-    margin-top: 25px;
-}
-
-.answer-btn {
-    border: none;
-
-    border-radius: 10px;
-
-    padding: 14px 10px;
-
-    color: white;
-
-    font-weight: 800;
-
-    cursor: pointer;
-
-    transition: 0.2s ease;
-}
-
-.answer-btn:hover {
-    transform: translateY(-2px);
-}
-
-.answer-btn.correct {
-    background: #168a4b;
-}
-
-.answer-btn.pass {
-    background: #665019;
-}
-
-.answer-btn.wrong {
-    background: #9e1730;
+    min-width: 210px;
 }
 
 
@@ -956,21 +402,12 @@ footer {
 
 @media (max-width: 900px) {
 
-    .teams,
-    .games-grid {
-        grid-template-columns: 1fr;
-    }
-
     .rondo-layout {
-        grid-template-columns: 1fr;
+        flex-direction: column;
     }
 
-    .rondo-sidebar {
-        order: 2;
-    }
-
-    .rondo-main {
-        order: 1;
+    .rosco-wrapper {
+        width: min(600px, 90vw);
     }
 
 }
@@ -978,44 +415,49 @@ footer {
 
 @media (max-width: 600px) {
 
-    .container {
-        width: 92%;
-
-        padding-top: 45px;
+    .rosco-wrapper {
+        width: 95vw;
     }
 
-    .header {
-        padding: 18px 4%;
+    .letter {
+        width: 38px;
+        height: 38px;
+
+        font-size: 15px;
+
+        border-width: 2px;
     }
 
-    .header h1 {
-        font-size: 21px;
+    .rondo-center {
+        width: 55%;
+
+        min-height: 230px;
+
+        padding: 15px;
+
+        border-radius: 20px;
     }
 
-    .heart {
-        font-size: 32px;
+    #question-letter {
+        font-size: 30px;
     }
 
-    .welcome h2 {
-        font-size: 36px;
+    #question-text {
+        font-size: 13px;
+
+        margin-bottom: 15px;
     }
 
-    .rosco {
-        grid-template-columns: repeat(6, 1fr);
-
-        gap: 7px;
+    .answer-buttons {
+        gap: 5px;
     }
 
-    .question-card {
-        padding: 24px 16px;
-    }
+    .answer-buttons button {
+        min-width: auto;
 
-    .answer-actions {
-        grid-template-columns: 1fr;
-    }
+        padding: 9px 8px;
 
-    .rondo-content {
-        width: 94%;
+        font-size: 10px;
     }
 
 }
