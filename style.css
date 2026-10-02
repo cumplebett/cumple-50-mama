@@ -1,22 +1,31 @@
 /* =========================================
    50 AÑOS DE BETT
+   ESTILOS PRINCIPALES
    ========================================= */
 
 :root {
-    --lime: #B6FF00;
-    --black: #0B0B0B;
-    --dark: #151515;
-    --dark2: #202020;
-    --white: #FFFFFF;
-    --gray: #8A8A8A;
+    --red: #e5092f;
+    --red-dark: #b80725;
+    --red-light: #ff3153;
 
-    --blue: #0066FF;
-    --green: #20D67A;
-    --purple: #7B2CFF;
+    --black: #0b0b0d;
+    --dark: #141417;
+    --dark-card: #1c1c21;
 
-    --yellow: #FFD600;
-    --red: #E53935;
+    --white: #ffffff;
+    --gray: #a7a7ad;
+    --border: rgba(255, 255, 255, 0.09);
+
+    --yellow: #ffd600;
+    --green: #18c964;
+
+    --radius: 18px;
 }
+
+
+/* =========================================
+   RESET
+   ========================================= */
 
 * {
     margin: 0;
@@ -24,9 +33,19 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: var(--black);
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(229, 9, 47, 0.15),
+            transparent 35%
+        ),
+        var(--black);
     color: var(--white);
     min-height: 100vh;
 }
@@ -37,32 +56,41 @@ body {
    ========================================= */
 
 .header {
-    border-bottom: 1px solid #292929;
-    padding: 22px 40px;
+    background: rgba(11, 11, 13, 0.92);
+    border-bottom: 1px solid var(--border);
+    padding: 22px 6%;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(12px);
 }
 
 .header-content {
+    max-width: 1200px;
+    margin: auto;
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 16px;
 }
 
 .heart {
-    color: var(--lime);
-    font-size: 22px;
+    color: var(--red);
+    font-size: 42px;
+    line-height: 1;
 }
 
 .eyebrow {
-    color: var(--gray);
-    font-size: 12px;
-    letter-spacing: 1px;
-    margin-bottom: 4px;
+    color: var(--red-light);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 5px;
 }
 
 .header h1 {
-    font-size: 28px;
+    font-size: clamp(22px, 3vw, 34px);
     font-weight: 900;
-    letter-spacing: 1px;
+    letter-spacing: -1px;
 }
 
 
@@ -71,9 +99,9 @@ body {
    ========================================= */
 
 .container {
-    width: min(1100px, 92%);
+    width: min(1200px, 88%);
     margin: 0 auto;
-    padding: 42px 0 60px;
+    padding: 65px 0 80px;
 }
 
 
@@ -83,51 +111,49 @@ body {
 
 .welcome {
     text-align: center;
-    margin-bottom: 42px;
+    margin-bottom: 55px;
 }
 
-.welcome .subtitle {
-    color: var(--gray);
-    font-size: 15px;
-    margin-bottom: 10px;
+.subtitle {
+    color: var(--red-light);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 12px;
 }
 
 .welcome h2 {
-    font-size: 40px;
+    font-size: clamp(32px, 5vw, 58px);
+    line-height: 1;
     font-weight: 900;
-    margin-bottom: 10px;
+    margin-bottom: 18px;
 }
 
 .welcome > p:last-child {
     color: var(--gray);
-    font-size: 15px;
+    font-size: 17px;
 }
 
 
 /* =========================================
-   SECCIONES
+   TÍTULOS DE SECCIÓN
    ========================================= */
-
-.scoreboard,
-.games,
-.details {
-    margin-bottom: 45px;
-}
 
 .section-title {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 18px;
+    margin-bottom: 22px;
 }
 
 .section-title span {
-    font-size: 23px;
+    font-size: 22px;
 }
 
 .section-title h3 {
-    font-size: 24px;
-    font-weight: 900;
+    font-size: 20px;
+    font-weight: 800;
 }
 
 
@@ -136,68 +162,51 @@ body {
    ========================================= */
 
 .scoreboard {
-    display: grid;
-    grid-template-columns: 230px 1fr;
-    gap: 30px;
-    align-items: start;
-}
-
-.scoreboard .section-title {
-    margin-bottom: 0;
+    margin-bottom: 65px;
 }
 
 .teams {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
+    gap: 18px;
 }
 
 .team-card {
-    background: var(--dark);
-    border: 1px solid #303030;
-    border-radius: 17px;
-    padding: 22px 15px;
+    background: var(--dark-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 30px 20px;
     text-align: center;
-    transition: 0.2s ease;
+    transition: 0.25s ease;
 }
 
 .team-card:hover {
-    border-color: #444;
-    transform: translateY(-2px);
-}
-
-.team-blue {
-    border-top: 3px solid var(--blue);
-}
-
-.team-green {
-    border-top: 3px solid var(--green);
-}
-
-.team-purple {
-    border-top: 3px solid var(--purple);
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.18);
 }
 
 .team-icon {
-    font-size: 20px;
-    margin-bottom: 8px;
+    font-size: 28px;
+    margin-bottom: 12px;
 }
 
 .team-card h4 {
-    font-size: 16px;
-    margin-bottom: 5px;
+    font-size: 18px;
+    margin-bottom: 14px;
 }
 
-.team-card .score {
+.score {
     display: block;
-    color: var(--lime);
-    font-size: 28px;
+    font-size: 48px;
+    line-height: 1;
     font-weight: 900;
+    color: var(--red);
 }
 
 .team-card small {
+    display: block;
     color: var(--gray);
-    font-size: 11px;
+    margin-top: 7px;
 }
 
 
@@ -206,119 +215,110 @@ body {
    ========================================= */
 
 .games {
-    display: grid;
-    grid-template-columns: 230px 1fr;
-    gap: 30px;
-    align-items: start;
-}
-
-.games .section-title {
-    margin-bottom: 0;
+    margin-bottom: 65px;
 }
 
 .games-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
+    gap: 18px;
 }
 
 .game-card {
     width: 100%;
-    min-height: 165px;
-
-    background: var(--dark);
-    border: 1px solid #303030;
-    border-radius: 17px;
-
-    color: white;
-
-    padding: 22px 15px;
-
-    text-align: center;
-
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--dark-card);
+    color: var(--white);
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-align: left;
     cursor: pointer;
-
-    transition: 0.2s ease;
+    transition: 0.25s ease;
 }
 
 .game-card:hover {
     transform: translateY(-4px);
-    border-color: var(--lime);
-    box-shadow: 0 10px 25px rgba(182, 255, 0, 0.08);
+    border-color: var(--red);
+    background: #21171a;
 }
 
 .game-icon {
-    font-size: 35px;
-    margin-bottom: 10px;
+    min-width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    background: rgba(229, 9, 47, 0.12);
+    font-size: 25px;
 }
 
 .game-card h4 {
-    font-size: 16px;
-    margin-bottom: 6px;
+    font-size: 18px;
+    margin-bottom: 5px;
 }
 
 .game-card p {
     color: var(--gray);
-    font-size: 12px;
-    line-height: 1.4;
+    font-size: 13px;
 }
 
 .arrow {
-    display: block;
-    color: var(--lime);
-    font-size: 20px;
-    margin-top: 15px;
+    margin-left: auto;
+    font-size: 25px;
+    color: var(--red-light);
 }
 
 
 /* =========================================
-   TABLA
+   TABLA DE PUNTAJES
    ========================================= */
 
 .details {
-    display: grid;
-    grid-template-columns: 230px 1fr;
-    gap: 30px;
-    align-items: start;
-}
-
-.details .section-title {
-    margin-bottom: 0;
+    margin-bottom: 40px;
 }
 
 .table-wrapper {
+    width: 100%;
     overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    background: var(--dark);
-    border: 1px solid #303030;
-    border-radius: 15px;
-    overflow: hidden;
+    min-width: 650px;
+    background: var(--dark-card);
+}
+
+th,
+td {
+    padding: 18px 20px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
 }
 
 th {
-    background: #202020;
-    color: var(--lime);
-    padding: 13px;
-    font-size: 12px;
+    color: var(--gray);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 td {
-    padding: 13px;
-    text-align: center;
-    border-bottom: 1px solid #303030;
-    font-size: 13px;
+    font-size: 15px;
 }
 
-tr:last-child td {
+tbody tr:last-child td {
     border-bottom: none;
 }
 
-td.total {
-    color: var(--lime);
+.total {
+    color: var(--red-light);
+    font-size: 20px;
     font-weight: 900;
 }
 
@@ -328,10 +328,11 @@ td.total {
    ========================================= */
 
 footer {
+    border-top: 1px solid var(--border);
     text-align: center;
-    color: #666;
-    padding: 30px;
-    font-size: 12px;
+    padding: 25px;
+    color: var(--gray);
+    font-size: 13px;
 }
 
 
@@ -342,87 +343,100 @@ footer {
 .modal {
     position: fixed;
     inset: 0;
-
-    background: rgba(0, 0, 0, 0.85);
-
+    background: rgba(0, 0, 0, 0.78);
     display: none;
-
-    align-items: center;
-    justify-content: center;
-
-    z-index: 1000;
-
+    place-items: center;
     padding: 20px;
+    z-index: 100;
 }
 
 .modal.active {
-    display: flex;
+    display: grid;
 }
 
 .modal-content {
-    width: min(500px, 92vw);
-
-    background: var(--dark);
-
-    border: 1px solid #333;
-
-    border-radius: 20px;
-
-    padding: 35px;
-
-    text-align: center;
-
     position: relative;
+    width: min(500px, 100%);
+    background: var(--dark-card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 45px 30px;
+    text-align: center;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+}
+
+.modal-content > div:first-of-type {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.modal-content h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.modal-content p {
+    color: var(--gray);
+    margin-bottom: 28px;
 }
 
 .close-button {
     position: absolute;
-
-    top: 15px;
     right: 18px;
-
+    top: 15px;
     border: none;
-    background: none;
-
-    color: white;
-
-    font-size: 28px;
-
+    background: transparent;
+    color: var(--gray);
+    font-size: 30px;
     cursor: pointer;
+}
+
+.close-button:hover {
+    color: var(--white);
 }
 
 .back-button {
-    margin-top: 25px;
-
-    background: var(--lime);
-
-    color: var(--black);
-
     border: none;
-
     border-radius: 10px;
-
-    padding: 11px 20px;
-
-    font-weight: 900;
-
+    background: var(--red);
+    color: white;
+    padding: 13px 22px;
+    font-weight: 700;
     cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.back-button:hover {
+    background: var(--red-light);
 }
 
 
+/* =========================================================
+   =========================================================
+   RONDO
+   =========================================================
+   ========================================================= */
+
+
 /* =========================================
-   RONDO MODAL
+   MODAL DEL RONDO
    ========================================= */
 
 .rondo-modal {
     position: fixed;
     inset: 0;
 
-    background: var(--black);
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(229, 9, 47, 0.08),
+            transparent 45%
+        ),
+        var(--black);
 
     display: none;
 
-    z-index: 2000;
+    z-index: 200;
 
     overflow-y: auto;
 }
@@ -430,6 +444,11 @@ footer {
 .rondo-modal.active {
     display: block;
 }
+
+
+/* =========================================
+   CONTENEDOR RONDO
+   ========================================= */
 
 .rondo-content {
     min-height: 100vh;
@@ -443,13 +462,15 @@ footer {
 .rondo-topbar {
     height: 78px;
 
-    padding: 0 30px;
+    padding: 0 35px;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    border-bottom: 1px solid #292929;
+    border-bottom: 1px solid var(--border);
+
+    background: rgba(11, 11, 13, 0.95);
 }
 
 .rondo-topbar h2 {
@@ -459,11 +480,12 @@ footer {
 
 .rondo-close {
     position: static;
+    font-size: 32px;
 }
 
 
 /* =========================================
-   TABS
+   TABS ROSCOS
    ========================================= */
 
 .rondo-tabs {
@@ -473,29 +495,35 @@ footer {
 
     padding: 14px;
 
-    border-bottom: 1px solid #292929;
+    border-bottom: 1px solid var(--border);
 }
 
 .rondo-tab {
-    background: #202020;
+    border: 1px solid var(--border);
 
-    color: white;
+    background: var(--dark-card);
 
-    border: 1px solid #333;
+    color: var(--white);
 
-    border-radius: 9px;
+    border-radius: 10px;
 
-    padding: 9px 22px;
+    padding: 10px 24px;
 
     font-weight: 800;
 
     cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.rondo-tab:hover {
+    border-color: var(--red);
 }
 
 .rondo-tab.active {
-    background: var(--lime);
-    color: var(--black);
-    border-color: var(--lime);
+    background: var(--red);
+    border-color: var(--red);
+    color: white;
 }
 
 
@@ -504,10 +532,11 @@ footer {
    ========================================= */
 
 .rondo-layout {
-    width: min(1400px, 95%);
+    width: min(1450px, 96%);
+
     min-height: calc(100vh - 135px);
 
-    margin: 0 auto;
+    margin: auto;
 
     display: flex;
 
@@ -515,7 +544,7 @@ footer {
 
     justify-content: center;
 
-    gap: 35px;
+    gap: 45px;
 }
 
 
@@ -524,55 +553,71 @@ footer {
    ========================================= */
 
 .rondo-sidebar {
-    width: 190px;
+    width: 200px;
     flex-shrink: 0;
 }
 
 .side-label {
     color: var(--gray);
     font-size: 11px;
-    font-weight: 900;
+    font-weight: 800;
+    letter-spacing: 1px;
     margin-bottom: 8px;
 }
 
 .turn-team {
-    font-size: 19px;
+    font-size: 20px;
     font-weight: 900;
-    margin-bottom: 15px;
+    margin-bottom: 18px;
 }
 
 .team-select {
     display: flex;
     gap: 7px;
-    margin-bottom: 22px;
+    margin-bottom: 25px;
 }
 
 .team-select-btn {
     flex: 1;
 
-    background: #171717;
+    border: 1px solid var(--border);
 
-    border: 1px solid #333;
+    background: var(--dark-card);
+
+    color: white;
 
     border-radius: 9px;
 
     padding: 10px 5px;
 
-    color: white;
-
     font-weight: 900;
 
     cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.team-select-btn:hover {
+    border-color: var(--red);
 }
 
 .team-select-btn.selected {
-    border-color: var(--lime);
-    color: var(--lime);
+    background: rgba(229, 9, 47, 0.12);
+    border-color: var(--red);
+    color: var(--red-light);
 }
 
 .rondo-score-box {
     display: flex;
     flex-direction: column;
+
+    padding: 18px;
+
+    background: var(--dark-card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 14px;
 
     margin-bottom: 25px;
 }
@@ -583,19 +628,21 @@ footer {
 }
 
 .rondo-score-box strong {
-    color: var(--lime);
-    font-size: 35px;
+    color: var(--red);
+    font-size: 38px;
+    line-height: 1;
+    margin-top: 5px;
 }
 
 .rondo-instructions {
     color: var(--gray);
     font-size: 12px;
-    line-height: 1.5;
+    line-height: 1.55;
 }
 
 .rondo-instructions strong {
-    color: white;
     display: block;
+    color: white;
     margin-bottom: 8px;
 }
 
@@ -605,26 +652,31 @@ footer {
 
 
 /* =========================================
-   RONDO MAIN
+   RONDO PRINCIPAL
    ========================================= */
 
 .rondo-main {
+
     position: relative;
 
-    width: min(720px, 68vw);
+    width: min(760px, 70vw);
+
     aspect-ratio: 1 / 1;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 }
 
 
 /* =========================================
-   ROSCO
+   CÍRCULO DE LETRAS
    ========================================= */
 
 .rosco {
+
     position: absolute;
 
     inset: 0;
@@ -639,23 +691,26 @@ footer {
    ========================================= */
 
 .letter {
+
     position: absolute;
 
-    width: 50px;
-    height: 50px;
+    width: 53px;
+    height: 53px;
 
     border-radius: 50%;
 
     border: 3px solid white;
 
-    background: var(--black);
+    background: var(--dark);
 
     color: white;
 
     font-size: 17px;
+
     font-weight: 900;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -663,82 +718,141 @@ footer {
 
     transform: translate(-50%, -50%);
 
-    transition: 0.15s ease;
+    transition:
+        transform 0.15s ease,
+        background 0.15s ease,
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
 
     z-index: 5;
 }
 
 .letter:hover {
+
     transform:
         translate(-50%, -50%)
-        scale(1.12);
+        scale(1.15);
 
-    border-color: var(--lime);
+    border-color: var(--red);
 
     box-shadow:
-        0 0 15px rgba(182,255,0,.5);
+        0 0 20px rgba(229, 9, 47, 0.45);
 }
+
+
+/* LETRA ACTUAL */
 
 .letter.current {
-    background: var(--lime);
-    border-color: var(--lime);
-    color: var(--black);
+
+    background: var(--red);
+
+    border-color: var(--red);
+
+    color: white;
 
     transform:
         translate(-50%, -50%)
-        scale(1.13);
+        scale(1.15);
 
     box-shadow:
-        0 0 20px rgba(182,255,0,.8);
+        0 0 25px rgba(229, 9, 47, 0.7);
 }
+
+
+/* CORRECTA */
 
 .letter.correct {
-    background: #18C964;
-    border-color: #18C964;
+
+    background: var(--green);
+
+    border-color: var(--green);
+
+    color: white;
+
 }
+
+
+/* INCORRECTA */
 
 .letter.wrong {
+
     background: var(--red);
+
     border-color: var(--red);
+
+    color: white;
+
 }
 
+
+/* PASAPALABRA */
+
 .letter.pass {
+
     background: var(--yellow);
+
     border-color: var(--yellow);
+
     color: var(--black);
+
 }
 
 
 /* =========================================
-   26 LETRAS EN CÍRCULO
+   POSICIONES DE LAS 26 LETRAS
    ========================================= */
 
-.letter:nth-child(1)  { left: 50%; top: 2%; }
-.letter:nth-child(2)  { left: 61.5%; top: 4.5%; }
-.letter:nth-child(3)  { left: 72%; top: 8%; }
-.letter:nth-child(4)  { left: 81%; top: 14%; }
-.letter:nth-child(5)  { left: 88%; top: 22%; }
-.letter:nth-child(6)  { left: 94%; top: 33%; }
-.letter:nth-child(7)  { left: 97%; top: 44%; }
-.letter:nth-child(8)  { left: 98%; top: 55%; }
-.letter:nth-child(9)  { left: 95%; top: 67%; }
-.letter:nth-child(10) { left: 90%; top: 77%; }
-.letter:nth-child(11) { left: 82%; top: 85%; }
-.letter:nth-child(12) { left: 72%; top: 92%; }
-.letter:nth-child(13) { left: 61%; top: 96%; }
-.letter:nth-child(14) { left: 50%; top: 98%; }
-.letter:nth-child(15) { left: 39%; top: 96%; }
-.letter:nth-child(16) { left: 28%; top: 92%; }
-.letter:nth-child(17) { left: 18%; top: 85%; }
-.letter:nth-child(18) { left: 10%; top: 77%; }
-.letter:nth-child(19) { left: 5%; top: 67%; }
-.letter:nth-child(20) { left: 2%; top: 55%; }
-.letter:nth-child(21) { left: 3%; top: 44%; }
-.letter:nth-child(22) { left: 6%; top: 33%; }
-.letter:nth-child(23) { left: 12%; top: 22%; }
-.letter:nth-child(24) { left: 19%; top: 14%; }
-.letter:nth-child(25) { left: 28%; top: 8%; }
-.letter:nth-child(26) { left: 38.5%; top: 4.5%; }
+.letter:nth-child(1)  { left: 50%; top: 1.5%; }
+
+.letter:nth-child(2)  { left: 61%; top: 3.8%; }
+
+.letter:nth-child(3)  { left: 71%; top: 7.5%; }
+
+.letter:nth-child(4)  { left: 80%; top: 13.5%; }
+
+.letter:nth-child(5)  { left: 87%; top: 21.5%; }
+
+.letter:nth-child(6)  { left: 93%; top: 31.5%; }
+
+.letter:nth-child(7)  { left: 96.5%; top: 42%; }
+
+.letter:nth-child(8)  { left: 98%; top: 53%; }
+
+.letter:nth-child(9)  { left: 96%; top: 64%; }
+
+.letter:nth-child(10) { left: 92%; top: 74%; }
+
+.letter:nth-child(11) { left: 86%; top: 82.5%; }
+
+.letter:nth-child(12) { left: 78%; top: 89%; }
+
+.letter:nth-child(13) { left: 68%; top: 94%; }
+
+.letter:nth-child(14) { left: 57%; top: 97%; }
+
+.letter:nth-child(15) { left: 46%; top: 98.5%; }
+
+.letter:nth-child(16) { left: 35%; top: 96.5%; }
+
+.letter:nth-child(17) { left: 25%; top: 92%; }
+
+.letter:nth-child(18) { left: 16%; top: 85%; }
+
+.letter:nth-child(19) { left: 9%; top: 76%; }
+
+.letter:nth-child(20) { left: 4%; top: 65%; }
+
+.letter:nth-child(21) { left: 2%; top: 54%; }
+
+.letter:nth-child(22) { left: 3.5%; top: 43%; }
+
+.letter:nth-child(23) { left: 7%; top: 32%; }
+
+.letter:nth-child(24) { left: 13%; top: 22%; }
+
+.letter:nth-child(25) { left: 20%; top: 14%; }
+
+.letter:nth-child(26) { left: 29%; top: 7%; }
 
 
 /* =========================================
@@ -746,28 +860,32 @@ footer {
    ========================================= */
 
 .question-card {
+
     position: absolute;
 
-    width: 360px;
-    min-height: 280px;
+    width: 380px;
 
-    top: 50%;
+    min-height: 300px;
+
     left: 50%;
+    top: 50%;
 
     transform: translate(-50%, -50%);
 
-    background: #111111;
+    background: var(--dark-card);
 
-    border: 1px solid #333;
+    border: 1px solid var(--border);
 
     border-radius: 24px;
 
-    padding: 28px;
+    padding: 30px;
 
     display: flex;
+
     flex-direction: column;
 
     align-items: center;
+
     justify-content: center;
 
     text-align: center;
@@ -775,67 +893,99 @@ footer {
     z-index: 10;
 
     box-shadow:
-        0 15px 45px rgba(0,0,0,.65);
+        0 20px 70px rgba(0, 0, 0, 0.7);
 }
 
 
 /* =========================================
-   PREGUNTA
+   LETRA DE LA PREGUNTA
    ========================================= */
 
 .question-letter {
-    font-size: 38px;
+
+    width: 58px;
+    height: 58px;
+
+    border-radius: 50%;
+
+    display: grid;
+    place-items: center;
+
+    background: var(--red);
+
+    color: white;
+
+    font-size: 28px;
 
     font-weight: 900;
 
-    color: var(--lime);
+    margin-bottom: 10px;
 
-    margin-bottom: 5px;
-}
-
-.question-type {
-    font-size: 12px;
-
-    color: var(--gray);
-
-    font-weight: 900;
-
-    margin-bottom: 14px;
-}
-
-#question-text {
-    font-size: 17px;
-
-    line-height: 1.4;
-
-    font-weight: 700;
-
-    max-width: 315px;
-
-    margin-bottom: 22px;
+    box-shadow:
+        0 0 25px rgba(229, 9, 47, 0.35);
 }
 
 
 /* =========================================
-   BOTONES DEL RONDO
+   TIPO DE PREGUNTA
+   ========================================= */
+
+.question-type {
+
+    color: var(--red-light);
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 15px;
+}
+
+
+/* =========================================
+   TEXTO DE PREGUNTA
+   ========================================= */
+
+#question-text {
+
+    font-size: 17px;
+
+    line-height: 1.45;
+
+    font-weight: 700;
+
+    max-width: 320px;
+
+    margin-bottom: 24px;
+}
+
+
+/* =========================================
+   BOTONES
    ========================================= */
 
 .answer-actions {
+
     display: flex;
 
     gap: 8px;
 
-    justify-content: center;
-
     width: 100%;
+
+    justify-content: center;
 }
 
 .answer-btn {
+
+    flex: 1;
+
     border: none;
 
     border-radius: 10px;
 
-    padding: 11px 12px;
+    padding: 12px 8px;
 
     font-size: 11px;
 
@@ -843,84 +993,94 @@ footer {
 
     cursor: pointer;
 
-    transition: .15s ease;
+    transition: 0.18s ease;
 }
 
 .answer-btn:hover {
-    transform: translateY(-2px);
+
+    transform: translateY(-3px);
+
     filter: brightness(1.1);
 }
 
+
+/* VERDE */
+
 .answer-btn.correct {
-    background: #18C964;
+
+    background: var(--green);
+
     color: white;
+
+    box-shadow:
+        0 5px 20px rgba(24, 201, 100, 0.15);
 }
+
+
+/* AMARILLO */
 
 .answer-btn.pass {
+
     background: var(--yellow);
+
     color: var(--black);
+
+    box-shadow:
+        0 5px 20px rgba(255, 214, 0, 0.15);
 }
 
+
+/* ROJO */
+
 .answer-btn.wrong {
+
     background: var(--red);
+
     color: white;
+
+    box-shadow:
+        0 5px 20px rgba(229, 9, 47, 0.15);
 }
 
 
 /* =========================================
-   RESPONSIVE
+   RESPONSIVE RONDO
    ========================================= */
 
 @media (max-width: 1050px) {
 
-    .scoreboard,
-    .games,
-    .details {
-        grid-template-columns: 1fr;
-    }
-
-    .section-title {
-        margin-bottom: 15px;
-    }
-
     .rondo-layout {
+
         flex-direction: column;
-        padding: 25px 0 40px;
+
+        padding: 30px 0 50px;
     }
 
     .rondo-sidebar {
+
         width: min(500px, 90vw);
+
         order: 2;
     }
 
     .rondo-main {
-        width: min(700px, 90vw);
+
+        width: min(720px, 90vw);
     }
 }
 
 
-@media (max-width: 700px) {
-
-    .container {
-        width: 94%;
-    }
-
-    .welcome h2 {
-        font-size: 30px;
-    }
-
-    .teams,
-    .games-grid {
-        grid-template-columns: 1fr;
-    }
+@media (max-width: 650px) {
 
     .rondo-main {
+
         width: 95vw;
     }
 
     .letter {
-        width: 36px;
-        height: 36px;
+
+        width: 38px;
+        height: 38px;
 
         font-size: 12px;
 
@@ -928,26 +1088,93 @@ footer {
     }
 
     .question-card {
-        width: 54%;
+
+        width: 55%;
+
         min-height: 220px;
+
         padding: 15px;
     }
 
     .question-letter {
-        font-size: 28px;
+
+        width: 42px;
+        height: 42px;
+
+        font-size: 21px;
     }
 
     #question-text {
+
         font-size: 12px;
-        margin-bottom: 14px;
+
+        margin-bottom: 15px;
     }
 
     .answer-actions {
+
         gap: 4px;
     }
 
     .answer-btn {
-        padding: 8px 5px;
+
+        padding: 8px 4px;
+
         font-size: 9px;
+    }
+}
+
+
+/* =========================================
+   RESPONSIVE PRINCIPAL
+   ========================================= */
+
+@media (max-width: 850px) {
+
+    .teams,
+    .games-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+
+        width: 92%;
+
+        padding-top: 45px;
+    }
+
+    .header {
+
+        padding: 18px 4%;
+    }
+
+    .welcome {
+
+        margin-bottom: 40px;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    .header h1 {
+
+        font-size: 21px;
+    }
+
+    .heart {
+
+        font-size: 32px;
+    }
+
+    .welcome h2 {
+
+        font-size: 36px;
+    }
+
+    .team-card {
+
+        padding: 25px 15px;
     }
 }
