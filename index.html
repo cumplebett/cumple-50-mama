@@ -19,7 +19,10 @@
 
         <div>
             <p class="eyebrow">EL GRAN CUMPLEAÑOS</p>
-            <h1>50 AÑOS DE BETT</h1>
+
+            <h1>
+                50 AÑOS DE BETT
+            </h1>
         </div>
 
     </div>
@@ -29,7 +32,9 @@
 
 <main class="container">
 
-    <!-- BIENVENIDA -->
+    <!-- =========================================
+         BIENVENIDA
+         ========================================= -->
 
     <section class="welcome">
 
@@ -48,7 +53,9 @@
     </section>
 
 
-    <!-- MARCADOR -->
+    <!-- =========================================
+         MARCADOR GENERAL
+         ========================================= -->
 
     <section class="scoreboard">
 
@@ -64,6 +71,9 @@
 
 
         <div class="teams">
+
+
+            <!-- EQUIPO 1 -->
 
             <div class="team-card team-blue">
 
@@ -89,6 +99,8 @@
             </div>
 
 
+            <!-- EQUIPO 2 -->
+
             <div class="team-card team-green">
 
                 <div class="team-icon">
@@ -112,6 +124,8 @@
 
             </div>
 
+
+            <!-- EQUIPO 3 -->
 
             <div class="team-card team-purple">
 
@@ -141,7 +155,9 @@
     </section>
 
 
-    <!-- JUEGOS -->
+    <!-- =========================================
+         JUEGOS
+         ========================================= -->
 
     <section class="games">
 
@@ -158,6 +174,8 @@
 
         <div class="games-grid">
 
+
+            <!-- KAHOOT -->
 
             <button
                 class="game-card"
@@ -187,6 +205,8 @@
             </button>
 
 
+            <!-- RONDO -->
+
             <button
                 class="game-card"
                 onclick="openGame('rondo')"
@@ -214,6 +234,8 @@
 
             </button>
 
+
+            <!-- CANCIONES -->
 
             <button
                 class="game-card"
@@ -247,7 +269,9 @@
     </section>
 
 
-    <!-- PUNTAJES -->
+    <!-- =========================================
+         PUNTAJES POR JUEGO
+         ========================================= -->
 
     <section class="details">
 
@@ -297,6 +321,9 @@
 
                 <tbody>
 
+
+                    <!-- EQUIPO 1 -->
+
                     <tr>
 
                         <td>
@@ -325,6 +352,8 @@
                     </tr>
 
 
+                    <!-- EQUIPO 2 -->
+
                     <tr>
 
                         <td>
@@ -352,6 +381,8 @@
 
                     </tr>
 
+
+                    <!-- EQUIPO 3 -->
 
                     <tr>
 
@@ -391,6 +422,10 @@
 </main>
 
 
+<!-- =========================================
+     FOOTER
+     ========================================= -->
+
 <footer>
 
     <p>
@@ -418,17 +453,21 @@
             ×
         </button>
 
+
         <div id="modal-icon">
             🎮
         </div>
+
 
         <h2 id="modal-title">
             Juego
         </h2>
 
+
         <p id="modal-description">
             Próximamente...
         </p>
+
 
         <button
             class="back-button"
@@ -455,7 +494,7 @@
 
 
         <!-- =====================================
-             CABECERA DEL RONDO
+             CABECERA
              ===================================== -->
 
         <div class="rondo-topbar">
@@ -481,6 +520,8 @@
                 "
             >
 
+                <!-- REINICIAR RONDO -->
+
                 <button
                     class="back-button"
                     onclick="resetRondo()"
@@ -488,6 +529,8 @@
                     Reiniciar Rondo
                 </button>
 
+
+                <!-- CERRAR -->
 
                 <button
                     class="close-button rondo-close"
@@ -507,6 +550,9 @@
 
         <div class="rondo-tabs">
 
+
+            <!-- ROSCO 1 -->
+
             <button
                 class="rondo-tab active"
                 onclick="selectRosco(1)"
@@ -515,6 +561,8 @@
             </button>
 
 
+            <!-- ROSCO 2 -->
+
             <button
                 class="rondo-tab"
                 onclick="selectRosco(2)"
@@ -522,6 +570,8 @@
                 🟢 Equipo 2
             </button>
 
+
+            <!-- ROSCO 3 -->
 
             <button
                 class="rondo-tab"
@@ -542,6 +592,7 @@
 
             <aside class="rondo-sidebar">
 
+
                 <p class="side-label">
                     EQUIPO EN TURNO
                 </p>
@@ -556,11 +607,11 @@
 
 
                 <!--
-                    Los botones manuales de equipo
-                    fueron eliminados.
+                    NO HAY BOTONES MANUALES
+                    PARA CAMBIAR DE EQUIPO.
 
                     El equipo cambia automáticamente
-                    según el rosco seleccionado.
+                    al seleccionar el rosco.
                 -->
 
 
@@ -569,6 +620,7 @@
                     <span>
                         Aciertos del equipo
                     </span>
+
 
                     <strong
                         id="rondo-current-score"
@@ -579,23 +631,29 @@
                 </div>
 
 
+                <!-- INSTRUCCIONES -->
+
                 <div class="rondo-instructions">
 
                     <strong>
                         Cómo jugar
                     </strong>
 
+
                     <p>
                         Una letra por turno.
                     </p>
+
 
                     <p>
                         ✅ Correcto suma 1 punto.
                     </p>
 
+
                     <p>
                         🔄 Pasapalabra la deja pendiente.
                     </p>
+
 
                     <p>
                         ❌ Incorrecto la marca y continúa.
@@ -613,7 +671,9 @@
             <section class="rondo-main">
 
 
-                <!-- ROSCO -->
+                <!-- =================================
+                     ROSCO
+                     ================================= -->
 
                 <div
                     class="rosco"
@@ -622,7 +682,9 @@
                 </div>
 
 
-                <!-- PREGUNTA -->
+                <!-- =================================
+                     PREGUNTA CENTRAL
+                     ================================= -->
 
                 <div class="question-card">
 
@@ -648,7 +710,14 @@
                     </p>
 
 
+                    <!-- =================================
+                         BOTONES DE RESPUESTA
+                         ================================= -->
+
                     <div class="answer-actions">
+
+
+                        <!-- CORRECTO -->
 
                         <button
                             class="answer-btn correct"
@@ -658,6 +727,8 @@
                         </button>
 
 
+                        <!-- PASAPALABRA -->
+
                         <button
                             class="answer-btn pass"
                             onclick="answerQuestion('pass')"
@@ -665,6 +736,8 @@
                             ↻ Pasapalabra
                         </button>
 
+
+                        <!-- INCORRECTO -->
 
                         <button
                             class="answer-btn wrong"
@@ -685,6 +758,10 @@
 
 </div>
 
+
+<!-- =========================================
+     JAVASCRIPT
+     ========================================= -->
 
 <script src="script.js"></script>
 
