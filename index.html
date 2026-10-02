@@ -400,7 +400,9 @@
 </footer>
 
 
-<!-- MODAL GENERAL -->
+<!-- =========================================
+     MODAL GENERAL
+     ========================================= -->
 
 <div
     id="game-modal"
@@ -452,7 +454,9 @@
     <div class="rondo-content">
 
 
-        <!-- CABECERA -->
+        <!-- =====================================
+             CABECERA DEL RONDO
+             ===================================== -->
 
         <div class="rondo-topbar">
 
@@ -469,17 +473,37 @@
             </div>
 
 
-            <button
-                class="close-button rondo-close"
-                onclick="closeRondo()"
+            <div
+                style="
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                "
             >
-                ×
-            </button>
+
+                <button
+                    class="back-button"
+                    onclick="resetRondo()"
+                >
+                    Reiniciar Rondo
+                </button>
+
+
+                <button
+                    class="close-button rondo-close"
+                    onclick="closeRondo()"
+                >
+                    ×
+                </button>
+
+            </div>
 
         </div>
 
 
-        <!-- ROSCOS -->
+        <!-- =====================================
+             EQUIPOS / ROSCOS
+             ===================================== -->
 
         <div class="rondo-tabs">
 
@@ -487,21 +511,23 @@
                 class="rondo-tab active"
                 onclick="selectRosco(1)"
             >
-                Rosco 1
+                🔵 Equipo 1
             </button>
+
 
             <button
                 class="rondo-tab"
                 onclick="selectRosco(2)"
             >
-                Rosco 2
+                🟢 Equipo 2
             </button>
+
 
             <button
                 class="rondo-tab"
                 onclick="selectRosco(3)"
             >
-                Rosco 3
+                🟣 Equipo 3
             </button>
 
         </div>
@@ -510,7 +536,9 @@
         <div class="rondo-layout">
 
 
-            <!-- LATERAL -->
+            <!-- =================================
+                 PANEL LATERAL
+                 ================================= -->
 
             <aside class="rondo-sidebar">
 
@@ -527,42 +555,24 @@
                 </div>
 
 
-                <div class="team-select">
+                <!--
+                    Los botones manuales de equipo
+                    fueron eliminados.
 
-                    <button
-                        class="team-select-btn selected"
-                        data-team="team1"
-                        onclick="selectTeam('team1')"
-                    >
-                        🔵 1
-                    </button>
-
-                    <button
-                        class="team-select-btn"
-                        data-team="team2"
-                        onclick="selectTeam('team2')"
-                    >
-                        🟢 2
-                    </button>
-
-                    <button
-                        class="team-select-btn"
-                        data-team="team3"
-                        onclick="selectTeam('team3')"
-                    >
-                        🟣 3
-                    </button>
-
-                </div>
+                    El equipo cambia automáticamente
+                    según el rosco seleccionado.
+                -->
 
 
                 <div class="rondo-score-box">
 
                     <span>
-                        Puntos del equipo
+                        Aciertos del equipo
                     </span>
 
-                    <strong id="rondo-current-score">
+                    <strong
+                        id="rondo-current-score"
+                    >
                         0
                     </strong>
 
@@ -596,7 +606,9 @@
             </aside>
 
 
-            <!-- CENTRO -->
+            <!-- =================================
+                 CENTRO
+                 ================================= -->
 
             <section class="rondo-main">
 
