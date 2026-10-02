@@ -1,1 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>50 años de Bett ❤️</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+    <header class="header">
+        <div class="header-content">
+            <span class="heart">♥</span>
+            <div>
+                <p class="eyebrow">EL GRAN CUMPLEAÑOS</p>
+                <h1>50 AÑOS DE BETT</h1>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="container">
+
+        <!-- TÍTULO -->
+        <section class="welcome">
+            <p class="subtitle">Bienvenidos a los juegos</p>
+            <h2>¿Quién conoce mejor a Bett?</h2>
+            <p>
+                Tres equipos. Tres juegos. Un solo ganador.
+            </p>
+        </section>
+
+
+        <!-- MARCADOR -->
+        <section class="scoreboard">
+
+            <div class="section-title">
+                <span>🏆</span>
+                <h3>Marcador general</h3>
+            </div>
+
+            <div class="teams">
+
+                <div class="team-card team-blue">
+                    <div class="team-icon">🔵</div>
+                    <h4>Equipo 1</h4>
+                    <span class="score" id="score-team-1">0</span>
+                    <small>puntos</small>
+                </div>
+
+                <div class="team-card team-green">
+                    <div class="team-icon">🟢</div>
+                    <h4>Equipo 2</h4>
+                    <span class="score" id="score-team-2">0</span>
+                    <small>puntos</small>
+                </div>
+
+                <div class="team-card team-purple">
+                    <div class="team-icon">🟣</div>
+                    <h4>Equipo 3</h4>
+                    <span class="score" id="score-team-3">0</span>
+                    <small>puntos</small>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- JUEGOS -->
+        <section class="games">
+
+            <div class="section-title">
+                <span>🎮</span>
+                <h3>Juegos</h3>
+            </div>
+
+            <div class="games-grid">
+
+                <button class="game-card" onclick="openGame('kahoot')">
+                    <div class="game-icon">🧠</div>
+                    <div>
+                        <h4>Kahoot</h4>
+                        <p>¿Quién conoce mejor a Bett?</p>
+                    </div>
+                    <span class="arrow">→</span>
+                </button>
+
+
+                <button class="game-card" onclick="openGame('rondo')">
+                    <div class="game-icon">🔤</div>
+                    <div>
+                        <h4>Rondo</h4>
+                        <p>Preguntas de cultura general</p>
+                    </div>
+                    <span class="arrow">→</span>
+                </button>
+
+
+                <button class="game-card" onclick="openGame('songs')">
+                    <div class="game-icon">🎵</div>
+                    <div>
+                        <h4>Canciones</h4>
+                        <p>Adiviná canción, artista y año</p>
+                    </div>
+                    <span class="arrow">→</span>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- PUNTAJES POR JUEGO -->
+        <section class="details">
+
+            <div class="section-title">
+                <span>📊</span>
+                <h3>Puntajes por juego</h3>
+            </div>
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Equipo</th>
+                            <th>🧠 Kahoot</th>
+                            <th>🔤 Rondo</th>
+                            <th>🎵 Canciones</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>🔵 Equipo 1</td>
+                            <td id="kahoot-1">0</td>
+                            <td id="rondo-1">0</td>
+                            <td id="songs-1">0</td>
+                            <td class="total" id="total-1">0</td>
+                        </tr>
+
+                        <tr>
+                            <td>🟢 Equipo 2</td>
+                            <td id="kahoot-2">0</td>
+                            <td id="rondo-2">0</td>
+                            <td id="songs-2">0</td>
+                            <td class="total" id="total-2">0</td>
+                        </tr>
+
+                        <tr>
+                            <td>🟣 Equipo 3</td>
+                            <td id="kahoot-3">0</td>
+                            <td id="rondo-3">0</td>
+                            <td id="songs-3">0</td>
+                            <td class="total" id="total-3">0</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+        <p>❤️ Celebrando 50 años de Bett</p>
+    </footer>
+
+
+    <!-- VENTANA DE JUEGO -->
+    <div id="game-modal" class="modal">
+
+        <div class="modal-content">
+
+            <button class="close-button" onclick="closeGame()">×</button>
+
+            <div id="modal-icon">🎮</div>
+
+            <h2 id="modal-title">Juego</h2>
+
+            <p id="modal-description">
+                Próximamente...
+            </p>
+
+            <button class="back-button" onclick="closeGame()">
+                Volver al inicio
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
