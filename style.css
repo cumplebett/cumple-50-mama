@@ -16,9 +16,6 @@
     --gray: #a7a7ad;
     --border: rgba(255, 255, 255, 0.09);
 
-    --yellow: #ffd600;
-    --green: #18c964;
-
     --radius: 18px;
 }
 
@@ -337,7 +334,7 @@ footer {
 
 
 /* =========================================
-   MODAL GENERAL
+   MODAL
    ========================================= */
 
 .modal {
@@ -411,15 +408,8 @@ footer {
 }
 
 
-/* =========================================================
-   =========================================================
-   RONDO
-   =========================================================
-   ========================================================= */
-
-
 /* =========================================
-   MODAL DEL RONDO
+   RONDO
    ========================================= */
 
 .rondo-modal {
@@ -429,7 +419,7 @@ footer {
     background:
         radial-gradient(
             circle at center,
-            rgba(229, 9, 47, 0.08),
+            rgba(229, 9, 47, 0.10),
             transparent 45%
         ),
         var(--black);
@@ -444,11 +434,6 @@ footer {
 .rondo-modal.active {
     display: block;
 }
-
-
-/* =========================================
-   CONTENEDOR RONDO
-   ========================================= */
 
 .rondo-content {
     min-height: 100vh;
@@ -468,24 +453,23 @@ footer {
     align-items: center;
     justify-content: space-between;
 
-    border-bottom: 1px solid var(--border);
-
     background: rgba(11, 11, 13, 0.95);
+
+    border-bottom: 1px solid var(--border);
 }
 
 .rondo-topbar h2 {
-    font-size: 25px;
+    font-size: 26px;
     font-weight: 900;
 }
 
 .rondo-close {
     position: static;
-    font-size: 32px;
 }
 
 
 /* =========================================
-   TABS ROSCOS
+   TABS
    ========================================= */
 
 .rondo-tabs {
@@ -493,7 +477,7 @@ footer {
     justify-content: center;
     gap: 10px;
 
-    padding: 14px;
+    padding: 15px;
 
     border-bottom: 1px solid var(--border);
 }
@@ -522,13 +506,15 @@ footer {
 
 .rondo-tab.active {
     background: var(--red);
+
     border-color: var(--red);
-    color: white;
+
+    color: var(--white);
 }
 
 
 /* =========================================
-   LAYOUT RONDO
+   LAYOUT
    ========================================= */
 
 .rondo-layout {
@@ -536,7 +522,7 @@ footer {
 
     min-height: calc(100vh - 135px);
 
-    margin: auto;
+    margin: 0 auto;
 
     display: flex;
 
@@ -549,7 +535,7 @@ footer {
 
 
 /* =========================================
-   LATERAL RONDO
+   SIDEBAR
    ========================================= */
 
 .rondo-sidebar {
@@ -559,21 +545,29 @@ footer {
 
 .side-label {
     color: var(--gray);
+
     font-size: 11px;
+
     font-weight: 800;
+
     letter-spacing: 1px;
+
     margin-bottom: 8px;
 }
 
 .turn-team {
     font-size: 20px;
+
     font-weight: 900;
+
     margin-bottom: 18px;
 }
 
 .team-select {
     display: flex;
+
     gap: 7px;
+
     margin-bottom: 25px;
 }
 
@@ -584,7 +578,7 @@ footer {
 
     background: var(--dark-card);
 
-    color: white;
+    color: var(--white);
 
     border-radius: 9px;
 
@@ -603,12 +597,15 @@ footer {
 
 .team-select-btn.selected {
     background: rgba(229, 9, 47, 0.12);
+
     border-color: var(--red);
+
     color: var(--red-light);
 }
 
 .rondo-score-box {
     display: flex;
+
     flex-direction: column;
 
     padding: 18px;
@@ -624,25 +621,33 @@ footer {
 
 .rondo-score-box span {
     color: var(--gray);
+
     font-size: 11px;
 }
 
 .rondo-score-box strong {
     color: var(--red);
+
     font-size: 38px;
+
     line-height: 1;
+
     margin-top: 5px;
 }
 
 .rondo-instructions {
     color: var(--gray);
+
     font-size: 12px;
+
     line-height: 1.55;
 }
 
 .rondo-instructions strong {
     display: block;
-    color: white;
+
+    color: var(--white);
+
     margin-bottom: 8px;
 }
 
@@ -652,11 +657,10 @@ footer {
 
 
 /* =========================================
-   RONDO PRINCIPAL
+   ROSCO
    ========================================= */
 
 .rondo-main {
-
     position: relative;
 
     width: min(760px, 70vw);
@@ -670,18 +674,13 @@ footer {
     justify-content: center;
 }
 
-
-/* =========================================
-   CÍRCULO DE LETRAS
-   ========================================= */
-
 .rosco {
-
     position: absolute;
 
     inset: 0;
 
     width: 100%;
+
     height: 100%;
 }
 
@@ -691,19 +690,19 @@ footer {
    ========================================= */
 
 .letter {
-
     position: absolute;
 
-    width: 53px;
-    height: 53px;
+    width: 52px;
+
+    height: 52px;
 
     border-radius: 50%;
 
-    border: 3px solid white;
+    border: 3px solid var(--white);
 
-    background: var(--dark);
+    background: var(--dark-card);
 
-    color: white;
+    color: var(--white);
 
     font-size: 17px;
 
@@ -712,6 +711,7 @@ footer {
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     cursor: pointer;
@@ -728,73 +728,53 @@ footer {
 }
 
 .letter:hover {
-
     transform:
         translate(-50%, -50%)
-        scale(1.15);
+        scale(1.12);
 
     border-color: var(--red);
 
     box-shadow:
-        0 0 20px rgba(229, 9, 47, 0.45);
+        0 0 18px rgba(229, 9, 47, 0.55);
 }
-
-
-/* LETRA ACTUAL */
 
 .letter.current {
-
     background: var(--red);
 
     border-color: var(--red);
 
-    color: white;
+    color: var(--white);
 
     transform:
         translate(-50%, -50%)
         scale(1.15);
 
     box-shadow:
-        0 0 25px rgba(229, 9, 47, 0.7);
+        0 0 25px rgba(229, 9, 47, 0.75);
 }
-
-
-/* CORRECTA */
 
 .letter.correct {
+    background: #18c964;
 
-    background: var(--green);
-
-    border-color: var(--green);
+    border-color: #18c964;
 
     color: white;
-
 }
 
-
-/* INCORRECTA */
-
 .letter.wrong {
-
     background: var(--red);
 
     border-color: var(--red);
 
     color: white;
-
 }
 
-
-/* PASAPALABRA */
-
 .letter.pass {
+    background: #ffd600;
 
-    background: var(--yellow);
-
-    border-color: var(--yellow);
+    border-color: #ffd600;
 
     color: var(--black);
-
 }
 
 
@@ -803,56 +783,31 @@ footer {
    ========================================= */
 
 .letter:nth-child(1)  { left: 50%; top: 1.5%; }
-
-.letter:nth-child(2)  { left: 61%; top: 3.8%; }
-
-.letter:nth-child(3)  { left: 71%; top: 7.5%; }
-
-.letter:nth-child(4)  { left: 80%; top: 13.5%; }
-
-.letter:nth-child(5)  { left: 87%; top: 21.5%; }
-
-.letter:nth-child(6)  { left: 93%; top: 31.5%; }
-
-.letter:nth-child(7)  { left: 96.5%; top: 42%; }
-
-.letter:nth-child(8)  { left: 98%; top: 53%; }
-
-.letter:nth-child(9)  { left: 96%; top: 64%; }
-
-.letter:nth-child(10) { left: 92%; top: 74%; }
-
-.letter:nth-child(11) { left: 86%; top: 82.5%; }
-
-.letter:nth-child(12) { left: 78%; top: 89%; }
-
-.letter:nth-child(13) { left: 68%; top: 94%; }
-
-.letter:nth-child(14) { left: 57%; top: 97%; }
-
-.letter:nth-child(15) { left: 46%; top: 98.5%; }
-
-.letter:nth-child(16) { left: 35%; top: 96.5%; }
-
-.letter:nth-child(17) { left: 25%; top: 92%; }
-
-.letter:nth-child(18) { left: 16%; top: 85%; }
-
-.letter:nth-child(19) { left: 9%; top: 76%; }
-
-.letter:nth-child(20) { left: 4%; top: 65%; }
-
-.letter:nth-child(21) { left: 2%; top: 54%; }
-
-.letter:nth-child(22) { left: 3.5%; top: 43%; }
-
-.letter:nth-child(23) { left: 7%; top: 32%; }
-
-.letter:nth-child(24) { left: 13%; top: 22%; }
-
-.letter:nth-child(25) { left: 20%; top: 14%; }
-
-.letter:nth-child(26) { left: 29%; top: 7%; }
+.letter:nth-child(2)  { left: 61.5%; top: 3.8%; }
+.letter:nth-child(3)  { left: 72%; top: 7.5%; }
+.letter:nth-child(4)  { left: 81%; top: 13.5%; }
+.letter:nth-child(5)  { left: 88%; top: 21.5%; }
+.letter:nth-child(6)  { left: 94%; top: 32%; }
+.letter:nth-child(7)  { left: 97.5%; top: 43%; }
+.letter:nth-child(8)  { left: 98.5%; top: 54%; }
+.letter:nth-child(9)  { left: 96%; top: 65%; }
+.letter:nth-child(10) { left: 92%; top: 75%; }
+.letter:nth-child(11) { left: 86%; top: 83.5%; }
+.letter:nth-child(12) { left: 78%; top: 90%; }
+.letter:nth-child(13) { left: 68%; top: 95%; }
+.letter:nth-child(14) { left: 57%; top: 98%; }
+.letter:nth-child(15) { left: 46%; top: 99%; }
+.letter:nth-child(16) { left: 35%; top: 97%; }
+.letter:nth-child(17) { left: 25%; top: 93%; }
+.letter:nth-child(18) { left: 16%; top: 86%; }
+.letter:nth-child(19) { left: 9%; top: 77%; }
+.letter:nth-child(20) { left: 4%; top: 66%; }
+.letter:nth-child(21) { left: 2%; top: 55%; }
+.letter:nth-child(22) { left: 3.5%; top: 44%; }
+.letter:nth-child(23) { left: 7%; top: 33%; }
+.letter:nth-child(24) { left: 13%; top: 23%; }
+.letter:nth-child(25) { left: 20%; top: 15%; }
+.letter:nth-child(26) { left: 29%; top: 8%; }
 
 
 /* =========================================
@@ -860,7 +815,6 @@ footer {
    ========================================= */
 
 .question-card {
-
     position: absolute;
 
     width: 380px;
@@ -868,6 +822,7 @@ footer {
     min-height: 300px;
 
     left: 50%;
+
     top: 50%;
 
     transform: translate(-50%, -50%);
@@ -896,24 +851,20 @@ footer {
         0 20px 70px rgba(0, 0, 0, 0.7);
 }
 
-
-/* =========================================
-   LETRA DE LA PREGUNTA
-   ========================================= */
-
 .question-letter {
-
     width: 58px;
+
     height: 58px;
 
     border-radius: 50%;
 
     display: grid;
+
     place-items: center;
 
     background: var(--red);
 
-    color: white;
+    color: var(--white);
 
     font-size: 28px;
 
@@ -925,13 +876,7 @@ footer {
         0 0 25px rgba(229, 9, 47, 0.35);
 }
 
-
-/* =========================================
-   TIPO DE PREGUNTA
-   ========================================= */
-
 .question-type {
-
     color: var(--red-light);
 
     font-size: 11px;
@@ -943,13 +888,7 @@ footer {
     margin-bottom: 15px;
 }
 
-
-/* =========================================
-   TEXTO DE PREGUNTA
-   ========================================= */
-
 #question-text {
-
     font-size: 17px;
 
     line-height: 1.45;
@@ -967,7 +906,6 @@ footer {
    ========================================= */
 
 .answer-actions {
-
     display: flex;
 
     gap: 8px;
@@ -978,7 +916,6 @@ footer {
 }
 
 .answer-btn {
-
     flex: 1;
 
     border: none;
@@ -997,49 +934,27 @@ footer {
 }
 
 .answer-btn:hover {
-
     transform: translateY(-3px);
 
     filter: brightness(1.1);
 }
 
-
-/* VERDE */
-
 .answer-btn.correct {
-
-    background: var(--green);
+    background: #18c964;
 
     color: white;
-
-    box-shadow:
-        0 5px 20px rgba(24, 201, 100, 0.15);
 }
-
-
-/* AMARILLO */
 
 .answer-btn.pass {
-
-    background: var(--yellow);
+    background: #ffd600;
 
     color: var(--black);
-
-    box-shadow:
-        0 5px 20px rgba(255, 214, 0, 0.15);
 }
 
-
-/* ROJO */
-
 .answer-btn.wrong {
-
     background: var(--red);
 
     color: white;
-
-    box-shadow:
-        0 5px 20px rgba(229, 9, 47, 0.15);
 }
 
 
@@ -1050,36 +965,31 @@ footer {
 @media (max-width: 1050px) {
 
     .rondo-layout {
-
         flex-direction: column;
 
         padding: 30px 0 50px;
     }
 
     .rondo-sidebar {
-
         width: min(500px, 90vw);
 
         order: 2;
     }
 
     .rondo-main {
-
         width: min(720px, 90vw);
     }
 }
 
-
 @media (max-width: 650px) {
 
     .rondo-main {
-
         width: 95vw;
     }
 
     .letter {
-
         width: 38px;
+
         height: 38px;
 
         font-size: 12px;
@@ -1088,7 +998,6 @@ footer {
     }
 
     .question-card {
-
         width: 55%;
 
         min-height: 220px;
@@ -1097,27 +1006,24 @@ footer {
     }
 
     .question-letter {
-
         width: 42px;
+
         height: 42px;
 
         font-size: 21px;
     }
 
     #question-text {
-
         font-size: 12px;
 
         margin-bottom: 15px;
     }
 
     .answer-actions {
-
         gap: 4px;
     }
 
     .answer-btn {
-
         padding: 8px 4px;
 
         font-size: 9px;
@@ -1126,31 +1032,26 @@ footer {
 
 
 /* =========================================
-   RESPONSIVE PRINCIPAL
+   RESPONSIVE ORIGINAL
    ========================================= */
 
 @media (max-width: 850px) {
 
     .teams,
     .games-grid {
-
         grid-template-columns: 1fr;
     }
 
     .container {
-
         width: 92%;
-
         padding-top: 45px;
     }
 
     .header {
-
         padding: 18px 4%;
     }
 
     .welcome {
-
         margin-bottom: 40px;
     }
 }
@@ -1159,22 +1060,18 @@ footer {
 @media (max-width: 500px) {
 
     .header h1 {
-
         font-size: 21px;
     }
 
     .heart {
-
         font-size: 32px;
     }
 
     .welcome h2 {
-
         font-size: 36px;
     }
 
     .team-card {
-
         padding: 25px 15px;
     }
 }
