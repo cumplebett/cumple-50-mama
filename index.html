@@ -11,201 +11,670 @@
 
 <body>
 
-    <!-- ENCABEZADO -->
-    <header class="header">
-        <div class="header-content">
-            <span class="heart">♥</span>
-            <div>
-                <p class="eyebrow">EL GRAN CUMPLEAÑOS</p>
-                <h1>50 AÑOS DE BETT</h1>
-            </div>
+<header class="header">
+
+    <div class="header-content">
+
+        <span class="heart">♥</span>
+
+        <div>
+            <p class="eyebrow">EL GRAN CUMPLEAÑOS</p>
+            <h1>50 AÑOS DE BETT</h1>
         </div>
-    </header>
+
+    </div>
+
+</header>
 
 
-    <!-- CONTENIDO PRINCIPAL -->
-    <main class="container">
+<main class="container">
 
-        <!-- TÍTULO -->
-        <section class="welcome">
-            <p class="subtitle">Bienvenidos a los juegos</p>
-            <h2>¿Quién conoce mejor a Bett?</h2>
-            <p>
-                Tres equipos. Tres juegos. Un solo ganador.
-            </p>
-        </section>
+    <!-- BIENVENIDA -->
+
+    <section class="welcome">
+
+        <p class="subtitle">
+            Bienvenidos a los juegos
+        </p>
+
+        <h2>
+            ¿Quién conoce mejor a Bett?
+        </h2>
+
+        <p>
+            Tres equipos. Tres juegos. Un solo ganador.
+        </p>
+
+    </section>
 
 
-        <!-- MARCADOR -->
-        <section class="scoreboard">
+    <!-- MARCADOR -->
 
-            <div class="section-title">
-                <span>🏆</span>
-                <h3>Marcador general</h3>
-            </div>
+    <section class="scoreboard">
 
-            <div class="teams">
+        <div class="section-title">
 
-                <div class="team-card team-blue">
-                    <div class="team-icon">🔵</div>
-                    <h4>Equipo 1</h4>
-                    <span class="score" id="score-team-1">0</span>
-                    <small>puntos</small>
+            <span>🏆</span>
+
+            <h3>
+                Marcador general
+            </h3>
+
+        </div>
+
+
+        <div class="teams">
+
+            <div class="team-card team-blue">
+
+                <div class="team-icon">
+                    🔵
                 </div>
 
-                <div class="team-card team-green">
-                    <div class="team-icon">🟢</div>
-                    <h4>Equipo 2</h4>
-                    <span class="score" id="score-team-2">0</span>
-                    <small>puntos</small>
+                <h4>
+                    Equipo 1
+                </h4>
+
+                <span
+                    class="score"
+                    id="score-team-1"
+                >
+                    0
+                </span>
+
+                <small>
+                    puntos
+                </small>
+
+            </div>
+
+
+            <div class="team-card team-green">
+
+                <div class="team-icon">
+                    🟢
                 </div>
 
-                <div class="team-card team-purple">
-                    <div class="team-icon">🟣</div>
-                    <h4>Equipo 3</h4>
-                    <span class="score" id="score-team-3">0</span>
-                    <small>puntos</small>
+                <h4>
+                    Equipo 2
+                </h4>
+
+                <span
+                    class="score"
+                    id="score-team-2"
+                >
+                    0
+                </span>
+
+                <small>
+                    puntos
+                </small>
+
+            </div>
+
+
+            <div class="team-card team-purple">
+
+                <div class="team-icon">
+                    🟣
                 </div>
 
-            </div>
+                <h4>
+                    Equipo 3
+                </h4>
 
-        </section>
+                <span
+                    class="score"
+                    id="score-team-3"
+                >
+                    0
+                </span>
 
-
-        <!-- JUEGOS -->
-        <section class="games">
-
-            <div class="section-title">
-                <span>🎮</span>
-                <h3>Juegos</h3>
-            </div>
-
-            <div class="games-grid">
-
-                <button class="game-card" onclick="openGame('kahoot')">
-                    <div class="game-icon">🧠</div>
-                    <div>
-                        <h4>Kahoot</h4>
-                        <p>¿Quién conoce mejor a Bett?</p>
-                    </div>
-                    <span class="arrow">→</span>
-                </button>
-
-
-                <button class="game-card" onclick="openGame('rondo')">
-                    <div class="game-icon">🔤</div>
-                    <div>
-                        <h4>Rondo</h4>
-                        <p>Preguntas de cultura general</p>
-                    </div>
-                    <span class="arrow">→</span>
-                </button>
-
-
-                <button class="game-card" onclick="openGame('songs')">
-                    <div class="game-icon">🎵</div>
-                    <div>
-                        <h4>Canciones</h4>
-                        <p>Adiviná canción, artista y año</p>
-                    </div>
-                    <span class="arrow">→</span>
-                </button>
+                <small>
+                    puntos
+                </small>
 
             </div>
 
-        </section>
+        </div>
+
+    </section>
 
 
-        <!-- PUNTAJES POR JUEGO -->
-        <section class="details">
+    <!-- JUEGOS -->
 
-            <div class="section-title">
-                <span>📊</span>
-                <h3>Puntajes por juego</h3>
-            </div>
+    <section class="games">
 
-            <div class="table-wrapper">
+        <div class="section-title">
 
-                <table>
+            <span>🎮</span>
 
-                    <thead>
-                        <tr>
-                            <th>Equipo</th>
-                            <th>🧠 Kahoot</th>
-                            <th>🔤 Rondo</th>
-                            <th>🎵 Canciones</th>
-                            <th>Total</th>
-                        </tr>
-                    </thead>
+            <h3>
+                Juegos
+            </h3>
 
-                    <tbody>
-
-                        <tr>
-                            <td>🔵 Equipo 1</td>
-                            <td id="kahoot-1">0</td>
-                            <td id="rondo-1">0</td>
-                            <td id="songs-1">0</td>
-                            <td class="total" id="total-1">0</td>
-                        </tr>
-
-                        <tr>
-                            <td>🟢 Equipo 2</td>
-                            <td id="kahoot-2">0</td>
-                            <td id="rondo-2">0</td>
-                            <td id="songs-2">0</td>
-                            <td class="total" id="total-2">0</td>
-                        </tr>
-
-                        <tr>
-                            <td>🟣 Equipo 3</td>
-                            <td id="kahoot-3">0</td>
-                            <td id="rondo-3">0</td>
-                            <td id="songs-3">0</td>
-                            <td class="total" id="total-3">0</td>
-                        </tr>
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
-        </section>
-
-    </main>
+        </div>
 
 
-    <!-- FOOTER -->
-    <footer>
-        <p>❤️ Celebrando 50 años de Bett</p>
-    </footer>
+        <div class="games-grid">
 
 
-    <!-- VENTANA DE JUEGO -->
-    <div id="game-modal" class="modal">
+            <button
+                class="game-card"
+                onclick="openGame('kahoot')"
+            >
 
-        <div class="modal-content">
+                <div class="game-icon">
+                    🧠
+                </div>
 
-            <button class="close-button" onclick="closeGame()">×</button>
+                <div>
 
-            <div id="modal-icon">🎮</div>
+                    <h4>
+                        Kahoot
+                    </h4>
 
-            <h2 id="modal-title">Juego</h2>
+                    <p>
+                        ¿Quién conoce mejor a Bett?
+                    </p>
 
-            <p id="modal-description">
-                Próximamente...
-            </p>
+                </div>
 
-            <button class="back-button" onclick="closeGame()">
-                Volver al inicio
+                <span class="arrow">
+                    →
+                </span>
+
             </button>
+
+
+            <button
+                class="game-card"
+                onclick="openGame('rondo')"
+            >
+
+                <div class="game-icon">
+                    🔤
+                </div>
+
+                <div>
+
+                    <h4>
+                        Rondo
+                    </h4>
+
+                    <p>
+                        Preguntas de cultura general
+                    </p>
+
+                </div>
+
+                <span class="arrow">
+                    →
+                </span>
+
+            </button>
+
+
+            <button
+                class="game-card"
+                onclick="openGame('songs')"
+            >
+
+                <div class="game-icon">
+                    🎵
+                </div>
+
+                <div>
+
+                    <h4>
+                        Canciones
+                    </h4>
+
+                    <p>
+                        Adiviná canción, artista y año
+                    </p>
+
+                </div>
+
+                <span class="arrow">
+                    →
+                </span>
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- PUNTAJES -->
+
+    <section class="details">
+
+        <div class="section-title">
+
+            <span>📊</span>
+
+            <h3>
+                Puntajes por juego
+            </h3>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Equipo
+                        </th>
+
+                        <th>
+                            🧠 Kahoot
+                        </th>
+
+                        <th>
+                            🔤 Rondo
+                        </th>
+
+                        <th>
+                            🎵 Canciones
+                        </th>
+
+                        <th>
+                            Total
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+                            🔵 Equipo 1
+                        </td>
+
+                        <td id="kahoot-1">
+                            0
+                        </td>
+
+                        <td id="rondo-1">
+                            0
+                        </td>
+
+                        <td id="songs-1">
+                            0
+                        </td>
+
+                        <td
+                            class="total"
+                            id="total-1"
+                        >
+                            0
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            🟢 Equipo 2
+                        </td>
+
+                        <td id="kahoot-2">
+                            0
+                        </td>
+
+                        <td id="rondo-2">
+                            0
+                        </td>
+
+                        <td id="songs-2">
+                            0
+                        </td>
+
+                        <td
+                            class="total"
+                            id="total-2"
+                        >
+                            0
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            🟣 Equipo 3
+                        </td>
+
+                        <td id="kahoot-3">
+                            0
+                        </td>
+
+                        <td id="rondo-3">
+                            0
+                        </td>
+
+                        <td id="songs-3">
+                            0
+                        </td>
+
+                        <td
+                            class="total"
+                            id="total-3"
+                        >
+                            0
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>
+        ❤️ Celebrando 50 años de Bett
+    </p>
+
+</footer>
+
+
+<!-- MODAL GENERAL -->
+
+<div
+    id="game-modal"
+    class="modal"
+>
+
+    <div class="modal-content">
+
+        <button
+            class="close-button"
+            onclick="closeGame()"
+        >
+            ×
+        </button>
+
+        <div id="modal-icon">
+            🎮
+        </div>
+
+        <h2 id="modal-title">
+            Juego
+        </h2>
+
+        <p id="modal-description">
+            Próximamente...
+        </p>
+
+        <button
+            class="back-button"
+            onclick="closeGame()"
+        >
+            Volver al inicio
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================
+     MODAL DEL RONDO
+     ========================================= -->
+
+<div
+    id="rondo-modal"
+    class="rondo-modal"
+>
+
+    <div class="rondo-content">
+
+
+        <!-- CABECERA -->
+
+        <div class="rondo-topbar">
+
+            <div>
+
+                <p class="eyebrow">
+                    50 AÑOS DE BETT
+                </p>
+
+                <h2>
+                    🔤 RONDO
+                </h2>
+
+            </div>
+
+
+            <button
+                class="close-button rondo-close"
+                onclick="closeRondo()"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <!-- ROSCOS -->
+
+        <div class="rondo-tabs">
+
+            <button
+                class="rondo-tab active"
+                onclick="selectRosco(1)"
+            >
+                Rosco 1
+            </button>
+
+            <button
+                class="rondo-tab"
+                onclick="selectRosco(2)"
+            >
+                Rosco 2
+            </button>
+
+            <button
+                class="rondo-tab"
+                onclick="selectRosco(3)"
+            >
+                Rosco 3
+            </button>
+
+        </div>
+
+
+        <div class="rondo-layout">
+
+
+            <!-- LATERAL -->
+
+            <aside class="rondo-sidebar">
+
+                <p class="side-label">
+                    EQUIPO EN TURNO
+                </p>
+
+
+                <div
+                    class="turn-team"
+                    id="turn-team"
+                >
+                    🔵 Equipo 1
+                </div>
+
+
+                <div class="team-select">
+
+                    <button
+                        class="team-select-btn selected"
+                        data-team="team1"
+                        onclick="selectTeam('team1')"
+                    >
+                        🔵 1
+                    </button>
+
+                    <button
+                        class="team-select-btn"
+                        data-team="team2"
+                        onclick="selectTeam('team2')"
+                    >
+                        🟢 2
+                    </button>
+
+                    <button
+                        class="team-select-btn"
+                        data-team="team3"
+                        onclick="selectTeam('team3')"
+                    >
+                        🟣 3
+                    </button>
+
+                </div>
+
+
+                <div class="rondo-score-box">
+
+                    <span>
+                        Puntos del equipo
+                    </span>
+
+                    <strong id="rondo-current-score">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="rondo-instructions">
+
+                    <strong>
+                        Cómo jugar
+                    </strong>
+
+                    <p>
+                        Una letra por turno.
+                    </p>
+
+                    <p>
+                        ✅ Correcto suma 1 punto.
+                    </p>
+
+                    <p>
+                        🔄 Pasapalabra la deja pendiente.
+                    </p>
+
+                    <p>
+                        ❌ Incorrecto la marca y continúa.
+                    </p>
+
+                </div>
+
+            </aside>
+
+
+            <!-- CENTRO -->
+
+            <section class="rondo-main">
+
+
+                <!-- ROSCO -->
+
+                <div
+                    class="rosco"
+                    id="rosco"
+                >
+                </div>
+
+
+                <!-- PREGUNTA -->
+
+                <div class="question-card">
+
+
+                    <div
+                        class="question-letter"
+                        id="question-letter"
+                    >
+                        A
+                    </div>
+
+
+                    <div
+                        class="question-type"
+                        id="question-type"
+                    >
+                        CON LA LETRA A
+                    </div>
+
+
+                    <p id="question-text">
+                        Seleccioná una letra para comenzar.
+                    </p>
+
+
+                    <div class="answer-actions">
+
+                        <button
+                            class="answer-btn correct"
+                            onclick="answerQuestion('correct')"
+                        >
+                            ✓ Correcto
+                        </button>
+
+
+                        <button
+                            class="answer-btn pass"
+                            onclick="answerQuestion('pass')"
+                        >
+                            ↻ Pasapalabra
+                        </button>
+
+
+                        <button
+                            class="answer-btn wrong"
+                            onclick="answerQuestion('wrong')"
+                        >
+                            ✕ Incorrecto
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
 
         </div>
 
     </div>
 
+</div>
 
-    <script src="script.js"></script>
+
+<script src="script.js"></script>
 
 </body>
 </html>
