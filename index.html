@@ -32,9 +32,7 @@
 
 <main class="container">
 
-    <!-- =========================================
-         BIENVENIDA
-         ========================================= -->
+    <!-- BIENVENIDA -->
 
     <section class="welcome">
 
@@ -53,9 +51,7 @@
     </section>
 
 
-    <!-- =========================================
-         MARCADOR GENERAL
-         ========================================= -->
+    <!-- MARCADOR GENERAL -->
 
     <section class="scoreboard">
 
@@ -155,9 +151,7 @@
     </section>
 
 
-    <!-- =========================================
-         JUEGOS
-         ========================================= -->
+    <!-- JUEGOS -->
 
     <section class="games">
 
@@ -269,9 +263,7 @@
     </section>
 
 
-    <!-- =========================================
-         PUNTAJES POR JUEGO
-         ========================================= -->
+    <!-- PUNTAJES POR JUEGO -->
 
     <section class="details">
 
@@ -422,9 +414,7 @@
 </main>
 
 
-<!-- =========================================
-     FOOTER
-     ========================================= -->
+<!-- FOOTER -->
 
 <footer>
 
@@ -435,9 +425,7 @@
 </footer>
 
 
-<!-- =========================================
-     MODAL GENERAL
-     ========================================= -->
+<!-- MODAL GENERAL -->
 
 <div
     id="game-modal"
@@ -481,9 +469,7 @@
 </div>
 
 
-<!-- =========================================
-     MODAL DEL RONDO
-     ========================================= -->
+<!-- MODAL DEL RONDO -->
 
 <div
     id="rondo-modal"
@@ -493,9 +479,7 @@
     <div class="rondo-content">
 
 
-        <!-- =====================================
-             CABECERA
-             ===================================== -->
+        <!-- CABECERA -->
 
         <div class="rondo-topbar">
 
@@ -519,6 +503,16 @@
                     gap: 10px;
                 "
             >
+
+                <!-- FINALIZAR RONDO -->
+
+                <button
+                    class="back-button"
+                    onclick="finishRondo()"
+                >
+                    🏁 Finalizar Rondo
+                </button>
+
 
                 <!-- REINICIAR RONDO -->
 
@@ -544,9 +538,7 @@
         </div>
 
 
-        <!-- =====================================
-             EQUIPOS / ROSCOS
-             ===================================== -->
+        <!-- EQUIPOS / ROSCOS -->
 
         <div class="rondo-tabs">
 
@@ -586,9 +578,7 @@
         <div class="rondo-layout">
 
 
-            <!-- =================================
-                 PANEL LATERAL
-                 ================================= -->
+            <!-- PANEL LATERAL -->
 
             <aside class="rondo-sidebar">
 
@@ -604,15 +594,6 @@
                 >
                     🔵 Equipo 1
                 </div>
-
-
-                <!--
-                    NO HAY BOTONES MANUALES
-                    PARA CAMBIAR DE EQUIPO.
-
-                    El equipo cambia automáticamente
-                    al seleccionar el rosco.
-                -->
 
 
                 <div class="rondo-score-box">
@@ -659,21 +640,22 @@
                         ❌ Incorrecto la marca y continúa.
                     </p>
 
+
+                    <p>
+                        🏁 Al finalizar se asignan 3, 2 y 1 puntos.
+                    </p>
+
                 </div>
 
             </aside>
 
 
-            <!-- =================================
-                 CENTRO
-                 ================================= -->
+            <!-- CENTRO -->
 
             <section class="rondo-main">
 
 
-                <!-- =================================
-                     ROSCO
-                     ================================= -->
+                <!-- ROSCO -->
 
                 <div
                     class="rosco"
@@ -682,9 +664,7 @@
                 </div>
 
 
-                <!-- =================================
-                     PREGUNTA CENTRAL
-                     ================================= -->
+                <!-- PREGUNTA CENTRAL -->
 
                 <div class="question-card">
 
@@ -710,9 +690,7 @@
                     </p>
 
 
-                    <!-- =================================
-                         BOTONES DE RESPUESTA
-                         ================================= -->
+                    <!-- BOTONES DE RESPUESTA -->
 
                     <div class="answer-actions">
 
@@ -759,11 +737,9 @@
 </div>
 
 
-<!-- =========================================
-     JAVASCRIPT
-     ========================================= -->
+<!-- JAVASCRIPT -->
 
-<script src="script.js?v=2"></script>
+<script src="script.js?v=3"></script>
 
 </body>
 </html>
