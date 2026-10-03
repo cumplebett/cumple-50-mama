@@ -246,18 +246,7 @@ let currentTeam = "team1";
 
 let currentIndex = 0;
 
-
-/*
- * Estados independientes para cada equipo.
- */
-
 let roscoStates = {};
-
-
-/*
- * Aciertos reales del Rondo.
- * No forman parte del puntaje general.
- */
 
 let rondoHits = {
 
@@ -268,11 +257,6 @@ let rondoHits = {
     team3: 0
 
 };
-
-
-/*
- * Evita repartir 3/2/1 más de una vez.
- */
 
 let rondoAwarded = false;
 
@@ -319,36 +303,21 @@ function createInitialRondoState() {
 
 function getCurrentRosco() {
 
-    if (
-        currentRosco === 1
-    ) {
-
+    if (currentRosco === 1) {
         return rosco1;
-
     }
 
-
-    if (
-        currentRosco === 2
-    ) {
-
+    if (currentRosco === 2) {
         return rosco2.length
             ? rosco2
             : rosco1;
-
     }
 
-
-    if (
-        currentRosco === 3
-    ) {
-
+    if (currentRosco === 3) {
         return rosco3.length
             ? rosco3
             : rosco1;
-
     }
-
 
     return [];
 
@@ -366,33 +335,26 @@ function loadScores() {
             "bettScoresV2"
         );
 
-
-    if (
-        savedScores
-    ) {
+    if (savedScores) {
 
         const parsedScores =
             JSON.parse(
                 savedScores
             );
 
-
         scores.team1 =
             parsedScores.team1 ||
             scores.team1;
 
-
         scores.team2 =
             parsedScores.team2 ||
             scores.team2;
-
 
         scores.team3 =
             parsedScores.team3 ||
             scores.team3;
 
     }
-
 
     updateScoreboard();
 
@@ -407,9 +369,7 @@ function saveScores() {
 
     localStorage.setItem(
         "bettScoresV2",
-        JSON.stringify(
-            scores
-        )
+        JSON.stringify(scores)
     );
 
 }
@@ -445,48 +405,32 @@ function updateScoreboard() {
         const team =
             "team" + i;
 
-
         document.getElementById(
             "score-team-" + i
         ).textContent =
-            getTotal(
-                team
-            );
-
+            getTotal(team);
 
         document.getElementById(
             "kahoot-" + i
         ).textContent =
-            scores[
-                team
-            ].kahoot;
-
+            scores[team].kahoot;
 
         document.getElementById(
             "rondo-" + i
         ).textContent =
-            scores[
-                team
-            ].rondo;
-
+            scores[team].rondo;
 
         document.getElementById(
             "songs-" + i
         ).textContent =
-            scores[
-                team
-            ].songs;
-
+            scores[team].songs;
 
         document.getElementById(
             "total-" + i
         ).textContent =
-            getTotal(
-                team
-            );
+            getTotal(team);
 
     }
-
 
     updateRondoScore();
 
@@ -503,22 +447,15 @@ function addPoints(
     points
 ) {
 
-    if (
-        !scores[team]
-    ) {
-
+    if (!scores[team]) {
         return;
-
     }
-
 
     scores[team][game] =
         (
-            scores[team][game] ||
-            0
+            scores[team][game] || 0
         ) +
         points;
-
 
     saveScores();
 
@@ -538,15 +475,9 @@ function resetScores() {
             "¿Seguro que querés reiniciar todos los puntajes?"
         );
 
-
-    if (
-        !confirmReset
-    ) {
-
+    if (!confirmReset) {
         return;
-
     }
-
 
     for (
         const team of [
@@ -557,13 +488,10 @@ function resetScores() {
     ) {
 
         scores[team].kahoot = 0;
-
         scores[team].rondo = 0;
-
         scores[team].songs = 0;
 
     }
-
 
     saveScores();
 
@@ -583,65 +511,30 @@ function resetRondo() {
             "¿Seguro que querés reiniciar el Rondo completo?"
         );
 
-
-    if (
-        !confirmReset
-    ) {
-
+    if (!confirmReset) {
         return;
-
     }
-
-
-    /*
-     * Crear nuevamente los tres estados.
-     */
 
     roscoStates =
         createInitialRondoState();
 
-
-    /*
-     * Reiniciar aciertos.
-     */
-
     rondoHits.team1 = 0;
-
     rondoHits.team2 = 0;
-
     rondoHits.team3 = 0;
 
-
-    /*
-     * Eliminar los puntos generales
-     * que había dado el Rondo.
-     */
-
     scores.team1.rondo = 0;
-
     scores.team2.rondo = 0;
-
     scores.team3.rondo = 0;
-
 
     rondoAwarded = false;
 
-
-    /*
-     * Volver al Equipo 1.
-     */
-
     currentRosco = 1;
-
     currentTeam = "team1";
-
     currentIndex = 0;
-
 
     saveScores();
 
     updateScoreboard();
-
 
     updateRondoTabs();
 
@@ -649,9 +542,7 @@ function resetRondo() {
 
     renderRosco();
 
-    showQuestion(
-        currentIndex
-    );
+    showQuestion(currentIndex);
 
 }
 
@@ -662,9 +553,7 @@ function resetRondo() {
 
 function openGame(game) {
 
-    if (
-        game === "rondo"
-    ) {
+    if (game === "rondo") {
 
         openRondo();
 
@@ -672,70 +561,49 @@ function openGame(game) {
 
     }
 
-
     const modal =
         document.getElementById(
             "game-modal"
         );
-
 
     const title =
         document.getElementById(
             "modal-title"
         );
 
-
     const description =
         document.getElementById(
             "modal-description"
         );
-
 
     const icon =
         document.getElementById(
             "modal-icon"
         );
 
+    if (game === "kahoot") {
 
-    if (
-        game === "kahoot"
-    ) {
+        icon.textContent = "🧠";
 
-        icon.textContent =
-            "🧠";
-
-
-        title.textContent =
-            "Kahoot";
-
+        title.textContent = "Kahoot";
 
         description.textContent =
             "Acá vamos a cargar las preguntas sobre Bett.";
 
     }
 
+    if (game === "songs") {
 
-    if (
-        game === "songs"
-    ) {
+        icon.textContent = "🎵";
 
-        icon.textContent =
-            "🎵";
-
-
-        title.textContent =
-            "Canciones";
-
+        title.textContent = "Canciones";
 
         description.textContent =
             "Adiviná la canción, el artista y el año o década.";
 
     }
 
-
-    modal.classList.add(
-        "active"
-    );
+    modal.classList.add("active");
 
 }
 
@@ -747,12 +615,8 @@ function openGame(game) {
 function closeGame() {
 
     document
-        .getElementById(
-            "game-modal"
-        )
-        .classList.remove(
-            "active"
-        );
+        .getElementById("game-modal")
+        .classList.remove("active");
 
 }
 
@@ -764,26 +628,13 @@ function closeGame() {
 function openRondo() {
 
     document
-        .getElementById(
-            "rondo-modal"
-        )
-        .classList.add(
-            "active"
-        );
+        .getElementById("rondo-modal")
+        .classList.add("active");
 
-
-    document.body.style.overflow =
-        "hidden";
-
-
-    /*
-     * Crear estados si todavía no existen.
-     */
+    document.body.style.overflow = "hidden";
 
     if (
-        Object.keys(
-            roscoStates
-        ).length === 0
+        Object.keys(roscoStates).length === 0
     ) {
 
         roscoStates =
@@ -791,15 +642,8 @@ function openRondo() {
 
     }
 
-
-    /*
-     * Siempre abrir en Equipo 1.
-     */
-
     currentRosco = 1;
-
     currentTeam = "team1";
-
 
     currentIndex =
         findNextAvailableLetter(
@@ -807,16 +651,13 @@ function openRondo() {
             0
         );
 
-
     updateRondoTabs();
 
     updateRondoTeamUI();
 
     renderRosco();
 
-    showQuestion(
-        currentIndex
-    );
+    showQuestion(currentIndex);
 
 }
 
@@ -828,16 +669,10 @@ function openRondo() {
 function closeRondo() {
 
     document
-        .getElementById(
-            "rondo-modal"
-        )
-        .classList.remove(
-            "active"
-        );
+        .getElementById("rondo-modal")
+        .classList.remove("active");
 
-
-    document.body.style.overflow =
-        "";
+    document.body.style.overflow = "";
 
 }
 
@@ -848,19 +683,10 @@ function closeRondo() {
 
 function selectRosco(number) {
 
-    currentRosco =
-        number;
-
-
-    /*
-     * Rosco 1 = Equipo 1
-     * Rosco 2 = Equipo 2
-     * Rosco 3 = Equipo 3
-     */
+    currentRosco = number;
 
     currentTeam =
         "team" + number;
-
 
     currentIndex =
         findNextAvailableLetter(
@@ -868,17 +694,13 @@ function selectRosco(number) {
             0
         );
 
-
     updateRondoTabs();
 
     updateRondoTeamUI();
 
     renderRosco();
 
-
-    if (
-        currentIndex !== -1
-    ) {
+    if (currentIndex !== -1) {
 
         showQuestion(
             currentIndex
@@ -896,9 +718,7 @@ function selectRosco(number) {
 function updateRondoTabs() {
 
     document
-        .querySelectorAll(
-            ".rondo-tab"
-        )
+        .querySelectorAll(".rondo-tab")
         .forEach(
             (
                 button,
@@ -907,8 +727,7 @@ function updateRondoTabs() {
 
                 button.classList.toggle(
                     "active",
-                    index + 1 ===
-                    currentRosco
+                    index + 1 === currentRosco
                 );
 
             }
@@ -927,28 +746,36 @@ function findNextAvailableLetter(
 ) {
 
     const states =
-        roscoStates[
-            team
-        ];
+        roscoStates[team];
 
-
-    if (
-        !states
-    ) {
-
+    if (!states) {
         return -1;
-
     }
-
 
     const length =
         states.length;
 
+    for (
+        let step = 0;
+        step < length;
+        step++
+    ) {
 
-    /*
-     * PRIMERA VUELTA:
-     * pendientes.
-     */
+        const index =
+            (
+                fromIndex +
+                step
+            ) % length;
+
+        if (
+            states[index] === "pending"
+        ) {
+
+            return index;
+
+        }
+
+    }
 
     for (
         let step = 0;
@@ -960,13 +787,10 @@ function findNextAvailableLetter(
             (
                 fromIndex +
                 step
-            ) %
-            length;
-
+            ) % length;
 
         if (
-            states[index] ===
-            "pending"
+            states[index] === "pass"
         ) {
 
             return index;
@@ -974,38 +798,6 @@ function findNextAvailableLetter(
         }
 
     }
-
-
-    /*
-     * SEGUNDA VUELTA:
-     * Pasapalabra.
-     */
-
-    for (
-        let step = 0;
-        step < length;
-        step++
-    ) {
-
-        const index =
-            (
-                fromIndex +
-                step
-            ) %
-            length;
-
-
-        if (
-            states[index] ===
-            "pass"
-        ) {
-
-            return index;
-
-        }
-
-    }
-
 
     return -1;
 
@@ -1023,14 +815,10 @@ function renderRosco() {
             "rosco"
         );
 
-
     const data =
         getCurrentRosco();
 
-
-    rosco.innerHTML =
-        "";
-
+    rosco.innerHTML = "";
 
     data.forEach(
         (
@@ -1043,30 +831,20 @@ function renderRosco() {
                     "button"
                 );
 
-
-            button.className =
-                "letter";
-
+            button.className = "letter";
 
             button.textContent =
                 item.letter;
 
-
             button.dataset.index =
                 index;
-
 
             const state =
                 roscoStates[
                     currentTeam
-                ]?.[
-                    index
-                ];
+                ]?.[index];
 
-
-            if (
-                state
-            ) {
+            if (state) {
 
                 button.classList.add(
                     state
@@ -1074,10 +852,8 @@ function renderRosco() {
 
             }
 
-
             if (
-                index ===
-                currentIndex &&
+                index === currentIndex &&
                 (
                     state === "pending" ||
                     state === "pass"
@@ -1090,53 +866,29 @@ function renderRosco() {
 
             }
 
+            button.onclick = () => {
 
-            button.onclick =
-                () => {
+                const currentState =
+                    roscoStates[
+                        currentTeam
+                    ][index];
 
-                    const currentState =
-                        roscoStates[
-                            currentTeam
-                        ][
-                            index
-                        ];
+                if (
+                    currentState === "pending" ||
+                    currentState === "pass"
+                ) {
 
+                    currentIndex = index;
 
-                    /*
-                     * Se pueden abrir:
-                     * pending
-                     * pass
-                     *
-                     * Las ya correctas o incorrectas
-                     * no se pueden responder nuevamente.
-                     */
+                    showQuestion(index);
 
-                    if (
-                        currentState ===
-                        "pending" ||
-                        currentState ===
-                        "pass"
-                    ) {
+                    renderRosco();
 
-                        currentIndex =
-                            index;
+                }
 
+            };
 
-                        showQuestion(
-                            index
-                        );
-
-
-                        renderRosco();
-
-                    }
-
-                };
-
-
-            rosco.appendChild(
-                button
-            );
+            rosco.appendChild(button);
 
         }
     );
@@ -1148,57 +900,40 @@ function renderRosco() {
    MOSTRAR PREGUNTA
    ========================================= */
 
-function showQuestion(
-    index
-) {
+function showQuestion(index) {
 
     const data =
         getCurrentRosco();
 
-
-    if (
-        !data[index]
-    ) {
-
+    if (!data[index]) {
         return;
-
     }
-
 
     const item =
         data[index];
 
-
     const state =
         roscoStates[
             currentTeam
-        ]?.[
-            index
-        ];
-
+        ]?.[index];
 
     document.getElementById(
         "question-letter"
     ).textContent =
         item.letter;
 
-
     document.getElementById(
         "question-type"
     ).textContent =
         item.type;
-
 
     document.getElementById(
         "question-text"
     ).textContent =
         item.question;
 
-
     document
-        .querySelectorAll(
-            ".letter"
-        )
+        .querySelectorAll(".letter")
         .forEach(
             button => {
 
@@ -1223,31 +958,16 @@ function showQuestion(
    RESPONDER
    ========================================= */
 
-function answerQuestion(
-    result
-) {
+function answerQuestion(result) {
 
     const states =
         roscoStates[
             currentTeam
         ];
 
-
-    if (
-        !states
-    ) {
-
+    if (!states) {
         return;
-
     }
-
-
-    /*
-     * Solo se puede responder:
-     *
-     * pending
-     * pass
-     */
 
     if (
         states[currentIndex] !== "pending" &&
@@ -1263,31 +983,40 @@ function answerQuestion(
        CORRECTO
        ===================================== */
 
-    if (
-        result === "correct"
-    ) {
+    if (result === "correct") {
 
         states[currentIndex] =
             "correct";
 
 
         /*
-         * SUMAR UN ACIERTO.
-         *
-         * Esto NO toca el puntaje general.
+         * SUMAR ACIERTO
          */
 
-        rondoHits[
-            currentTeam
-        ]++;
+        rondoHits[currentTeam] =
+            Number(
+                rondoHits[currentTeam] || 0
+            ) + 1;
 
 
         /*
-         * ACTUALIZAR INMEDIATAMENTE
-         * EL CONTADOR EN PANTALLA.
+         * ACTUALIZAR EL CONTADOR
+         * INMEDIATAMENTE
          */
 
-        updateRondoScore();
+        const hitCounter =
+            document.getElementById(
+                "rondo-current-score"
+            );
+
+        if (hitCounter) {
+
+            hitCounter.textContent =
+                String(
+                    rondoHits[currentTeam]
+                );
+
+        }
 
     }
 
@@ -1296,15 +1025,10 @@ function answerQuestion(
        INCORRECTO
        ===================================== */
 
-    if (
-        result === "wrong"
-    ) {
+    if (result === "wrong") {
 
         states[currentIndex] =
             "wrong";
-
-
-        updateRondoScore();
 
     }
 
@@ -1313,36 +1037,25 @@ function answerQuestion(
        PASAPALABRA
        ===================================== */
 
-    if (
-        result === "pass"
-    ) {
-
-        /*
-         * Queda disponible para volver
-         * a responder después.
-         */
+    if (result === "pass") {
 
         states[currentIndex] =
             "pass";
-
-
-        updateRondoScore();
 
     }
 
 
     /*
-     * Actualizar el rosco.
+     * Actualizar contador y rosco.
      */
+
+    updateRondoScore();
 
     renderRosco();
 
 
     /*
-     * Buscar siguiente:
-     *
-     * 1. Pendientes.
-     * 2. Pasapalabra.
+     * Buscar siguiente.
      */
 
     const nextIndex =
@@ -1356,21 +1069,16 @@ function answerQuestion(
      * Todavía hay preguntas.
      */
 
-    if (
-        nextIndex !== -1
-    ) {
+    if (nextIndex !== -1) {
 
         currentIndex =
             nextIndex;
-
 
         showQuestion(
             currentIndex
         );
 
-
         renderRosco();
-
 
         return;
 
@@ -1397,12 +1105,10 @@ function finishCurrentTeam() {
     ).textContent =
         "✓";
 
-
     document.getElementById(
         "question-type"
     ).textContent =
         "RONDO COMPLETADO";
-
 
     document.getElementById(
         "question-text"
@@ -1410,9 +1116,7 @@ function finishCurrentTeam() {
         "Equipo " +
         currentRosco +
         " terminó con " +
-        rondoHits[
-            currentTeam
-        ] +
+        rondoHits[currentTeam] +
         " aciertos.";
 
 }
@@ -1437,14 +1141,10 @@ function updateRondoTeamUI() {
 
     };
 
-
     document.getElementById(
         "turn-team"
     ).textContent =
-        names[
-            currentTeam
-        ];
-
+        names[currentTeam];
 
     updateRondoScore();
 
@@ -1462,20 +1162,16 @@ function updateRondoScore() {
             "rondo-current-score"
         );
 
-
-    if (
-        !element
-    ) {
-
+    if (!element) {
         return;
-
     }
 
-
     element.textContent =
-        rondoHits[
-            currentTeam
-        ];
+        String(
+            Number(
+                rondoHits[currentTeam] || 0
+            )
+        );
 
 }
 
@@ -1486,18 +1182,11 @@ function updateRondoScore() {
 
 function finishRondo() {
 
-    if (
-        rondoAwarded
-    ) {
-
+    if (rondoAwarded) {
         return;
-
     }
 
-
-    rondoAwarded =
-        true;
-
+    rondoAwarded = true;
 
     const results = [
 
@@ -1518,7 +1207,6 @@ function finishRondo() {
 
     ];
 
-
     results.sort(
         (
             a,
@@ -1528,18 +1216,8 @@ function finishRondo() {
             a.hits
     );
 
-
-    /*
-     * PUNTOS GENERALES:
-     *
-     * 1.º = 3
-     * 2.º = 2
-     * 3.º = 1
-     */
-
     const points =
         [3, 2, 1];
-
 
     results.forEach(
         (
@@ -1556,18 +1234,15 @@ function finishRondo() {
         }
     );
 
-
     document.getElementById(
         "question-letter"
     ).textContent =
         "✓";
 
-
     document.getElementById(
         "question-type"
     ).textContent =
         "RONDO FINALIZADO";
-
 
     document.getElementById(
         "question-text"
@@ -1578,7 +1253,6 @@ function finishRondo() {
         rondoHits.team2 +
         " · Equipo 3: " +
         rondoHits.team3;
-
 
     renderRosco();
 
@@ -1597,7 +1271,6 @@ document.addEventListener(
             document.getElementById(
                 "game-modal"
             );
-
 
         if (
             event.target === modal
