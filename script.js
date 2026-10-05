@@ -3,31 +3,26 @@
    SISTEMA PRINCIPAL
    ========================================= */
 
-
 /* =========================================
    PUNTAJES GENERALES
    ========================================= */
 
 const scores = {
-
     team1: {
         kahoot: 0,
         rondo: 0,
         songs: 0
     },
-
     team2: {
         kahoot: 0,
         rondo: 0,
         songs: 0
     },
-
     team3: {
         kahoot: 0,
         rondo: 0,
         songs: 0
     }
-
 };
 
 
@@ -39,168 +34,168 @@ const rosco1 = [
 
     {
         letter: "A",
-        type: "CON LA LETRA A",
+        type: "EMPIEZA CON A",
         question: "¿Cuál es la montaña más alta fuera de Asia?",
         answer: "ACONCAGUA"
     },
 
     {
         letter: "B",
-        type: "CON LA LETRA B",
+        type: "EMPIEZA CON B",
         question: "Apellido del científico chiflado inventor del DeLorean en Volver al futuro.",
         answer: "BROWN"
     },
 
     {
         letter: "C",
-        type: "CON LA LETRA C",
-        question: "Alegre, veloz y zapateada danza tradicional argentina muy típica de Santiago del Estero.",
+        type: "EMPIEZA CON C",
+        question: "Alegre, veloz y zapateada danza tradicional argentina.",
         answer: "CHACARERA"
     },
 
     {
         letter: "D",
-        type: "CON LA LETRA D",
-        question: "Nombre del entrañable pez azul con problemas de memoria en las películas de Pixar.",
+        type: "EMPIEZA CON D",
+        question: "Nombre del pez azul con problemas de memoria en las películas de Pixar.",
         answer: "DORY"
     },
 
     {
         letter: "E",
-        type: "CON LA LETRA E",
-        question: "Insignia patria histórica de tonos celestes y blancos ideada por el general Manuel Belgrano.",
+        type: "EMPIEZA CON E",
+        question: "Insignia patria histórica de tonos celestes y blancos.",
         answer: "ESCARAPELA"
     },
 
     {
         letter: "F",
-        type: "CON LA LETRA F",
+        type: "EMPIEZA CON F",
         question: "Proceso mediante el cual las plantas elaboran su propio alimento utilizando la luz solar.",
         answer: "FOTOSÍNTESIS"
     },
 
     {
         letter: "G",
-        type: "CON LA LETRA G",
-        question: "Compañía tecnológica estadounidense famosa por su buscador y el sistema operativo Android.",
+        type: "EMPIEZA CON G",
+        question: "Compañía tecnológica estadounidense famosa por su buscador.",
         answer: "GOOGLE"
     },
 
     {
         letter: "H",
-        type: "CON LA LETRA H",
-        question: "Famoso director británico considerado el indiscutible \"Maestro del Suspenso\".",
+        type: "EMPIEZA CON H",
+        question: "Famoso director británico considerado el indiscutible Maestro del Suspenso.",
         answer: "HITCHCOCK"
     },
 
     {
         letter: "I",
-        type: "CON LA LETRA I",
+        type: "EMPIEZA CON I",
         question: "Popular red social de fotografías y videos propiedad de Meta.",
         answer: "INSTAGRAM"
     },
 
     {
         letter: "J",
-        type: "CON LA LETRA J",
+        type: "EMPIEZA CON J",
         question: "Apellido del legendario escolta estadounidense de los Chicago Bulls que marcó los años 90.",
         answer: "JORDAN"
     },
 
     {
         letter: "K",
-        type: "CON LA LETRA K",
-        question: "Famosa banda de rock duro conocida por sus rostros pintados y sangre.",
+        type: "EMPIEZA CON K",
+        question: "Famosa banda de heavy metal conocida por sus rostros pintados y sangre.",
         answer: "KISS"
     },
 
     {
         letter: "L",
-        type: "CON LA LETRA L",
+        type: "EMPIEZA CON L",
         question: "Famoso museo parisino donde se encuentra la Mona Lisa.",
         answer: "LOUVRE"
     },
 
     {
         letter: "M",
-        type: "CON LA LETRA M",
-        question: "Gran civilización precolombina mesoamericana famosa por su complejo calendario.",
-        answer: "MAYA"
+        type: "EMPIEZA CON M",
+        question: "Apellido del célebre pintor francés, uno de los máximos exponentes y fundadores del movimiento impresionista.",
+        answer: "MONET"
     },
 
     {
         letter: "N",
-        type: "CON LA LETRA N",
+        type: "EMPIEZA CON N",
         question: "Apellido del científico británico padre de la mecánica clásica y la ley de gravitación universal.",
         answer: "NEWTON"
     },
 
     {
         letter: "O",
-        type: "CON LA LETRA O",
-        question: "Famoso metal precioso cuyo símbolo químico en la tabla periódica es \"Au\".",
+        type: "EMPIEZA CON O",
+        question: "Famoso metal precioso cuyo símbolo químico en la tabla periódica es Au.",
         answer: "ORO"
     },
 
     {
         letter: "P",
-        type: "CON LA LETRA P",
+        type: "EMPIEZA CON P",
         question: "Padre absoluto del tango contemporáneo y virtuoso maestro indiscutido del bandoneón.",
         answer: "PIAZZOLLA"
     },
 
     {
         letter: "Q",
-        type: "CON LA LETRA Q",
+        type: "EMPIEZA CON Q",
         question: "Imponente árbol nativo de la región chaqueña famoso por la extrema dureza de sus troncos.",
         answer: "QUEBRACHO"
     },
 
     {
         letter: "R",
-        type: "CON LA LETRA R",
+        type: "EMPIEZA CON R",
         question: "¿Cuál es el país más grande del mundo por superficie?",
         answer: "RUSIA"
     },
 
     {
         letter: "S",
-        type: "CON LA LETRA S",
+        type: "EMPIEZA CON S",
         question: "Nombre del ogro verde protagonista de la exitosa saga de DreamWorks.",
         answer: "SHREK"
     },
 
     {
         letter: "T",
-        type: "CON LA LETRA T",
+        type: "EMPIEZA CON T",
         question: "Histórica provincia norteña donde se declaró formalmente la independencia nacional en 1816.",
         answer: "TUCUMÁN"
     },
 
     {
         letter: "U",
-        type: "CON LA LETRA U",
+        type: "EMPIEZA CON U",
         question: "¿Qué planeta es el séptimo del Sistema Solar?",
         answer: "URANO"
     },
 
     {
         letter: "V",
-        type: "CON LA LETRA V",
+        type: "EMPIEZA CON V",
         question: "¿Cómo se llama el volcán italiano situado cerca de Nápoles que sepultó Pompeya?",
         answer: "VESUBIO"
     },
 
     {
         letter: "W",
-        type: "CON LA LETRA W",
+        type: "EMPIEZA CON W",
         question: "¿Qué famoso torneo de tenis se disputa sobre césped en Londres?",
         answer: "WIMBLEDON"
     },
 
     {
         letter: "X",
-        type: "CON LA LETRA X",
+        type: "EMPIEZA CON X",
         question: "Instrumento musical de percusión compuesto por láminas afinadas que se golpean con baquetas.",
         answer: "XILÓFONO"
     },
@@ -214,8 +209,8 @@ const rosco1 = [
 
     {
         letter: "Z",
-        type: "CON LA LETRA Z",
-        question: "Viento cálido, seco y molestoso que desciende de la cordillera afectando la zona cuyana.",
+        type: "EMPIEZA CON Z",
+        question: "Viento cálido, seco y molesto que desciende de la cordillera afectando la zona cuyana.",
         answer: "ZONDA"
     }
 
@@ -226,14 +221,382 @@ const rosco1 = [
    ROSCO 2
    ========================================= */
 
-const rosco2 = [];
+const rosco2 = [
+
+    {
+        letter: "A",
+        type: "EMPIEZA CON A",
+        question: "Nombre del desierto más extenso, frío y árido del norte de Chile.",
+        answer: "ATACAMA"
+    },
+
+    {
+        letter: "B",
+        type: "EMPIEZA CON B",
+        question: "Antigua civilización que construyó los famosos Jardines Colgantes.",
+        answer: "BABILONIA"
+    },
+
+    {
+        letter: "C",
+        type: "EMPIEZA CON C",
+        question: "Nombre del muñeco pelirrojo poseído por el alma de un asesino.",
+        answer: "CHUCKY"
+    },
+
+    {
+        letter: "D",
+        type: "EMPIEZA CON D",
+        question: "Nombre de la máquina del tiempo en Volver al futuro.",
+        answer: "DELOREAN"
+    },
+
+    {
+        letter: "E",
+        type: "EMPIEZA CON E",
+        question: "Apellido del físico alemán creador de la célebre teoría de la relatividad.",
+        answer: "EINSTEIN"
+    },
+
+    {
+        letter: "F",
+        type: "EMPIEZA CON F",
+        question: "Apellido del padre del psicoanálisis.",
+        answer: "FREUD"
+    },
+
+    {
+        letter: "G",
+        type: "EMPIEZA CON G",
+        question: "Conjunto de islas volcánicas del océano Pacífico famoso por las investigaciones de Charles Darwin.",
+        answer: "GALÁPAGOS"
+    },
+
+    {
+        letter: "H",
+        type: "EMPIEZA CON H",
+        question: "Nombre de la academia de magia a la que asiste Harry Potter en sus aventuras.",
+        answer: "HOGWARTS"
+    },
+
+    {
+        letter: "I",
+        type: "EMPIEZA CON I",
+        question: "Porción de tierra rodeada de agua por todas partes.",
+        answer: "ISLA"
+    },
+
+    {
+        letter: "J",
+        type: "EMPIEZA CON J",
+        question: "Dios romano equivalente al dios griego Zeus, soberano del Olimpo.",
+        answer: "JÚPITER"
+    },
+
+    {
+        letter: "K",
+        type: "EMPIEZA CON K",
+        question: "Nombre del famoso payaso de Los Simpson.",
+        answer: "KRUSTY"
+    },
+
+    {
+        letter: "L",
+        type: "EMPIEZA CON L",
+        question: "Capa más externa, rígida y sólida de la Tierra sobre la que se asientan los continentes.",
+        answer: "LITÓSFERA"
+    },
+
+    {
+        letter: "M",
+        type: "EMPIEZA CON M",
+        question: "Planeta de nuestro sistema solar conocido popularmente como el Planeta Rojo.",
+        answer: "MARTE"
+    },
+
+    {
+        letter: "N",
+        type: "EMPIEZA CON N",
+        question: "Río más largo de África.",
+        answer: "NILO"
+    },
+
+    {
+        letter: "O",
+        type: "EMPIEZA CON O",
+        question: "Continente que ocupa la región formada por Australia, Nueva Zelanda y numerosas islas del Pacífico.",
+        answer: "OCEANÍA"
+    },
+
+    {
+        letter: "P",
+        type: "EMPIEZA CON P",
+        question: "Océano más profundo y extenso de todo el planeta Tierra.",
+        answer: "PACÍFICO"
+    },
+
+    {
+        letter: "Q",
+        type: "EMPIEZA CON Q",
+        question: "Célebre novela cumbre de la literatura española escrita por Miguel de Cervantes.",
+        answer: "QUIJOTE"
+    },
+
+    {
+        letter: "R",
+        type: "EMPIEZA CON R",
+        question: "Movimiento cultural y artístico europeo de los siglos XV y XVI que marcó la transición entre la Edad Media y la Edad Moderna.",
+        answer: "RENACIMIENTO"
+    },
+
+    {
+        letter: "S",
+        type: "EMPIEZA CON S",
+        question: "Nombre de la espada láser utilizada en Star Wars.",
+        answer: "SABLE"
+    },
+
+    {
+        letter: "T",
+        type: "EMPIEZA CON T",
+        question: "Sigla del compuesto químico trinitrotolueno, un potente explosivo.",
+        answer: "TNT"
+    },
+
+    {
+        letter: "U",
+        type: "CONTIENE LA U",
+        question: "Idioma oficial hablado mayoritariamente en Brasil.",
+        answer: "PORTUGUÉS"
+    },
+
+    {
+        letter: "V",
+        type: "EMPIEZA CON V",
+        question: "Famoso acuerdo de paz firmado en 1919 que puso fin formalmente a la Primera Guerra Mundial.",
+        answer: "VERSALLES"
+    },
+
+    {
+        letter: "W",
+        type: "EMPIEZA CON W",
+        question: "Nombre del entrañable robot solitario de Pixar que limpia la Tierra en el futuro.",
+        answer: "WALL-E"
+    },
+
+    {
+        letter: "X",
+        type: "CONTIENE LA X",
+        question: "País caracterizado por su consumo de picante.",
+        answer: "MÉXICO"
+    },
+
+    {
+        letter: "Y",
+        type: "CONTIENE LA Y",
+        question: "Famoso personaje de Looney Tunes que intenta atrapar al Correcaminos.",
+        answer: "COYOTE"
+    },
+
+    {
+        letter: "Z",
+        type: "EMPIEZA CON Z",
+        question: "Apellido del creador de la red social Facebook.",
+        answer: "ZUCKERBERG"
+    }
+
+];
 
 
 /* =========================================
    ROSCO 3
    ========================================= */
 
-const rosco3 = [];
+const rosco3 = [
+
+    {
+        letter: "A",
+        type: "EMPIEZA CON A",
+        question: "Ciudad que fue la primera anfitriona de los Juegos Olímpicos de la era moderna.",
+        answer: "ATENAS"
+    },
+
+    {
+        letter: "B",
+        type: "EMPIEZA CON B",
+        question: "Escritor argentino, autor de Ficciones y El Aleph.",
+        answer: "BORGES"
+    },
+
+    {
+        letter: "C",
+        type: "EMPIEZA CON C",
+        question: "Provincia argentina donde nacieron La Mona Jiménez y Rodrigo.",
+        answer: "CÓRDOBA"
+    },
+
+    {
+        letter: "D",
+        type: "EMPIEZA CON D",
+        question: "Personaje literario, conde vampiro creado por Bram Stoker.",
+        answer: "DRÁCULA"
+    },
+
+    {
+        letter: "E",
+        type: "EMPIEZA CON E",
+        question: "Moneda oficial utilizada por gran parte de los países de la Unión Europea.",
+        answer: "EURO"
+    },
+
+    {
+        letter: "F",
+        type: "EMPIEZA CON F",
+        question: "Apellido del histórico piloto argentino, cinco veces campeón mundial de Fórmula 1.",
+        answer: "FANGIO"
+    },
+
+    {
+        letter: "G",
+        type: "EMPIEZA CON G",
+        question: "Estilo artístico y arquitectónico caracterizado por grandes catedrales, arcos apuntados y vitrales.",
+        answer: "GÓTICO"
+    },
+
+    {
+        letter: "H",
+        type: "EMPIEZA CON H",
+        question: "Dios griego del inframundo y de los muertos.",
+        answer: "HADES"
+    },
+
+    {
+        letter: "I",
+        type: "EMPIEZA CON I",
+        question: "Cataratas argentinas ubicadas en la provincia de Misiones.",
+        answer: "IGUAZÚ"
+    },
+
+    {
+        letter: "J",
+        type: "EMPIEZA CON J",
+        question: "Piedra ornamental de color verdoso, utilizada como color en el Tutti Frutti.",
+        answer: "JADE"
+    },
+
+    {
+        letter: "K",
+        type: "EMPIEZA CON K",
+        question: "Mineral ficticio de color verde que debilita a Superman.",
+        answer: "KRYPTONITA"
+    },
+
+    {
+        letter: "L",
+        type: "EMPIEZA CON L",
+        question: "Construcción formada por caminos y pasadizos diseñada para confundir, donde estaba encerrado el Minotauro.",
+        answer: "LABERINTO"
+    },
+
+    {
+        letter: "M",
+        type: "EMPIEZA CON M",
+        question: "Juego interminable en el que se compran casas, hoteles y propiedades hasta dejar en la ruina a tus amigos.",
+        answer: "MONOPOLY"
+    },
+
+    {
+        letter: "N",
+        type: "EMPIEZA CON N",
+        question: "Río que atraviesa Egipto y fue fundamental para el desarrollo de una de las grandes civilizaciones de la Antigüedad.",
+        answer: "NILO"
+    },
+
+    {
+        letter: "O",
+        type: "EMPIEZA CON O",
+        question: "Escritor británico, autor de 1984 y Rebelión en la granja.",
+        answer: "ORWELL"
+    },
+
+    {
+        letter: "P",
+        type: "EMPIEZA CON P",
+        question: "Región del extremo sur de Argentina y Chile, conocida por sus montañas, glaciares y lagos.",
+        answer: "PATAGONIA"
+    },
+
+    {
+        letter: "Q",
+        type: "EMPIEZA CON Q",
+        question: "Número mínimo de miembros presentes necesario en una asamblea para poder tomar decisiones válidas.",
+        answer: "QUÓRUM"
+    },
+
+    {
+        letter: "R",
+        type: "EMPIEZA CON R",
+        question: "Marca francesa de automóviles.",
+        answer: "RENAULT"
+    },
+
+    {
+        letter: "S",
+        type: "EMPIEZA CON S",
+        question: "Serie o película derivada de otra ya existente, centrada en un personaje secundario o evento paralelo.",
+        answer: "SPINOFF"
+    },
+
+    {
+        letter: "T",
+        type: "EMPIEZA CON T",
+        question: "Juego de piezas que caen y deben encajarse para completar líneas.",
+        answer: "TETRIS"
+    },
+
+    {
+        letter: "U",
+        type: "CONTIENE LA U",
+        question: "Famoso héroe de la mitología griega.",
+        answer: "AQUILES"
+    },
+
+    {
+        letter: "V",
+        type: "EMPIEZA CON V",
+        question: "Nombre del famoso actor estadounidense, conocido por interpretar a Dominic Toretto en Rápidos y Furiosos.",
+        answer: "VIN DIESEL"
+    },
+
+    {
+        letter: "W",
+        type: "EMPIEZA CON W",
+        question: "Famosa ensalada preparada con manzana, apio, nueces y mayonesa.",
+        answer: "WALDORF"
+    },
+
+    {
+        letter: "X",
+        type: "CONTIENE LA X",
+        question: "Medio de transporte protagonista de una canción de Pitbull.",
+        answer: "TAXI"
+    },
+
+    {
+        letter: "Y",
+        type: "EMPIEZA CON Y",
+        question: "Antiguo país de Europa que se disolvió durante la década de 1990.",
+        answer: "YUGOSLAVIA"
+    },
+
+    {
+        letter: "Z",
+        type: "EMPIEZA CON Z",
+        question: "Disciplina de ejercicio aeróbico que combina baile y música.",
+        answer: "ZUMBA"
+    }
+
+];
 
 
 /* =========================================
@@ -241,21 +604,14 @@ const rosco3 = [];
    ========================================= */
 
 let currentRosco = 1;
-
 let currentTeam = "team1";
-
 let currentIndex = 0;
-
 let roscoStates = {};
 
 let rondoHits = {
-
     team1: 0,
-
     team2: 0,
-
     team3: 0
-
 };
 
 let rondoAwarded = false;
@@ -268,30 +624,9 @@ let rondoAwarded = false;
 function createInitialRondoState() {
 
     return {
-
-        team1:
-            rosco1.map(
-                () => "pending"
-            ),
-
-        team2:
-            rosco2.length
-                ? rosco2.map(
-                    () => "pending"
-                )
-                : rosco1.map(
-                    () => "pending"
-                ),
-
-        team3:
-            rosco3.length
-                ? rosco3.map(
-                    () => "pending"
-                )
-                : rosco1.map(
-                    () => "pending"
-                )
-
+        team1: rosco1.map(() => "pending"),
+        team2: rosco2.map(() => "pending"),
+        team3: rosco3.map(() => "pending")
     };
 
 }
@@ -308,15 +643,11 @@ function getCurrentRosco() {
     }
 
     if (currentRosco === 2) {
-        return rosco2.length
-            ? rosco2
-            : rosco1;
+        return rosco2;
     }
 
     if (currentRosco === 3) {
-        return rosco3.length
-            ? rosco3
-            : rosco1;
+        return rosco3;
     }
 
     return [];
@@ -331,16 +662,12 @@ function getCurrentRosco() {
 function loadScores() {
 
     const savedScores =
-        localStorage.getItem(
-            "bettScoresV2"
-        );
+        localStorage.getItem("bettScoresV2");
 
     if (savedScores) {
 
         const parsedScores =
-            JSON.parse(
-                savedScores
-            );
+            JSON.parse(savedScores);
 
         scores.team1 =
             parsedScores.team1 ||
@@ -396,14 +723,9 @@ function getTotal(team) {
 
 function updateScoreboard() {
 
-    for (
-        let i = 1;
-        i <= 3;
-        i++
-    ) {
+    for (let i = 1; i <= 3; i++) {
 
-        const team =
-            "team" + i;
+        const team = "team" + i;
 
         document.getElementById(
             "score-team-" + i
@@ -441,24 +763,17 @@ function updateScoreboard() {
    SUMAR PUNTOS GENERALES
    ========================================= */
 
-function addPoints(
-    team,
-    game,
-    points
-) {
+function addPoints(team, game, points) {
 
     if (!scores[team]) {
         return;
     }
 
     scores[team][game] =
-        (
-            scores[team][game] || 0
-        ) +
+        (scores[team][game] || 0) +
         points;
 
     saveScores();
-
     updateScoreboard();
 
 }
@@ -479,13 +794,11 @@ function resetScores() {
         return;
     }
 
-    for (
-        const team of [
-            "team1",
-            "team2",
-            "team3"
-        ]
-    ) {
+    for (const team of [
+        "team1",
+        "team2",
+        "team3"
+    ]) {
 
         scores[team].kahoot = 0;
         scores[team].rondo = 0;
@@ -494,7 +807,6 @@ function resetScores() {
     }
 
     saveScores();
-
     updateScoreboard();
 
 }
@@ -529,21 +841,14 @@ function resetRondo() {
     rondoAwarded = false;
 
     currentRosco = 1;
-
     currentTeam = "team1";
-
     currentIndex = 0;
 
     saveScores();
-
     updateScoreboard();
-
     updateRondoTabs();
-
     updateRondoTeamUI();
-
     renderRosco();
-
     showQuestion(currentIndex);
 
 }
@@ -556,11 +861,8 @@ function resetRondo() {
 function openGame(game) {
 
     if (game === "rondo") {
-
         openRondo();
-
         return;
-
     }
 
     const modal =
@@ -586,9 +888,7 @@ function openGame(game) {
     if (game === "kahoot") {
 
         icon.textContent = "🧠";
-
         title.textContent = "Kahoot";
-
         description.textContent =
             "Acá vamos a cargar las preguntas sobre Bett.";
 
@@ -597,9 +897,7 @@ function openGame(game) {
     if (game === "songs") {
 
         icon.textContent = "🎵";
-
         title.textContent = "Canciones";
-
         description.textContent =
             "Adiviná la canción, el artista y el año o década.";
 
@@ -617,9 +915,7 @@ function openGame(game) {
 function closeGame() {
 
     document
-        .getElementById(
-            "game-modal"
-        )
+        .getElementById("game-modal")
         .classList.remove("active");
 
 }
@@ -632,27 +928,19 @@ function closeGame() {
 function openRondo() {
 
     document
-        .getElementById(
-            "rondo-modal"
-        )
+        .getElementById("rondo-modal")
         .classList.add("active");
 
-    document.body.style.overflow =
-        "hidden";
+    document.body.style.overflow = "hidden";
 
     if (
-        Object.keys(
-            roscoStates
-        ).length === 0
+        Object.keys(roscoStates).length === 0
     ) {
-
         roscoStates =
             createInitialRondoState();
-
     }
 
     currentRosco = 1;
-
     currentTeam = "team1";
 
     currentIndex =
@@ -662,11 +950,8 @@ function openRondo() {
         );
 
     updateRondoTabs();
-
     updateRondoTeamUI();
-
     renderRosco();
-
     showQuestion(currentIndex);
 
 }
@@ -679,15 +964,10 @@ function openRondo() {
 function closeRondo() {
 
     document
-        .getElementById(
-            "rondo-modal"
-        )
-        .classList.remove(
-            "active"
-        );
+        .getElementById("rondo-modal")
+        .classList.remove("active");
 
-    document.body.style.overflow =
-        "";
+    document.body.style.overflow = "";
 
 }
 
@@ -702,11 +982,8 @@ function selectRosco(number) {
         return;
     }
 
-    currentRosco =
-        number;
-
-    currentTeam =
-        "team" + number;
+    currentRosco = number;
+    currentTeam = "team" + number;
 
     currentIndex =
         findNextAvailableLetter(
@@ -715,18 +992,12 @@ function selectRosco(number) {
         );
 
     updateRondoTabs();
-
     updateRondoTeamUI();
-
     renderRosco();
 
-    if (
-        currentIndex !== -1
-    ) {
+    if (currentIndex !== -1) {
 
-        showQuestion(
-            currentIndex
-        );
+        showQuestion(currentIndex);
 
     }
 
@@ -740,19 +1011,13 @@ function selectRosco(number) {
 function updateRondoTabs() {
 
     document
-        .querySelectorAll(
-            ".rondo-tab"
-        )
+        .querySelectorAll(".rondo-tab")
         .forEach(
-            (
-                button,
-                index
-            ) => {
+            (button, index) => {
 
                 button.classList.toggle(
                     "active",
-                    index + 1 ===
-                    currentRosco
+                    index + 1 === currentRosco
                 );
 
             }
@@ -771,9 +1036,7 @@ function findNextAvailableLetter(
 ) {
 
     const states =
-        roscoStates[
-            team
-        ];
+        roscoStates[team];
 
     if (!states) {
         return -1;
@@ -789,15 +1052,11 @@ function findNextAvailableLetter(
     ) {
 
         const index =
-            (
-                fromIndex +
-                step
-            ) %
+            (fromIndex + step) %
             length;
 
         if (
-            states[index] ===
-            "pending"
+            states[index] === "pending"
         ) {
 
             return index;
@@ -813,15 +1072,11 @@ function findNextAvailableLetter(
     ) {
 
         const index =
-            (
-                fromIndex +
-                step
-            ) %
+            (fromIndex + step) %
             length;
 
         if (
-            states[index] ===
-            "pass"
+            states[index] === "pass"
         ) {
 
             return index;
@@ -842,29 +1097,20 @@ function findNextAvailableLetter(
 function renderRosco() {
 
     const rosco =
-        document.getElementById(
-            "rosco"
-        );
+        document.getElementById("rosco");
 
     const data =
         getCurrentRosco();
 
-    rosco.innerHTML =
-        "";
+    rosco.innerHTML = "";
 
     data.forEach(
-        (
-            item,
-            index
-        ) => {
+        (item, index) => {
 
             const button =
-                document.createElement(
-                    "button"
-                );
+                document.createElement("button");
 
-            button.className =
-                "letter";
+            button.className = "letter";
 
             button.textContent =
                 item.letter;
@@ -875,70 +1121,52 @@ function renderRosco() {
             const state =
                 roscoStates[
                     currentTeam
-                ]?.[
-                    index
-                ];
+                ]?.[index];
 
             if (state) {
 
-                button.classList.add(
-                    state
-                );
+                button.classList.add(state);
 
             }
 
             if (
-                index ===
-                currentIndex &&
+                index === currentIndex &&
                 (
                     state === "pending" ||
                     state === "pass"
                 )
             ) {
 
-                button.classList.add(
-                    "current"
-                );
+                button.classList.add("current");
 
             }
 
-            button.onclick =
-                () => {
+            button.onclick = () => {
 
-                    if (rondoAwarded) {
-                        return;
-                    }
+                if (rondoAwarded) {
+                    return;
+                }
 
-                    const currentState =
-                        roscoStates[
-                            currentTeam
-                        ][
-                            index
-                        ];
+                const currentState =
+                    roscoStates[
+                        currentTeam
+                    ][index];
 
-                    if (
-                        currentState ===
-                        "pending" ||
-                        currentState ===
-                        "pass"
-                    ) {
+                if (
+                    currentState === "pending" ||
+                    currentState === "pass"
+                ) {
 
-                        currentIndex =
-                            index;
+                    currentIndex = index;
 
-                        showQuestion(
-                            index
-                        );
+                    showQuestion(index);
+                    renderRosco();
 
-                        renderRosco();
+                }
 
-                    }
+            };
 
-                };
-
-            rosco.appendChild(
-                button
-            );
+            rosco.appendChild(button);
 
         }
     );
@@ -950,19 +1178,13 @@ function renderRosco() {
    MOSTRAR PREGUNTA
    ========================================= */
 
-function showQuestion(
-    index
-) {
+function showQuestion(index) {
 
     const data =
         getCurrentRosco();
 
-    if (
-        !data[index]
-    ) {
-
+    if (!data[index]) {
         return;
-
     }
 
     const item =
@@ -971,9 +1193,7 @@ function showQuestion(
     const state =
         roscoStates[
             currentTeam
-        ]?.[
-            index
-        ];
+        ]?.[index];
 
     document.getElementById(
         "question-letter"
@@ -991,25 +1211,19 @@ function showQuestion(
         item.question;
 
     document
-        .querySelectorAll(
-            ".letter"
-        )
-        .forEach(
-            button => {
+        .querySelectorAll(".letter")
+        .forEach(button => {
 
-                button.classList.toggle(
-                    "current",
-                    Number(
-                        button.dataset.index
-                    ) === index &&
-                    (
-                        state === "pending" ||
-                        state === "pass"
-                    )
-                );
+            button.classList.toggle(
+                "current",
+                Number(button.dataset.index) === index &&
+                (
+                    state === "pending" ||
+                    state === "pass"
+                )
+            );
 
-            }
-        );
+        });
 
 }
 
@@ -1018,28 +1232,22 @@ function showQuestion(
    RESPONDER
    ========================================= */
 
-function answerQuestion(
-    result
-) {
+function answerQuestion(result) {
 
     if (rondoAwarded) {
         return;
     }
 
     const states =
-        roscoStates[
-            currentTeam
-        ];
+        roscoStates[currentTeam];
 
     if (!states) {
         return;
     }
 
     if (
-        states[currentIndex] !==
-        "pending" &&
-        states[currentIndex] !==
-        "pass"
+        states[currentIndex] !== "pending" &&
+        states[currentIndex] !== "pass"
     ) {
 
         return;
@@ -1047,66 +1255,41 @@ function answerQuestion(
     }
 
 
-    /* =====================================
-       CORRECTO
-       ===================================== */
+    /* CORRECTO */
 
-    if (
-        result === "correct"
-    ) {
+    if (result === "correct") {
 
-        states[currentIndex] =
-            "correct";
+        states[currentIndex] = "correct";
 
         rondoHits[currentTeam] =
             Number(
-                rondoHits[currentTeam] ||
-                0
+                rondoHits[currentTeam] || 0
             ) + 1;
 
     }
 
 
-    /* =====================================
-       INCORRECTO
-       ===================================== */
+    /* INCORRECTO */
 
-    if (
-        result === "wrong"
-    ) {
+    if (result === "wrong") {
 
-        states[currentIndex] =
-            "wrong";
+        states[currentIndex] = "wrong";
 
     }
 
 
-    /* =====================================
-       PASAPALABRA
-       ===================================== */
+    /* PASAPALABRA */
 
-    if (
-        result === "pass"
-    ) {
+    if (result === "pass") {
 
-        states[currentIndex] =
-            "pass";
+        states[currentIndex] = "pass";
 
     }
 
-
-    /*
-     * Actualizar inmediatamente.
-     */
 
     updateRondoScore();
-
     renderRosco();
 
-
-    /*
-     * Buscar siguiente pregunta.
-     */
 
     const nextIndex =
         findNextAvailableLetter(
@@ -1115,31 +1298,17 @@ function answerQuestion(
         );
 
 
-    /*
-     * Todavía quedan preguntas.
-     */
+    if (nextIndex !== -1) {
 
-    if (
-        nextIndex !== -1
-    ) {
+        currentIndex = nextIndex;
 
-        currentIndex =
-            nextIndex;
-
-        showQuestion(
-            currentIndex
-        );
-
+        showQuestion(currentIndex);
         renderRosco();
 
         return;
 
     }
 
-
-    /*
-     * Terminó este equipo.
-     */
 
     finishCurrentTeam();
 
@@ -1154,8 +1323,7 @@ function finishCurrentTeam() {
 
     document.getElementById(
         "question-letter"
-    ).textContent =
-        "✓";
+    ).textContent = "✓";
 
     document.getElementById(
         "question-type"
@@ -1168,9 +1336,7 @@ function finishCurrentTeam() {
         "Equipo " +
         currentRosco +
         " terminó con " +
-        rondoHits[
-            currentTeam
-        ] +
+        rondoHits[currentTeam] +
         " aciertos.";
 
 }
@@ -1184,23 +1350,16 @@ function updateRondoTeamUI() {
 
     const names = {
 
-        team1:
-            "🔵 Equipo 1",
-
-        team2:
-            "🟢 Equipo 2",
-
-        team3:
-            "🟣 Equipo 3"
+        team1: "🔵 Equipo 1",
+        team2: "🟢 Equipo 2",
+        team3: "🟣 Equipo 3"
 
     };
 
     document.getElementById(
         "turn-team"
     ).textContent =
-        names[
-            currentTeam
-        ];
+        names[currentTeam];
 
     updateRondoScore();
 
@@ -1225,9 +1384,7 @@ function updateRondoScore() {
     element.textContent =
         String(
             Number(
-                rondoHits[
-                    currentTeam
-                ] || 0
+                rondoHits[currentTeam] || 0
             )
         );
 
@@ -1240,38 +1397,23 @@ function updateRondoScore() {
 
 function finishRondo() {
 
-    /*
-     * Si ya fue finalizado,
-     * no vuelve a repartir puntos.
-     */
-
     if (rondoAwarded) {
-
         return;
-
     }
-
 
     const confirmFinish =
         confirm(
             "¿Seguro que querés finalizar el Rondo? Se asignarán 3, 2 y 1 puntos según los aciertos."
         );
 
-
     if (!confirmFinish) {
-
         return;
-
     }
 
-
-    rondoAwarded =
-        true;
+    rondoAwarded = true;
 
 
-    /* =====================================
-       ORDENAR EQUIPOS POR ACIERTOS
-       ===================================== */
+    /* ORDENAR EQUIPOS POR ACIERTOS */
 
     const results = [
 
@@ -1300,28 +1442,17 @@ function finishRondo() {
 
 
     results.sort(
-        (
-            a,
-            b
-        ) =>
-            b.hits -
-            a.hits
+        (a, b) =>
+            b.hits - a.hits
     );
 
 
-    /* =====================================
-       ASIGNAR 3 / 2 / 1
-       ===================================== */
+    /* ASIGNAR 3 / 2 / 1 */
 
-    const points =
-        [3, 2, 1];
-
+    const points = [3, 2, 1];
 
     results.forEach(
-        (
-            result,
-            index
-        ) => {
+        (result, index) => {
 
             addPoints(
                 result.team,
@@ -1333,21 +1464,16 @@ function finishRondo() {
     );
 
 
-    /* =====================================
-       MOSTRAR RESULTADO
-       ===================================== */
+    /* MOSTRAR RESULTADO */
 
     document.getElementById(
         "question-letter"
-    ).textContent =
-        "🏁";
-
+    ).textContent = "🏁";
 
     document.getElementById(
         "question-type"
     ).textContent =
         "RONDO FINALIZADO";
-
 
     document.getElementById(
         "question-text"
@@ -1355,20 +1481,13 @@ function finishRondo() {
         "🔵 Equipo 1: " +
         rondoHits.team1 +
         " aciertos · " +
-
         "🟢 Equipo 2: " +
         rondoHits.team2 +
         " aciertos · " +
-
         "🟣 Equipo 3: " +
         rondoHits.team3 +
         " aciertos";
 
-
-    /*
-     * Desactivar visualmente
-     * la selección de letras.
-     */
 
     renderRosco();
 
@@ -1388,9 +1507,7 @@ document.addEventListener(
                 "game-modal"
             );
 
-        if (
-            event.target === modal
-        ) {
+        if (event.target === modal) {
 
             closeGame();
 
@@ -1408,13 +1525,9 @@ document.addEventListener(
     "keydown",
     function(event) {
 
-        if (
-            event.key ===
-            "Escape"
-        ) {
+        if (event.key === "Escape") {
 
             closeGame();
-
             closeRondo();
 
         }
