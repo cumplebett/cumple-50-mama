@@ -14,11 +14,13 @@ const scores = {
         rondo: 0,
         songs: 0
     },
+
     team2: {
         kahoot: 0,
         rondo: 0,
         songs: 0
     },
+
     team3: {
         kahoot: 0,
         rondo: 0,
@@ -844,7 +846,7 @@ function resetScores() {
 
     const confirmReset =
         confirm(
-            "¿Seguro que querés reiniciar todos los puntajes?"
+            "¿Seguro que querés reiniciar todos los puntajes? Se borrarán los puntos de Kahoot, Pasapalabra y Canciones."
         );
 
     if (!confirmReset) {
@@ -947,6 +949,11 @@ function openGame(game) {
             "modal-icon"
         );
 
+
+    /* =====================================
+       KAHOOT
+       ===================================== */
+
     if (game === "kahoot") {
 
         if (icon) {
@@ -954,15 +961,165 @@ function openGame(game) {
         }
 
         if (title) {
-            title.textContent = "Kahoot";
+            title.textContent = "Resultado Kahoot";
         }
 
         if (description) {
-            description.textContent =
-                "Acá vamos a cargar las preguntas sobre Bett.";
+
+            description.innerHTML = `
+
+                <p style="
+                    margin-bottom: 20px;
+                    font-size: 18px;
+                ">
+                    Asigná los puntos según el resultado individual.
+                </p>
+
+                <div style="
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
+                    text-align: left;
+                    max-width: 400px;
+                    margin: 0 auto 25px;
+                ">
+
+                    <label>
+
+                        🥇
+                        <strong>
+                            1.º puesto — 3 puntos
+                        </strong>
+
+                        <select
+                            id="kahoot-team-1"
+                            style="
+                                width: 100%;
+                                margin-top: 6px;
+                                padding: 10px;
+                                border-radius: 8px;
+                                font-size: 16px;
+                            "
+                        >
+
+                            <option value="">
+                                Seleccionar equipo
+                            </option>
+
+                            <option value="team1">
+                                🔵 Equipo 1
+                            </option>
+
+                            <option value="team2">
+                                🟢 Equipo 2
+                            </option>
+
+                            <option value="team3">
+                                🟣 Equipo 3
+                            </option>
+
+                        </select>
+
+                    </label>
+
+
+                    <label>
+
+                        🥈
+                        <strong>
+                            2.º puesto — 2 puntos
+                        </strong>
+
+                        <select
+                            id="kahoot-team-2"
+                            style="
+                                width: 100%;
+                                margin-top: 6px;
+                                padding: 10px;
+                                border-radius: 8px;
+                                font-size: 16px;
+                            "
+                        >
+
+                            <option value="">
+                                Seleccionar equipo
+                            </option>
+
+                            <option value="team1">
+                                🔵 Equipo 1
+                            </option>
+
+                            <option value="team2">
+                                🟢 Equipo 2
+                            </option>
+
+                            <option value="team3">
+                                🟣 Equipo 3
+                            </option>
+
+                        </select>
+
+                    </label>
+
+
+                    <label>
+
+                        🥉
+                        <strong>
+                            3.º puesto — 1 punto
+                        </strong>
+
+                        <select
+                            id="kahoot-team-3"
+                            style="
+                                width: 100%;
+                                margin-top: 6px;
+                                padding: 10px;
+                                border-radius: 8px;
+                                font-size: 16px;
+                            "
+                        >
+
+                            <option value="">
+                                Seleccionar equipo
+                            </option>
+
+                            <option value="team1">
+                                🔵 Equipo 1
+                            </option>
+
+                            <option value="team2">
+                                🟢 Equipo 2
+                            </option>
+
+                            <option value="team3">
+                                🟣 Equipo 3
+                            </option>
+
+                        </select>
+
+                    </label>
+
+                </div>
+
+
+                <button
+                    class="back-button"
+                    onclick="saveKahootResult()"
+                >
+                    💾 Guardar resultado
+                </button>
+
+            `;
+
         }
 
     }
+
+
+    /* =====================================
+       CANCIONES
+       ===================================== */
 
     if (game === "songs") {
 
@@ -975,15 +1132,111 @@ function openGame(game) {
         }
 
         if (description) {
-            description.textContent =
-                "Adiviná la canción, el artista y el año o década.";
+
+            description.innerHTML = `
+
+                <p>
+                    Adiviná la canción, el artista y el año o década.
+                </p>
+
+                <button
+                    class="back-button"
+                    onclick="closeGame()"
+                    style="margin-top:20px;"
+                >
+                    Volver al inicio
+                </button>
+
+            `;
+
         }
 
     }
 
+
     if (modal) {
         modal.classList.add("active");
     }
+
+}
+
+
+/* =========================================
+   GUARDAR RESULTADO KAHOOT
+   ========================================= */
+
+function saveKahootResult() {
+
+    const first =
+        document.getElementById(
+            "kahoot-team-1"
+        )?.value;
+
+    const second =
+        document.getElementById(
+            "kahoot-team-2"
+        )?.value;
+
+    const third =
+        document.getElementById(
+            "kahoot-team-3"
+        )?.value;
+
+
+    if (!first || !second || !third) {
+
+        alert(
+            "Tenés que seleccionar un equipo para los tres puestos."
+        );
+
+        return;
+
+    }
+
+
+    /*
+       IMPORTANTE:
+
+       Se reinician solamente los puntos
+       de Kahoot antes de guardar.
+
+       Así, si modificás el resultado,
+       no se acumulan puntos anteriores.
+    */
+
+    scores.team1.kahoot = 0;
+    scores.team2.kahoot = 0;
+    scores.team3.kahoot = 0;
+
+
+    /*
+       Se permite repetir equipo.
+
+       Ejemplo:
+
+       1.º Equipo 1 = 3
+       2.º Equipo 1 = 2
+       3.º Equipo 2 = 1
+
+       Equipo 1 = 5
+       Equipo 2 = 1
+    */
+
+    scores[first].kahoot += 3;
+    scores[second].kahoot += 2;
+    scores[third].kahoot += 1;
+
+
+    saveScores();
+    updateScoreboard();
+
+
+    alert(
+        "¡Resultado del Kahoot guardado!"
+    );
+
+
+    closeGame();
 
 }
 
