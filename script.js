@@ -603,7 +603,7 @@ const rosco3 = [
 
 
 /* =========================================
-   MAPA FIJO DE EQUIPOS
+   MAPA DE EQUIPOS
    ========================================= */
 
 const TEAM_DATA = {
@@ -614,7 +614,7 @@ const TEAM_DATA = {
 
 
 /* =========================================
-   VARIABLES DEL PASAPALABRA
+   VARIABLES PASAPALABRA
    ========================================= */
 
 let currentRosco = 1;
@@ -633,7 +633,7 @@ let rondoAwarded = false;
 
 
 /* =========================================
-   CREAR ESTADOS INDEPENDIENTES
+   CREAR ESTADOS INICIALES
    ========================================= */
 
 function createInitialRondoState() {
@@ -648,7 +648,7 @@ function createInitialRondoState() {
 
 
 /* =========================================
-   OBTENER PASAPALABRA DEL EQUIPO
+   OBTENER ROSCO
    ========================================= */
 
 function getRoscoForTeam(team) {
@@ -661,10 +661,6 @@ function getRoscoForTeam(team) {
 
 }
 
-
-/* =========================================
-   OBTENER PASAPALABRA ACTUAL
-   ========================================= */
 
 function getCurrentRosco() {
 
@@ -732,7 +728,7 @@ function saveScores() {
 
 
 /* =========================================
-   TOTAL GENERAL
+   TOTAL
    ========================================= */
 
 function getTotal(team) {
@@ -754,8 +750,7 @@ function updateScoreboard() {
 
     for (let i = 1; i <= 3; i++) {
 
-        const team =
-            "team" + i;
+        const team = "team" + i;
 
         const scoreTeam =
             document.getElementById(
@@ -781,6 +776,7 @@ function updateScoreboard() {
             document.getElementById(
                 "total-" + i
             );
+
 
         if (scoreTeam) {
             scoreTeam.textContent =
@@ -818,11 +814,7 @@ function updateScoreboard() {
    SUMAR PUNTOS
    ========================================= */
 
-function addPoints(
-    team,
-    game,
-    points
-) {
+function addPoints(team, game, points) {
 
     if (!scores[team]) {
         return;
@@ -839,7 +831,7 @@ function addPoints(
 
 
 /* =========================================
-   REINICIAR PUNTAJES
+   REINICIAR MARCADOR GENERAL
    ========================================= */
 
 function resetScores() {
@@ -853,20 +845,22 @@ function resetScores() {
         return;
     }
 
-    for (const team of [
-        "team1",
-        "team2",
-        "team3"
-    ]) {
+    scores.team1.kahoot = 0;
+    scores.team1.rondo = 0;
+    scores.team1.songs = 0;
 
-        scores[team].kahoot = 0;
-        scores[team].rondo = 0;
-        scores[team].songs = 0;
+    scores.team2.kahoot = 0;
+    scores.team2.rondo = 0;
+    scores.team2.songs = 0;
 
-    }
+    scores.team3.kahoot = 0;
+    scores.team3.rondo = 0;
+    scores.team3.songs = 0;
 
     saveScores();
     updateScoreboard();
+
+    alert("¡Marcador general reiniciado!");
 
 }
 
@@ -929,25 +923,18 @@ function openGame(game) {
 
     }
 
+
     const modal =
-        document.getElementById(
-            "game-modal"
-        );
+        document.getElementById("game-modal");
 
     const title =
-        document.getElementById(
-            "modal-title"
-        );
+        document.getElementById("modal-title");
 
     const description =
-        document.getElementById(
-            "modal-description"
-        );
+        document.getElementById("modal-description");
 
     const icon =
-        document.getElementById(
-            "modal-icon"
-        );
+        document.getElementById("modal-icon");
 
 
     /* =====================================
@@ -964,25 +951,28 @@ function openGame(game) {
             title.textContent = "Resultado Kahoot";
         }
 
+
         if (description) {
 
             description.innerHTML = `
 
                 <p style="
-                    margin-bottom: 20px;
-                    font-size: 18px;
+                    margin-bottom:20px;
+                    font-size:18px;
                 ">
-                    Asigná los puntos según el resultado individual.
+                    Ingresá el equipo que terminó en cada puesto.
                 </p>
 
+
                 <div style="
-                    display: flex;
-                    flex-direction: column;
-                    gap: 15px;
-                    text-align: left;
-                    max-width: 400px;
-                    margin: 0 auto 25px;
+                    display:flex;
+                    flex-direction:column;
+                    gap:15px;
+                    text-align:left;
+                    max-width:400px;
+                    margin:0 auto 25px;
                 ">
+
 
                     <label>
 
@@ -994,11 +984,11 @@ function openGame(game) {
                         <select
                             id="kahoot-team-1"
                             style="
-                                width: 100%;
-                                margin-top: 6px;
-                                padding: 10px;
-                                border-radius: 8px;
-                                font-size: 16px;
+                                width:100%;
+                                margin-top:6px;
+                                padding:10px;
+                                border-radius:8px;
+                                font-size:16px;
                             "
                         >
 
@@ -1033,11 +1023,11 @@ function openGame(game) {
                         <select
                             id="kahoot-team-2"
                             style="
-                                width: 100%;
-                                margin-top: 6px;
-                                padding: 10px;
-                                border-radius: 8px;
-                                font-size: 16px;
+                                width:100%;
+                                margin-top:6px;
+                                padding:10px;
+                                border-radius:8px;
+                                font-size:16px;
                             "
                         >
 
@@ -1072,11 +1062,11 @@ function openGame(game) {
                         <select
                             id="kahoot-team-3"
                             style="
-                                width: 100%;
-                                margin-top: 6px;
-                                padding: 10px;
-                                border-radius: 8px;
-                                font-size: 16px;
+                                width:100%;
+                                margin-top:6px;
+                                padding:10px;
+                                border-radius:8px;
+                                font-size:16px;
                             "
                         >
 
@@ -1112,6 +1102,27 @@ function openGame(game) {
 
             `;
 
+
+            /* --------------------------------
+               MOSTRAR RESULTADO ANTERIOR
+               -------------------------------- */
+
+            const previousResults = {
+
+                first:
+                    scores.team1.kahoot >= 3
+                        ? "team1"
+                        : scores.team2.kahoot >= 3
+                        ? "team2"
+                        : scores.team3.kahoot >= 3
+                        ? "team3"
+                        : "",
+
+                second: "",
+                third: ""
+
+            };
+
         }
 
     }
@@ -1138,14 +1149,6 @@ function openGame(game) {
                 <p>
                     Adiviná la canción, el artista y el año o década.
                 </p>
-
-                <button
-                    class="back-button"
-                    onclick="closeGame()"
-                    style="margin-top:20px;"
-                >
-                    Volver al inicio
-                </button>
 
             `;
 
@@ -1195,13 +1198,9 @@ function saveKahootResult() {
 
 
     /*
-       IMPORTANTE:
-
-       Se reinician solamente los puntos
-       de Kahoot antes de guardar.
-
-       Así, si modificás el resultado,
-       no se acumulan puntos anteriores.
+       BORRAR SOLAMENTE
+       LOS PUNTOS ANTERIORES
+       DEL KAHOOT
     */
 
     scores.team1.kahoot = 0;
@@ -1210,24 +1209,24 @@ function saveKahootResult() {
 
 
     /*
-       Se permite repetir equipo.
+       ASIGNACIÓN
 
-       Ejemplo:
+       1.º = 3
+       2.º = 2
+       3.º = 1
 
-       1.º Equipo 1 = 3
-       2.º Equipo 1 = 2
-       3.º Equipo 2 = 1
-
-       Equipo 1 = 5
-       Equipo 2 = 1
+       SE PERMITE REPETIR EQUIPO.
     */
 
     scores[first].kahoot += 3;
+
     scores[second].kahoot += 2;
+
     scores[third].kahoot += 1;
 
 
     saveScores();
+
     updateScoreboard();
 
 
@@ -1304,6 +1303,7 @@ function openRondo() {
 
     renderRosco();
 
+
     if (currentIndex !== -1) {
         showQuestion(currentIndex);
     }
@@ -1359,6 +1359,7 @@ function selectRosco(number) {
 
     const selectedRosco =
         getRoscoForTeam(currentTeam);
+
 
     if (
         !selectedRosco ||
@@ -1484,7 +1485,7 @@ function findNextAvailableLetter(
 
 
 /* =========================================
-   CREAR CÍRCULO DE PASAPALABRA
+   CREAR ROSCO
    ========================================= */
 
 function renderRosco() {
@@ -1576,6 +1577,7 @@ function renderRosco() {
                         index;
 
                     showQuestion(index);
+
                     renderRosco();
 
                 }
@@ -1605,9 +1607,7 @@ function showQuestion(index) {
         );
 
 
-    if (
-        !data[index]
-    ) {
+    if (!data[index]) {
         return;
     }
 
@@ -1702,15 +1702,11 @@ function answerQuestion(result) {
         states[currentIndex] !== "pending" &&
         states[currentIndex] !== "pass"
     ) {
-
         return;
-
     }
 
 
-    if (
-        result === "correct"
-    ) {
+    if (result === "correct") {
 
         states[currentIndex] =
             "correct";
@@ -1723,9 +1719,7 @@ function answerQuestion(result) {
     }
 
 
-    if (
-        result === "wrong"
-    ) {
+    if (result === "wrong") {
 
         states[currentIndex] =
             "wrong";
@@ -1733,9 +1727,7 @@ function answerQuestion(result) {
     }
 
 
-    if (
-        result === "pass"
-    ) {
+    if (result === "pass") {
 
         states[currentIndex] =
             "pass";
@@ -1755,9 +1747,7 @@ function answerQuestion(result) {
         );
 
 
-    if (
-        nextIndex !== -1
-    ) {
+    if (nextIndex !== -1) {
 
         currentIndex =
             nextIndex;
@@ -2021,12 +2011,8 @@ document.addEventListener(
             );
 
 
-        if (
-            event.target === modal
-        ) {
-
+        if (event.target === modal) {
             closeGame();
-
         }
 
     }
@@ -2041,9 +2027,7 @@ document.addEventListener(
     "keydown",
     function(event) {
 
-        if (
-            event.key === "Escape"
-        ) {
+        if (event.key === "Escape") {
 
             closeGame();
             closeRondo();
