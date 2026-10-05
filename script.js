@@ -28,7 +28,7 @@ const scores = {
 
 
 /* =========================================
-   ROSCO 1 — EQUIPO 1
+   PASAPALABRA 1 — EQUIPO 1
    ========================================= */
 
 const rosco1 = [
@@ -219,7 +219,7 @@ const rosco1 = [
 
 
 /* =========================================
-   ROSCO 2 — EQUIPO 2
+   PASAPALABRA 2 — EQUIPO 2
    ========================================= */
 
 const rosco2 = [
@@ -410,7 +410,7 @@ const rosco2 = [
 
 
 /* =========================================
-   ROSCO 3 — EQUIPO 3
+   PASAPALABRA 3 — EQUIPO 3
    ========================================= */
 
 const rosco3 = [
@@ -602,10 +602,6 @@ const rosco3 = [
 
 /* =========================================
    MAPA FIJO DE EQUIPOS
-   =========================================
-   IMPORTANTE:
-   NUNCA SE USA EL MISMO ROSCO PARA
-   DOS EQUIPOS.
    ========================================= */
 
 const TEAM_DATA = {
@@ -616,7 +612,7 @@ const TEAM_DATA = {
 
 
 /* =========================================
-   VARIABLES DEL RONDO
+   VARIABLES DEL PASAPALABRA
    ========================================= */
 
 let currentRosco = 1;
@@ -650,7 +646,7 @@ function createInitialRondoState() {
 
 
 /* =========================================
-   OBTENER ROSCO DEL EQUIPO
+   OBTENER PASAPALABRA DEL EQUIPO
    ========================================= */
 
 function getRoscoForTeam(team) {
@@ -660,11 +656,12 @@ function getRoscoForTeam(team) {
     }
 
     return [];
+
 }
 
 
 /* =========================================
-   OBTENER ROSCO ACTUAL
+   OBTENER PASAPALABRA ACTUAL
    ========================================= */
 
 function getCurrentRosco() {
@@ -873,14 +870,14 @@ function resetScores() {
 
 
 /* =========================================
-   REINICIAR RONDO
+   REINICIAR PASAPALABRA
    ========================================= */
 
 function resetRondo() {
 
     const confirmReset =
         confirm(
-            "¿Seguro que querés reiniciar el Rondo completo?"
+            "¿Seguro que querés reiniciar el Pasapalabra completo?"
         );
 
     if (!confirmReset) {
@@ -1010,7 +1007,7 @@ function closeGame() {
 
 
 /* =========================================
-   ABRIR RONDO
+   ABRIR PASAPALABRA
    ========================================= */
 
 function openRondo() {
@@ -1038,8 +1035,6 @@ function openRondo() {
     }
 
 
-    /* SIEMPRE ARRANCA EN EQUIPO 1 */
-
     currentRosco = 1;
     currentTeam = "team1";
 
@@ -1064,7 +1059,7 @@ function openRondo() {
 
 
 /* =========================================
-   CERRAR RONDO
+   CERRAR PASAPALABRA
    ========================================= */
 
 function closeRondo() {
@@ -1085,7 +1080,7 @@ function closeRondo() {
 
 
 /* =========================================
-   CAMBIAR EQUIPO / ROSCO
+   CAMBIAR EQUIPO
    ========================================= */
 
 function selectRosco(number) {
@@ -1093,9 +1088,6 @@ function selectRosco(number) {
     if (rondoAwarded) {
         return;
     }
-
-
-    /* VALIDAR EQUIPO */
 
     if (
         number !== 1 &&
@@ -1105,18 +1097,12 @@ function selectRosco(number) {
         return;
     }
 
-
-    /* VINCULACIÓN DIRECTA */
-
     currentRosco =
         Number(number);
 
     currentTeam =
         "team" + Number(number);
 
-
-    /* EL ROSCO SALE DIRECTAMENTE
-       DEL EQUIPO SELECCIONADO */
 
     const selectedRosco =
         getRoscoForTeam(currentTeam);
@@ -1128,9 +1114,6 @@ function selectRosco(number) {
         return;
     }
 
-
-    /* BUSCAR SIGUIENTE PREGUNTA
-       DE ESE EQUIPO */
 
     currentIndex =
         findNextAvailableLetter(
@@ -1200,8 +1183,6 @@ function findNextAvailableLetter(
         states.length;
 
 
-    /* PRIMERO BUSCA PENDING */
-
     for (
         let step = 0;
         step < length;
@@ -1222,8 +1203,6 @@ function findNextAvailableLetter(
 
     }
 
-
-    /* DESPUÉS BUSCA PASADAS */
 
     for (
         let step = 0;
@@ -1252,7 +1231,7 @@ function findNextAvailableLetter(
 
 
 /* =========================================
-   CREAR ROSCO VISUAL
+   CREAR CÍRCULO DE PASAPALABRA
    ========================================= */
 
 function renderRosco() {
@@ -1266,9 +1245,6 @@ function renderRosco() {
         return;
     }
 
-
-    /* MUY IMPORTANTE:
-       EL ROSCO SE OBTIENE DEL EQUIPO */
 
     const data =
         getRoscoForTeam(currentTeam);
@@ -1479,8 +1455,6 @@ function answerQuestion(result) {
     }
 
 
-    /* CORRECTO */
-
     if (
         result === "correct"
     ) {
@@ -1496,8 +1470,6 @@ function answerQuestion(result) {
     }
 
 
-    /* INCORRECTO */
-
     if (
         result === "wrong"
     ) {
@@ -1507,8 +1479,6 @@ function answerQuestion(result) {
 
     }
 
-
-    /* PASAPALABRA */
 
     if (
         result === "pass"
@@ -1556,7 +1526,7 @@ function answerQuestion(result) {
 
 
 /* =========================================
-   TERMINÓ EL ROSCO
+   TERMINÓ EL PASAPALABRA
    ========================================= */
 
 function finishCurrentTeam() {
@@ -1584,7 +1554,7 @@ function finishCurrentTeam() {
 
     if (type) {
         type.textContent =
-            "RONDO COMPLETADO";
+            "PASAPALABRA COMPLETADO";
     }
 
     if (text) {
@@ -1661,7 +1631,7 @@ function updateRondoScore() {
 
 
 /* =========================================
-   FINALIZAR RONDO
+   FINALIZAR PASAPALABRA
    ========================================= */
 
 function finishRondo() {
@@ -1673,7 +1643,7 @@ function finishRondo() {
 
     const confirmFinish =
         confirm(
-            "¿Seguro que querés finalizar el Rondo? Se asignarán 3, 2 y 1 puntos según los aciertos."
+            "¿Seguro que querés finalizar el Pasapalabra? Se asignarán 3, 2 y 1 puntos según los aciertos."
         );
 
 
@@ -1760,7 +1730,7 @@ function finishRondo() {
 
     if (type) {
         type.textContent =
-            "RONDO FINALIZADO";
+            "PASAPALABRA FINALIZADO";
     }
 
     if (text) {
