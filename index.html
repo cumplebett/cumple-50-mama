@@ -11,7 +11,7 @@
 <style id="rosco-fix">
 
 /* =========================================================
-   PASAPALABRA — ESTRUCTURA GENERAL
+   PASAPALABRA
    ========================================================= */
 
 .rondo-modal{
@@ -40,7 +40,7 @@
 
 
 /* =========================================================
-   DISTRIBUCIÓN
+   LAYOUT ORIGINAL
    ========================================================= */
 
 .rondo-layout{
@@ -50,27 +50,29 @@
 
     display:grid!important;
 
-    grid-template-columns:300px minmax(0,1fr)!important;
+    /* Volvemos al ancho original */
+    grid-template-columns:220px minmax(0,1fr)!important;
 
     overflow:hidden!important;
 }
 
 
 /* =========================================================
-   PANEL IZQUIERDO
+   SIDEBAR
    ========================================================= */
 
 .rondo-sidebar{
-    width:300px!important;
-    min-width:300px!important;
+    width:220px!important;
+    min-width:220px!important;
 
     box-sizing:border-box!important;
 
     position:relative!important;
     z-index:20!important;
 
-    padding-left:50px!important;
-    padding-right:25px!important;
+    /* Como estaba originalmente */
+    padding-left:0!important;
+    padding-right:10px!important;
 }
 
 
@@ -98,10 +100,24 @@
 .rosco{
     position:absolute!important;
 
-    width:min(760px,92vh)!important;
-    height:min(760px,92vh)!important;
+    /*
+       Rosco grande.
+       92vh permite aprovechar prácticamente
+       toda la altura disponible.
+    */
 
-    left:50%!important;
+    width:min(720px,92vh)!important;
+    height:min(720px,92vh)!important;
+
+    /*
+       El centro de la columna derecha queda
+       demasiado a la derecha.
+       
+       Lo movemos hacia el centro real
+       de la pantalla.
+    */
+
+    left:calc(50% - 110px)!important;
     top:50%!important;
 
     transform:translate(-50%,-50%)!important;
@@ -170,7 +186,7 @@
 
 
 /* =========================================================
-   ESTADOS DE LAS LETRAS
+   ESTADOS
    ========================================================= */
 
 .rosco-letter.current{
@@ -215,19 +231,22 @@
 
 
 /* =========================================================
-   TARJETA DE PREGUNTA
+   TARJETA CENTRAL
    ========================================================= */
 
 .question-card{
     position:absolute!important;
 
-    left:50%!important;
+    /*
+       Misma posición que el centro del rosco.
+    */
+
+    left:calc(50% - 110px)!important;
     top:50%!important;
 
     transform:translate(-50%,-50%)!important;
 
     width:350px!important;
-
     min-height:300px!important;
 
     box-sizing:border-box!important;
@@ -244,6 +263,7 @@
 
     z-index:10!important;
 }
+
 
 .question-letter{
     width:58px!important;
@@ -266,6 +286,7 @@
     margin-bottom:10px!important;
 }
 
+
 .question-type{
     color:#ff1744!important;
 
@@ -278,6 +299,7 @@
 
     margin-bottom:12px!important;
 }
+
 
 #question-text{
     color:#fff!important;
@@ -294,7 +316,7 @@
 
 
 /* =========================================================
-   BOTONES DE RESPUESTA
+   BOTONES
    ========================================================= */
 
 .answer-actions{
@@ -347,22 +369,24 @@
 @media(max-width:1100px){
 
     .rondo-layout{
-        grid-template-columns:
-            220px
-            minmax(0,1fr)!important;
+        grid-template-columns:190px minmax(0,1fr)!important;
     }
 
     .rondo-sidebar{
-        width:220px!important;
-        min-width:220px!important;
-
-        padding-left:25px!important;
-        padding-right:15px!important;
+        width:190px!important;
+        min-width:190px!important;
     }
 
     .rosco{
         width:min(650px,82vh)!important;
         height:min(650px,82vh)!important;
+
+        left:calc(50% - 95px)!important;
+    }
+
+    .question-card{
+        left:calc(50% - 95px)!important;
+        width:315px!important;
     }
 
     .rosco-letter{
@@ -373,10 +397,6 @@
         min-height:43px!important;
 
         font-size:16px!important;
-    }
-
-    .question-card{
-        width:315px!important;
     }
 
 }
@@ -395,10 +415,13 @@
     .rosco{
         width:min(500px,76vh)!important;
         height:min(500px,76vh)!important;
+
+        left:50%!important;
     }
 
     .question-card{
         width:280px!important;
+        left:50%!important;
     }
 
 }
@@ -1093,7 +1116,7 @@
 </div>
 
 
-<script src="script.js?v=12"></script>
+<script src="script.js?v=13"></script>
 
 </body>
 </html>
