@@ -4137,7 +4137,58 @@ function nextSong() {
     loadNextSong();
 
 }
+function resetSongsGame() {
 
+    const confirmation = confirm(
+        "¿Querés reiniciar el juego de canciones?\n\n" +
+        "Se van a borrar los puntos de esta partida y comenzar una nueva."
+    );
+
+    if (!confirmation) {
+        return;
+    }
+
+    /*
+     * Detener la canción actual.
+     */
+    if (
+        songsPlayer &&
+        typeof songsPlayer.stopVideo === "function"
+    ) {
+        try {
+            songsPlayer.stopVideo();
+        } catch (error) {}
+    }
+
+    /*
+     * Reiniciar la partida de canciones.
+     */
+    songsUsedIndexes = [];
+
+    songsCurrentIndex = 0;
+
+    songsCurrentSong = null;
+
+    songsAnswers = [];
+
+    songsGameFinished = false;
+
+    songsGameOpen = true;
+
+    songsGamePoints.team1 = 0;
+    songsGamePoints.team2 = 0;
+    songsGamePoints.team3 = 0;
+
+    /*
+     * IMPORTANTE:
+     * NO modificamos scores.
+     * El marcador general queda intacto.
+     */
+
+    loadNextSong();
+
+    updateSongsScoreboard();
+}
 
 /* =========================================================
    ESTILOS DEL JUEGO DE CANCIONES
