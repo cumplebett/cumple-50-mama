@@ -2732,7 +2732,13 @@ let songsAnswers = [];
 
 let songsGameOpen = false;
 
+let songsGameFinished = false;
 
+const songsGamePoints = {
+    team1: 0,
+    team2: 0,
+    team3: 0
+};
 /* =========================================================
    NORMALIZACIÓN DE RESPUESTAS
    ========================================================= */
