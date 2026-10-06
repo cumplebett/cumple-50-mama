@@ -424,7 +424,7 @@ const rosco3 = {
 
 
 /* =========================================================
-   DATOS DE EQUIPOS
+   EQUIPOS
    ========================================================= */
 
 const TEAM_DATA = {
@@ -439,6 +439,7 @@ const TEAM_DATA = {
    ========================================================= */
 
 function createInitialRondoState() {
+
     return {
         currentIndex: 0,
         hits: 0,
@@ -447,13 +448,16 @@ function createInitialRondoState() {
         answered: [],
         finished: false
     };
+
 }
+
 
 const rondoState = {
     team1: createInitialRondoState(),
     team2: createInitialRondoState(),
     team3: createInitialRondoState()
 };
+
 
 let currentTeam = null;
 let currentRosco = null;
@@ -465,39 +469,61 @@ let currentLetterIndex = 0;
    ========================================================= */
 
 function loadScores() {
+
     try {
-        const saved = localStorage.getItem("bettScores");
+
+        const saved =
+            localStorage.getItem(
+                "bettScores"
+            );
+
 
         if (saved) {
-            const parsed = JSON.parse(saved);
+
+            const parsed =
+                JSON.parse(saved);
+
 
             if (parsed.team1) {
+
                 scores.team1 = {
                     ...scores.team1,
                     ...parsed.team1
                 };
+
             }
 
+
             if (parsed.team2) {
+
                 scores.team2 = {
                     ...scores.team2,
                     ...parsed.team2
                 };
+
             }
 
+
             if (parsed.team3) {
+
                 scores.team3 = {
                     ...scores.team3,
                     ...parsed.team3
                 };
+
             }
+
         }
+
     } catch (error) {
+
         console.error(
             "Error cargando puntajes:",
             error
         );
+
     }
+
 }
 
 
@@ -506,10 +532,12 @@ function loadScores() {
    ========================================================= */
 
 function saveScores() {
+
     localStorage.setItem(
         "bettScores",
         JSON.stringify(scores)
     );
+
 }
 
 
@@ -518,11 +546,13 @@ function saveScores() {
    ========================================================= */
 
 function getTotal(team) {
+
     return (
         scores[team].kahoot +
         scores[team].rondo +
         scores[team].songs
     );
+
 }
 
 
@@ -531,49 +561,88 @@ function getTotal(team) {
    ========================================================= */
 
 function updateScoreboard() {
-    for (let i = 1; i <= 3; i++) {
-        const team = "team" + i;
 
-        const total = document.getElementById(
-            "score-team-" + i
-        );
+    for (
+        let i = 1;
+        i <= 3;
+        i++
+    ) {
 
-        const kahoot = document.getElementById(
-            "kahoot-" + i
-        );
+        const team =
+            "team" + i;
 
-        const rondo = document.getElementById(
-            "rondo-" + i
-        );
 
-        const songs = document.getElementById(
-            "songs-" + i
-        );
+        const total =
+            document.getElementById(
+                "score-team-" + i
+            );
 
-        const totalCell = document.getElementById(
-            "total-" + i
-        );
+
+        const kahoot =
+            document.getElementById(
+                "kahoot-" + i
+            );
+
+
+        const rondo =
+            document.getElementById(
+                "rondo-" + i
+            );
+
+
+        const songs =
+            document.getElementById(
+                "songs-" + i
+            );
+
+
+        const totalCell =
+            document.getElementById(
+                "total-" + i
+            );
+
 
         if (total) {
-            total.textContent = getTotal(team);
+
+            total.textContent =
+                getTotal(team);
+
         }
+
 
         if (kahoot) {
-            kahoot.textContent = scores[team].kahoot;
+
+            kahoot.textContent =
+                scores[team].kahoot;
+
         }
+
 
         if (rondo) {
-            rondo.textContent = scores[team].rondo;
+
+            rondo.textContent =
+                scores[team].rondo;
+
         }
+
 
         if (songs) {
-            songs.textContent = scores[team].songs;
+
+            songs.textContent =
+                scores[team].songs;
+
         }
 
+
         if (totalCell) {
-            totalCell.textContent = getTotal(team);
+
+            totalCell.textContent =
+                getTotal(team);
+
         }
+
     }
+
 }
 
 
@@ -581,18 +650,29 @@ function updateScoreboard() {
    SUMAR PUNTOS
    ========================================================= */
 
-function addPoints(team, game, points) {
+function addPoints(
+    team,
+    game,
+    points
+) {
+
     if (
         !scores[team] ||
         scores[team][game] === undefined
     ) {
+
         return;
+
     }
+
 
     scores[team][game] += points;
 
+
     saveScores();
+
     updateScoreboard();
+
 }
 
 
@@ -601,37 +681,54 @@ function addPoints(team, game, points) {
    ========================================================= */
 
 function resetScores() {
-    const confirmation = confirm(
-        "¿Seguro que querés reiniciar el marcador general?"
-    );
+
+    const confirmation =
+        confirm(
+            "¿Seguro que querés reiniciar el marcador general?"
+        );
+
 
     if (!confirmation) {
+
         return;
+
     }
 
-    for (const team of [
-        "team1",
-        "team2",
-        "team3"
-    ]) {
+
+    for (
+        const team of [
+            "team1",
+            "team2",
+            "team3"
+        ]
+    ) {
+
         scores[team].kahoot = 0;
         scores[team].rondo = 0;
         scores[team].songs = 0;
+
     }
 
+
     saveScores();
+
     updateScoreboard();
+
 
     if (
         typeof updateSongsScoreboard ===
         "function"
     ) {
+
         updateSongsScoreboard();
+
     }
+
 
     alert(
         "🔄 Marcador reiniciado correctamente."
     );
+
 }
 
 
@@ -640,46 +737,82 @@ function resetScores() {
    ========================================================= */
 
 function openGame(game) {
-    if (game === "rondo") {
+
+    if (
+        game === "rondo"
+    ) {
+
         openRondo();
+
         return;
+
     }
 
-    if (game === "songs") {
+
+    if (
+        game === "songs"
+    ) {
+
         openSongsGame();
+
         return;
+
     }
 
-    const modal = document.getElementById(
-        "game-modal"
-    );
 
-    const title = document.getElementById(
-        "modal-title"
-    );
+    const modal =
+        document.getElementById(
+            "game-modal"
+        );
 
-    const description = document.getElementById(
-        "modal-description"
-    );
 
-    const icon = document.getElementById(
-        "modal-icon"
-    );
+    const title =
+        document.getElementById(
+            "modal-title"
+        );
+
+
+    const description =
+        document.getElementById(
+            "modal-description"
+        );
+
+
+    const icon =
+        document.getElementById(
+            "modal-icon"
+        );
+
 
     if (!modal) {
+
         return;
+
     }
 
-    if (game === "kahoot") {
+
+    if (
+        game === "kahoot"
+    ) {
+
         if (icon) {
-            icon.textContent = "🧠";
+
+            icon.textContent =
+                "🧠";
+
         }
+
 
         if (title) {
-            title.textContent = "Kahoot";
+
+            title.textContent =
+                "Kahoot";
+
         }
 
+
         if (description) {
+
             description.innerHTML = `
 
                 <div style="text-align:center;">
@@ -703,7 +836,7 @@ function openGame(game) {
 
                     <h3 style="margin-bottom:15px;">
                         🏆 Resultado
-                    </h3>
+                    </3>
 
                     <div style="margin-bottom:12px;">
 
@@ -742,6 +875,7 @@ function openGame(game) {
 
                     </div>
 
+
                     <div style="margin-bottom:12px;">
 
                         <label>
@@ -778,6 +912,7 @@ function openGame(game) {
                         </select>
 
                     </div>
+
 
                     <div style="margin-bottom:20px;">
 
@@ -816,6 +951,7 @@ function openGame(game) {
 
                     </div>
 
+
                     <button
                         class="back-button"
                         onclick="saveKahootResult()"
@@ -826,10 +962,20 @@ function openGame(game) {
                 </div>
 
             `;
+
         }
+
     }
 
-    modal.classList.add("active");
+
+    modal.classList.add(
+        "active"
+    );
+
+    modal.style.removeProperty(
+        "display"
+    );
+
 }
 
 
@@ -838,233 +984,407 @@ function openGame(game) {
    ========================================================= */
 
 function saveKahootResult() {
-    const first = document.getElementById(
-        "kahoot-team-1"
-    );
 
-    const second = document.getElementById(
-        "kahoot-team-2"
-    );
+    const first =
+        document.getElementById(
+            "kahoot-team-1"
+        );
 
-    const third = document.getElementById(
-        "kahoot-team-3"
-    );
+
+    const second =
+        document.getElementById(
+            "kahoot-team-2"
+        );
+
+
+    const third =
+        document.getElementById(
+            "kahoot-team-3"
+        );
+
 
     if (
         !first ||
         !second ||
         !third
     ) {
+
+        alert(
+            "No se pudo cargar el resultado."
+        );
+
         return;
+
     }
 
-    const firstTeam = first.value;
-    const secondTeam = second.value;
-    const thirdTeam = third.value;
+
+    const teamFirst =
+        first.value;
+
+
+    const teamSecond =
+        second.value;
+
+
+    const teamThird =
+        third.value;
+
 
     if (
-        !firstTeam ||
-        !secondTeam ||
-        !thirdTeam
+        !teamFirst ||
+        !teamSecond ||
+        !teamThird
     ) {
+
         alert(
-            "Seleccioná los tres equipos."
+            "⚠️ Tenés que seleccionar los tres puestos."
         );
+
         return;
+
     }
 
-    const teams = [
-        firstTeam,
-        secondTeam,
-        thirdTeam
-    ];
 
-    if (
-        new Set(teams).size !== 3
-    ) {
-        alert(
-            "Cada equipo debe ocupar una posición diferente."
-        );
-        return;
-    }
+    scores.team1.kahoot = 0;
+    scores.team2.kahoot = 0;
+    scores.team3.kahoot = 0;
 
-    scores[firstTeam].kahoot = 3;
-    scores[secondTeam].kahoot = 2;
-    scores[thirdTeam].kahoot = 1;
+
+    scores[teamFirst].kahoot += 3;
+
+    scores[teamSecond].kahoot += 2;
+
+    scores[teamThird].kahoot += 1;
+
 
     saveScores();
+
     updateScoreboard();
 
+
     alert(
-        "🏆 Resultado del Kahoot guardado."
+        "🏆 Resultado de Kahoot guardado correctamente."
     );
+
+
+    closeGame();
+
 }
 
 
 /* =========================================================
-   CERRAR MODAL GENERAL
+   CERRAR MODAL
    ========================================================= */
 
-function closeModal() {
+function closeGame() {
+
     const modal =
         document.getElementById(
             "game-modal"
         );
 
+
     if (modal) {
+
         modal.classList.remove(
             "active"
         );
+
     }
+
 }
 
 
 /* =========================================================
-   ROSCO
+   PASAPALABRA
    ========================================================= */
 
 function openRondo() {
-    const menu =
-        document.getElementById(
-            "main-menu"
-        );
 
-    const rondo =
+    const modal =
         document.getElementById(
             "rondo-modal"
         );
 
-    if (menu) {
-        menu.style.display = "none";
-    }
 
-    if (rondo) {
-        rondo.style.display = "flex";
-    }
+    if (!modal) {
 
-    currentTeam = null;
-    currentRosco = null;
-    currentLetterIndex = 0;
-
-    renderRondoTeamSelection();
-}
-
-
-function closeRondo() {
-    const rondo =
-        document.getElementById(
-            "rondo-modal"
-        );
-
-    if (rondo) {
-        rondo.style.display = "none";
-    }
-
-    const menu =
-        document.getElementById(
-            "main-menu"
-        );
-
-    if (menu) {
-        menu.style.display = "flex";
-    }
-}
-
-
-function renderRondoTeamSelection() {
-    const selector =
-        document.getElementById(
-            "rondo-team-selector"
-        );
-
-    if (!selector) {
         return;
+
     }
 
-    selector.innerHTML = "";
 
-    const teams = [
-        {
-            id: "team1",
-            name: "Los Originales"
-        },
-        {
-            id: "team2",
-            name: "Los Herederos"
-        },
-        {
-            id: "team3",
-            name: "Las Históricas"
-        }
-    ];
-
-    teams.forEach(team => {
-        const button =
-            document.createElement(
-                "button"
-            );
-
-        button.type = "button";
-        button.className =
-            "rondo-team-button";
-
-        button.textContent =
-            team.name;
-
-        button.onclick = () => {
-            selectRosco(
-                team.id
-            );
-        };
-
-        selector.appendChild(
-            button
-        );
-    });
-}
+    modal.classList.add(
+        "active"
+    );
 
 
-function selectRosco(team) {
-    if (!TEAM_DATA[team]) {
-        return;
-    }
+    currentTeam =
+        "team1";
 
-    currentTeam = team;
-    currentRosco = TEAM_DATA[team];
+
+    currentRosco =
+        TEAM_DATA.team1;
+
 
     currentLetterIndex =
-        rondoState[team].currentIndex;
+        rondoState.team1.currentIndex;
+
+
+    updateRondoTabs();
+
+    updateRondoTeamUI();
 
     renderRosco();
-    updateRondoTeamInfo();
+
+    showCurrentQuestion();
+
+
 }
 
 
-function updateRondoTeamInfo() {
-    const name =
+/* =========================================================
+   CERRAR PASAPALABRA
+   ========================================================= */
+
+function closeRondo() {
+
+    const modal =
         document.getElementById(
-            "rondo-current-team"
+            "rondo-modal"
         );
 
-    if (!name) {
-        return;
+
+    if (modal) {
+
+        modal.classList.remove(
+            "active"
+        );
+
     }
+
+}
+
+
+/* =========================================================
+   SELECCIONAR ROSCO
+   ========================================================= */
+
+function selectRosco(
+    team
+) {
+
+    /*
+     * Mantiene compatibilidad con
+     * los botones existentes del HTML,
+     * tanto si mandan team1/team2/team3
+     * como si mandan 1/2/3.
+     */
+
+    if (
+        team === 1 ||
+        team === "1"
+    ) {
+
+        team = "team1";
+
+    }
+
+
+    if (
+        team === 2 ||
+        team === "2"
+    ) {
+
+        team = "team2";
+
+    }
+
+
+    if (
+        team === 3 ||
+        team === "3"
+    ) {
+
+        team = "team3";
+
+    }
+
+
+    if (
+        !TEAM_DATA[team]
+    ) {
+
+        return;
+
+    }
+
+
+    currentTeam =
+        team;
+
+
+    currentRosco =
+        TEAM_DATA[
+            team
+        ];
+
+
+    currentLetterIndex =
+        rondoState[
+            team
+        ].currentIndex;
+
+
+    updateRondoTabs();
+
+    updateRondoTeamUI();
+
+    renderRosco();
+
+    showCurrentQuestion();
+
+}
+
+
+/* =========================================================
+   TABS
+   ========================================================= */
+
+function updateRondoTabs() {
+
+    document
+        .querySelectorAll(
+            ".rondo-tab"
+        )
+        .forEach(
+            tab => {
+
+                tab.classList.remove(
+                    "active"
+                );
+
+
+                const tabTeam =
+                    tab.dataset.team;
+
+
+                if (
+                    tabTeam ===
+                    currentTeam
+                ) {
+
+                    tab.classList.add(
+                        "active"
+                    );
+
+                }
+
+            }
+        );
+
+}
+
+
+/* =========================================================
+   UI EQUIPO
+   ========================================================= */
+
+function updateRondoTeamUI() {
 
     if (!currentTeam) {
-        name.textContent =
-            "Seleccioná un equipo";
 
         return;
+
     }
 
-    const names = {
-        team1: "Los Originales",
-        team2: "Los Herederos",
-        team3: "Las Históricas"
-    };
 
-    name.textContent =
-        names[currentTeam];
+    const teamName =
+        document.getElementById(
+            "turn-team"
+        );
+
+
+    const score =
+        document.getElementById(
+            "rondo-current-score"
+        );
+
+
+    if (teamName) {
+
+        teamName.textContent =
+            getTeamName(
+                currentTeam
+            );
+
+    }
+
+
+    if (score) {
+
+        score.textContent =
+            rondoState[
+                currentTeam
+            ].hits;
+
+    }
+
+}
+
+
+/* =========================================================
+   MARCADOR ROSCO
+   ========================================================= */
+
+function updateRondoScore() {
+
+    if (!currentTeam) {
+
+        return;
+
+    }
+
+
+    const state =
+        rondoState[
+            currentTeam
+        ];
+
+
+    const score =
+        document.getElementById(
+            "rondo-current-score"
+        );
+
+
+    if (score) {
+
+        score.textContent =
+            state.hits;
+
+    }
+
+}
+
+
+/* =========================================================
+   LETRAS
+   ========================================================= */
+
+function getLetters() {
+
+    if (!currentRosco) {
+
+        return [];
+
+    }
+
+
+    return Object.keys(
+        currentRosco
+    );
+
 }
 
 
@@ -1073,45 +1393,59 @@ function updateRondoTeamInfo() {
    ========================================================= */
 
 function renderRosco() {
+
     const rosco =
         document.getElementById(
             "rosco"
         );
 
+
     if (!rosco || !currentRosco) {
+
         return;
+
     }
 
-    rosco.innerHTML = "";
+
+    rosco.innerHTML =
+        "";
+
 
     const letters =
-        Object.keys(
-            currentRosco
-        );
+        getLetters();
+
 
     const total =
         letters.length;
 
-    const radius = 45;
+
+    const radius =
+        45;
+
 
     letters.forEach(
-        (letter, index) => {
+        (
+            letter,
+            index
+        ) => {
 
             const button =
                 document.createElement(
                     "button"
                 );
 
-            button.type = "button";
 
             button.className =
                 "rosco-letter";
 
+
+            button.id =
+                `letter-${letter}`;
+
+
             button.textContent =
                 letter;
 
-            button.dataset.letter =
-                letter;
 
             const angle =
                 -90 +
@@ -1121,10 +1455,12 @@ function renderRosco() {
                     total
                 );
 
+
             const radians =
                 angle *
                 Math.PI /
                 180;
+
 
             const x =
                 50 +
@@ -1133,6 +1469,7 @@ function renderRosco() {
                     radians
                 );
 
+
             const y =
                 50 +
                 radius *
@@ -1140,74 +1477,26 @@ function renderRosco() {
                     radians
                 );
 
+
             button.style.left =
                 `${x}%`;
+
 
             button.style.top =
                 `${y}%`;
 
-            const state =
-                rondoState[
-                    currentTeam
-                ];
 
-            const item =
-                currentRosco[
-                    letter
-                ];
+            button.addEventListener(
+                "click",
+                function() {
 
-            if (
-                state.answered.includes(
-                    letter
-                )
-            ) {
-
-                if (
-                    item.correct
-                ) {
-
-                    button.classList.add(
-                        "correct"
-                    );
-
-                } else {
-
-                    button.classList.add(
-                        "incorrect"
+                    goToLetter(
+                        index
                     );
 
                 }
+            );
 
-            } else if (
-                state.passed.includes(
-                    letter
-                )
-            ) {
-
-                button.classList.add(
-                    "passed"
-                );
-
-            }
-
-            if (
-                index ===
-                state.currentIndex &&
-                !state.finished
-            ) {
-
-                button.classList.add(
-                    "current"
-                );
-
-            }
-
-            button.onclick =
-                () => {
-                    selectRondoLetter(
-                        letter
-                    );
-                };
 
             rosco.appendChild(
                 button
@@ -1216,286 +1505,353 @@ function renderRosco() {
         }
     );
 
-    renderRondoQuestion();
-    renderRondoScore();
+
+    updateRoscoLetterStyles();
+
 }
 
 
 /* =========================================================
-   PREGUNTA ROSCO
+   IR A LETRA
    ========================================================= */
 
-function renderRondoQuestion() {
-    const question =
-        document.getElementById(
-            "rondo-question"
-        );
-
-    const letter =
-        document.getElementById(
-            "rondo-current-letter"
-        );
-
-    const input =
-        document.getElementById(
-            "rondo-answer"
-        );
-
-    if (
-        !currentTeam ||
-        !currentRosco
-    ) {
-
-        if (question) {
-            question.textContent =
-                "Seleccioná un equipo para comenzar.";
-        }
-
-        if (letter) {
-            letter.textContent =
-                "";
-        }
-
-        if (input) {
-            input.value = "";
-            input.disabled = true;
-        }
-
-        return;
-    }
-
-    const state =
-        rondoState[
-            currentTeam
-        ];
-
-    if (
-        state.finished
-    ) {
-
-        if (question) {
-            question.textContent =
-                "Rosco finalizado";
-        }
-
-        if (letter) {
-            letter.textContent =
-                "✓";
-        }
-
-        if (input) {
-            input.value = "";
-            input.disabled = true;
-        }
-
-        return;
-    }
-
-    const letters =
-        Object.keys(
-            currentRosco
-        );
-
-    const currentLetter =
-        letters[
-            state.currentIndex
-        ];
-
-    const item =
-        currentRosco[
-            currentLetter
-        ];
-
-    if (letter) {
-        letter.textContent =
-            currentLetter;
-    }
-
-    if (question) {
-        question.textContent =
-            item.clue;
-    }
-
-    if (input) {
-        input.disabled = false;
-    }
-}
-
-
-/* =========================================================
-   SCORE ROSCO
-   ========================================================= */
-
-function renderRondoScore() {
-    const state =
-        currentTeam
-            ? rondoState[currentTeam]
-            : null;
-
-    const hits =
-        document.getElementById(
-            "rondo-hits"
-        );
-
-    const misses =
-        document.getElementById(
-            "rondo-misses"
-        );
-
-    if (!state) {
-        return;
-    }
-
-    if (hits) {
-        hits.textContent =
-            state.hits;
-    }
-
-    if (misses) {
-        misses.textContent =
-            state.misses;
-    }
-}
-
-
-/* =========================================================
-   SELECCIONAR LETRA
-   ========================================================= */
-
-function selectRondoLetter(
-    letter
+function goToLetter(
+    index
 ) {
 
-    if (
-        !currentTeam ||
-        !currentRosco
-    ) {
-        return;
-    }
-
-    const state =
-        rondoState[
-            currentTeam
-        ];
-
-    if (
-        state.finished
-    ) {
-        return;
-    }
-
     const letters =
-        Object.keys(
-            currentRosco
-        );
+        getLetters();
 
-    const index =
-        letters.indexOf(
-            letter
-        );
 
     if (
-        index === -1
+        index < 0 ||
+        index >=
+        letters.length
     ) {
+
         return;
+
     }
 
-    if (
-        state.answered.includes(
-            letter
-        )
-    ) {
-        return;
-    }
-
-    state.currentIndex =
-        index;
 
     currentLetterIndex =
         index;
 
-    renderRosco();
-}
+
+    if (currentTeam) {
+
+        rondoState[
+            currentTeam
+        ].currentIndex =
+            index;
+
+    }
 
 
-/* =========================================================
-   NORMALIZAR RESPUESTA
-   ========================================================= */
+    showCurrentQuestion();
 
-function normalizeAnswer(
-    value
-) {
-
-    return String(
-        value || ""
-    )
-        .normalize("NFD")
-        .replace(
-            /[\u0300-\u036f]/g,
-            ""
-        )
-        .toUpperCase()
-        .replace(
-            /[¿?¡!.,;:'"()\-_/]/g,
-            " "
-        )
-        .replace(
-            /\s+/g,
-            " "
-        )
-        .trim();
+    updateRoscoLetterStyles();
 
 }
 
 
 /* =========================================================
-   COMPROBAR RESPUESTA
+   PREGUNTA
    ========================================================= */
 
-function answerMatches(
-    userAnswer,
-    correctAnswer
-) {
-
-    const user =
-        normalizeAnswer(
-            userAnswer
-        );
-
-    const correct =
-        normalizeAnswer(
-            correctAnswer
-        );
+function showCurrentQuestion() {
 
     if (
-        !user ||
-        !correct
+        !currentRosco ||
+        !currentTeam
     ) {
-        return false;
+
+        return;
+
     }
+
+
+    const letters =
+        getLetters();
+
+
+    if (!letters.length) {
+
+        return;
+
+    }
+
+
+    const letter =
+        letters[
+            currentLetterIndex
+        ];
+
+
+    const item =
+        currentRosco[
+            letter
+        ];
+
+
+    if (!item) {
+
+        return;
+
+    }
+
+
+    const letterDisplay =
+        document.getElementById(
+            "question-letter"
+        );
+
+
+    const typeDisplay =
+        document.getElementById(
+            "question-type"
+        );
+
+
+    const questionDisplay =
+        document.getElementById(
+            "question-text"
+        );
+
+
+    const phrase =
+        item.type === "contains"
+            ? `CONTIENE LA ${letter}`
+            : `EMPIEZA CON ${letter}`;
+
+
+    if (letterDisplay) {
+
+        letterDisplay.textContent =
+            letter;
+
+    }
+
+
+    if (typeDisplay) {
+
+        typeDisplay.textContent =
+            phrase;
+
+    }
+
+
+    if (questionDisplay) {
+
+        questionDisplay.textContent =
+            item.clue;
+
+    }
+
+
+    updateRoscoLetterStyles();
+
+}
+
+
+/* =========================================================
+   ESTADOS VISUALES
+   ========================================================= */
+
+function updateRoscoLetterStyles() {
 
     if (
-        user === correct
+        !currentRosco ||
+        !currentTeam
     ) {
-        return true;
+
+        return;
+
     }
 
-    return (
-        user.replace(
-            /\s/g,
-            ""
-        ) ===
-        correct.replace(
-            /\s/g,
-            ""
+
+    const state =
+        rondoState[
+            currentTeam
+        ];
+
+
+    const letters =
+        getLetters();
+
+
+    letters.forEach(
+        letter => {
+
+            const button =
+                document.getElementById(
+                    `letter-${letter}`
+                );
+
+
+            if (!button) {
+
+                return;
+
+            }
+
+
+            button.classList.remove(
+                "correct",
+                "incorrect",
+                "wrong",
+                "passed",
+                "pass",
+                "current"
+            );
+
+        }
+    );
+
+
+    const currentLetter =
+        letters[
+            currentLetterIndex
+        ];
+
+
+    const currentButton =
+        document.getElementById(
+            `letter-${currentLetter}`
+        );
+
+
+    if (
+        currentButton &&
+        !state.answered.includes(
+            currentLetter
         )
+    ) {
+
+        currentButton.classList.add(
+            "current"
+        );
+
+    }
+
+
+    state.answered.forEach(
+        letter => {
+
+            const button =
+                document.getElementById(
+                    `letter-${letter}`
+                );
+
+
+            if (!button) {
+
+                return;
+
+            }
+
+
+            const item =
+                currentRosco[
+                    letter
+                ];
+
+
+            if (
+                item &&
+                item.correct
+            ) {
+
+                button.classList.add(
+                    "correct"
+                );
+
+            } else {
+
+                button.classList.add(
+                    "wrong"
+                );
+
+                button.classList.add(
+                    "incorrect"
+                );
+
+            }
+
+        }
+    );
+
+
+    state.passed.forEach(
+        letter => {
+
+            const button =
+                document.getElementById(
+                    `letter-${letter}`
+                );
+
+
+            if (button) {
+
+                button.classList.add(
+                    "pass"
+                );
+
+                button.classList.add(
+                    "passed"
+                );
+
+            }
+
+        }
     );
 
 }
 
 
 /* =========================================================
-   RESPONDER ROSCO
+   BOTONES DE RESPUESTA
+   ========================================================= */
+
+function answerQuestion(
+    result
+) {
+
+    if (
+        result === "correct"
+    ) {
+
+        answerRondo(true);
+
+        return;
+
+    }
+
+
+    if (
+        result === "wrong"
+    ) {
+
+        answerRondo(false);
+
+        return;
+
+    }
+
+
+    if (
+        result === "pass"
+    ) {
+
+        passRondo();
+
+    }
+
+}
+
+
+/* =========================================================
+   CORRECTO / INCORRECTO
    ========================================================= */
 
 function answerRondo(
@@ -1503,75 +1859,67 @@ function answerRondo(
 ) {
 
     if (
-        !currentTeam ||
-        !currentRosco
+        !currentRosco ||
+        !currentTeam
     ) {
+
         return;
+
     }
+
 
     const state =
         rondoState[
             currentTeam
         ];
 
-    if (
-        state.finished
-    ) {
-        return;
-    }
 
     const letters =
-        Object.keys(
-            currentRosco
-        );
+        getLetters();
+
 
     const letter =
         letters[
-            state.currentIndex
+            currentLetterIndex
         ];
+
 
     const item =
         currentRosco[
             letter
         ];
 
-    if (!item) {
-        return;
-    }
 
     if (
+        !item ||
         state.answered.includes(
             letter
         )
     ) {
+
         return;
+
     }
+
 
     state.passed =
         state.passed.filter(
-            value =>
-                value !==
-                letter
+            l => l !== letter
         );
+
 
     item.correct =
         isCorrect;
+
 
     state.answered.push(
         letter
     );
 
-    if (
-        isCorrect
-    ) {
+
+    if (isCorrect) {
 
         state.hits++;
-
-        addPoints(
-            currentTeam,
-            "rondo",
-            1
-        );
 
     } else {
 
@@ -1579,124 +1927,56 @@ function answerRondo(
 
     }
 
-    moveToNextRondoLetter();
+
+    updateRondoScore();
+
+    moveToNextLetter();
 
 }
 
 
 /* =========================================================
-   RESPONDER DESDE INPUT
-   ========================================================= */
-
-function answerRondoFromInput() {
-
-    const input =
-        document.getElementById(
-            "rondo-answer"
-        );
-
-    if (!input) {
-        return;
-    }
-
-    const value =
-        input.value.trim();
-
-    if (!value) {
-        return;
-    }
-
-    if (
-        !currentTeam ||
-        !currentRosco
-    ) {
-        return;
-    }
-
-    const state =
-        rondoState[
-            currentTeam
-        ];
-
-    const letters =
-        Object.keys(
-            currentRosco
-        );
-
-    const letter =
-        letters[
-            state.currentIndex
-        ];
-
-    const item =
-        currentRosco[
-            letter
-        ];
-
-    if (!item) {
-        return;
-    }
-
-    const correct =
-        answerMatches(
-            value,
-            item.answer
-        );
-
-    answerRondo(
-        correct
-    );
-
-    input.value = "";
-
-}
-
-
-/* =========================================================
-   PASAR
+   PASAPALABRA
    ========================================================= */
 
 function passRondo() {
 
     if (
-        !currentTeam ||
-        !currentRosco
+        !currentRosco ||
+        !currentTeam
     ) {
+
         return;
+
     }
+
 
     const state =
         rondoState[
             currentTeam
         ];
 
-    if (
-        state.finished
-    ) {
-        return;
-    }
 
     const letters =
-        Object.keys(
-            currentRosco
-        );
+        getLetters();
+
 
     const letter =
         letters[
-            state.currentIndex
+            currentLetterIndex
         ];
 
-    if (!letter) {
-        return;
-    }
 
     if (
         state.answered.includes(
             letter
         )
     ) {
+
         return;
+
     }
+
 
     if (
         !state.passed.includes(
@@ -1710,7 +1990,8 @@ function passRondo() {
 
     }
 
-    moveToNextRondoLetter();
+
+    moveToNextLetter();
 
 }
 
@@ -1719,1123 +2000,509 @@ function passRondo() {
    SIGUIENTE LETRA
    ========================================================= */
 
-function moveToNextRondoLetter() {
-
-    if (
-        !currentTeam ||
-        !currentRosco
-    ) {
-        return;
-    }
+function moveToNextLetter() {
 
     const state =
         rondoState[
             currentTeam
         ];
 
+
     const letters =
-        Object.keys(
-            currentRosco
-        );
+        getLetters();
+
 
     let nextIndex =
-        state.currentIndex +
-        1;
+        currentLetterIndex + 1;
 
-    if (
-        nextIndex >=
+
+    while (
+        nextIndex <
         letters.length
     ) {
 
-        nextIndex = 0;
+        const nextLetter =
+            letters[
+                nextIndex
+            ];
 
-    }
-
-    let attempts = 0;
-
-    while (
-        state.answered.includes(
-            letters[nextIndex]
-        ) &&
-        attempts <
-            letters.length
-    ) {
-
-        nextIndex++;
 
         if (
-            nextIndex >=
-            letters.length
+            !state.answered.includes(
+                nextLetter
+            ) &&
+            !state.passed.includes(
+                nextLetter
+            )
         ) {
 
-            nextIndex = 0;
+            currentLetterIndex =
+                nextIndex;
+
+
+            state.currentIndex =
+                nextIndex;
+
+
+            showCurrentQuestion();
+
+            return;
 
         }
 
-        attempts++;
+
+        nextIndex++;
 
     }
 
-    if (
-        attempts >=
+
+    nextIndex = 0;
+
+
+    while (
+        nextIndex <
         letters.length
     ) {
 
-        finishRondo();
+        const nextLetter =
+            letters[
+                nextIndex
+            ];
 
-        return;
+
+        if (
+            !state.answered.includes(
+                nextLetter
+            ) &&
+            state.passed.includes(
+                nextLetter
+            )
+        ) {
+
+            currentLetterIndex =
+                nextIndex;
+
+
+            state.currentIndex =
+                nextIndex;
+
+
+            showCurrentQuestion();
+
+            return;
+
+        }
+
+
+        nextIndex++;
 
     }
 
-    state.currentIndex =
-        nextIndex;
 
-    currentLetterIndex =
-        nextIndex;
-
-    renderRosco();
+    finishRondo();
 
 }
 
 
 /* =========================================================
-   FINALIZAR ROSCO
+   REINICIAR PASAPALABRA
+   ========================================================= */
+
+function resetRondo() {
+
+    const confirmation =
+        confirm(
+            "¿Seguro que querés reiniciar los tres roscos?"
+        );
+
+
+    if (!confirmation) {
+
+        return;
+
+    }
+
+
+    rondoState.team1 =
+        createInitialRondoState();
+
+
+    rondoState.team2 =
+        createInitialRondoState();
+
+
+    rondoState.team3 =
+        createInitialRondoState();
+
+
+    [
+        "team1",
+        "team2",
+        "team3"
+    ].forEach(
+        team => {
+
+            scores[
+                team
+            ].rondo = 0;
+
+
+            Object.keys(
+                TEAM_DATA[
+                    team
+                ]
+            ).forEach(
+                letter => {
+
+                    TEAM_DATA[
+                        team
+                    ][
+                        letter
+                    ].correct =
+                        undefined;
+
+                }
+            );
+
+        }
+    );
+
+
+    saveScores();
+
+    updateScoreboard();
+
+
+    currentTeam =
+        "team1";
+
+
+    currentRosco =
+        TEAM_DATA.team1;
+
+
+    currentLetterIndex =
+        0;
+
+
+    updateRondoTabs();
+
+    updateRondoTeamUI();
+
+    renderRosco();
+
+    showCurrentQuestion();
+
+}
+
+
+/* =========================================================
+   FINALIZAR PASAPALABRA
    ========================================================= */
 
 function finishRondo() {
 
-    if (
-        !currentTeam
-    ) {
+    if (!currentTeam) {
+
         return;
+
     }
+
 
     const state =
         rondoState[
             currentTeam
         ];
 
+
+    if (
+        state.finished
+    ) {
+
+        return;
+
+    }
+
+
     state.finished =
         true;
+
+
+    const hits =
+        state.hits;
+
 
     scores[
         currentTeam
     ].rondo =
-        state.hits;
+        hits;
+
 
     saveScores();
+
     updateScoreboard();
+
+
+    const letterDisplay =
+        document.getElementById(
+            "question-letter"
+        );
+
+
+    const typeDisplay =
+        document.getElementById(
+            "question-type"
+        );
+
+
+    const questionDisplay =
+        document.getElementById(
+            "question-text"
+        );
+
+
+    if (letterDisplay) {
+
+        letterDisplay.textContent =
+            "✓";
+
+    }
+
+
+    if (typeDisplay) {
+
+        typeDisplay.textContent =
+            "PASAPALABRA FINALIZADO";
+
+    }
+
+
+    if (questionDisplay) {
+
+        questionDisplay.textContent =
+            `${getTeamName(
+                currentTeam
+            )} terminó con ${hits} aciertos.`;
+
+    }
+
+
     renderRosco();
 
 }
 
 
 /* =========================================================
-   REINICIAR ROSCO ACTUAL
+   NOMBRE EQUIPO
    ========================================================= */
 
-function restartCurrentRondo() {
+function getTeamName(
+    team
+) {
 
     if (
-        !currentTeam
+        team === "team1"
     ) {
-        return;
+
+        return "🔴 Los Originales";
+
     }
 
-    rondoState[
-        currentTeam
-    ] =
-        createInitialRondoState();
 
-    scores[
-        currentTeam
-    ].rondo = 0;
+    if (
+        team === "team2"
+    ) {
 
-    saveScores();
-    updateScoreboard();
+        return "🔵 Los Herederos";
 
-    currentLetterIndex = 0;
+    }
 
-    renderRosco();
+
+    if (
+        team === "team3"
+    ) {
+
+        return "🟢 Las Históricas";
+
+    }
+
+
+    return team;
 
 }
 
 
 /* =========================================================
-   TECLA ENTER ROSCO
+   JUEGO DE CANCIONES
    ========================================================= */
 
-document.addEventListener(
-    "keydown",
-    event => {
-
-        if (
-            event.key !==
-            "Enter"
-        ) {
-            return;
-        }
-
-        const input =
-            document.getElementById(
-                "rondo-answer"
-            );
-
-        if (
-            input &&
-            document.activeElement ===
-                input &&
-            !input.disabled
-        ) {
-
-            event.preventDefault();
-
-            answerRondoFromInput();
-
-        }
-
-    }
-);
-
-
 /* =========================================================
-   INICIALIZACIÓN
-   ========================================================= */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    () => {
-
-        loadScores();
-        updateScoreboard();
-
-    }
-);
-
-
-/* =========================================================
-   SONGS
+   DATOS DE LAS 49 CANCIONES
    ========================================================= */
 
 const SONGS_DATA = [
+
+    /* =========================
+       80s
+       ========================= */
+
     {
         title: "De música ligera",
         artists: ["Soda Stereo"],
         decade: "80s",
-        youtubeId: "T_FkEw27XJ0"
+        videoId: ""
     },
+
     {
         title: "La incondicional",
         artists: ["Luis Miguel"],
         decade: "80s",
-        youtubeId: "by4I_10HbX4"
+        videoId: ""
     },
+
     {
         title: "Me va, me va",
         artists: ["Julio Iglesias"],
         decade: "80s",
-        youtubeId: "CCht0AyKxNY"
+        videoId: ""
     },
+
     {
         title: "Mil horas",
         artists: ["Los Abuelos de la Nada"],
         decade: "80s",
-        youtubeId: "CUdw-urZ3zg"
+        videoId: ""
     },
+
     {
         title: "Devuélveme a mi chica",
         artists: ["Hombres G"],
         decade: "80s",
-        youtubeId: "U72tra23BF0"
+        videoId: ""
     },
+
     {
         title: "Billie Jean",
         artists: ["Michael Jackson"],
         decade: "80s",
-        youtubeId: "Zi_XLOBDo_Y"
+        videoId: ""
     },
+
     {
         title: "Never Gonna Give You Up",
         artists: ["Rick Astley"],
         decade: "80s",
-        youtubeId: "dQw4w9WgXcQ"
+        videoId: ""
     },
+
     {
         title: "I Wanna Dance with Somebody",
         artists: ["Whitney Houston"],
         decade: "80s",
-        youtubeId: "eH3giaIzONA"
+        videoId: ""
     },
+
     {
         title: "Girls Just Want to Have Fun",
         artists: ["Cyndi Lauper"],
         decade: "80s",
-        youtubeId: "PIb6AZdTr-A"
+        videoId: ""
     },
+
     {
         title: "Livin' on a Prayer",
         artists: ["Bon Jovi"],
         decade: "80s",
-        youtubeId: "lDK9QqIzhwk"
+        videoId: ""
     },
+
+
+    /* =========================
+       90s
+       ========================= */
 
     {
         title: "Rayando el sol",
         artists: ["Maná"],
         decade: "90s",
-        youtubeId: "EDkQB9b3cBw"
+        videoId: ""
     },
+
     {
         title: "Piel Morena",
         artists: ["Thalía"],
         decade: "90s",
-        youtubeId: "EMAjgSJr4Jg"
+        videoId: ""
     },
+
     {
         title: "Livin' la Vida Loca",
         artists: ["Ricky Martin"],
         decade: "90s",
-        youtubeId: "p47fEXGabaY"
+        videoId: ""
     },
+
     {
         title: "Vuelve",
         artists: ["Ricky Martin"],
         decade: "90s",
-        youtubeId: "p7QYo-9SlP0"
+        videoId: ""
     },
+
     {
         title: "Flaca",
         artists: ["Andrés Calamaro"],
         decade: "90s",
-        youtubeId: "UCF9oHXhDMU"
+        videoId: ""
     },
+
     {
         title: "Wannabe",
         artists: ["Spice Girls"],
         decade: "90s",
-        youtubeId: "gJLIiF15wjQ"
+        videoId: ""
     },
+
     {
         title: "...Baby One More Time",
         artists: ["Britney Spears"],
         decade: "90s",
-        youtubeId: "C-u5WLJ9Yk4"
+        videoId: ""
     },
+
     {
         title: "I Want It That Way",
         artists: ["Backstreet Boys"],
         decade: "90s",
-        youtubeId: "4fndeDfaWCg"
+        videoId: ""
     },
+
     {
         title: "My Heart Will Go On",
         artists: ["Celine Dion"],
         decade: "90s",
-        youtubeId: "9bFHsd3o1w0"
+        videoId: ""
     },
+
     {
         title: "Smells Like Teen Spirit",
         artists: ["Nirvana"],
         decade: "90s",
-        youtubeId: "hTWKbfoikeg"
+        videoId: ""
     },
+
+
+    /* =========================
+       2000s
+       ========================= */
 
     {
         title: "La Tortura",
         artists: ["Shakira", "Alejandro Sanz"],
         decade: "2000s",
-        youtubeId: "Dsp_8Lm1eSk"
-    },
-    {
-        title: "Me enamora",
-        artists: ["Juanes"],
-        decade: "2000s",
-        youtubeId: "voxgN3Dhjuo"
-    },
-    {
-        title: "Ave María",
-        artists: ["David Bisbal"],
-        decade: "2000s",
-        youtubeId: "gra-sIV1n4U"
-    },
-    {
-        title: "Colgando en tus manos",
-        artists: ["Carlos Baute", "Marta Sánchez"],
-        decade: "2000s",
-        youtubeId: "qExd-3oCTl4"
-    },
-    {
-        title: "Rosas",
-        artists: ["La Oreja de Van Gogh"],
-        decade: "2000s",
-        youtubeId: "nYnLVWXmRm8"
-    },
-    {
-        title: "Toxic",
-        artists: ["Britney Spears"],
-        decade: "2000s",
-        youtubeId: "LOZuxwVk7TU"
-    },
-    {
-        title: "Crazy in Love",
-        artists: ["Beyoncé", "Jay-Z"],
-        decade: "2000s",
-        youtubeId: "ViwtNLUqkMY"
-    },
-    {
-        title: "Umbrella",
-        artists: ["Rihanna"],
-        decade: "2000s",
-        youtubeId: "CvBfHwUxHIk"
-    },
-    {
-        title: "Poker Face",
-        artists: ["Lady Gaga"],
-        decade: "2000s",
-        youtubeId: "bESGLojNYSo"
+        videoId: ""
     },
 
-    {
-        title: "Despacito",
-        artists: ["Luis Fonsi", "Daddy Yankee"],
-        decade: "2010s",
-        youtubeId: "kJQP7kiw5Fk"
-    },
-    {
-        title: "Bailando",
-        artists: ["Enrique Iglesias"],
-        decade: "2010s",
-        youtubeId: "NUsoVlDFqZg"
-    },
-    {
-        title: "Danza Kuduro",
-        artists: ["Don Omar", "Lucenzo"],
-        decade: "2010s",
-        youtubeId: "7zp1TbLFPp8"
-    },
-    {
-        title: "Vivir Mi Vida",
-        artists: ["Marc Anthony"],
-        decade: "2010s",
-        youtubeId: "YXnjy5YlDwk"
-    },
-    {
-        title: "Échame la culpa",
-        artists: ["Luis Fonsi", "Demi Lovato"],
-        decade: "2010s",
-        youtubeId: "TyHvyGVs42U"
-    },
-    {
-        title: "Uptown Funk",
-        artists: ["Mark Ronson", "Bruno Mars"],
-        decade: "2010s",
-        youtubeId: "OPf0YbXqDm0"
-    },
-    {
-        title: "Shape of You",
-        artists: ["Ed Sheeran"],
-        decade: "2010s",
-        youtubeId: "JGwWNGJdvx8"
-    },
-    {
-        title: "Rolling in the Deep",
-        artists: ["Adele"],
-        decade: "2010s",
-        youtubeId: "rYEDA3JcQqw"
-    },
-    {
-        title: "Havana",
-        artists: ["Camila Cabello"],
-        decade: "2010s",
-        youtubeId: "HCjNJDNzw8Y"
-    },
-    {
-        title: "Sorry",
-        artists: ["Justin Bieber"],
-        decade: "2010s",
-        youtubeId: "fRh_vgS2dFE"
-    },
-
-    {
-        title: "Todo de Ti",
-        artists: ["Rauw Alejandro"],
-        decade: "2020s",
-        youtubeId: "CFPLIaMpGrY"
-    },
-    {
-        title: "Hawái",
-        artists: ["Maluma"],
-        decade: "2020s",
-        youtubeId: "pK06OiUFWXg"
-    },
-    {
-        title: "Tusa",
-        artists: ["Karol G", "Nicki Minaj"],
-        decade: "2020s",
-        youtubeId: "tbneQDc2H3I"
-    },
-    {
-        title: "La Bachata",
-        artists: ["Manuel Turizo"],
-        decade: "2020s",
-        youtubeId: "TqA8D9nJ9xI"
-    },
-    {
-        title: "SUPERESTRELLA",
-        artists: ["Aitana"],
-        decade: "2020s",
-        youtubeId: "vz_vU53JvvI"
-    },
-    {
-        title: "Die With A Smile",
-        artists: ["Lady Gaga", "Bruno Mars"],
-        decade: "2020s",
-        youtubeId: "kPa7bsKwL-c"
-    },
-    {
-        title: "As It Was",
-        artists: ["Harry Styles"],
-        decade: "2020s",
-        youtubeId: "H5v3kku4y6Q"
-    },
-    {
-        title: "Flowers",
-        artists: ["Miley Cyrus"],
-        decade: "2020s",
-        youtubeId: "G7KNmW9a75Y"
-    },
-    {
-        title: "good 4 u",
-        artists: ["Olivia Rodrigo"],
-        decade: "2020s",
-        youtubeId: "gNi_6U5Pm_o"
-    },
-    {
-        title: "Espresso",
-        artists: ["Sabrina Carpenter"],
-        decade: "2020s",
-        youtubeId: "eVli-tstM5E"
-    }
-];
-
-
-/* =========================================================
-   ESTADO SONGS
-   ========================================================= */
-
-let songsPlayer = null;
-let songsPlayerReady = false;
-let songsProgressTimer = null;
-let songsCurrentIndex = 0;
-let songsCurrentSong = null;
-let songsUsedIndexes = [];
-let songsAnswers = [];
-let songsGameOpen = false;
-
-
-/* =========================================================
-   NORMALIZACIÓN SONGS
-   ========================================================= */
-
-function normalizeSongAnswer(value) {
-
-    let result =
-        String(value || "")
-            .normalize("NFD")
-            .replace(
-                /[\u0300-\u036f]/g,
-                ""
-            )
-            .toLowerCase();
-
-    result =
-        result
-            .replace(
-                /[¿?¡!.,;:'"()\-_/]/g,
-                " "
-            )
-            .replace(
-                /\s+/g,
-                " "
-            )
-            .trim();
-
-    result =
-        result
-            .replace(
-                /^(el|la|los|las|un|una)\s+/i,
-                ""
-            )
-            .replace(
-                /^(de|del|al)\s+/i,
-                ""
-            );
-
-    result =
-        result
-            .replace(
-                /\s+y\s+/g,
-                " & "
-            )
-            .replace(
-                /\s+and\s+/g,
-                " & "
-            );
-
-    result =
-        result
-            .replace(
-                /\s*&\s*/g,
-                " & "
-            )
-            .replace(
-                /\s+/g,
-                " "
-            )
-            .trim();
-
-    return result;
-}
-
-
-function songAnswerMatches(
-    userAnswer,
-    correctAnswer
-) {
-
-    const user =
-        normalizeSongAnswer(
-            userAnswer
-        );
-
-    const correct =
-        normalizeSongAnswer(
-            correctAnswer
-        );
-
-    if (
-        !user ||
-        !correct
-    ) {
-        return false;
-    }
-
-    if (
-        user === correct
-    ) {
-        return true;
-    }
-
-    const compactUser =
-        user.replace(
-            /\s/g,
-            ""
-        );
-
-    const compactCorrect =
-        correct.replace(
-            /\s/g,
-            ""
-        );
-
-    return (
-        compactUser ===
-        compactCorrect
-    );
-
-}
-
-
-/* =========================================================
-   ABRIR SONGS
-   ========================================================= */
-
-function openSongsGame() {
-
-    const mainMenu =
-        document.getElementById(
-            "main-menu"
-        );
-
-    if (mainMenu) {
-        mainMenu.style.display =
-            "none";
-    }
-
-    let modal =
-        document.getElementById(
-            "songs-modal"
-        );
-
-    if (!modal) {
-
-        modal =
-            document.createElement(
-                "div"
-            );
-
-        modal.id =
-            "songs-modal";
-
-        modal.className =
-            "songs-modal";
-
-        modal.innerHTML = `
-
-            <div class="songs-game">
-
-                <div class="songs-header">
-
-                    <div>
-
-                        <h1>
-                            🎵 Adiviná la canción
-                        </h1>
-
-                        <p>
-                            Escuchá desde el segundo 0
-                            y respondé los datos.
-                        </p>
-
-                    </div>
-
-                    <div class="songs-header-actions">
-
-                        <button
-                            class="songs-back"
-                            onclick="closeSongsGame()"
-                            type="button"
-                        >
-                            ← Volver al menú
-                        </button>
-
-                        <button
-                            class="songs-close"
-                            onclick="closeSongsGame()"
-                            type="button"
-                        >
-                            ✕
-                        </button>
-
-                    </div>
-
-                </div>
-
-
-                <div class="songs-layout">
-
-
-                    <aside class="songs-sidebar">
-
-
-                        <div class="songs-team-box">
-
-                            <h3>
-                                Equipo
-                            </h3>
-
-                            <select
-                                id="songs-team-select"
-                            >
-
-                                <option value="team1">
-                                    Los Originales
-                                </option>
-
-                                <option value="team2">
-                                    Los Herederos
-                                </option>
-
-                                <option value="team3">
-                                    Las Históricas
-                                </option>
-
-                            </select>
-
-                        </div>
-
-
-                        <div class="songs-score-box">
-
-                            <h3>
-                                Marcador
-                            </h3>
-
-                            <div
-                                id="songs-scoreboard"
-                            ></div>
-
-                        </div>
-
-
-                    </aside>
-
-
-                    <main class="songs-main">
-
-
-                        <div class="songs-song-number">
-
-                            <span
-                                id="songs-number"
-                            >
-                                Canción 1 de 49
-                            </span>
-
-                        </div>
-
-
-                        <div class="songs-player-card">
-
-
-                            <div class="songs-player-icon">
-                                🎵
-                            </div>
-
-
-                            <div class="songs-player-info">
-
-                                <strong>
-                                    Reproductor
-                                </strong>
-
-                                <span
-                                    id="songs-status"
-                                >
-                                    Listo para reproducir
-                                </span>
-
-                            </div>
-
-
-                            <div class="songs-progress">
-
-                                <div
-                                    id="songs-progress-bar"
-                                    class="songs-progress-bar"
-                                ></div>
-
-                            </div>
-
-
-                            <div class="songs-time">
-
-                                <span
-                                    id="songs-current-time"
-                                >
-                                    0:00
-                                </span>
-
-                                <span
-                                    id="songs-duration"
-                                >
-                                    0:00
-                                </span>
-
-                            </div>
-
-
-                            <div class="songs-controls">
-
-
-                                <button
-                                    type="button"
-                                    onclick="songsPlay()"
-                                >
-                                    ▶ Reproducir
-                                </button>
-
-
-                                <button
-                                    type="button"
-                                    onclick="songsPause()"
-                                >
-                                    ⏸ Pausar
-                                </button>
-
-
-                                <button
-                                    type="button"
-                                    onclick="songsContinue()"
-                                >
-                                    ▶ Continuar
-                                </button>
-
-
-                                <button
-                                    type="button"
-                                    onclick="songsRestart()"
-                                >
-                                    ↻ Desde 0
-                                </button>
-
-
-                            </div>
-
-
-                        </div>
-
-
-                        <div
-                            id="songs-youtube-container"
-                            class="songs-youtube-hidden"
-                        ></div>
-
-
-                        <div class="songs-fields">
-
-
-                            <div class="songs-field">
-
-                                <label>
-                                    Década
-                                </label>
-
-                                <div
-                                    class="songs-answer-row"
-                                >
-
-                                    <input
-                                        id="songs-decade-answer"
-                                        type="text"
-                                        placeholder="Ej: 80s"
-                                    />
-
-                                    <button
-                                        type="button"
-                                        onclick="checkSongAnswer('decade')"
-                                    >
-                                        Confirmar
-                                    </button>
-
-                                </div>
-
-                                <div
-                                    id="songs-decade-feedback"
-                                    class="songs-field-feedback"
-                                ></div>
-
-                            </div>
-
-
-                            <div
-                                id="songs-artists-fields"
-                                class="songs-field"
-                            >
-
-                                <label>
-                                    Artista/s
-                                </label>
-
-                            </div>
-
-
-                            <div class="songs-field">
-
-                                <label>
-                                    Título
-                                </label>
-
-                                <div
-                                    class="songs-answer-row"
-                                >
-
-                                    <input
-                                        id="songs-title-answer"
-                                        type="text"
-                                        placeholder="Nombre de la canción"
-                                    />
-
-                                    <button
-                                        type="button"
-                                        onclick="checkSongAnswer('title')"
-                                    >
-                                        Confirmar
-                                    </button>
-
-                                </div>
-
-                                <div
-                                    id="songs-title-feedback"
-                                    class="songs-field-feedback"
-                                ></div>
-
-                            </div>
-
-
-                        </div>
-
-
-                        <div class="songs-actions">
-
-
-                            <button
-                                type="button"
-                                class="songs-next-button"
-                                onclick="nextSong()"
-                            >
-                                Siguiente canción →
-                            </button>
-
-
-                            <button
-                                type="button"
-                                class="songs-reset-button"
-                                onclick="resetSongsGame()"
-                            >
-                                Reiniciar juego
-                            </button>
-
-
-                        </div>
-
-
-                    </main>
-
-
-                </div>
-
-            </div>
-
-        `;
-
-        document.body.appendChild(
-            modal
-        );
-
-    }
-
-
-    modal.style.display =
-        "flex";
-
-    songsGameOpen =
-        true;
-
-    injectSongsStyles();
-
-    loadYouTubeAPI();
-
-    songsCurrentIndex =
-        0;
-
-    songsCurrentSong =
-        null;
-
-    songsUsedIndexes =
-        [];
-
-    songsAnswers =
-        [];
-
-    updateSongsScoreboard();
-
-    nextSong();
-
-}
-
-
-/* =========================================================
-   CERRAR SONGS
-   ========================================================= */
-
-function closeSongsGame() {
-
-    songsGameOpen =
-        false;
-
-
-    if (
-        songsProgressTimer
-    ) {
-
-        clearInterval(
-            songsProgressTimer
-        );
-
-        songsProgressTimer =
-            null;
-
-    }
-
-
-    try {
-
-        if (
-            songsPlayer &&
-            typeof songsPlayer.stopVideo ===
-                "function"
-        ) {
-
-            songsPlayer.stopVideo();
-
-        }
-
-    } catch (error) {
-
-        console.warn(
-            "No se pudo detener el reproductor:",
-            error
-        );
-
-    }
-
-
-    try {
-
-        if (
-            songsPlayer &&
-            typeof songsPlayer.destroy ===
-                "function"
-        ) {
-
-            songsPlayer.destroy();
-
-        }
-
-    } catch (error) {
-
-        console.warn(
-            "No se pudo destruir el reproductor:",
-            error
-        );
-
-    }
-
-
-    songsPlayer =
-        null;
-
-    songsPlayerReady =
-        false;
-
-
-    const modal =
-        document.getElementById(
-            "songs-modal"
-        );
-
-    if (modal) {
-
-        modal.style.display =
-            "none";
-
-    }
-
-
-    const mainMenu =
-        document.getElementById(
-            "main-menu"
-        );
-
-    if (mainMenu) {
-
-        mainMenu.style.display =
-            "flex";
-
-    }
-
-}
     {
         title: "Me enamora",
         artists: ["Juanes"],
@@ -3067,104 +2734,127 @@ let songsGameOpen = false;
 
 
 /* =========================================================
-   NORMALIZAR RESPUESTAS DE CANCIONES
+   NORMALIZACIÓN DE RESPUESTAS
    ========================================================= */
 
 function normalizeSongAnswer(
     value
 ) {
 
-    let result =
-        String(value || "")
-            .normalize("NFD")
-            .replace(
-                /[\u0300-\u036f]/g,
-                ""
-            )
-            .toLowerCase();
+    if (
+        value === null ||
+        value === undefined
+    ) {
+
+        return "";
+
+    }
 
 
-    result =
-        result
-            .replace(
-                /[¿?¡!.,;:'"()\-_/]/g,
-                " "
-            )
-            .replace(
-                /\s+/g,
-                " "
-            )
+    let text =
+        String(value)
+            .toLowerCase()
             .trim();
 
 
     /*
-     * Permite responder sin artículos
-     * iniciales.
+     * Acentos y diacríticos.
      */
 
-    result =
-        result
-            .replace(
-                /^(el|la|los|las|un|una)\s+/i,
-                ""
-            )
-            .replace(
-                /^(de|del|al)\s+/i,
-                ""
-            );
+    text =
+        text.normalize(
+            "NFD"
+        )
+        .replace(
+            /[\u0300-\u036f]/g,
+            ""
+        );
 
 
     /*
-     * Y / & se consideran equivalentes.
+     * Apóstrofes.
      */
 
-    result =
-        result
-            .replace(
-                /\s+y\s+/g,
-                " & "
-            )
-            .replace(
-                /\s+and\s+/g,
-                " & "
-            )
-            .replace(
-                /\s*&\s*/g,
-                " & "
-            )
-            .replace(
-                /\s+/g,
-                " "
-            )
-            .trim();
+    text =
+        text.replace(
+            /['’`´]/g,
+            ""
+        );
 
 
-    return result;
+    /*
+     * & = y
+     */
+
+    text =
+        text.replace(
+            /&/g,
+            " y "
+        );
+
+
+    /*
+     * Puntuación.
+     */
+
+    text =
+        text.replace(
+            /[.,!?¿¡:;()[\]{}"\/\\_-]/g,
+            " "
+        );
+
+
+    /*
+     * Espacios múltiples.
+     */
+
+    text =
+        text.replace(
+            /\s+/g,
+            " "
+        )
+        .trim();
+
+
+    /*
+     * Artículos iniciales.
+     *
+     * También se eliminan:
+     * de / del / al
+     *
+     * para aceptar cosas como:
+     * "Musica Ligera"
+     * por "De Musica Ligera".
+     */
+
+    text =
+        text.replace(
+            /^(el|la|los|las|un|una|unos|unas|de|del|al)\s+/,
+            ""
+        );
+
+
+    return text;
 
 }
 
 
-function songAnswerMatches(
+/* =========================================================
+   COMPARAR RESPUESTAS
+   ========================================================= */
+
+function songAnswersMatch(
     userAnswer,
-    correctAnswer
+    acceptedAnswers
 ) {
 
-    const user =
+    const normalizedUser =
         normalizeSongAnswer(
             userAnswer
         );
 
 
-    const correct =
-        normalizeSongAnswer(
-            correctAnswer
-        );
-
-
-    if (
-        !user ||
-        !correct
-    ) {
+    if (!normalizedUser) {
 
         return false;
 
@@ -3172,61 +2862,473 @@ function songAnswerMatches(
 
 
     if (
-        user === correct
+        !Array.isArray(
+            acceptedAnswers
+        )
     ) {
 
-        return true;
+        acceptedAnswers = [
+            acceptedAnswers
+        ];
 
     }
 
 
-    const compactUser =
-        user.replace(
-            /\s/g,
-            ""
-        );
+    return acceptedAnswers.some(
+        answer => {
+
+            const normalizedAnswer =
+                normalizeSongAnswer(
+                    answer
+                );
 
 
-    const compactCorrect =
-        correct.replace(
-            /\s/g,
-            ""
-        );
+            if (
+                normalizedUser ===
+                normalizedAnswer
+            ) {
+
+                return true;
+
+            }
 
 
-    if (
-        compactUser ===
-        compactCorrect
-    ) {
+            /*
+             * Variaciones razonables.
+             */
 
-        return true;
+            if (
+                normalizedUser
+                    .replace(
+                        /\s+/g,
+                        ""
+                    ) ===
+                normalizedAnswer
+                    .replace(
+                        /\s+/g,
+                        ""
+                    )
+            ) {
 
-    }
+                return true;
+
+            }
 
 
-    return false;
+            return false;
+
+        }
+    );
 
 }
 
 
 /* =========================================================
-   ABRIR JUEGO DE CANCIONES
+   RESPUESTAS ACEPTADAS
+   ========================================================= */
+
+function getSongTitleAnswers(
+    song
+) {
+
+    const title =
+        song.title;
+
+
+    const answers = [
+        title
+    ];
+
+
+    /*
+     * Variaciones conocidas.
+     */
+
+    if (
+        title ===
+        "De música ligera"
+    ) {
+
+        answers.push(
+            "Musica ligera"
+        );
+
+    }
+
+
+    if (
+        title ===
+        "I Wanna Dance with Somebody"
+    ) {
+
+        answers.push(
+            "I Wanna Dance With Somebody Who Loves Me"
+        );
+
+    }
+
+
+    if (
+        title ===
+        "Livin' on a Prayer"
+    ) {
+
+        answers.push(
+            "Living on a Prayer"
+        );
+
+    }
+
+
+    if (
+        title ===
+        "Livin' la Vida Loca"
+    ) {
+
+        answers.push(
+            "Living la Vida Loca"
+        );
+
+    }
+
+
+    if (
+        title ===
+        "...Baby One More Time"
+    ) {
+
+        answers.push(
+            "Baby One More Time"
+        );
+
+    }
+
+
+    if (
+        title ===
+        "good 4 u"
+    ) {
+
+        answers.push(
+            "Good 4 U",
+            "Good for You"
+        );
+
+    }
+
+
+    if (
+        title ===
+        "Die With A Smile"
+    ) {
+
+        answers.push(
+            "Die With a Smile"
+        );
+
+    }
+
+
+    return answers;
+
+}
+
+
+/* =========================================================
+   DÉCADAS ACEPTADAS
+   ========================================================= */
+
+function getSongDecadeAnswers(
+    decade
+) {
+
+    if (
+        decade === "80s"
+    ) {
+
+        return [
+            "80",
+            "80s",
+            "1980",
+            "1980s",
+            "años 80",
+            "anos 80",
+            "decada de los 80",
+            "década de los 80"
+        ];
+
+    }
+
+
+    if (
+        decade === "90s"
+    ) {
+
+        return [
+            "90",
+            "90s",
+            "1990",
+            "1990s",
+            "años 90",
+            "anos 90",
+            "decada de los 90",
+            "década de los 90"
+        ];
+
+    }
+
+
+    if (
+        decade === "2000s"
+    ) {
+
+        return [
+            "2000",
+            "2000s",
+            "años 2000",
+            "anos 2000",
+            "decada de los 2000",
+            "década de los 2000"
+        ];
+
+    }
+
+
+    if (
+        decade === "2010s"
+    ) {
+
+        return [
+            "2010",
+            "2010s",
+            "años 2010",
+            "anos 2010",
+            "decada de los 2010",
+            "década de los 2010"
+        ];
+
+    }
+
+
+    if (
+        decade === "2020s"
+    ) {
+
+        return [
+            "2020",
+            "2020s",
+            "años 2020",
+            "anos 2020",
+            "decada de los 2020",
+            "década de los 2020"
+        ];
+
+    }
+
+
+    return [
+        decade
+    ];
+
+}
+
+
+/* =========================================================
+   OBTENER CANCIÓN ALEATORIA SIN REPETIR
+   ========================================================= */
+
+function getRandomSong() {
+
+    if (
+        songsUsedIndexes.length >=
+        SONGS_DATA.length
+    ) {
+
+        songsUsedIndexes = [];
+
+    }
+
+
+    const availableIndexes =
+        SONGS_DATA
+            .map(
+                (
+                    song,
+                    index
+                ) => index
+            )
+            .filter(
+                index =>
+                    !songsUsedIndexes.includes(
+                        index
+                    )
+            );
+
+
+    const randomPosition =
+        Math.floor(
+            Math.random() *
+            availableIndexes.length
+        );
+
+
+    const selectedIndex =
+        availableIndexes[
+            randomPosition
+        ];
+
+
+    songsUsedIndexes.push(
+        selectedIndex
+    );
+
+
+    return {
+        song:
+            SONGS_DATA[
+                selectedIndex
+            ],
+        index:
+            selectedIndex
+    };
+
+}
+
+
+/* =========================================================
+   NUEVO JUEGO
+   ========================================================= */
+
+function startNewSongsGame() {
+
+    songsUsedIndexes = [];
+
+    songsCurrentIndex = 0;
+
+    songsCurrentSong = null;
+
+    songsAnswers = [];
+
+    songsGameOpen = true;
+
+
+    loadNextSong();
+
+}
+
+
+/* =========================================================
+   CARGAR NUEVA CANCIÓN
+   ========================================================= */
+
+function loadNextSong() {
+
+    const selected =
+        getRandomSong();
+
+
+    songsCurrentSong =
+        selected.song;
+
+
+    songsCurrentIndex =
+        selected.index;
+
+
+    songsAnswers = [];
+
+
+    /*
+     * Un dato por cada respuesta:
+     *
+     * década
+     * artista 1
+     * artista 2...
+     * canción
+     */
+
+    songsAnswers.push({
+        type: "decade",
+        label: "Década",
+        accepted:
+            getSongDecadeAnswers(
+                songsCurrentSong.decade
+            ),
+        locked: false,
+        awarded: false
+    });
+
+
+    songsCurrentSong.artists.forEach(
+        (
+            artist,
+            index
+        ) => {
+
+            songsAnswers.push({
+
+                type:
+                    "artist",
+
+                artistIndex:
+                    index,
+
+                label:
+                    songsCurrentSong.artists.length >
+                    1
+                        ? `Artista ${index + 1}`
+                        : "Artista",
+
+                accepted: [
+                    artist
+                ],
+
+                locked: false,
+
+                awarded: false
+
+            });
+
+        }
+    );
+
+
+    songsAnswers.push({
+
+        type:
+            "title",
+
+        label:
+            "Canción",
+
+        accepted:
+            getSongTitleAnswers(
+                songsCurrentSong
+            ),
+
+        locked:
+            false,
+
+        awarded:
+            false
+
+    });
+
+
+    updateSongsInterface();
+
+    loadSongIntoPlayer();
+
+}
+
+
+/* =========================================================
+   ABRIR JUEGO
    ========================================================= */
 
 function openSongsGame() {
 
-    const mainMenu =
-        document.getElementById(
-            "main-menu"
-        );
-
-
-    if (mainMenu) {
-
-        mainMenu.style.display =
-            "none";
-
-    }
+    injectSongsStyles();
 
 
     let modal =
@@ -3247,384 +3349,6 @@ function openSongsGame() {
             "songs-modal";
 
 
-        modal.className =
-            "songs-modal";
-
-
-        modal.innerHTML = `
-
-            <div class="songs-game">
-
-
-                <div class="songs-header">
-
-
-                    <div>
-
-                        <h1>
-                            🎵 Adiviná la canción
-                        </h1>
-
-                        <p>
-                            Escuchá desde el segundo 0
-                            y respondé los datos.
-                        </p>
-
-                    </div>
-
-
-                    <div
-                        class="songs-header-actions"
-                    >
-
-                        <button
-                            class="songs-back"
-                            onclick="closeSongsGame()"
-                            type="button"
-                        >
-                            ← Volver al menú
-                        </button>
-
-
-                        <button
-                            class="songs-close"
-                            onclick="closeSongsGame()"
-                            type="button"
-                        >
-                            ✕
-                        </button>
-
-                    </div>
-
-
-                </div>
-
-
-                <div class="songs-layout">
-
-
-                    <aside
-                        class="songs-sidebar"
-                    >
-
-
-                        <div
-                            class="songs-team-box"
-                        >
-
-                            <h3>
-                                Equipo
-                            </h3>
-
-
-                            <select
-                                id="songs-team-select"
-                            >
-
-                                <option
-                                    value="team1"
-                                >
-                                    Los Originales
-                                </option>
-
-                                <option
-                                    value="team2"
-                                >
-                                    Los Herederos
-                                </option>
-
-                                <option
-                                    value="team3"
-                                >
-                                    Las Históricas
-                                </option>
-
-                            </select>
-
-                        </div>
-
-
-                        <div
-                            class="songs-score-box"
-                        >
-
-                            <h3>
-                                Marcador
-                            </h3>
-
-
-                            <div
-                                id="songs-scoreboard"
-                            ></div>
-
-                        </div>
-
-
-                    </aside>
-
-
-                    <main
-                        class="songs-main"
-                    >
-
-
-                        <div
-                            class="songs-song-number"
-                        >
-
-                            <span
-                                id="songs-number"
-                            >
-                                Canción 1 de 49
-                            </span>
-
-                        </div>
-
-
-                        <div
-                            class="songs-player-card"
-                        >
-
-
-                            <div
-                                class="songs-player-icon"
-                            >
-                                🎵
-                            </div>
-
-
-                            <div
-                                class="songs-player-info"
-                            >
-
-                                <strong>
-                                    Reproductor
-                                </strong>
-
-
-                                <span
-                                    id="songs-status"
-                                >
-                                    Listo para reproducir
-                                </span>
-
-                            </div>
-
-
-                            <div
-                                class="songs-progress"
-                            >
-
-                                <div
-                                    id="songs-progress-bar"
-                                    class="songs-progress-bar"
-                                ></div>
-
-                            </div>
-
-
-                            <div
-                                class="songs-time"
-                            >
-
-                                <span
-                                    id="songs-current-time"
-                                >
-                                    0:00
-                                </span>
-
-
-                                <span
-                                    id="songs-duration"
-                                >
-                                    0:00
-                                </span>
-
-                            </div>
-
-
-                            <div
-                                class="songs-controls"
-                            >
-
-
-                                <button
-                                    type="button"
-                                    onclick="songsPlay()"
-                                >
-                                    ▶ Reproducir
-                                </button>
-
-
-                                <button
-                                    type="button"
-                                    onclick="songsPause()"
-                                >
-                                    ⏸ Pausar
-                                </button>
-
-
-                                <button
-                                    type="button"
-                                    onclick="songsContinue()"
-                                >
-                                    ▶ Continuar
-                                </button>
-
-
-                                <button
-                                    type="button"
-                                    onclick="songsRestart()"
-                                >
-                                    ↻ Desde 0
-                                </button>
-
-
-                            </div>
-
-
-                        </div>
-
-
-                        <div
-                            id="songs-youtube-container"
-                            class="songs-youtube-hidden"
-                        ></div>
-
-
-                        <div
-                            class="songs-fields"
-                        >
-
-
-                            <div
-                                class="songs-field"
-                            >
-
-                                <label>
-                                    Década
-                                </label>
-
-
-                                <div
-                                    class="songs-answer-row"
-                                >
-
-                                    <input
-                                        id="songs-decade-answer"
-                                        type="text"
-                                        placeholder="Ej: 80s"
-                                    />
-
-
-                                    <button
-                                        type="button"
-                                        onclick="checkSongAnswer('decade')"
-                                    >
-                                        Confirmar
-                                    </button>
-
-                                </div>
-
-
-                                <div
-                                    id="songs-decade-feedback"
-                                    class="songs-field-feedback"
-                                ></div>
-
-                            </div>
-
-
-                            <div
-                                id="songs-artists-fields"
-                                class="songs-field"
-                            >
-
-                                <label>
-                                    Artista/s
-                                </label>
-
-                            </div>
-
-
-                            <div
-                                class="songs-field"
-                            >
-
-                                <label>
-                                    Título
-                                </label>
-
-
-                                <div
-                                    class="songs-answer-row"
-                                >
-
-                                    <input
-                                        id="songs-title-answer"
-                                        type="text"
-                                        placeholder="Nombre de la canción"
-                                    />
-
-
-                                    <button
-                                        type="button"
-                                        onclick="checkSongAnswer('title')"
-                                    >
-                                        Confirmar
-                                    </button>
-
-                                </div>
-
-
-                                <div
-                                    id="songs-title-feedback"
-                                    class="songs-field-feedback"
-                                ></div>
-
-                            </div>
-
-
-                        </div>
-
-
-                        <div
-                            class="songs-actions"
-                        >
-
-
-                            <button
-                                type="button"
-                                class="songs-next-button"
-                                onclick="nextSong()"
-                            >
-                                Siguiente canción →
-                            </button>
-
-
-                            <button
-                                type="button"
-                                class="songs-reset-button"
-                                onclick="resetSongsGame()"
-                            >
-                                Reiniciar juego
-                            </button>
-
-
-                        </div>
-
-
-                    </main>
-
-
-                </div>
-
-
-            </div>
-
-        `;
-
-
         document.body.appendChild(
             modal
         );
@@ -3632,148 +3356,291 @@ function openSongsGame() {
     }
 
 
-    modal.style.display =
-        "flex";
-
-
     songsGameOpen =
         true;
 
 
-    injectSongsStyles();
+    modal.classList.add(
+        "active"
+    );
 
 
-    loadYouTubeAPI();
+    modal.style.removeProperty(
+        "display"
+    );
 
 
-    songsCurrentIndex =
-        0;
+    modal.innerHTML = `
+
+        <div class="songs-panel">
+
+            <div class="songs-head">
+
+                <div>
+
+                    <div class="songs-kicker">
+                        🎵 50 AÑOS DE BETT
+                    </div>
+
+                    <h2>
+                        Juego de canciones
+                    </h2>
+
+                    <p id="songs-status">
+                        Canción 1 de 49
+                    </p>
+
+                </div>
 
 
-    songsCurrentSong =
-        null;
+                <div class="songs-header-actions">
+
+                    <button
+                        class="songs-back"
+                        onclick="closeSongsGame()"
+                        type="button"
+                    >
+                        ← Volver al menú
+                    </button>
+
+                    <button
+                        class="songs-close"
+                        onclick="closeSongsGame()"
+                        type="button"
+                    >
+                        ✕
+                    </button>
+
+                </div>
+
+            </div>
 
 
-    songsUsedIndexes =
-        [];
+            <!-- =====================================
+                 MARCADOR PROPIO DE CANCIONES
+                 ===================================== -->
+
+            <div class="songs-scoreboard">
+
+                <div class="songs-team-score">
+
+                    <div
+                        class="songs-team-score-name"
+                    >
+                        Los Originales
+                    </div>
+
+                    <div
+                        id="songs-score-team1"
+                        class="songs-team-score-points"
+                    >
+                        0
+                    </div>
+
+                </div>
 
 
-    songsAnswers =
-        [];
+                <div class="songs-team-score">
+
+                    <div
+                        class="songs-team-score-name"
+                    >
+                        Los Herederos
+                    </div>
+
+                    <div
+                        id="songs-score-team2"
+                        class="songs-team-score-points"
+                    >
+                        0
+                    </div>
+
+                </div>
+
+
+                <div class="songs-team-score">
+
+                    <div
+                        class="songs-team-score-name"
+                    >
+                        Las Históricas
+                    </div>
+
+                    <div
+                        id="songs-score-team3"
+                        class="songs-team-score-points"
+                    >
+                        0
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================
+                 REPRODUCTOR DE AUDIO
+                 ===================================== -->
+
+            <div class="songs-audio-player">
+
+                <div
+                    id="songs-play-icon"
+                    class="songs-audio-icon"
+                >
+                    🎵
+                </div>
+
+
+                <div
+                    class="songs-audio-info"
+                >
+
+                    <strong>
+                        Reproducir canción
+                    </strong>
+
+                    <span>
+                        El nombre de la canción
+                        no aparece
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="songs-audio-progress"
+                >
+
+                    <div
+                        id="songs-progress-bar"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================
+                 YOUTUBE INVISIBLE
+                 ===================================== -->
+
+            <div
+                id="songs-youtube-player"
+                class="songs-youtube-hidden"
+            ></div>
+
+
+            <!-- =====================================
+                 CONTROLES
+                 ===================================== -->
+
+            <div class="songs-controls">
+
+                <button
+                    type="button"
+                    onclick="songsPlay()"
+                >
+                    ▶ Desde 0
+                </button>
+
+                <button
+                    type="button"
+                    onclick="songsPause()"
+                >
+                    ⏸ Pausar
+                </button>
+
+                <button
+                    type="button"
+                    onclick="songsContinue()"
+                >
+                    ▶ Continuar
+                </button>
+
+                <button
+                    type="button"
+                    onclick="songsRestart()"
+                >
+                    ↺ Reiniciar
+                </button>
+
+            </div>
+
+
+            <!-- =====================================
+                 RESPUESTAS
+                 ===================================== -->
+
+            <div
+                id="songs-fields"
+                class="songs-fields"
+            ></div>
+
+
+            <!-- =====================================
+                 ACCIONES
+                 ===================================== -->
+
+            <div
+                class="songs-bottom"
+            >
+
+                <button
+                    type="button"
+                    class="songs-next"
+                    onclick="nextSong()"
+                >
+                    🎵 Nueva canción
+                </button>
+
+
+                <div
+                    class="songs-bottom-right"
+                >
+
+                    <button
+                        type="button"
+                        class="songs-reset"
+                        onclick="resetScores()"
+                    >
+                        🔄 Reiniciar marcador general
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="songs-close-bottom"
+                        onclick="closeSongsGame()"
+                    >
+                        Cerrar juego
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
 
 
     updateSongsScoreboard();
 
 
-    nextSong();
-
-}
-
-
-/* =========================================================
-   CERRAR JUEGO DE CANCIONES
-   ========================================================= */
-
-function closeSongsGame() {
-
-    songsGameOpen =
-        false;
-
-
     if (
-        songsProgressTimer
+        !songsCurrentSong
     ) {
 
-        clearInterval(
-            songsProgressTimer
-        );
+        songsUsedIndexes = [];
 
-        songsProgressTimer =
-            null;
+        loadNextSong();
 
-    }
+    } else {
 
+        updateSongsInterface();
 
-    try {
-
-        if (
-            songsPlayer &&
-            typeof songsPlayer.stopVideo ===
-                "function"
-        ) {
-
-            songsPlayer.stopVideo();
-
-        }
-
-    } catch (
-        error
-    ) {
-
-        console.warn(
-            "No se pudo detener el reproductor:",
-            error
-        );
-
-    }
-
-
-    try {
-
-        if (
-            songsPlayer &&
-            typeof songsPlayer.destroy ===
-                "function"
-        ) {
-
-            songsPlayer.destroy();
-
-        }
-
-    } catch (
-        error
-    ) {
-
-        console.warn(
-            "No se pudo destruir el reproductor:",
-            error
-        );
-
-    }
-
-
-    songsPlayer =
-        null;
-
-
-    songsPlayerReady =
-        false;
-
-
-    const modal =
-        document.getElementById(
-            "songs-modal"
-        );
-
-
-    if (modal) {
-
-        modal.style.display =
-            "none";
-
-    }
-
-
-    const mainMenu =
-        document.getElementById(
-            "main-menu"
-        );
-
-
-    if (mainMenu) {
-
-        mainMenu.style.display =
-            "flex";
+        loadSongIntoPlayer();
 
     }
 
@@ -3781,79 +3648,1506 @@ function closeSongsGame() {
 
 
 /* =========================================================
-   SCOREBOARD SONGS
+   ACTUALIZAR MARCADOR DE CANCIONES
    ========================================================= */
 
 function updateSongsScoreboard() {
 
-    const container =
+    const team1 =
         document.getElementById(
-            "songs-scoreboard"
+            "songs-score-team1"
         );
 
 
-    if (!container) {
+    const team2 =
+        document.getElementById(
+            "songs-score-team2"
+        );
+
+
+    const team3 =
+        document.getElementById(
+            "songs-score-team3"
+        );
+
+
+    if (team1) {
+
+        team1.textContent =
+            scores.team1.songs;
+
+    }
+
+
+    if (team2) {
+
+        team2.textContent =
+            scores.team2.songs;
+
+    }
+
+
+    if (team3) {
+
+        team3.textContent =
+            scores.team3.songs;
+
+    }
+
+}
+
+
+/* =========================================================
+   ACTUALIZAR INTERFAZ
+   ========================================================= */
+
+function updateSongsInterface() {
+
+    const status =
+        document.getElementById(
+            "songs-status"
+        );
+
+
+    if (status) {
+
+        status.textContent =
+            `Canción ${
+                songsUsedIndexes.length
+            } de ${
+                SONGS_DATA.length
+            }`;
+
+    }
+
+
+    const fields =
+        document.getElementById(
+            "songs-fields"
+        );
+
+
+    if (!fields) {
 
         return;
 
     }
 
 
-    container.innerHTML = "";
+    fields.innerHTML =
+        "";
 
 
-    const teams = [
-        "team1",
-        "team2",
-        "team3"
-    ];
+    songsAnswers.forEach(
+        (
+            answer,
+            index
+        ) => {
 
-
-    const names = {
-        team1: "Los Originales",
-        team2: "Los Herederos",
-        team3: "Las Históricas"
-    };
-
-
-    teams.forEach(
-        team => {
-
-            const row =
+            const field =
                 document.createElement(
                     "div"
                 );
 
 
-            row.className =
-                "songs-score-row";
+            field.className =
+                "song-field";
 
 
-            row.innerHTML = `
+            if (
+                answer.locked
+            ) {
 
-                <span>
-                    ${names[team]}
-                </span>
+                field.classList.add(
+                    "locked"
+                );
 
-                <strong>
-                    ${scores[team].songs}
-                </strong>
+            }
+
+
+            let selectorHTML = `
+
+                <select
+                    id="song-team-${index}"
+                >
+
+                    <option value="">
+                        Equipo
+                    </option>
+
+                    <option value="team1">
+                        Los Originales
+                    </option>
+
+                    <option value="team2">
+                        Los Herederos
+                    </option>
+
+                    <option value="team3">
+                        Las Históricas
+                    </option>
+
+                </select>
 
             `;
 
 
-            container.appendChild(
-                row
+            field.innerHTML = `
+
+                <h4>
+                    ${answer.label}
+                </h4>
+
+                <small>
+                    1 punto · rebote si falla
+                </small>
+
+                <div
+                    class="song-field-row"
+                >
+
+                    <input
+                        id="song-answer-${index}"
+                        type="text"
+                        placeholder="Respuesta..."
+                        ${
+                            answer.locked
+                                ? "disabled"
+                                : ""
+                        }
+                    >
+
+                    <button
+                        type="button"
+                        onclick="checkSongAnswer(${index})"
+                        ${
+                            answer.locked
+                                ? "disabled"
+                                : ""
+                        }
+                    >
+                        ✓
+                    </button>
+
+                </div>
+
+                ${
+                    answer.locked
+                        ? ""
+                        : selectorHTML
+                }
+
+                <div
+                    id="song-result-${index}"
+                    class="song-result"
+                ></div>
+
+            `;
+
+
+            fields.appendChild(
+                field
+            );
+
+
+            const input =
+                document.getElementById(
+                    `song-answer-${index}`
+                );
+
+
+            if (input) {
+
+                input.addEventListener(
+                    "keydown",
+                    event => {
+
+                        if (
+                            event.key ===
+                            "Enter"
+                        ) {
+
+                            checkSongAnswer(
+                                index
+                            );
+
+                        }
+
+                    }
+                );
+
+            }
+
+        }
+    );
+
+
+    updateSongsScoreboard();
+
+}
+
+
+/* =========================================================
+   COMPROBAR RESPUESTA
+   ========================================================= */
+
+function checkSongAnswer(
+    answerIndex
+) {
+
+    const answer =
+        songsAnswers[
+            answerIndex
+        ];
+
+
+    if (
+        !answer ||
+        answer.locked
+    ) {
+
+        return;
+
+    }
+
+
+    const input =
+        document.getElementById(
+            `song-answer-${answerIndex}`
+        );
+
+
+    const teamSelect =
+        document.getElementById(
+            `song-team-${answerIndex}`
+        );
+
+
+    const result =
+        document.getElementById(
+            `song-result-${answerIndex}`
+        );
+
+
+    if (
+        !input ||
+        !teamSelect ||
+        !result
+    ) {
+
+        return;
+
+    }
+
+
+    const userAnswer =
+        input.value.trim();
+
+
+    const team =
+        teamSelect.value;
+
+
+    if (!userAnswer) {
+
+        result.textContent =
+            "⚠️ Escribí una respuesta.";
+
+        result.className =
+            "song-result song-wrong";
+
+        return;
+
+    }
+
+
+    if (!team) {
+
+        result.textContent =
+            "⚠️ Seleccioná el equipo.";
+
+        result.className =
+            "song-result song-wrong";
+
+        return;
+
+    }
+
+
+    const correct =
+        songAnswersMatch(
+            userAnswer,
+            answer.accepted
+        );
+
+
+    if (correct) {
+
+        answer.locked =
+            true;
+
+        answer.awarded =
+            true;
+
+        answer.team =
+            team;
+
+
+        addPoints(
+            team,
+            "songs",
+            1
+        );
+
+
+        updateSongsScoreboard();
+
+
+        result.textContent =
+            `✓ Correcto · +1 para ${
+                getTeamName(
+                    team
+                )
+            }`;
+
+
+        result.className =
+            "song-result song-ok";
+
+
+        input.disabled =
+            true;
+
+
+        teamSelect.disabled =
+            true;
+
+
+        const field =
+            input.closest(
+                ".song-field"
+            );
+
+
+        if (field) {
+
+            field.classList.add(
+                "locked"
             );
 
         }
+
+
+        const button =
+            field?.querySelector(
+                "button"
+            );
+
+
+        if (button) {
+
+            button.disabled =
+                true;
+
+        }
+
+    } else {
+
+        /*
+         * No resta puntos.
+         * El dato queda disponible
+         * para rebote.
+         */
+
+        result.textContent =
+            "✕ Incorrecto · rebote";
+
+
+        result.className =
+            "song-result song-wrong";
+
+
+        input.value =
+            "";
+
+
+        input.focus();
+
+    }
+
+}
+
+
+/* =========================================================
+   SIGUIENTE CANCIÓN
+   ========================================================= */
+
+function nextSong() {
+
+    if (
+        songsUsedIndexes.length >=
+        SONGS_DATA.length
+    ) {
+
+        songsUsedIndexes = [];
+
+    }
+
+
+    loadNextSong();
+
+}
+
+
+/* =========================================================
+   ESTILOS DEL JUEGO DE CANCIONES
+   ========================================================= */
+
+function injectSongsStyles() {
+
+    if (
+        document.getElementById(
+            "songs-inline-styles"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    const style =
+        document.createElement(
+            "style"
+        );
+
+
+    style.id =
+        "songs-inline-styles";
+
+
+    style.textContent = `
+
+        /* =========================================
+           MODAL GENERAL
+           ========================================= */
+
+        #songs-modal {
+
+            position:fixed;
+
+            inset:0;
+
+            width:100vw;
+
+            height:100vh;
+
+            background:#0B0B0B;
+
+            color:#FFFFFF;
+
+            z-index:99999;
+
+            overflow-y:auto;
+
+            font-family:inherit;
+
+        }
+
+
+        .songs-panel {
+
+            width:100%;
+
+            min-height:100vh;
+
+            box-sizing:border-box;
+
+            background:#0B0B0B;
+
+            padding:28px 36px 40px;
+
+        }
+
+
+        /* =========================================
+           ENCABEZADO
+           ========================================= */
+
+        .songs-head {
+
+            display:flex;
+
+            justify-content:space-between;
+
+            align-items:flex-start;
+
+            margin-bottom:22px;
+
+        }
+
+
+        .songs-kicker {
+
+            color:#E30613;
+
+            font-size:14px;
+
+            font-weight:900;
+
+            letter-spacing:1.5px;
+
+        }
+
+
+        .songs-head h2 {
+
+            margin:5px 0 4px;
+
+            font-size:38px;
+
+            line-height:1.1;
+
+            font-weight:900;
+
+        }
+
+
+        .songs-head p {
+
+            margin:0;
+
+            color:#999999;
+
+            font-size:16px;
+
+        }
+
+
+        .songs-header-actions {
+
+            display:flex;
+
+            align-items:center;
+
+            gap:10px;
+
+        }
+
+
+        .songs-back {
+
+            border:1px solid #444444;
+
+            border-radius:10px;
+
+            padding:12px 16px;
+
+            background:#202020;
+
+            color:#FFFFFF;
+
+            font-size:14px;
+
+            font-weight:900;
+
+            cursor:pointer;
+
+            transition:background .15s ease, border-color .15s ease;
+
+        }
+
+
+        .songs-back:hover {
+
+            background:#E30613;
+
+            border-color:#E30613;
+
+        }
+
+
+        .songs-close {
+
+            width:46px;
+
+            height:46px;
+
+            border-radius:12px;
+
+            border:1px solid #3A3A3A;
+
+            background:#171717;
+
+            color:#FFFFFF;
+
+            font-size:22px;
+
+            cursor:pointer;
+
+        }
+
+
+        .songs-close:hover {
+
+            background:#E30613;
+
+            border-color:#E30613;
+
+        }
+
+
+        /* =========================================
+           MARCADOR
+           ========================================= */
+
+        .songs-scoreboard {
+
+            display:grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap:14px;
+
+            margin-bottom:20px;
+
+        }
+
+
+        .songs-team-score {
+
+            background:#151515;
+
+            border:1px solid #303030;
+
+            border-radius:14px;
+
+            padding:15px 18px;
+
+            display:flex;
+
+            align-items:center;
+
+            justify-content:space-between;
+
+        }
+
+
+        .songs-team-score-name {
+
+            font-size:16px;
+
+            font-weight:800;
+
+        }
+
+
+        .songs-team-score-points {
+
+            color:#E30613;
+
+            font-size:29px;
+
+            font-weight:900;
+
+        }
+
+
+        /* =========================================
+           REPRODUCTOR DE AUDIO
+           ========================================= */
+
+        .songs-audio-player {
+
+            width:100%;
+
+            height:118px;
+
+            box-sizing:border-box;
+
+            position:relative;
+
+            display:flex;
+
+            align-items:center;
+
+            gap:18px;
+
+            padding:20px 24px;
+
+            background:#171717;
+
+            border:1px solid #303030;
+
+            border-radius:17px;
+
+            overflow:hidden;
+
+        }
+
+
+        .songs-audio-icon {
+
+            width:62px;
+
+            height:62px;
+
+            min-width:62px;
+
+            border-radius:50%;
+
+            background:#E30613;
+
+            display:flex;
+
+            align-items:center;
+
+            justify-content:center;
+
+            font-size:28px;
+
+        }
+
+
+        .songs-audio-info {
+
+            display:flex;
+
+            flex-direction:column;
+
+            gap:5px;
+
+        }
+
+
+        .songs-audio-info strong {
+
+            font-size:19px;
+
+            font-weight:900;
+
+        }
+
+
+        .songs-audio-info span {
+
+            color:#999999;
+
+            font-size:14px;
+
+        }
+
+
+        .songs-audio-progress {
+
+            position:absolute;
+
+            left:0;
+
+            bottom:0;
+
+            width:100%;
+
+            height:5px;
+
+            background:#292929;
+
+        }
+
+
+        #songs-progress-bar {
+
+            width:0%;
+
+            height:100%;
+
+            background:#E30613;
+
+            transition:
+                width .2s linear;
+
+        }
+
+
+        /* =========================================
+           YOUTUBE INVISIBLE
+           ========================================= */
+
+        .songs-youtube-hidden {
+
+            position:absolute !important;
+
+            width:1px !important;
+
+            height:1px !important;
+
+            left:-10000px !important;
+
+            top:-10000px !important;
+
+            opacity:0 !important;
+
+            pointer-events:none !important;
+
+            overflow:hidden !important;
+
+        }
+
+
+        /* =========================================
+           CONTROLES
+           ========================================= */
+
+        .songs-controls {
+
+            display:grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap:10px;
+
+            margin:15px 0 20px;
+
+        }
+
+
+        .songs-controls button {
+
+            border:0;
+
+            border-radius:10px;
+
+            padding:14px 10px;
+
+            background:#202020;
+
+            color:#FFFFFF;
+
+            font-size:15px;
+
+            font-weight:900;
+
+            cursor:pointer;
+
+            transition:
+                background .15s ease,
+                transform .15s ease;
+
+        }
+
+
+        .songs-controls button:hover {
+
+            background:#E30613;
+
+            transform:translateY(-1px);
+
+        }
+
+
+        .songs-controls button:active {
+
+            transform:translateY(0);
+
+        }
+
+
+        /* =========================================
+           CAMPOS
+           ========================================= */
+
+        .songs-fields {
+
+            display:grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(230px, 1fr)
+                );
+
+            gap:14px;
+
+            margin-top:8px;
+
+        }
+
+
+        .song-field {
+
+            background:#151515;
+
+            border:1px solid #303030;
+
+            border-radius:14px;
+
+            padding:17px;
+
+            transition:
+                border-color .15s ease;
+
+        }
+
+
+        .song-field.locked {
+
+            border-color:#E30613;
+
+        }
+
+
+        .song-field h4 {
+
+            margin:0 0 7px;
+
+            font-size:18px;
+
+            font-weight:900;
+
+        }
+
+
+        .song-field small {
+
+            display:block;
+
+            color:#999999;
+
+            margin-bottom:11px;
+
+            font-size:13px;
+
+        }
+
+
+        .song-field-row {
+
+            display:flex;
+
+            gap:8px;
+
+        }
+
+
+        .song-field input {
+
+            flex:1;
+
+            min-width:0;
+
+            box-sizing:border-box;
+
+            background:#0D0D0D;
+
+            color:#FFFFFF;
+
+            border:1px solid #444444;
+
+            border-radius:8px;
+
+            padding:11px;
+
+            outline:none;
+
+            font-size:14px;
+
+        }
+
+
+        .song-field input:focus {
+
+            border-color:#E30613;
+
+        }
+
+
+        .song-field input:disabled {
+
+            opacity:.65;
+
+        }
+
+
+        .song-field select {
+
+            width:100%;
+
+            box-sizing:border-box;
+
+            margin-top:8px;
+
+            background:#0D0D0D;
+
+            color:#FFFFFF;
+
+            border:1px solid #444444;
+
+            border-radius:8px;
+
+            padding:11px;
+
+            outline:none;
+
+            font-size:14px;
+
+        }
+
+
+        .song-field select:focus {
+
+            border-color:#E30613;
+
+        }
+
+
+        .song-field button {
+
+            min-width:48px;
+
+            border:0;
+
+            border-radius:8px;
+
+            padding:10px 14px;
+
+            background:#E30613;
+
+            color:#FFFFFF;
+
+            font-weight:900;
+
+            cursor:pointer;
+
+        }
+
+
+        .song-field button:hover {
+
+            background:#FF1828;
+
+        }
+
+
+        .song-field button:disabled {
+
+            opacity:.5;
+
+            cursor:not-allowed;
+
+        }
+
+
+        .song-result {
+
+            min-height:20px;
+
+            margin-top:9px;
+
+            font-size:14px;
+
+            font-weight:800;
+
+        }
+
+
+        .song-ok {
+
+            color:#FFFFFF;
+
+        }
+
+
+        .song-wrong {
+
+            color:#FF6B73;
+
+        }
+
+
+        /* =========================================
+           PARTE INFERIOR
+           ========================================= */
+
+        .songs-bottom {
+
+            display:flex;
+
+            justify-content:space-between;
+
+            align-items:center;
+
+            gap:12px;
+
+            margin-top:22px;
+
+        }
+
+
+        .songs-next {
+
+            border:0;
+
+            border-radius:10px;
+
+            padding:14px 18px;
+
+            background:#E30613;
+
+            color:#FFFFFF;
+
+            font-size:15px;
+
+            font-weight:900;
+
+            cursor:pointer;
+
+        }
+
+
+        .songs-next:hover {
+
+            background:#FF1828;
+
+        }
+
+
+        .songs-bottom-right {
+
+            display:flex;
+
+            gap:10px;
+
+        }
+
+
+        .songs-reset {
+
+            border:1px solid #444444;
+
+            border-radius:10px;
+
+            padding:13px 16px;
+
+            background:#202020;
+
+            color:#FFFFFF;
+
+            font-weight:800;
+
+            cursor:pointer;
+
+        }
+
+
+        .songs-reset:hover {
+
+            background:#333333;
+
+        }
+
+
+        .songs-close-bottom {
+
+            border:0;
+
+            border-radius:10px;
+
+            padding:13px 16px;
+
+            background:#292929;
+
+            color:#FFFFFF;
+
+            font-weight:800;
+
+            cursor:pointer;
+
+        }
+
+
+        .songs-close-bottom:hover {
+
+            background:#444444;
+
+        }
+
+
+        /* =========================================
+           RESPONSIVE
+           ========================================= */
+
+        @media(max-width:850px) {
+
+            .songs-panel {
+
+                padding:20px;
+
+            }
+
+
+            .songs-head h2 {
+
+                font-size:29px;
+
+            }
+
+
+            .songs-scoreboard {
+
+                grid-template-columns:1fr;
+
+            }
+
+
+            .songs-controls {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+
+            .songs-bottom {
+
+                flex-direction:column;
+
+                align-items:stretch;
+
+            }
+
+
+            .songs-bottom-right {
+
+                flex-direction:column;
+
+            }
+
+        }
+
+
+        @media(max-width:550px) {
+
+            .songs-header-actions {
+
+                flex-direction:column;
+
+                align-items:stretch;
+
+            }
+
+
+            .songs-back {
+
+                padding:10px 12px;
+
+                font-size:13px;
+
+            }
+
+
+            .songs-controls {
+
+                grid-template-columns:1fr;
+
+            }
+
+
+            .songs-audio-player {
+
+                height:100px;
+
+            }
+
+
+            .songs-audio-icon {
+
+                width:52px;
+
+                height:52px;
+
+                min-width:52px;
+
+            }
+
+        }
+
+    `;
+
+
+    document.head.appendChild(
+        style
     );
 
 }
 
 
 /* =========================================================
-   CARGAR YOUTUBE API
+   IDs DE YOUTUBE
+   =========================================================
+
+   YouTube queda totalmente oculto.
+   Solamente se utiliza como fuente de audio.
+
+   Si algún video deja de estar disponible,
+   se puede cambiar únicamente su ID.
+   ========================================================= */
+
+const SONGS_YOUTUBE_IDS = {
+
+    "De música ligera":
+        "T_FkEw27XJ0",
+
+    "La incondicional":
+        "by4I_10HbX4",
+
+    "Me va, me va":
+        "CCht0AyKxNY",
+
+    "Mil horas":
+        "CUdw-urZ3zg",
+
+    "Devuélveme a mi chica":
+        "U72tra23BF0",
+
+    "Billie Jean":
+        "Zi_XLOBDo_Y",
+
+    "Never Gonna Give You Up":
+        "dQw4w9WgXcQ",
+
+    "I Wanna Dance with Somebody":
+        "eH3giaIzONA",
+
+    "Girls Just Want to Have Fun":
+        "PIb6AZdTr-A",
+
+    "Livin' on a Prayer":
+        "lDK9QqIzhwk",
+
+    "Rayando el sol":
+        "EDkQB9b3cBw",
+
+    "Piel Morena":
+        "EMAjgSJr4Jg",
+
+    "Livin' la Vida Loca":
+        "p47fEXGabaY",
+
+    "Vuelve":
+        "p7QYo-9SlP0",
+
+    "Flaca":
+        "UCF9oHXhDMU",
+
+    "Wannabe":
+        "gJLIiF15wjQ",
+
+    "...Baby One More Time":
+        "C-u5WLJ9Yk4",
+
+    "I Want It That Way":
+        "4fndeDfaWCg",
+
+    "My Heart Will Go On":
+        "9bFHsd3o1w0",
+
+    "Smells Like Teen Spirit":
+        "hTWKbfoikeg",
+
+    "La Tortura":
+        "Dsp_8Lm1eSk",
+
+    "Me enamora":
+        "voxgN3Dhjuo",
+
+    "Ave María":
+        "gra-sIV1n4U",
+
+    "Colgando en tus manos":
+        "qExd-3oCTl4",
+
+    "Rosas":
+        "nYnLVWXmRm8",
+
+    "Toxic":
+        "LOZuxwVk7TU",
+
+    "Crazy in Love":
+        "ViwtNLUqkMY",
+
+    "Umbrella":
+        "CvBfHwUxHIk",
+
+    "Poker Face":
+        "bESGLojNYSo",
+
+    "Despacito":
+        "kJQP7kiw5Fk",
+
+    "Bailando":
+        "NUsoVlDFqZg",
+
+    "Danza Kuduro":
+        "7zp1TbLFPp8",
+
+    "Vivir Mi Vida":
+        "YXnjy5YlDwk",
+
+    "Échame la culpa":
+        "TyHvyGVs42U",
+
+    "Uptown Funk":
+        "OPf0YbXqDm0",
+
+    "Shape of You":
+        "JGwWNGJdvx8",
+
+    "Rolling in the Deep":
+        "rYEDA3JcQqw",
+
+    "Havana":
+        "HCjNJDNzw8Y",
+
+    "Sorry":
+        "fRh_vgS2dFE",
+
+    "Todo de Ti":
+        "CFPLIaMpGrY",
+
+    "Hawái":
+        "pK06OiUFWXg",
+
+    "Tusa":
+        "tbneQDc2H3I",
+
+    "La Bachata":
+        "TqA8D9nJ9xI",
+
+    "SUPERESTRELLA":
+        "vz_vU53JvvI",
+
+    "Die With A Smile":
+        "kPa7bsKwL-c",
+
+    "As It Was":
+        "H5v3kku4y6Q",
+
+    "Flowers":
+        "G7KNmW9a75Y",
+
+    "good 4 u":
+        "gNi_6U5Pm_o",
+
+    "Espresso":
+        "eVli-tstM5E"
+
+};
+
+
+/* =========================================================
+   CARGAR API DE YOUTUBE
    ========================================================= */
 
 function loadYouTubeAPI() {
@@ -3872,7 +5166,7 @@ function loadYouTubeAPI() {
 
     if (
         document.getElementById(
-            "youtube-api-script"
+            "youtube-iframe-api"
         )
     ) {
 
@@ -3888,7 +5182,7 @@ function loadYouTubeAPI() {
 
 
     script.id =
-        "youtube-api-script";
+        "youtube-iframe-api";
 
 
     script.src =
@@ -3899,30 +5193,157 @@ function loadYouTubeAPI() {
         script
     );
 
-
-    window.onYouTubeIframeAPIReady =
-        function () {
-
-            createSongsPlayer();
-
-        };
-
 }
 
 
 /* =========================================================
-   CREAR REPRODUCTOR
+   CALLBACK DE YOUTUBE
+   ========================================================= */
+
+window.onYouTubeIframeAPIReady =
+    function() {
+
+        createSongsPlayer();
+
+    };
+
+
+/* =========================================================
+   CARGAR CANCIÓN EN EL REPRODUCTOR
+   ========================================================= */
+
+function loadSongIntoPlayer() {
+
+    const host =
+        document.getElementById(
+            "songs-youtube-player"
+        );
+
+
+    if (!host) {
+
+        return;
+
+    }
+
+
+    if (
+        songsProgressTimer
+    ) {
+
+        clearInterval(
+            songsProgressTimer
+        );
+
+        songsProgressTimer =
+            null;
+
+    }
+
+
+    if (
+        songsPlayer &&
+        typeof songsPlayer.destroy ===
+        "function"
+    ) {
+
+        try {
+
+            songsPlayer.destroy();
+
+        } catch (error) {
+
+            console.warn(
+                "No se pudo destruir el reproductor anterior.",
+                error
+            );
+
+        }
+
+    }
+
+
+    songsPlayer =
+        null;
+
+
+    songsPlayerReady =
+        false;
+
+
+    const videoId =
+        SONGS_YOUTUBE_IDS[
+            songsCurrentSong.title
+        ];
+
+
+    if (!videoId) {
+
+        console.warn(
+            "No hay ID de YouTube para:",
+            songsCurrentSong.title
+        );
+
+        return;
+
+    }
+
+
+    if (
+        window.YT &&
+        window.YT.Player
+    ) {
+
+        createSongsPlayer();
+
+    } else {
+
+        loadYouTubeAPI();
+
+    }
+   
+
+}
+
+/* =========================================================
+   CREAR REPRODUCTOR INVISIBLE
    ========================================================= */
 
 function createSongsPlayer() {
 
-    const container =
+    const host =
         document.getElementById(
-            "songs-youtube-container"
+            "songs-youtube-player"
         );
 
 
-    if (!container) {
+    if (
+        !host ||
+        !songsCurrentSong
+    ) {
+
+        return;
+
+    }
+
+
+    const videoId =
+        SONGS_YOUTUBE_IDS[
+            songsCurrentSong.title
+        ];
+
+
+    if (!videoId) {
+
+        return;
+
+    }
+
+
+    if (
+        !window.YT ||
+        !window.YT.Player
+    ) {
 
         return;
 
@@ -3932,22 +5353,14 @@ function createSongsPlayer() {
     if (
         songsPlayer &&
         typeof songsPlayer.destroy ===
-            "function"
+        "function"
     ) {
 
         try {
 
             songsPlayer.destroy();
 
-        } catch (
-            error
-        ) {
-
-            console.warn(
-                error
-            );
-
-        }
+        } catch (error) {}
 
     }
 
@@ -3958,38 +5371,126 @@ function createSongsPlayer() {
 
     songsPlayer =
         new YT.Player(
-            "songs-youtube-container",
+            host,
             {
 
-                height: "1",
+                height:"1",
 
-                width: "1",
+                width:"1",
 
-                videoId: "",
+                videoId:
+                    videoId,
 
                 playerVars: {
 
-                    controls: 0,
+                    autoplay:0,
 
-                    autoplay: 0,
+                    controls:0,
 
-                    playsinline: 1,
+                    disablekb:1,
 
-                    rel: 0,
+                    fs:0,
 
-                    modestbranding: 1,
+                    playsinline:1,
 
-                    iv_load_policy: 3
+                    rel:0,
+
+                    modestbranding:1,
+
+                    iv_load_policy:3
 
                 },
 
                 events: {
 
                     onReady:
-                        onSongsPlayerReady,
+                        function() {
+
+                            songsPlayerReady =
+                                true;
+
+
+                            songsRestart();
+
+
+                            if (
+                                songsProgressTimer
+                            ) {
+
+                                clearInterval(
+                                    songsProgressTimer
+                                );
+
+                            }
+
+
+                            songsProgressTimer =
+                                setInterval(
+                                    updateSongsProgress,
+                                    500
+                                );
+
+                        },
+
 
                     onStateChange:
-                        onSongsPlayerStateChange
+                        function(event) {
+
+                            const icon =
+                                document.getElementById(
+                                    "songs-play-icon"
+                                );
+
+
+                            if (!icon) {
+
+                                return;
+
+                            }
+
+
+                            if (
+                                event.data ===
+                                YT.PlayerState.PLAYING
+                            ) {
+
+                                icon.textContent =
+                                    "▶";
+
+                            } else {
+
+                                icon.textContent =
+                                    "🎵";
+
+                            }
+
+                        },
+
+
+                    onError:
+                        function(event) {
+
+                            console.warn(
+                                "Error del reproductor de YouTube:",
+                                event.data
+                            );
+
+                        },
+
+
+                    onAutoplayBlocked:
+                        function() {
+
+                            /*
+                             * No hacemos nada.
+                             *
+                             * El usuario debe tocar
+                             * "Desde 0", que sí es
+                             * una acción iniciada
+                             * por el usuario.
+                             */
+
+                        }
 
                 }
 
@@ -4000,122 +5501,10 @@ function createSongsPlayer() {
 
 
 /* =========================================================
-   YOUTUBE READY
+   BARRA DE PROGRESO
    ========================================================= */
 
-function onSongsPlayerReady() {
-
-    songsPlayerReady =
-        true;
-
-
-    if (
-        songsCurrentSong
-    ) {
-
-        loadCurrentSongVideo();
-
-    }
-
-}
-
-
-/* =========================================================
-   CAMBIO DE ESTADO YOUTUBE
-   ========================================================= */
-
-function onSongsPlayerStateChange(
-    event
-) {
-
-    if (
-        !songsGameOpen
-    ) {
-
-        return;
-
-    }
-
-
-    if (
-        event.data ===
-        YT.PlayerState.PLAYING
-    ) {
-
-        const status =
-            document.getElementById(
-                "songs-status"
-            );
-
-
-        if (status) {
-
-            status.textContent =
-                "Reproduciendo";
-
-        }
-
-
-        startSongsProgressTimer();
-
-    }
-
-
-    if (
-        event.data ===
-        YT.PlayerState.PAUSED
-    ) {
-
-        const status =
-            document.getElementById(
-                "songs-status"
-            );
-
-
-        if (status) {
-
-            status.textContent =
-                "Pausado";
-
-        }
-
-
-        stopSongsProgressTimer();
-
-    }
-
-
-    if (
-        event.data ===
-        YT.PlayerState.ENDED
-    ) {
-
-        const status =
-            document.getElementById(
-                "songs-status"
-            );
-
-
-        if (status) {
-
-            status.textContent =
-                "Finalizada";
-
-        }
-
-
-        stopSongsProgressTimer();
-
-    }
-
-}
-
-
-/* =========================================================
-   CARGAR CANCIÓN
-   ========================================================= */
-
-function loadCurrentSongVideo() {
+function updateSongsProgress() {
 
     if (
         !songsPlayerReady ||
@@ -4128,8 +5517,33 @@ function loadCurrentSongVideo() {
     }
 
 
+    let currentTime =
+        0;
+
+
+    let duration =
+        0;
+
+
+    try {
+
+        currentTime =
+            songsPlayer.getCurrentTime();
+
+
+        duration =
+            songsPlayer.getDuration();
+
+    } catch (error) {
+
+        return;
+
+    }
+
+
     if (
-        !songsCurrentSong.videoId
+        !duration ||
+        duration <= 0
     ) {
 
         return;
@@ -4137,28 +5551,29 @@ function loadCurrentSongVideo() {
     }
 
 
-    try {
+    const percentage =
+        (
+            currentTime /
+            duration
+        ) * 100;
 
-        songsPlayer.loadVideoById(
-            {
-                videoId:
-                    songsCurrentSong.videoId,
 
-                startSeconds:
-                    0
-            }
+    const bar =
+        document.getElementById(
+            "songs-progress-bar"
         );
 
-        songsPlayer.pauseVideo();
 
-    } catch (
-        error
-    ) {
+    if (bar) {
 
-        console.error(
-            "Error cargando canción:",
-            error
-        );
+        bar.style.width =
+            `${Math.min(
+                100,
+                Math.max(
+                    0,
+                    percentage
+                )
+            )}%`;
 
     }
 
@@ -4188,13 +5603,27 @@ function songsPlay() {
             true
         );
 
+
         songsPlayer.playVideo();
 
-    } catch (
-        error
-    ) {
 
-        console.error(
+        const bar =
+            document.getElementById(
+                "songs-progress-bar"
+            );
+
+
+        if (bar) {
+
+            bar.style.width =
+                "0%";
+
+        }
+
+    } catch (error) {
+
+        console.warn(
+            "No se pudo reproducir la canción.",
             error
         );
 
@@ -4223,11 +5652,10 @@ function songsPause() {
 
         songsPlayer.pauseVideo();
 
-    } catch (
-        error
-    ) {
+    } catch (error) {
 
-        console.error(
+        console.warn(
+            "No se pudo pausar la canción.",
             error
         );
 
@@ -4256,11 +5684,10 @@ function songsContinue() {
 
         songsPlayer.playVideo();
 
-    } catch (
-        error
-    ) {
+    } catch (error) {
 
-        console.error(
+        console.warn(
+            "No se pudo continuar la canción.",
             error
         );
 
@@ -4270,7 +5697,7 @@ function songsContinue() {
 
 
 /* =========================================================
-   REINICIAR
+   REINICIAR A 0
    ========================================================= */
 
 function songsRestart() {
@@ -4292,551 +5719,16 @@ function songsRestart() {
             true
         );
 
-        songsPlayer.playVideo();
-
-    } catch (
-        error
-    ) {
-
-        console.error(
-            error
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   FORMATEAR TIEMPO
-   ========================================================= */
-
-function formatSongTime(
-    seconds
-) {
-
-    if (
-        !Number.isFinite(
-            seconds
-        )
-    ) {
-
-        return "0:00";
-
-    }
-
-
-    const total =
-        Math.floor(
-            seconds
-        );
-
-
-    const minutes =
-        Math.floor(
-            total / 60
-        );
-
-
-    const secs =
-        total % 60;
-
-
-    return (
-        minutes +
-        ":" +
-        String(
-            secs
-        ).padStart(
-            2,
-            "0"
-        )
-    );
-
-}
-
-
-/* =========================================================
-   ACTUALIZAR PROGRESO
-   ========================================================= */
-
-function updateSongsProgress() {
-
-    if (
-        !songsPlayerReady ||
-        !songsPlayer
-    ) {
+    } catch (error) {
 
         return;
 
     }
 
-
-    try {
-
-        const current =
-            songsPlayer.getCurrentTime();
-
-
-        const duration =
-            songsPlayer.getDuration();
-
-
-        const progress =
-            duration > 0
-                ? (
-                    current /
-                    duration
-                ) * 100
-                : 0;
-
-
-        const bar =
-            document.getElementById(
-                "songs-progress-bar"
-            );
-
-
-        const currentTime =
-            document.getElementById(
-                "songs-current-time"
-            );
-
-
-        const durationDisplay =
-            document.getElementById(
-                "songs-duration"
-            );
-
-
-        if (bar) {
-
-            bar.style.width =
-                `${progress}%`;
-
-        }
-
-
-        if (currentTime) {
-
-            currentTime.textContent =
-                formatSongTime(
-                    current
-                );
-
-        }
-
-
-        if (durationDisplay) {
-
-            durationDisplay.textContent =
-                formatSongTime(
-                    duration
-                );
-
-        }
-
-    } catch (
-        error
-    ) {
-
-        /* El reproductor todavía puede
-           no estar completamente inicializado. */
-
-    }
-
-}
-
-
-/* =========================================================
-   TIMER PROGRESO
-   ========================================================= */
-
-function startSongsProgressTimer() {
-
-    stopSongsProgressTimer();
-
-
-    songsProgressTimer =
-        setInterval(
-            updateSongsProgress,
-            250
-        );
-
-}
-
-
-function stopSongsProgressTimer() {
-
-    if (
-        songsProgressTimer
-    ) {
-
-        clearInterval(
-            songsProgressTimer
-        );
-
-        songsProgressTimer =
-            null;
-
-    }
-
-}
-
-
-/* =========================================================
-   CANCIÓN ALEATORIA
-   ========================================================= */
-
-function getRandomUnusedSongIndex() {
-
-    const available = [];
-
-
-    for (
-        let i = 0;
-        i <
-        SONGS_DATA.length;
-        i++
-    ) {
-
-        if (
-            !songsUsedIndexes.includes(
-                i
-            )
-        ) {
-
-            available.push(
-                i
-            );
-
-        }
-
-    }
-
-
-    if (
-        available.length === 0
-    ) {
-
-        return -1;
-
-    }
-
-
-    const randomPosition =
-        Math.floor(
-            Math.random() *
-            available.length
-        );
-
-
-    return available[
-        randomPosition
-    ];
-
-}
-
-
-/* =========================================================
-   SIGUIENTE CANCIÓN
-   ========================================================= */
-
-function nextSong() {
-
-    if (
-        !songsGameOpen
-    ) {
-
-        return;
-
-    }
-
-
-    const index =
-        getRandomUnusedSongIndex();
-
-
-    if (
-        index === -1
-    ) {
-
-        alert(
-            "🎵 Ya jugaron las 49 canciones."
-        );
-
-        return;
-
-    }
-
-
-    songsUsedIndexes.push(
-        index
-    );
-
-
-    songsCurrentIndex =
-        index;
-
-
-    songsCurrentSong =
-        SONGS_DATA[
-            index
-        ];
-
-
-    songsAnswers = {
-
-        decade: false,
-
-        artists:
-            songsCurrentSong.artists.map(
-                () => false
-            ),
-
-        title: false
-
-    };
-
-
-    updateSongsNumber();
-
-
-    renderSongFields();
-
-
-    loadCurrentSongVideo();
-
-
-    resetSongsPlayerUI();
-
-}
-
-
-/* =========================================================
-   NÚMERO DE CANCIÓN
-   ========================================================= */
-
-function updateSongsNumber() {
-
-    const element =
-        document.getElementById(
-            "songs-number"
-        );
-
-
-    if (!element) {
-
-        return;
-
-    }
-
-
-    element.textContent =
-        `Canción ${
-            songsUsedIndexes.length
-        } de ${
-            SONGS_DATA.length
-        }`;
-
-}
-
-
-/* =========================================================
-   RENDER CAMPOS
-   ========================================================= */
-
-function renderSongFields() {
-
-    if (
-        !songsCurrentSong
-    ) {
-
-        return;
-
-    }
-
-
-    const decadeInput =
-        document.getElementById(
-            "songs-decade-answer"
-        );
-
-
-    const titleInput =
-        document.getElementById(
-            "songs-title-answer"
-        );
-
-
-    const decadeFeedback =
-        document.getElementById(
-            "songs-decade-feedback"
-        );
-
-
-    const titleFeedback =
-        document.getElementById(
-            "songs-title-feedback"
-        );
-
-
-    if (decadeInput) {
-
-        decadeInput.value =
-            "";
-
-        decadeInput.disabled =
-            false;
-
-    }
-
-
-    if (titleInput) {
-
-        titleInput.value =
-            "";
-
-        titleInput.disabled =
-            false;
-
-    }
-
-
-    if (decadeFeedback) {
-
-        decadeFeedback.textContent =
-            "";
-
-        decadeFeedback.className =
-            "songs-field-feedback";
-
-    }
-
-
-    if (titleFeedback) {
-
-        titleFeedback.textContent =
-            "";
-
-        titleFeedback.className =
-            "songs-field-feedback";
-
-    }
-
-
-    const artistsContainer =
-        document.getElementById(
-            "songs-artists-fields"
-        );
-
-
-    if (!artistsContainer) {
-
-        return;
-
-    }
-
-
-    artistsContainer.innerHTML = `
-
-        <label>
-            Artista/s
-        </label>
-
-    `;
-
-
-    songsCurrentSong.artists.forEach(
-        (
-            artist,
-            index
-        ) => {
-
-            const row =
-                document.createElement(
-                    "div"
-                );
-
-
-            row.className =
-                "songs-answer-row";
-
-
-            row.innerHTML = `
-
-                <input
-                    id="songs-artist-answer-${index}"
-                    type="text"
-                    placeholder="Artista ${index + 1}"
-                />
-
-                <button
-                    type="button"
-                    onclick="checkSongAnswer('artist', ${index})"
-                >
-                    Confirmar
-                </button>
-
-            `;
-
-
-            const feedback =
-                document.createElement(
-                    "div"
-                );
-
-
-            feedback.id =
-                `songs-artist-feedback-${index}`;
-
-
-            feedback.className =
-                "songs-field-feedback";
-
-
-            artistsContainer.appendChild(
-                row
-            );
-
-
-            artistsContainer.appendChild(
-                feedback
-            );
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   RESET UI PLAYER
-   ========================================================= */
-
-function resetSongsPlayerUI() {
 
     const bar =
         document.getElementById(
             "songs-progress-bar"
-        );
-
-
-    const current =
-        document.getElementById(
-            "songs-current-time"
-        );
-
-
-    const duration =
-        document.getElementById(
-            "songs-duration"
-        );
-
-
-    const status =
-        document.getElementById(
-            "songs-status"
         );
 
 
@@ -4847,3242 +5739,60 @@ function resetSongsPlayerUI() {
 
     }
 
-
-    if (current) {
-
-        current.textContent =
-            "0:00";
-
-    }
-
-
-    if (duration) {
-
-        duration.textContent =
-            "0:00";
-
-    }
-
-
-    if (status) {
-
-        status.textContent =
-            "Listo para reproducir";
-
-    }
-
-}
-/* =========================================================
-   CHECK RESPUESTAS SONGS
-   ========================================================= */
-
-function checkSongAnswer(
-    type,
-    artistIndex = null
-) {
-
-    if (
-        !songsCurrentSong
-    ) {
-        return;
-    }
-
-
-    const teamSelect =
-        document.getElementById(
-            "songs-team-select"
-        );
-
-
-    if (!teamSelect) {
-        return;
-    }
-
-
-    const team =
-        teamSelect.value;
-
-
-    if (!team) {
-
-        alert(
-            "Seleccioná un equipo primero."
-        );
-
-        return;
-
-    }
-
-
-    let input = null;
-
-    let feedback = null;
-
-    let correctAnswer = null;
-
-    let answerKey = null;
-
-
-    /* =========================
-       DÉCADA
-       ========================= */
-
-    if (
-        type === "decade"
-    ) {
-
-        if (
-            songsAnswers.decade
-        ) {
-
-            return;
-
-        }
-
-
-        input =
-            document.getElementById(
-                "songs-decade-answer"
-            );
-
-
-        feedback =
-            document.getElementById(
-                "songs-decade-feedback"
-            );
-
-
-        correctAnswer =
-            songsCurrentSong.decade;
-
-
-        answerKey =
-            "decade";
-
-    }
-
-
-    /* =========================
-       ARTISTA
-       ========================= */
-
-    if (
-        type === "artist"
-    ) {
-
-        if (
-            artistIndex === null ||
-            artistIndex === undefined
-        ) {
-
-            return;
-
-        }
-
-
-        if (
-            songsAnswers.artists[
-                artistIndex
-            ]
-        ) {
-
-            return;
-
-        }
-
-
-        input =
-            document.getElementById(
-                `songs-artist-answer-${artistIndex}`
-            );
-
-
-        feedback =
-            document.getElementById(
-                `songs-artist-feedback-${artistIndex}`
-            );
-
-
-        correctAnswer =
-            songsCurrentSong.artists[
-                artistIndex
-            ];
-
-
-        answerKey =
-            `artist-${artistIndex}`;
-
-    }
-
-
-    /* =========================
-       TÍTULO
-       ========================= */
-
-    if (
-        type === "title"
-    ) {
-
-        if (
-            songsAnswers.title
-        ) {
-
-            return;
-
-        }
-
-
-        input =
-            document.getElementById(
-                "songs-title-answer"
-            );
-
-
-        feedback =
-            document.getElementById(
-                "songs-title-feedback"
-            );
-
-
-        correctAnswer =
-            songsCurrentSong.title;
-
-
-        answerKey =
-            "title";
-
-    }
-
-
-    if (
-        !input ||
-        !feedback ||
-        !correctAnswer
-    ) {
-
-        return;
-
-    }
-
-
-    const userAnswer =
-        input.value.trim();
-
-
-    if (!userAnswer) {
-
-        feedback.textContent =
-            "Escribí una respuesta.";
-
-        feedback.className =
-            "songs-field-feedback error";
-
-        return;
-
-    }
-
-
-    const correct =
-        songAnswerMatches(
-            userAnswer,
-            correctAnswer
-        );
-
-
-    if (correct) {
-
-        /*
-         * Cada dato correcto vale
-         * exactamente 1 punto.
-         */
-
-        if (
-            type === "decade"
-        ) {
-
-            songsAnswers.decade =
-                true;
-
-        }
-
-
-        if (
-            type === "artist"
-        ) {
-
-            songsAnswers.artists[
-                artistIndex
-            ] = true;
-
-        }
-
-
-        if (
-            type === "title"
-        ) {
-
-            songsAnswers.title =
-                true;
-
-        }
-
-
-        input.disabled =
-            true;
-
-
-        const button =
-            input.parentElement
-                ?.querySelector(
-                    "button"
-                );
-
-
-        if (button) {
-
-            button.disabled =
-                true;
-
-        }
-
-
-        feedback.textContent =
-            "✓ ¡Correcto! +1 punto";
-
-        feedback.className =
-            "songs-field-feedback correct";
-
-
-        addPoints(
-            team,
-            "songs",
-            1
-        );
-
-
-        updateSongsScoreboard();
-
-
-        /*
-         * Si el dato fue correcto,
-         * queda bloqueado.
-         */
-
-        return;
-
-    }
-
-
-    /*
-     * Respuesta incorrecta:
-     * no resta puntos.
-     * El campo queda disponible
-     * para rebote.
-     */
-
-    feedback.textContent =
-        "✗ Incorrecto — rebote";
-
-    feedback.className =
-        "songs-field-feedback error";
-
-
-    input.value =
-        "";
-
 }
 
 
 /* =========================================================
-   ENTER EN SONGS
+   CERRAR JUEGO DE CANCIONES
    ========================================================= */
 
-document.addEventListener(
-    "keydown",
-    event => {
+function closeSongsGame() {
 
-        if (
-            event.key !==
-            "Enter"
-        ) {
+    songsGameOpen = false;
 
-            return;
+    if (songsProgressTimer) {
 
-        }
+        clearInterval(songsProgressTimer);
 
-
-        if (
-            !songsGameOpen
-        ) {
-
-            return;
-
-        }
-
-
-        const active =
-            document.activeElement;
-
-
-        if (
-            !active
-        ) {
-
-            return;
-
-        }
-
-
-        if (
-            active.id ===
-            "songs-decade-answer"
-        ) {
-
-            checkSongAnswer(
-                "decade"
-            );
-
-            return;
-
-        }
-
-
-        if (
-            active.id ===
-            "songs-title-answer"
-        ) {
-
-            checkSongAnswer(
-                "title"
-            );
-
-            return;
-
-        }
-
-
-        if (
-            active.id.startsWith(
-                "songs-artist-answer-"
-            )
-        ) {
-
-            const index =
-                Number(
-                    active.id.replace(
-                        "songs-artist-answer-",
-                        ""
-                    )
-                );
-
-
-            checkSongAnswer(
-                "artist",
-                index
-            );
-
-        }
+        songsProgressTimer = null;
 
     }
-);
-
-
-/* =========================================================
-   REINICIAR JUEGO DE CANCIONES
-   ========================================================= */
-
-function resetSongsGame() {
-
-    const confirmation =
-        confirm(
-            "¿Seguro que querés reiniciar el juego de canciones?"
-        );
-
-
-    if (!confirmation) {
-
-        return;
-
-    }
-
-
-    songsUsedIndexes =
-        [];
-
-    songsCurrentIndex =
-        0;
-
-    songsCurrentSong =
-        null;
-
-    songsAnswers =
-        [];
-
-
-    if (
-        songsProgressTimer
-    ) {
-
-        clearInterval(
-            songsProgressTimer
-        );
-
-        songsProgressTimer =
-            null;
-
-    }
-
 
     if (
         songsPlayer &&
-        songsPlayerReady
+        typeof songsPlayer.stopVideo ===
+        "function"
     ) {
 
         try {
 
             songsPlayer.stopVideo();
 
-        } catch (
-            error
-        ) {
+        } catch (error) {
 
             console.warn(
+                "No se pudo detener YouTube:",
                 error
             );
 
         }
 
     }
-
-
-    nextSong();
-
-}
-
-
-/* =========================================================
-   ESTILOS DEL JUEGO DE CANCIONES
-   ========================================================= */
-
-function injectSongsStyles() {
 
     if (
-        document.getElementById(
-            "songs-styles"
-        )
+        songsPlayer &&
+        typeof songsPlayer.destroy ===
+        "function"
     ) {
 
-        return;
-
-    }
-
-
-    const style =
-        document.createElement(
-            "style"
-        );
-
-
-    style.id =
-        "songs-styles";
-
-
-    style.textContent = `
-
-        .songs-modal {
-
-            position: fixed;
-
-            inset: 0;
-
-            z-index: 9999;
-
-            display: none;
-
-            align-items: center;
-
-            justify-content: center;
-
-            background:
-                rgba(0, 0, 0, 0.94);
-
-            padding: 20px;
-
-            box-sizing: border-box;
-
-            overflow-y: auto;
-
-        }
-
-
-        .songs-game {
-
-            width: min(
-                1200px,
-                100%
-            );
-
-            min-height: 700px;
-
-            max-height: 95vh;
-
-            overflow-y: auto;
-
-            background:
-                #111;
-
-            border:
-                1px solid
-                rgba(
-                    182,
-                    255,
-                    0,
-                    0.25
-                );
-
-            border-radius:
-                24px;
-
-            box-shadow:
-                0 25px 80px
-                rgba(
-                    0,
-                    0,
-                    0,
-                    0.6
-                );
-
-            color:
-                #fff;
-
-            padding:
-                24px;
-
-            box-sizing:
-                border-box;
-
-        }
-
-
-        .songs-header {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                space-between;
-
-            gap:
-                20px;
-
-            margin-bottom:
-                25px;
-
-            border-bottom:
-                1px solid
-                rgba(
-                    255,
-                    255,
-                    255,
-                    0.1
-                );
-
-            padding-bottom:
-                20px;
-
-        }
-
-
-        .songs-header h1 {
-
-            margin:
-                0 0 6px 0;
-
-            font-size:
-                30px;
-
-        }
-
-
-        .songs-header p {
-
-            margin:
-                0;
-
-            color:
-                rgba(
-                    255,
-                    255,
-                    255,
-                    0.65
-                );
-
-        }
-
-
-        .songs-header-actions {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            gap:
-                10px;
-
-            flex-shrink:
-                0;
-
-        }
-
-
-        .songs-back {
-
-            border:
-                1px solid
-                rgba(
-                    182,
-                    255,
-                    0,
-                    0.5
-                );
-
-            background:
-                rgba(
-                    182,
-                    255,
-                    0,
-                    0.08
-                );
-
-            color:
-                #B6FF00;
-
-            border-radius:
-                10px;
-
-            padding:
-                10px 15px;
-
-            cursor:
-                pointer;
-
-            font-weight:
-                700;
-
-        }
-
-
-        .songs-back:hover {
-
-            background:
-                rgba(
-                    182,
-                    255,
-                    0,
-                    0.16
-                );
-
-        }
-
-
-        .songs-close {
-
-            width:
-                42px;
-
-            height:
-                42px;
-
-            border:
-                1px solid
-                rgba(
-                    255,
-                    255,
-                    255,
-                    0.15
-                );
-
-            border-radius:
-                50%;
-
-            background:
-                rgba(
-                    255,
-                    255,
-                    255,
-                    0.05
-                );
-
-            color:
-                #fff;
-
-            font-size:
-                20px;
-
-            cursor:
-                pointer;
-
-        }
-
-
-        .songs-layout {
-
-            display:
-                grid;
-
-            grid-template-columns:
-                230px
-                minmax(
-                    0,
-                    1fr
-                );
-
-            gap:
-                25px;
-
-        }
-
-
-        .songs-sidebar {
-
-            display:
-                flex;
-
-            flex-direction:
-                column;
-
-            gap:
-                18px;
-
-        }
-
-
-        .songs-team-box,
-        .songs-score-box {
-
-            background:
-                rgba(
-                    255,
-                    255,
-                    255,
-                    0.045
-                );
-
-            border:
-                1px solid
-                rgba(
-                    255,
-                    255,
-                    255,
-                    0.09
-                );
-
-            border-radius:
-                16px;
-
-            padding:
-                18px;
-
-        }
-
-
-        .songs-team-box h3,
-        .songs-score-box h3 {
-
-            margin:
-                0 0 12px 0;
-
-            font-size:
-                16px;
-
-        }
-
-
-        #songs-team-select {
-
-            width:
-                100%;
-
-            padding:
-                11px;
-
-            border-radius:
-                9px;
-
-            border:
-                1px solid
-                rgba(
-                    255,
-                    255,
-                    255,
-                    0.15
-                );
-
-            background:
-                #191919;
-
-            color:
-                #fff;
-
-            outline:
-                none;
-
-        }
-
-
-        .songs-score-row {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                space-between;
-
-            gap:
-                10px;
-
-            padding:
-                10px 0;
-
-            border-bottom:
-                1px solid
-                rgba(
-                    255,
-                    255,
-                    255,
-                    0.08
-                );
-
-            font-size:
-                14px;
-
-        }
-
-
-        .songs-score-row:last-child {
-
-            border-bottom:
-                0;
-
-        }
-
-
-        .songs-score-row strong {
-
-            color:
-                #B6FF00;
-
-            font-size:
-                18px;
-
-        }
-
-
-        .songs-main {
-
-            min-width:
-                0;
-
-        }
-
-
-        .songs-song-number {
-
-            margin-bottom:
-                12px;
-
-            text-align:
-                center;
-
-            color:
-                #B6FF00;
-
-            font-weight:
-                800;
-
-            font-size:
-                15px;
-
-        }
-
-
-        .songs-player-card {
-
-            position:
-                relative;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #191919,
-                    #101010
-                );
-
-            border:
-                1px solid
-                rgba(
-                    182,
-                    255,
-                    0,
-                    0.18
-                );
-
-            border-radius:
-                20px;
-
-            padding:
-                22px;
-
-            margin-bottom:
-                22px;
-
-        }
-
-
-        .songs-player-icon {
-
-            width:
-                58px;
-
-            height:
-                58px;
-
-            border-radius:
-                16px;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            background:
-                #B6FF00;
-
-            color:
-                #0B0B0B;
-
-            font-size:
-                28px;
-
-            margin-bottom:
-                12px;
-
-        }
-
-
-        .songs-player-info {
-
-            display:
-                flex;
-
-            flex-direction:
-                column;
-
-            gap:
-                4px;
-
-            margin-bottom:
-                18px;
-
-        }
-
-
-        .songs-player-info strong {
-
-            font-size:
-                17px;
-
-        }
-
-
-        .songs-player-info span {
-
-            color:
-                rgba(
-                    255,
-                    255,
-                    255,
-                    0.6
-                );
-
-            font-size:
-                13px;
-
-        }
-
-
-        .songs-progress {
-
-            width:
-                100%;
-
-            height:
-                8px;
-
-            background:
-                rgba(
-                    255,
-                    255,
-                    255,
-                    0.1
-                );
-
-            border-radius:
-                999px;
-
-            overflow:
-                hidden;
-
-        }
-
-
-        .songs-progress-bar {
-
-            width:
-                0%;
-
-            height:
-                100%;
-
-            background:
-                #B6FF00;
-
-            border-radius:
-                999px;
-
-            transition:
-                width
-                0.15s
-                linear;
-
-        }
-
-
-        .songs-time {
-
-            display:
-                flex;
-
-            justify-content:
-                space-between;
-
-            margin-top:
-                7px;
-
-            color:
-                rgba(
-                    255,
-                    255,
-                    255,
-                    0.55
-                );
-
-            font-size:
-                12px;
-
-        }
-
-
-        .songs-controls {
-
-            display:
-                flex;
-
-            flex-wrap:
-                wrap;
-
-            gap:
-                9px;
-
-            margin-top:
-                18px;
-
-        }
-
-
-        .songs-controls button {
-
-            border:
-                1px solid
-                rgba(
-                    255,
-                    255,
-                    255,
-                    0.12
-                );
-
-            background:
-                rgba(
-                    255,
-                    255,
-                    255,
-                    0.06
-                );
-
-            color:
-                #fff;
-
-            padding:
-                10px 13px;
-
-            border-radius:
-                9px;
-
-            cursor:
-                pointer;
-
-            font-weight:
-                700;
-
-        }
-
-
-        .songs-controls button:hover {
-
-            background:
-                rgba(
-                    182,
-                    255,
-                    0,
-                    0.1
-                );
-
-            border-color:
-                rgba(
-                    182,
-                    255,
-                    0,
-                    0.4
-                );
-
-        }
-
-
-        .songs-youtube-hidden {
-
-            position:
-                absolute;
-
-            width:
-                1px;
-
-            height:
-                1px;
-
-            opacity:
-                0;
-
-            pointer-events:
-                none;
-
-            overflow:
-                hidden;
-
-            left:
-                -9999px;
-
-            top:
-                -9999px;
-
-        }
-
-
-        .songs-fields {
-
-            display:
-                flex;
-
-            flex-direction:
-                column;
-
-            gap:
-                15px;
-
-        }
-
-
-        .songs-field {
-
-            background:
-                rgba(
-                    255,
-                    255,
-                    255,
-                    0.035
-                );
-
-            border:
-                1px solid
-                rgba(
-                    255,
-                    255,
-                    255,
-                    0.08
-                );
-
-            border-radius:
-                15px;
-
-            padding:
-                16px;
-
-        }
-
-
-        .songs-field > label {
-
-            display:
-                block;
-
-            font-weight:
-                800;
-
-            margin-bottom:
-                9px;
-
-        }
-
-
-        .songs-answer-row {
-
-            display:
-                flex;
-
-            gap:
-                9px;
-
-        }
-
-
-        .songs-answer-row input {
-
-            flex:
-                1;
-
-            min-width:
-                0;
-
-            padding:
-                12px;
-
-            border-radius:
-                9px;
-
-            border:
-                1px solid
-                rgba(
-                    255,
-                    255,
-                    255,
-                    0.13
-                );
-
-            background:
-                #191919;
-
-            color:
-                #fff;
-
-            outline:
-                none;
-
-            box-sizing:
-                border-box;
-
-        }
-
-
-        .songs-answer-row input:focus {
-
-            border-color:
-                #B6FF00;
-
-        }
-
-
-        .songs-answer-row input:disabled {
-
-            opacity:
-                0.5;
-
-        }
-
-
-        .songs-answer-row button {
-
-            padding:
-                11px 14px;
-
-            border:
-                0;
-
-            border-radius:
-                9px;
-
-            background:
-                #B6FF00;
-
-            color:
-                #0B0B0B;
-
-            cursor:
-                pointer;
-
-            font-weight:
-                800;
-
-            white-space:
-                nowrap;
-
-        }
-
-
-        .songs-answer-row button:disabled {
-
-            opacity:
-                0.4;
-
-            cursor:
-                default;
-
-        }
-
-
-        .songs-field-feedback {
-
-            min-height:
-                20px;
-
-            margin-top:
-                7px;
-
-            font-size:
-                13px;
-
-            font-weight:
-                700;
-
-        }
-
-
-        .songs-field-feedback.correct {
-
-            color:
-                #B6FF00;
-
-        }
-
-
-        .songs-field-feedback.error {
-
-            color:
-                #ff6969;
-
-        }
-
-
-        .songs-actions {
-
-            display:
-                flex;
-
-            justify-content:
-                center;
-
-            gap:
-                12px;
-
-            margin-top:
-                22px;
-
-            padding-bottom:
-                5px;
-
-        }
-
-
-        .songs-next-button {
-
-            border:
-                0;
-
-            border-radius:
-                11px;
-
-            background:
-                #B6FF00;
-
-            color:
-                #0B0B0B;
-
-            padding:
-                13px 22px;
-
-            font-size:
-                15px;
-
-            font-weight:
-                900;
-
-            cursor:
-                pointer;
-
-        }
-
-
-        .songs-reset-button {
-
-            border:
-                1px solid
-                rgba(
-                    255,
-                    255,
-                    255,
-                    0.15
-                );
-
-            border-radius:
-                11px;
-
-            background:
-                transparent;
-
-            color:
-                #fff;
-
-            padding:
-                13px 18px;
-
-            font-weight:
-                700;
-
-            cursor:
-                pointer;
-
-        }
-
-
-        @media (
-            max-width: 800px
-        ) {
-
-            .songs-game {
-
-                padding:
-                    16px;
-
-                border-radius:
-                    18px;
-
-            }
-
-
-            .songs-header {
-
-                align-items:
-                    flex-start;
-
-            }
-
-
-            .songs-header h1 {
-
-                font-size:
-                    24px;
-
-            }
-
-
-            .songs-header-actions {
-
-                flex-direction:
-                    column;
-
-            }
-
-
-            .songs-back {
-
-                font-size:
-                    12px;
-
-                padding:
-                    8px 10px;
-
-            }
-
-
-            .songs-layout {
-
-                grid-template-columns:
-                    1fr;
-
-            }
-
-
-            .songs-sidebar {
-
-                display:
-                    grid;
-
-                grid-template-columns:
-                    1fr 1fr;
-
-            }
-
-
-            .songs-answer-row {
-
-                flex-direction:
-                    column;
-
-            }
-
-
-            .songs-answer-row button {
-
-                width:
-                    100%;
-
-            }
-
-
-            .songs-actions {
-
-                flex-direction:
-                    column;
-
-            }
-
-
-            .songs-next-button,
-            .songs-reset-button {
-
-                width:
-                    100%;
-
-            }
-
-        }
-
-
-        @media (
-            max-width: 500px
-        ) {
-
-            .songs-modal {
-
-                padding:
-                    8px;
-
-            }
-
-
-            .songs-game {
-
-                max-height:
-                    98vh;
-
-            }
-
-
-            .songs-header {
-
-                gap:
-                    8px;
-
-            }
-
-
-            .songs-sidebar {
-
-                grid-template-columns:
-                    1fr;
-
-            }
-
-        }
-
-    `;
-
-
-    document.head.appendChild(
-        style
-    );
-
-}
-
-
-/* =========================================================
-   ACTUALIZAR MARCADOR SONGS
-   ========================================================= */
-
-function refreshSongsScores() {
-
-    updateSongsScoreboard();
-
-    updateScoreboard();
-
-}
-
-
-/* =========================================================
-   FIN
-   ========================================================= */
-
-        }
-
-
-        .songs-controls button {
-
-            border:0;
-
-            border-radius:10px;
-
-            padding:14px 10px;
-
-            background:#202020;
-
-            color:#FFFFFF;
-
-            font-size:15px;
-
-            font-weight:900;
-
-            cursor:pointer;
-
-            transition:0.2s;
-
-        }
-
-
-        .songs-controls button:hover {
-
-            background:#2b2b2b;
-
-            transform:translateY(-1px);
-
-        }
-
-
-        .songs-controls button.primary {
-
-            background:#B6FF00;
-
-            color:#0B0B0B;
-
-        }
-
-
-        .songs-controls button.primary:hover {
-
-            background:#c4ff33;
-
-        }
-
-
-        .songs-progress {
-
-            width:100%;
-
-            height:7px;
-
-            background:#2b2b2b;
-
-            border-radius:99px;
-
-            overflow:hidden;
-
-            margin-top:15px;
-
-        }
-
-
-        .songs-progress-bar {
-
-            width:0%;
-
-            height:100%;
-
-            background:#B6FF00;
-
-            border-radius:99px;
-
-            transition:width .15s linear;
-
-        }
-
-
-        .songs-time {
-
-            display:flex;
-
-            justify-content:space-between;
-
-            margin-top:7px;
-
-            font-size:12px;
-
-            color:#999;
-
-        }
-
-
-        .songs-fields {
-
-            display:grid;
-
-            grid-template-columns:1fr;
-
-            gap:14px;
-
-        }
-
-
-        .songs-field {
-
-            background:#171717;
-
-            border:1px solid #292929;
-
-            border-radius:14px;
-
-            padding:15px;
-
-        }
-
-
-        .songs-field-title {
-
-            display:flex;
-
-            align-items:center;
-
-            justify-content:space-between;
-
-            gap:10px;
-
-            margin-bottom:10px;
-
-        }
-
-
-        .songs-field-title strong {
-
-            font-size:14px;
-
-        }
-
-
-        .songs-field-title span {
-
-            color:#888;
-
-            font-size:12px;
-
-        }
-
-
-        .songs-answer-row {
-
-            display:flex;
-
-            gap:8px;
-
-        }
-
-
-        .songs-answer-row input {
-
-            flex:1;
-
-            min-width:0;
-
-            border:1px solid #333;
-
-            border-radius:9px;
-
-            padding:11px 12px;
-
-            background:#0e0e0e;
-
-            color:#fff;
-
-            outline:none;
-
-            font-size:14px;
-
-        }
-
-
-        .songs-answer-row input:focus {
-
-            border-color:#B6FF00;
-
-        }
-
-
-        .songs-answer-row input:disabled {
-
-            opacity:.55;
-
-        }
-
-
-        .songs-answer-row button {
-
-            border:0;
-
-            border-radius:9px;
-
-            padding:10px 15px;
-
-            background:#B6FF00;
-
-            color:#0B0B0B;
-
-            font-weight:900;
-
-            cursor:pointer;
-
-        }
-
-
-        .songs-answer-row button:disabled {
-
-            opacity:.45;
-
-            cursor:default;
-
-        }
-
-
-        .songs-field-feedback {
-
-            min-height:18px;
-
-            margin-top:7px;
-
-            font-size:12px;
-
-            font-weight:800;
-
-        }
-
-
-        .songs-field-feedback.correct {
-
-            color:#B6FF00;
-
-        }
-
-
-        .songs-field-feedback.error {
-
-            color:#ff6767;
-
-        }
-
-
-        .songs-actions {
-
-            display:flex;
-
-            justify-content:center;
-
-            gap:10px;
-
-            margin-top:18px;
-
-        }
-
-
-        .songs-next-button {
-
-            border:0;
-
-            border-radius:10px;
-
-            padding:13px 22px;
-
-            background:#B6FF00;
-
-            color:#0B0B0B;
-
-            font-weight:900;
-
-            cursor:pointer;
-
-        }
-
-
-        .songs-reset-button {
-
-            border:1px solid #333;
-
-            border-radius:10px;
-
-            padding:13px 18px;
-
-            background:#171717;
-
-            color:#fff;
-
-            font-weight:800;
-
-            cursor:pointer;
-
-        }
-
-
-        .songs-next-button:hover {
-
-            background:#c4ff33;
-
-        }
-
-
-        .songs-reset-button:hover {
-
-            background:#222;
-
-        }
-
-
-        @media(max-width:850px){
-
-            .songs-layout{
-
-                grid-template-columns:1fr;
-
-            }
-
-            .songs-sidebar{
-
-                display:grid;
-
-                grid-template-columns:1fr 1fr;
-
-            }
-
-        }
-
-
-        @media(max-width:600px){
-
-            .songs-modal{
-
-                padding:8px;
-
-            }
-
-            .songs-game{
-
-                padding:14px;
-
-                border-radius:16px;
-
-            }
-
-            .songs-header{
-
-                flex-direction:column;
-
-                align-items:stretch;
-
-            }
-
-            .songs-header-actions{
-
-                justify-content:space-between;
-
-            }
-
-            .songs-sidebar{
-
-                grid-template-columns:1fr;
-
-            }
-
-            .songs-answer-row{
-
-                flex-direction:column;
-
-            }
-
-            .songs-answer-row button{
-
-                width:100%;
-
-            }
-
-            .songs-actions{
-
-                flex-direction:column;
-
-            }
-
-            .songs-next-button,
-
-            .songs-reset-button{
-
-                width:100%;
-
-            }
-
-        }
-
-    `;
-
-
-    document.head.appendChild(style);
-
-}
-
-
-/* =========================================================
-   ACTUALIZAR MARCADOR DE SONGS
-   ========================================================= */
-
-function updateSongsScoreboard(){
-
-    const elements = {
-
-        team1:
-            document.getElementById(
-                "songs-score-team1"
-            ),
-
-        team2:
-            document.getElementById(
-                "songs-score-team2"
-            ),
-
-        team3:
-            document.getElementById(
-                "songs-score-team3"
-            )
-
-    };
-
-
-    if(elements.team1){
-
-        elements.team1.textContent =
-            scores.team1.songs;
-
-    }
-
-
-    if(elements.team2){
-
-        elements.team2.textContent =
-            scores.team2.songs;
-
-    }
-
-
-    if(elements.team3){
-
-        elements.team3.textContent =
-            scores.team3.songs;
-
-    }
-
-}
-
-
-/* =========================================================
-   NORMALIZACIÓN DE RESPUESTAS
-   ========================================================= */
-
-function normalizeSongAnswer(value){
-
-    if(
-        value === null ||
-        value === undefined
-    ){
-
-        return "";
-
-    }
-
-
-    let result =
-        String(value)
-            .toLowerCase()
-            .trim();
-
-
-    result =
-        result.normalize(
-            "NFD"
-        ).replace(
-            /[\u0300-\u036f]/g,
-            ""
-        );
-
-
-    result =
-        result.replace(
-            /['’`´]/g,
-            ""
-        );
-
-
-    result =
-        result.replace(
-            /[.,!?¿¡:;()[\]{}""]/g,
-            " "
-        );
-
-
-    result =
-        result.replace(
-            /\s+/g,
-            " "
-        )
-        .trim();
-
-
-    /*
-     * Equivalencias útiles.
-     */
-
-    result =
-        result.replace(
-            /\s*&\s*/g,
-            " y "
-        );
-
-
-    result =
-        result.replace(
-            /\s+/g,
-            " "
-        )
-        .trim();
-
-
-    /*
-     * Artículos iniciales.
-     */
-
-    result =
-        result.replace(
-            /^(el|la|los|las|un|una|unos|unas)\s+/,
-            ""
-        );
-
-
-    /*
-     * Preposiciones iniciales frecuentes.
-     */
-
-    result =
-        result.replace(
-            /^(de|del|al)\s+/,
-            ""
-        );
-
-
-    return result;
-
-}
-
-
-/* =========================================================
-   COMPARAR RESPUESTAS DE SONGS
-   ========================================================= */
-
-function songAnswerMatches(
-    userAnswer,
-    correctAnswer
-){
-
-    const user =
-        normalizeSongAnswer(
-            userAnswer
-        );
-
-
-    const correct =
-        normalizeSongAnswer(
-            correctAnswer
-        );
-
-
-    if(
-        !user ||
-        !correct
-    ){
-
-        return false;
-
-    }
-
-
-    if(
-        user === correct
-    ){
-
-        return true;
-
-    }
-
-
-    /*
-     * Algunas variaciones razonables.
-     */
-
-    const userCompact =
-        user.replace(
-            /\s/g,
-            ""
-        );
-
-
-    const correctCompact =
-        correct.replace(
-            /\s/g,
-            ""
-        );
-
-
-    if(
-        userCompact ===
-        correctCompact
-    ){
-
-        return true;
-
-    }
-
-
-    /*
-     * Variaciones con "feat",
-     * "ft", etc.
-     */
-
-    const cleanFeatures =
-        value =>
-            value
-                .replace(
-                    /\b(feat|ft|featuring)\b/g,
-                    " "
-                )
-                .replace(
-                    /\s+/g,
-                    " "
-                )
-                .trim();
-
-
-    const userWithoutFeature =
-        cleanFeatures(
-            user
-        );
-
-
-    const correctWithoutFeature =
-        cleanFeatures(
-            correct
-        );
-
-
-    if(
-        userWithoutFeature ===
-        correctWithoutFeature
-    ){
-
-        return true;
-
-    }
-
-
-    return false;
-
-}
-
-
-/* =========================================================
-   OBTENER SIGUIENTE CANCIÓN
-   ========================================================= */
-
-function nextSong(){
-
-    if(
-        songsProgressTimer
-    ){
-
-        clearInterval(
-            songsProgressTimer
-        );
-
-        songsProgressTimer =
-            null;
-
-    }
-
-
-    if(
-        songsPlayer &&
-        songsPlayerReady
-    ){
-
-        try{
-
-            songsPlayer.stopVideo();
-
-        }catch(error){
-
-            console.warn(error);
-
-        }
-
-    }
-
-
-    /*
-     * Si ya se utilizaron todas las canciones,
-     * se termina la partida.
-     */
-
-    if(
-        songsUsedIndexes.length >=
-        SONGS_DATA.length
-    ){
-
-        songsCurrentSong =
-            null;
-
-
-        const title =
-            document.getElementById(
-                "songs-current-title"
-            );
-
-
-        if(title){
-
-            title.textContent =
-                "¡Juego terminado!";
-
-        }
-
-
-        const number =
-            document.getElementById(
-                "songs-number"
-            );
-
-
-        if(number){
-
-            number.textContent =
-                `${SONGS_DATA.length} / ${SONGS_DATA.length}`;
-
-        }
-
-
-        return;
-
-    }
-
-
-    let availableIndexes =
-        SONGS_DATA
-            .map(
-                (_, index) =>
-                    index
-            )
-            .filter(
-                index =>
-                    !songsUsedIndexes.includes(
-                        index
-                    )
-            );
-
-
-    if(
-        availableIndexes.length === 0
-    ){
-
-        return;
-
-    }
-
-
-    const randomPosition =
-        Math.floor(
-            Math.random() *
-            availableIndexes.length
-        );
-
-
-    songsCurrentIndex =
-        availableIndexes[
-            randomPosition
-        ];
-
-
-    songsUsedIndexes.push(
-        songsCurrentIndex
-    );
-
-
-    songsCurrentSong =
-        SONGS_DATA[
-            songsCurrentIndex
-        ];
-
-
-    songsAnswers = {
-
-        decade:false,
-
-        artists:
-            songsCurrentSong.artists.map(
-                () => false
-            ),
-
-        title:false
-
-    };
-
-
-    renderCurrentSong();
-
-
-    loadCurrentSong();
-
-}
-
-
-/* =========================================================
-   RENDERIZAR CANCIÓN ACTUAL
-   ========================================================= */
-
-function renderCurrentSong(){
-
-    if(
-        !songsCurrentSong
-    ){
-
-        return;
-
-    }
-
-
-    const number =
-        document.getElementById(
-            "songs-number"
-        );
-
-
-    if(number){
-
-        number.textContent =
-            `${songsUsedIndexes.length} / ${SONGS_DATA.length}`;
-
-    }
-
-
-    const title =
-        document.getElementById(
-            "songs-current-title"
-        );
-
-
-    if(title){
-
-        title.textContent =
-            "Adiviná la canción";
-
-    }
-
-
-    const subtitle =
-        document.getElementById(
-            "songs-current-subtitle"
-        );
-
-
-    if(subtitle){
-
-        subtitle.textContent =
-            "Escuchá desde el segundo 0 y completá los datos.";
-
-    }
-
-
-    const fields =
-        document.getElementById(
-            "songs-fields"
-        );
-
-
-    if(!fields){
-
-        return;
-
-    }
-
-
-    let html = "";
-
-
-    /*
-     * DÉCADA
-     */
-
-    html += `
-
-        <div class="songs-field">
-
-            <div class="songs-field-title">
-
-                <strong>
-                    Década
-                </strong>
-
-                <span>
-                    1 punto
-                </span>
-
-            </div>
-
-            <div class="songs-answer-row">
-
-                <input
-                    id="songs-decade-answer"
-                    type="text"
-                    autocomplete="off"
-                    placeholder="Ej: 80s"
-                >
-
-                <button
-                    type="button"
-                    onclick="checkSongAnswer('decade')"
-                >
-                    Confirmar
-                </button>
-
-            </div>
-
-            <div
-                id="songs-decade-feedback"
-                class="songs-field-feedback"
-            ></div>
-
-        </div>
-
-    `;
-
-
-    /*
-     * ARTISTAS
-     */
-
-    songsCurrentSong.artists.forEach(
-        (
-            artist,
-            index
-        ) => {
-
-            html += `
-
-                <div class="songs-field">
-
-                    <div class="songs-field-title">
-
-                        <strong>
-                            Artista
-                            ${
-                                songsCurrentSong.artists.length > 1
-                                    ? index + 1
-                                    : ""
-                            }
-                        </strong>
-
-                        <span>
-                            1 punto
-                        </span>
-
-                    </div>
-
-                    <div class="songs-answer-row">
-
-                        <input
-                            id="songs-artist-answer-${index}"
-                            type="text"
-                            autocomplete="off"
-                            placeholder="Nombre del artista"
-                        >
-
-                        <button
-                            type="button"
-                            onclick="checkSongAnswer(
-                                'artist',
-                                ${index}
-                            )"
-                        >
-                            Confirmar
-                        </button>
-
-                    </div>
-
-                    <div
-                        id="songs-artist-feedback-${index}"
-                        class="songs-field-feedback"
-                    ></div>
-
-                </div>
-
-            `;
-
-        }
-    );
-
-
-    /*
-     * TÍTULO
-     */
-
-    html += `
-
-        <div class="songs-field">
-
-            <div class="songs-field-title">
-
-                <strong>
-                    Canción
-                </strong>
-
-                <span>
-                    1 punto
-                </span>
-
-            </div>
-
-            <div class="songs-answer-row">
-
-                <input
-                    id="songs-title-answer"
-                    type="text"
-                    autocomplete="off"
-                    placeholder="Nombre de la canción"
-                >
-
-                <button
-                    type="button"
-                    onclick="checkSongAnswer('title')"
-                >
-                    Confirmar
-                </button>
-
-            </div>
-
-            <div
-                id="songs-title-feedback"
-                class="songs-field-feedback"
-            ></div>
-
-        </div>
-
-    `;
-
-
-    fields.innerHTML =
-        html;
-
-
-    resetSongsPlayerUI();
-
-}
-
-
-/* =========================================================
-   RESET DEL PLAYER VISUAL
-   ========================================================= */
-
-function resetSongsPlayerUI(){
-
-    const progress =
-        document.getElementById(
-            "songs-progress-bar"
-        );
-
-
-    if(progress){
-
-        progress.style.width =
-            "0%";
-
-    }
-
-
-    const currentTime =
-        document.getElementById(
-            "songs-current-time"
-        );
-
-
-    if(currentTime){
-
-        currentTime.textContent =
-            "0:00";
-
-    }
-
-
-    const totalTime =
-        document.getElementById(
-            "songs-total-time"
-        );
-
-
-    if(totalTime){
-
-        totalTime.textContent =
-            "0:00";
-
-    }
-
-}
-
-
-/* =========================================================
-   CARGAR CANCIÓN EN YOUTUBE
-   ========================================================= */
-
-function loadCurrentSong(){
-
-    if(
-        !songsCurrentSong
-    ){
-
-        return;
-
-    }
-
-
-    if(
-        !songsPlayer ||
-        !songsPlayerReady
-    ){
-
-        return;
-
-    }
-
-
-    try{
-
-        songsPlayer.loadVideoById(
-            songsCurrentSong.videoId
-        );
-
-        songsPlayer.pauseVideo();
-
-    }catch(error){
-
-        console.warn(
-            "No se pudo cargar la canción:",
-            error
-        );
-
-    }
-
-
-    resetSongsPlayerUI();
-
-}
-
-
-/* =========================================================
-   PLAY DESDE 0
-   ========================================================= */
-
-function songsPlay(){
-
-    if(
-        !songsPlayer ||
-        !songsPlayerReady
-    ){
-
-        return;
-
-    }
-
-
-    try{
-
-        songsPlayer.seekTo(
-            0,
-            true
-        );
-
-        songsPlayer.playVideo();
-
-        startSongsProgress();
-
-    }catch(error){
-
-        console.warn(
-            error
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   PAUSAR
-   ========================================================= */
-
-function songsPause(){
-
-    if(
-        !songsPlayer ||
-        !songsPlayerReady
-    ){
-
-        return;
-
-    }
-
-
-    try{
-
-        songsPlayer.pauseVideo();
-
-    }catch(error){
-
-        console.warn(
-            error
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   CONTINUAR
-   ========================================================= */
-
-function songsContinue(){
-
-    if(
-        !songsPlayer ||
-        !songsPlayerReady
-    ){
-
-        return;
-
-    }
-
-
-    try{
-
-        songsPlayer.playVideo();
-
-        startSongsProgress();
-
-    }catch(error){
-
-        console.warn(
-            error
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   REINICIAR A 0
-   ========================================================= */
-
-function songsRestart(){
-
-    if(
-        !songsPlayer ||
-        !songsPlayerReady
-    ){
-
-        return;
-
-    }
-
-
-    try{
-
-        songsPlayer.seekTo(
-            0,
-            true
-        );
-
-        songsPlayer.playVideo();
-
-        startSongsProgress();
-
-    }catch(error){
-
-        console.warn(
-            error
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   PROGRESO DE CANCIÓN
-   ========================================================= */
-
-function startSongsProgress(){
-
-    if(
-        songsProgressTimer
-    ){
-
-        clearInterval(
-            songsProgressTimer
-        );
-
-    }
-
-
-    songsProgressTimer =
-        setInterval(
-            updateSongsProgress,
-            250
-        );
-
-}
-
-
-/* =========================================================
-   ACTUALIZAR PROGRESO
-   ========================================================= */
-
-function updateSongsProgress(){
-
-    if(
-        !songsPlayer ||
-        !songsPlayerReady
-    ){
-
-        return;
-
-    }
-
-
-    try{
-
-        const current =
-            songsPlayer.getCurrentTime();
-
-
-        const duration =
-            songsPlayer.getDuration();
-
-
-        if(
-            !duration ||
-            duration <= 0
-        ){
-
-            return;
-
-        }
-
-
-        const percentage =
-            Math.max(
-                0,
-                Math.min(
-                    100,
-                    (
-                        current /
-                        duration
-                    ) * 100
-                )
-            );
-
-
-        const progress =
-            document.getElementById(
-                "songs-progress-bar"
-            );
-
-
-        if(progress){
-
-            progress.style.width =
-                `${percentage}%`;
-
-        }
-
-
-        const currentTime =
-            document.getElementById(
-                "songs-current-time"
-            );
-
-
-        if(currentTime){
-
-            currentTime.textContent =
-                formatSongsTime(
-                    current
-                );
-
-        }
-
-
-        const totalTime =
-            document.getElementById(
-                "songs-total-time"
-            );
-
-
-        if(totalTime){
-
-            totalTime.textContent =
-                formatSongsTime(
-                    duration
-                );
-
-        }
-
-    }catch(error){
-
-        /*
-         * El reproductor puede no estar
-         * disponible temporalmente.
-         */
-
-    }
-
-}
-
-
-/* =========================================================
-   FORMATO DE TIEMPO
-   ========================================================= */
-
-function formatSongsTime(
-    seconds
-){
-
-    if(
-        !Number.isFinite(
-            seconds
-        )
-    ){
-
-        return "0:00";
-
-    }
-
-
-    seconds =
-        Math.max(
-            0,
-            Math.floor(
-                seconds
-            )
-        );
-
-
-    const minutes =
-        Math.floor(
-            seconds / 60
-        );
-
-
-    const remaining =
-        seconds % 60;
-
-
-    return (
-        `${minutes}:` +
-        `${String(
-            remaining
-        ).padStart(
-            2,
-            "0"
-        )}`
-    );
-
-}
-
-
-/* =========================================================
-   CERRAR JUEGO DE SONGS
-   ========================================================= */
-
-function closeSongsGame(){
-
-    songsGameOpen =
-        false;
-
-
-    if(
-        songsProgressTimer
-    ){
-
-        clearInterval(
-            songsProgressTimer
-        );
-
-        songsProgressTimer =
-            null;
-
-    }
-
-
-    if(
-        songsPlayer
-    ){
-
-        try{
-
-            songsPlayer.stopVideo();
-
-        }catch(error){
-
-            console.warn(
-                error
-            );
-
-        }
-
-
-        try{
+        try {
 
             songsPlayer.destroy();
 
-        }catch(error){
+        } catch (error) {
 
             console.warn(
+                "No se pudo destruir el reproductor:",
                 error
             );
 
@@ -8090,12 +5800,9 @@ function closeSongsGame(){
 
     }
 
+    songsPlayer = null;
 
-    songsPlayer =
-        null;
-
-    songsPlayerReady =
-        false;
+    songsPlayerReady = false;
 
 
     const modal =
@@ -8104,24 +5811,33 @@ function closeSongsGame(){
         );
 
 
-    if(modal){
+    if (modal) {
 
-        modal.style.display =
-            "none";
+        modal.classList.remove(
+            "active"
+        );
+
+
+        modal.style.setProperty(
+            "display",
+            "none",
+            "important"
+        );
 
     }
 
 
-    const menu =
+    const mainMenu =
         document.getElementById(
             "main-menu"
         );
 
 
-    if(menu){
+    if (mainMenu) {
 
-        menu.style.display =
-            "flex";
+        mainMenu.style.removeProperty(
+            "display"
+        );
 
     }
 
@@ -8129,18 +5845,16 @@ function closeSongsGame(){
 
 
 /* =========================================================
-   ACTUALIZAR MARCADORES
+   INICIALIZACIÓN
    ========================================================= */
 
-function refreshSongsScores(){
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
 
-    updateSongsScoreboard();
+        loadScores();
 
-    updateScoreboard();
+        updateScoreboard();
 
-}
-
-
-/* =========================================================
-   FIN DEL SCRIPT
-   ========================================================= */
+    }
+);
