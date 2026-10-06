@@ -37,6 +37,7 @@
             overflow:hidden!important;
         }
 
+
         .rondo-content{
             width:100%!important;
             height:100%!important;
@@ -147,7 +148,7 @@
 
 
         /* =========================================================
-           LETRAS DEL ROSCO
+           LETRAS
            ========================================================= */
 
         .rosco-letter{
@@ -202,10 +203,6 @@
                 box-shadow .15s ease!important;
         }
 
-
-        /* =========================================================
-           ESTADOS
-           ========================================================= */
 
         .rosco-letter.current{
             background:#ff1744!important;
@@ -354,7 +351,7 @@
 
 
         /* =========================================================
-           BOTONES
+           BOTONES ROSCO
            ========================================================= */
 
         .answer-actions{
@@ -490,6 +487,120 @@
 
     </style>
 
+
+    <!-- =========================================================
+         ESTILOS BOTONES CANCIONES
+         ========================================================= -->
+
+    <style id="songs-final-fix">
+
+        /* Ocultamos definitivamente el contador
+           "Canción X de 49" */
+
+        #songs-status{
+            display:none!important;
+        }
+
+
+        /* Contenedor inferior */
+
+        .songs-bottom{
+            display:flex!important;
+
+            flex-wrap:wrap!important;
+
+            justify-content:space-between!important;
+
+            align-items:center!important;
+
+            gap:10px!important;
+
+            margin-top:22px!important;
+        }
+
+
+        /* Botones */
+
+        .songs-finish,
+        .songs-restart-game,
+        .songs-close-bottom{
+
+            border:0!important;
+
+            border-radius:10px!important;
+
+            padding:13px 16px!important;
+
+            color:#FFFFFF!important;
+
+            font-size:14px!important;
+
+            font-weight:800!important;
+
+            cursor:pointer!important;
+
+        }
+
+
+        .songs-finish{
+
+            background:#18C964!important;
+
+        }
+
+
+        .songs-finish:hover{
+
+            background:#22E078!important;
+
+        }
+
+
+        .songs-restart-game{
+
+            background:#202020!important;
+
+            border:
+                1px solid #555555!important;
+
+        }
+
+
+        .songs-restart-game:hover{
+
+            background:#333333!important;
+
+        }
+
+
+        .songs-close-bottom{
+
+            background:#292929!important;
+
+        }
+
+
+        .songs-close-bottom:hover{
+
+            background:#444444!important;
+
+        }
+
+
+        @media(max-width:850px){
+
+            .songs-bottom{
+
+                flex-direction:column!important;
+
+                align-items:stretch!important;
+
+            }
+
+        }
+
+    </style>
+
 </head>
 
 
@@ -529,7 +640,7 @@
 
 
 <!-- =========================================================
-     CONTENIDO PRINCIPAL
+     CONTENIDO
      ========================================================= -->
 
 <main class="container">
@@ -1157,9 +1268,7 @@
 
 
 
-        <!-- ===================================================
-             CONTENIDO ROSCO
-             =================================================== -->
+        <!-- CONTENIDO -->
 
         <div class="rondo-layout">
 
@@ -1228,7 +1337,10 @@
 
 
                     <p>
-                        🏁 Al finalizar se asignan 3, 2 y 1 puntos.
+                        🏁 Al finalizar:
+                        3 puntos al primero,
+                        2 al segundo
+                        y 1 al tercero.
                     </p>
 
                 </div>
@@ -1252,7 +1364,7 @@
 
 
 
-                <!-- TARJETA DE PREGUNTA -->
+                <!-- PREGUNTA -->
 
                 <div class="question-card">
 
@@ -1277,8 +1389,6 @@
                         Seleccioná una letra para comenzar.
                     </p>
 
-
-                    <!-- BOTONES -->
 
                     <div class="answer-actions">
 
@@ -1321,10 +1431,870 @@
 
 
 <!-- =========================================================
-     JAVASCRIPT
+     SCRIPT ORIGINAL
      ========================================================= -->
 
-<script src="script.js?v=17"></script>
+<script src="script.js?v=18"></script>
+
+
+
+<!-- =========================================================
+     CORRECCIONES DEFINITIVAS
+     ========================================================= -->
+
+<script>
+
+(function(){
+
+    /* =========================================================
+       PASAPALABRA
+       FINAL = 3 / 2 / 1
+       ========================================================= */
+
+    window.finishRondo = function(){
+
+        if(
+            typeof currentTeam === "undefined" ||
+            !currentTeam
+        ){
+
+            return;
+
+        }
+
+
+        /*
+         * Si ya terminó, no volver a sumar.
+         */
+
+        const teams = [
+            "team1",
+            "team2",
+            "team3"
+        ];
+
+
+        if(
+            typeof rondoState === "undefined"
+        ){
+
+            return;
+
+        }
+
+
+        /*
+         * Confirmación
+         */
+
+        const confirmation =
+            confirm(
+                "¿Querés finalizar el Pasapalabra?\n\n" +
+                "Se ordenarán los equipos por cantidad de aciertos " +
+                "y se asignarán 3, 2 y 1 puntos."
+            );
+
+
+        if(!confirmation){
+
+            return;
+
+        }
+
+
+        /*
+         * Obtener aciertos de cada equipo.
+         */
+
+        const results = teams.map(
+            function(team){
+
+                return {
+
+                    team:team,
+
+                    hits:
+                        Number(
+                            rondoState[team]?.hits || 0
+                        )
+
+                };
+
+            }
+        );
+
+
+        /*
+         * Ordenar de mayor a menor.
+         *
+         * En caso de empate se mantiene
+         * el orden original de los equipos.
+         */
+
+        results.sort(
+            function(a,b){
+
+                return b.hits - a.hits;
+
+            }
+        );
+
+
+        /*
+         * Asignar:
+         *
+         * 1° = 3
+         * 2° = 2
+         * 3° = 1
+         */
+
+        const placementPoints = [
+            3,
+            2,
+            1
+        ];
+
+
+        results.forEach(
+            function(result,index){
+
+                scores[
+                    result.team
+                ].rondo =
+                    placementPoints[index];
+
+
+                if(
+                    rondoState[result.team]
+                ){
+
+                    rondoState[
+                        result.team
+                    ].finished = true;
+
+                }
+
+            }
+        );
+
+
+        /*
+         * Guardar.
+         */
+
+        saveScores();
+
+        updateScoreboard();
+
+
+        /*
+         * Mostrar resultado.
+         */
+
+        const winner =
+            results[0];
+
+        const second =
+            results[1];
+
+        const third =
+            results[2];
+
+
+        const letterDisplay =
+            document.getElementById(
+                "question-letter"
+            );
+
+
+        const typeDisplay =
+            document.getElementById(
+                "question-type"
+            );
+
+
+        const questionDisplay =
+            document.getElementById(
+                "question-text"
+            );
+
+
+        if(letterDisplay){
+
+            letterDisplay.textContent =
+                "🏆";
+
+        }
+
+
+        if(typeDisplay){
+
+            typeDisplay.textContent =
+                "PASAPALABRA FINALIZADO";
+
+        }
+
+
+        if(questionDisplay){
+
+            questionDisplay.textContent =
+                "🥇 " +
+                getTeamName(
+                    winner.team
+                ) +
+                " — " +
+                winner.hits +
+                " aciertos → 3 puntos\n\n" +
+
+                "🥈 " +
+                getTeamName(
+                    second.team
+                ) +
+                " — " +
+                second.hits +
+                " aciertos → 2 puntos\n\n" +
+
+                "🥉 " +
+                getTeamName(
+                    third.team
+                ) +
+                " — " +
+                third.hits +
+                " aciertos → 1 punto";
+
+        }
+
+
+        if(
+            typeof renderRosco ===
+            "function"
+        ){
+
+            renderRosco();
+
+        }
+
+    };
+
+
+
+    /* =========================================================
+       CANCIONES
+       PUNTAJE DURANTE EL JUEGO
+       ========================================================= */
+
+    window.updateSongsScoreboard =
+        function(){
+
+            const team1 =
+                document.getElementById(
+                    "songs-score-team1"
+                );
+
+
+            const team2 =
+                document.getElementById(
+                    "songs-score-team2"
+                );
+
+
+            const team3 =
+                document.getElementById(
+                    "songs-score-team3"
+                );
+
+
+            /*
+             * MUY IMPORTANTE:
+             *
+             * Acá mostramos los puntos de la
+             * partida actual, NO los puntos
+             * ya cargados en el marcador general.
+             */
+
+            if(team1){
+
+                team1.textContent =
+                    songsGamePoints.team1;
+
+            }
+
+
+            if(team2){
+
+                team2.textContent =
+                    songsGamePoints.team2;
+
+            }
+
+
+            if(team3){
+
+                team3.textContent =
+                    songsGamePoints.team3;
+
+            }
+
+        };
+
+
+
+    /* =========================================================
+       FINALIZAR CANCIONES
+       FINAL = 3 / 2 / 1
+       ========================================================= */
+
+    window.finishSongsGame =
+        function(){
+
+            if(
+                songsGameFinished
+            ){
+
+                return;
+
+            }
+
+
+            const confirmation =
+                confirm(
+                    "¿Querés finalizar el juego de canciones?\n\n" +
+                    "Se ordenarán los equipos por cantidad de aciertos " +
+                    "y se asignarán 3, 2 y 1 puntos."
+                );
+
+
+            if(!confirmation){
+
+                return;
+
+            }
+
+
+            const teams = [
+
+                "team1",
+                "team2",
+                "team3"
+
+            ];
+
+
+            /*
+             * Tomar los puntos obtenidos
+             * durante ESTA partida.
+             */
+
+            const results =
+                teams.map(
+                    function(team){
+
+                        return {
+
+                            team:team,
+
+                            points:
+                                Number(
+                                    songsGamePoints[
+                                        team
+                                    ] || 0
+                                )
+
+                        };
+
+                    }
+                );
+
+
+            /*
+             * Mayor cantidad de puntos
+             * gana el juego.
+             */
+
+            results.sort(
+                function(a,b){
+
+                    return b.points - a.points;
+
+                }
+            );
+
+
+            /*
+             * 3 / 2 / 1.
+             */
+
+            const placementPoints = [
+                3,
+                2,
+                1
+            ];
+
+
+            results.forEach(
+                function(result,index){
+
+                    scores[
+                        result.team
+                    ].songs +=
+                        placementPoints[index];
+
+                }
+            );
+
+
+            /*
+             * Marcar como finalizado
+             * ANTES de guardar.
+             */
+
+            songsGameFinished =
+                true;
+
+
+            /*
+             * Guardar solamente 3/2/1
+             * en el marcador general.
+             */
+
+            saveScores();
+
+            updateScoreboard();
+
+
+            /*
+             * Mostrar resultado.
+             */
+
+            const message =
+
+                "🎵 JUEGO DE CANCIONES FINALIZADO\n\n" +
+
+                "🥇 " +
+                getTeamName(
+                    results[0].team
+                ) +
+                "\n" +
+                results[0].points +
+                " aciertos → 3 puntos\n\n" +
+
+                "🥈 " +
+                getTeamName(
+                    results[1].team
+                ) +
+                "\n" +
+                results[1].points +
+                " aciertos → 2 puntos\n\n" +
+
+                "🥉 " +
+                getTeamName(
+                    results[2].team
+                ) +
+                "\n" +
+                results[2].points +
+                " aciertos → 1 punto";
+
+
+            alert(
+                message
+            );
+
+
+            /*
+             * Cerrar el juego.
+             */
+
+            closeSongsGame();
+
+        };
+
+
+
+    /* =========================================================
+       REINICIAR SOLAMENTE EL JUEGO DE CANCIONES
+       ========================================================= */
+
+    window.resetSongsGame =
+        function(){
+
+            const confirmation =
+                confirm(
+                    "¿Querés reiniciar el juego de canciones?\n\n" +
+                    "Se perderán los puntos de esta partida " +
+                    "que todavía no hayan sido finalizados."
+                );
+
+
+            if(!confirmation){
+
+                return;
+
+            }
+
+
+            /*
+             * Detener reproductor.
+             */
+
+            if(
+                songsPlayer &&
+                typeof songsPlayer.stopVideo ===
+                "function"
+            ){
+
+                try{
+
+                    songsPlayer.stopVideo();
+
+                }catch(error){
+
+                    console.warn(
+                        error
+                    );
+
+                }
+
+            }
+
+
+            /*
+             * Limpiar partida actual.
+             */
+
+            songsUsedIndexes = [];
+
+            songsCurrentIndex = 0;
+
+            songsCurrentSong = null;
+
+            songsAnswers = [];
+
+
+            /*
+             * MUY IMPORTANTE:
+             *
+             * Esto NO toca scores.teamX.songs.
+             *
+             * Solamente borra los puntos temporales
+             * de esta partida.
+             */
+
+            songsGamePoints.team1 = 0;
+
+            songsGamePoints.team2 = 0;
+
+            songsGamePoints.team3 = 0;
+
+
+            songsGameFinished =
+                false;
+
+            songsGameOpen =
+                true;
+
+
+            /*
+             * Cargar canción nueva.
+             */
+
+            loadNextSong();
+
+
+            /*
+             * Actualizar marcador
+             * de la partida.
+             */
+
+            updateSongsScoreboard();
+
+        };
+
+
+
+    /* =========================================================
+       CREAR LOS BOTONES DE CANCIONES
+       ========================================================= */
+
+    function fixSongsButtons(){
+
+        const modal =
+            document.getElementById(
+                "songs-modal"
+            );
+
+
+        if(!modal){
+
+            return;
+
+        }
+
+
+        const bottom =
+            modal.querySelector(
+                ".songs-bottom"
+            );
+
+
+        if(!bottom){
+
+            return;
+
+        }
+
+
+        /*
+         * Si ya está corregido,
+         * no hacemos nada.
+         */
+
+        if(
+            bottom.dataset.finalButtonsReady ===
+            "true"
+        ){
+
+            return;
+
+        }
+
+
+        /*
+         * Sacar el bloque viejo
+         * que tenía "Reiniciar marcador general".
+         */
+
+        const oldRight =
+            bottom.querySelector(
+                ".songs-bottom-right"
+            );
+
+
+        if(oldRight){
+
+            oldRight.remove();
+
+        }
+
+
+        /*
+         * Sacar botones viejos
+         * por seguridad.
+         */
+
+        const oldFinish =
+            bottom.querySelector(
+                ".songs-finish"
+            );
+
+
+        if(oldFinish){
+
+            oldFinish.remove();
+
+        }
+
+
+        const oldRestart =
+            bottom.querySelector(
+                ".songs-restart-game"
+            );
+
+
+        if(oldRestart){
+
+            oldRestart.remove();
+
+        }
+
+
+        const oldClose =
+            bottom.querySelector(
+                ".songs-close-bottom"
+            );
+
+
+        if(oldClose){
+
+            oldClose.remove();
+
+        }
+
+
+        /*
+         * NUEVA CANCIÓN
+         */
+
+        let nextButton =
+            bottom.querySelector(
+                ".songs-next"
+            );
+
+
+        /*
+         * FINALIZAR
+         */
+
+        const finishButton =
+            document.createElement(
+                "button"
+            );
+
+
+        finishButton.type =
+            "button";
+
+
+        finishButton.className =
+            "songs-finish";
+
+
+        finishButton.textContent =
+            "🏁 Finalizar juego";
+
+
+        finishButton.onclick =
+            function(){
+
+                finishSongsGame();
+
+            };
+
+
+        /*
+         * REINICIAR
+         */
+
+        const restartButton =
+            document.createElement(
+                "button"
+            );
+
+
+        restartButton.type =
+            "button";
+
+
+        restartButton.className =
+            "songs-restart-game";
+
+
+        restartButton.textContent =
+            "🔄 Reiniciar juego";
+
+
+        restartButton.onclick =
+            function(){
+
+                resetSongsGame();
+
+            };
+
+
+        /*
+         * CERRAR
+         */
+
+        const closeButton =
+            document.createElement(
+                "button"
+            );
+
+
+        closeButton.type =
+            "button";
+
+
+        closeButton.className =
+            "songs-close-bottom";
+
+
+        closeButton.textContent =
+            "Cerrar juego";
+
+
+        closeButton.onclick =
+            function(){
+
+                closeSongsGame();
+
+            };
+
+
+        /*
+         * Agregar todo.
+         */
+
+        if(nextButton){
+
+            bottom.appendChild(
+                nextButton
+            );
+
+        }
+
+
+        bottom.appendChild(
+            finishButton
+        );
+
+
+        bottom.appendChild(
+            restartButton
+        );
+
+
+        bottom.appendChild(
+            closeButton
+        );
+
+
+        bottom.dataset.finalButtonsReady =
+            "true";
+
+    }
+
+
+
+    /* =========================================================
+       OBSERVADOR DEL MODAL DE CANCIONES
+       ========================================================= */
+
+    const songsObserver =
+        new MutationObserver(
+            function(){
+
+                fixSongsButtons();
+
+            }
+        );
+
+
+    songsObserver.observe(
+        document.body,
+        {
+            childList:true,
+            subtree:true
+        }
+    );
+
+
+    /*
+     * Intentar una vez al cargar.
+     */
+
+    setTimeout(
+        function(){
+
+            fixSongsButtons();
+
+        },
+        100
+    );
+
+
+})();
+
+</script>
 
 
 </body>
