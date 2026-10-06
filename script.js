@@ -3585,62 +3585,64 @@ function openSongsGame() {
                  ACCIONES
                  ===================================== -->
 
-            <div
-                <div class="songs-bottom">
+                       <div class="songs-bottom">
 
-    <button
-        type="button"
-        class="songs-next"
-        onclick="nextSong()"
-    >
-        🎵 Nueva canción
-    </button>
+                <button
+                    type="button"
+                    class="songs-next"
+                    onclick="nextSong()"
+                >
+                    🎵 Nueva canción
+                </button>
 
-    <button
-        type="button"
-        class="songs-finish"
-        onclick="finishSongsGame()"
-    >
-        🏁 Finalizar juego
-    </button>
+                <button
+                    type="button"
+                    class="songs-finish"
+                    onclick="finishSongsGame()"
+                >
+                    🏁 Finalizar juego
+                </button>
 
-    <button
-        type="button"
-        class="songs-restart-game"
-        onclick="resetSongsGame()"
-    >
-        🔄 Reiniciar juego
-    </button>
+                <button
+                    type="button"
+                    class="songs-restart-game"
+                    onclick="resetSongsGame()"
+                >
+                    🔄 Reiniciar juego
+                </button>
 
-    <button
-        type="button"
-        class="songs-close-bottom"
-        onclick="closeSongsGame()"
-    >
-        Cerrar juego
-    </button>
+                <button
+                    type="button"
+                    class="songs-close-bottom"
+                    onclick="closeSongsGame()"
+                >
+                    Cerrar juego
+                </button>
 
-</div>
+            </div>
 
+        </div>
+
+    `;
 
     updateSongsScoreboard();
 
+    if (
+        !songsCurrentSong
+    ) {
 
-   if (
-    !songsCurrentSong
-) {
+        songsUsedIndexes = [];
 
-    songsUsedIndexes = [];
+        songsGameFinished = false;
 
-    songsGameFinished = false;
+        songsGamePoints.team1 = 0;
+        songsGamePoints.team2 = 0;
+        songsGamePoints.team3 = 0;
 
-    songsGamePoints.team1 = 0;
-    songsGamePoints.team2 = 0;
-    songsGamePoints.team3 = 0;
+        loadNextSong();
 
-    loadNextSong();
+    }
 
-}
 }
 
 
