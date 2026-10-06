@@ -5750,7 +5750,49 @@ function songsRestart() {
 /* =========================================================
    CERRAR JUEGO DE CANCIONES
    ========================================================= */
+/* =========================================================
+   FINALIZAR JUEGO DE CANCIONES
+   ========================================================= */
 
+function finishSongsGame() {
+
+    if (songsGameFinished) {
+        return;
+    }
+
+    const confirmation = confirm(
+        "¿Querés finalizar el juego de canciones y cargar los puntos en la tabla general?"
+    );
+
+    if (!confirmation) {
+        return;
+    }
+
+
+    scores.team1.songs += songsGamePoints.team1;
+
+    scores.team2.songs += songsGamePoints.team2;
+
+    scores.team3.songs += songsGamePoints.team3;
+
+
+    saveScores();
+
+    updateScoreboard();
+
+
+    songsGameFinished = true;
+
+
+    alert(
+        "🎵 Juego de canciones finalizado.\n\n" +
+        "Los puntos fueron cargados en la tabla general."
+    );
+
+
+    closeSongsGame();
+
+}
 function closeSongsGame() {
 
     songsGameOpen = false;
