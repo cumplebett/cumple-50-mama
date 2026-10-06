@@ -5805,36 +5805,82 @@ function finishSongsGame() {
     }
 
     const confirmation = confirm(
-        "¿Querés finalizar el juego de canciones y cargar los puntos en la tabla general?"
+        "¿Querés finalizar el juego de canciones?\n\n" +
+        "Se asignarán 3, 2 y 1 puntos según el resultado de cada equipo."
     );
 
     if (!confirmation) {
         return;
     }
 
+    const teams = [
+        "team1",
+        "team2",
+        "team3"
+    ];
 
-    scores.team1.songs += songsGamePoints.team1;
+    const results = teams.map(team => ({
+        team: team,
+        points: songsGamePoints[team]
+    }));
 
-    scores.team2.songs += songsGamePoints.team2;
+    results.sort((a, b) => b.points - a.points);
 
-    scores.team3.songs += songsGamePoints.team3;
+    /*
+     * IMPORTANTE:
+     * Los puntos obtenidos durante las canciones
+     * solamente sirven para determinar el ranking.
+     *
+     * 1° = 3 puntos
+     * 2° = 2 puntos
+     * 3° = 1 punto
+     */
 
-
-    saveScores();
-
-    updateScoreboard();
-
+    scores[results[0].team].songs += 3;
+    scores[results[1].team].songs += 2;
+    scores[results[2].team].songs += 1;
 
     songsGameFinished = true;
 
+    saveScores();
+    updateScoreboard();
 
     alert(
-        "🎵 Juego de canciones finalizado.\n\n" +
-        "Los puntos fueron cargados en la tabla general."
+        "🎵 JUEGO DE CANCIONES FINALIZADO\n\n" +
+
+        "🥇 " +
+        getTeamName(results[0].team) +
+        " — " +
+        results[0].points +
+        " aciertos — 3 puntos\n\n" +
+
+        "🥈 " +
+        getTeamName(results[1].team) +
+        " — " +
+        results[1].points +
+        " aciertos — 2 puntos\n\n" +
+
+        "🥉 " +
+        getTeamName(results[2].team) +
+        " — " +
+        results[2].points +
+        " aciertos — 1 punto"
     );
 
+    /*
+     * Dejamos el juego preparado para
+     * que al volver a abrirlo sea un juego nuevo.
+     */
+    songsCurrentSong = null;
+    songsAnswers = [];
+    songsUsedIndexes = [];
+
+    songsGamePoints.team1 = 0;
+    songsGamePoints.team2 = 0;
+    songsGamePoints.team3 = 0;
 
     closeSongsGame();
+}
 
 }
 function closeSongsGame() {
