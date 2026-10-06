@@ -50,8 +50,7 @@
 
     display:grid!important;
 
-    /* Panel izquierdo un poco más ancho */
-    grid-template-columns:250px minmax(0,1fr)!important;
+    grid-template-columns:300px minmax(0,1fr)!important;
 
     overflow:hidden!important;
 }
@@ -62,17 +61,16 @@
    ========================================================= */
 
 .rondo-sidebar{
-    width:250px!important;
-    min-width:250px!important;
+    width:300px!important;
+    min-width:300px!important;
 
     box-sizing:border-box!important;
 
     position:relative!important;
     z-index:20!important;
 
-    /* Separación del borde */
-    padding-left:25px!important;
-    padding-right:20px!important;
+    padding-left:50px!important;
+    padding-right:25px!important;
 }
 
 
@@ -100,14 +98,8 @@
 .rosco{
     position:absolute!important;
 
-    /*
-       Un poco más grande que antes.
-       Esto aumenta la distancia entre
-       las letras manteniendo el círculo.
-    */
-
-    width:min(680px,82vh)!important;
-    height:min(680px,82vh)!important;
+    width:min(760px,92vh)!important;
+    height:min(760px,92vh)!important;
 
     left:50%!important;
     top:50%!important;
@@ -195,13 +187,11 @@
         rgba(255,23,68,.65)!important;
 }
 
-
 .rosco-letter.correct{
     background:#18c964!important;
     border-color:#18c964!important;
     color:#fff!important;
 }
-
 
 .rosco-letter.wrong,
 .rosco-letter.incorrect{
@@ -210,14 +200,12 @@
     color:#fff!important;
 }
 
-
 .rosco-letter.pass,
 .rosco-letter.passed{
     background:#ffd400!important;
     border-color:#ffd400!important;
     color:#111!important;
 }
-
 
 .rosco-letter:hover{
     transform:
@@ -257,7 +245,6 @@
     z-index:10!important;
 }
 
-
 .question-letter{
     width:58px!important;
     height:58px!important;
@@ -279,7 +266,6 @@
     margin-bottom:10px!important;
 }
 
-
 .question-type{
     color:#ff1744!important;
 
@@ -292,7 +278,6 @@
 
     margin-bottom:12px!important;
 }
-
 
 #question-text{
     color:#fff!important;
@@ -322,7 +307,6 @@
     gap:8px!important;
 }
 
-
 .answer-btn{
     width:100%!important;
 
@@ -338,18 +322,15 @@
     cursor:pointer!important;
 }
 
-
 .answer-btn.correct{
     background:#18c964!important;
     color:#fff!important;
 }
 
-
 .answer-btn.pass{
     background:#ffd400!important;
     color:#111!important;
 }
-
 
 .answer-btn.wrong{
     background:#ed0b2f!important;
@@ -367,21 +348,21 @@
 
     .rondo-layout{
         grid-template-columns:
-            190px
+            220px
             minmax(0,1fr)!important;
     }
 
     .rondo-sidebar{
-        width:190px!important;
-        min-width:190px!important;
+        width:220px!important;
+        min-width:220px!important;
 
-        padding-left:15px!important;
-        padding-right:10px!important;
+        padding-left:25px!important;
+        padding-right:15px!important;
     }
 
     .rosco{
-        width:min(620px,78vh)!important;
-        height:min(620px,78vh)!important;
+        width:min(650px,82vh)!important;
+        height:min(650px,82vh)!important;
     }
 
     .rosco-letter{
@@ -457,10 +438,6 @@
 <main class="container">
 
 
-    <!-- =====================================================
-         BIENVENIDA
-         ===================================================== -->
-
     <section class="welcome">
 
         <p class="subtitle">
@@ -478,17 +455,11 @@
     </section>
 
 
-    <!-- =====================================================
-         MARCADOR GENERAL
-         ===================================================== -->
-
     <section class="scoreboard">
 
         <div class="section-title">
 
-            <span>
-                🏆
-            </span>
+            <span>🏆</span>
 
             <h3>
                 Marcador general
@@ -585,17 +556,11 @@
     </section>
 
 
-    <!-- =====================================================
-         JUEGOS
-         ===================================================== -->
-
     <section class="games">
 
         <div class="section-title">
 
-            <span>
-                🎮
-            </span>
+            <span>🎮</span>
 
             <h3>
                 Juegos
@@ -695,17 +660,11 @@
     </section>
 
 
-    <!-- =====================================================
-         DETALLES
-         ===================================================== -->
-
     <section class="details">
 
         <div class="section-title">
 
-            <span>
-                📊
-            </span>
+            <span>📊</span>
 
             <h3>
                 Puntajes por juego
@@ -910,8 +869,6 @@
     <div class="rondo-content">
 
 
-        <!-- TOPBAR -->
-
         <div class="rondo-topbar">
 
             <div>
@@ -963,8 +920,6 @@
         </div>
 
 
-        <!-- EQUIPOS -->
-
         <div class="rondo-tabs">
 
 
@@ -994,14 +949,8 @@
         </div>
 
 
-        <!-- LAYOUT -->
-
         <div class="rondo-layout">
 
-
-            <!-- =================================================
-                 SIDEBAR
-                 ================================================= -->
 
             <aside class="rondo-sidebar">
 
@@ -1070,10 +1019,6 @@
 
             </aside>
 
-
-            <!-- =================================================
-                 ROSCO + PREGUNTA
-                 ================================================= -->
 
             <section class="rondo-main">
 
@@ -1148,12 +1093,7 @@
 </div>
 
 
-<!-- =========================================================
-     SCRIPT
-     ========================================================= -->
-
 <script src="script.js?v=12"></script>
-
 
 </body>
 </html>
