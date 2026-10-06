@@ -1,355 +1,830 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>50 años de Bett ❤️</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <link rel="stylesheet" href="style.css">
+    <title>
+        50 años de Bett ❤️
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+
+    <!-- =====================================================
+         CSS ESPECÍFICO DEL PASAPALABRA
+         ===================================================== -->
 
     <style>
 
-        /* =========================================================
-           PASAPALABRA — ROSCO
-           ========================================================= */
+        /* =====================================================
+           MODAL PASAPALABRA
+           ===================================================== */
+
+        .rondo-modal {
+
+            position: fixed !important;
+
+            inset: 0 !important;
+
+            width: 100vw !important;
+
+            height: 100vh !important;
+
+            z-index: 9999 !important;
+
+            overflow: hidden !important;
+
+        }
+
+
+        /* =====================================================
+           CONTENIDO DEL PASAPALABRA
+           ===================================================== */
+
+        .rondo-content {
+
+            width: 100% !important;
+
+            height: 100% !important;
+
+            display: flex !important;
+
+            flex-direction: column !important;
+
+            overflow: hidden !important;
+
+        }
+
+
+        /* =====================================================
+           CABECERA
+           ===================================================== */
+
+        .rondo-topbar {
+
+            flex: 0 0 auto !important;
+
+            width: 100% !important;
+
+            box-sizing: border-box !important;
+
+            padding:
+                14px 24px !important;
+
+            display: flex !important;
+
+            align-items: center !important;
+
+            justify-content: space-between !important;
+
+            z-index: 20 !important;
+
+        }
+
+
+        /* =====================================================
+           PESTAÑAS DE EQUIPOS
+           ===================================================== */
+
+        .rondo-tabs {
+
+            flex: 0 0 auto !important;
+
+            width: 100% !important;
+
+            display: flex !important;
+
+            justify-content: center !important;
+
+            align-items: center !important;
+
+            gap: 10px !important;
+
+            padding:
+                6px 20px 12px !important;
+
+            box-sizing: border-box !important;
+
+            z-index: 20 !important;
+
+        }
+
+
+        /* =====================================================
+           LAYOUT
+           ===================================================== */
+
+        .rondo-layout {
+
+            flex: 1 1 auto !important;
+
+            width: 100% !important;
+
+            min-height: 0 !important;
+
+            display: grid !important;
+
+            grid-template-columns:
+                220px
+                minmax(0, 1fr) !important;
+
+            gap: 10px !important;
+
+            box-sizing: border-box !important;
+
+            overflow: hidden !important;
+
+        }
+
+
+        /* =====================================================
+           SIDEBAR
+           ===================================================== */
+
+        .rondo-sidebar {
+
+            width: 220px !important;
+
+            box-sizing: border-box !important;
+
+            padding: 20px !important;
+
+            overflow-y: auto !important;
+
+            z-index: 15 !important;
+
+        }
+
+
+        /* =====================================================
+           ZONA PRINCIPAL DEL ROSCO
+           ===================================================== */
 
         .rondo-main {
-            position: relative;
-            width: 100%;
-            min-height: 680px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
+
+            position: relative !important;
+
+            width: 100% !important;
+
+            height: 100% !important;
+
+            min-height: 0 !important;
+
+            overflow: hidden !important;
+
+            display: block !important;
+
         }
+
+
+        /* =====================================================
+           ROSCO
+           ===================================================== */
 
         .rosco {
-            position: absolute;
-            width: 620px;
-            height: 620px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
-            z-index: 1;
-        }
 
-        .rosco-letter {
             position: absolute !important;
 
-            width: 52px !important;
-            height: 52px !important;
-            min-width: 52px !important;
-            min-height: 52px !important;
+            width: 560px !important;
 
-            padding: 0 !important;
+            height: 560px !important;
+
+            left: 50% !important;
+
+            top: 50% !important;
+
+            transform:
+                translate(-50%, -50%) !important;
+
             margin: 0 !important;
 
             border-radius: 50% !important;
-            border: 3px solid #ffffff !important;
 
-            background: #1d1d22 !important;
-            color: #ffffff !important;
+            z-index: 2 !important;
 
-            font-size: 20px !important;
+        }
+
+
+        /* =====================================================
+           LETRAS
+           ===================================================== */
+
+        .rosco-letter {
+
+            position: absolute !important;
+
+            width: 48px !important;
+
+            height: 48px !important;
+
+            min-width: 48px !important;
+
+            min-height: 48px !important;
+
+            padding: 0 !important;
+
+            margin: 0 !important;
+
+            box-sizing: border-box !important;
+
+            border-radius: 50% !important;
+
+            border:
+                3px solid #ffffff !important;
+
+            background:
+                #1d1d22 !important;
+
+            color:
+                #ffffff !important;
+
+            font-family:
+                Arial,
+                sans-serif !important;
+
+            font-size: 18px !important;
+
             font-weight: 800 !important;
-            font-family: Arial, sans-serif !important;
 
             display: flex !important;
+
             align-items: center !important;
+
             justify-content: center !important;
 
             cursor: pointer !important;
 
-            box-sizing: border-box !important;
+            transform:
+                translate(-50%, -50%) !important;
 
-            transform: translate(-50%, -50%);
+            z-index: 5 !important;
+
             transition:
                 transform 0.2s ease,
                 background 0.2s ease,
-                border-color 0.2s ease,
-                box-shadow 0.2s ease;
+                box-shadow 0.2s ease !important;
 
-            z-index: 5;
         }
 
-        /* POSICIONES */
 
-        .rosco-letter:nth-child(1)  { left: 50%; top: 0%; }
-        .rosco-letter:nth-child(2)  { left: 62%; top: 2%; }
-        .rosco-letter:nth-child(3)  { left: 74%; top: 7%; }
-        .rosco-letter:nth-child(4)  { left: 84%; top: 16%; }
-        .rosco-letter:nth-child(5)  { left: 92%; top: 27%; }
-        .rosco-letter:nth-child(6)  { left: 97%; top: 39%; }
-        .rosco-letter:nth-child(7)  { left: 100%; top: 50%; }
-        .rosco-letter:nth-child(8)  { left: 97%; top: 61%; }
-        .rosco-letter:nth-child(9)  { left: 92%; top: 73%; }
-        .rosco-letter:nth-child(10) { left: 84%; top: 84%; }
-        .rosco-letter:nth-child(11) { left: 74%; top: 93%; }
-        .rosco-letter:nth-child(12) { left: 62%; top: 98%; }
-        .rosco-letter:nth-child(13) { left: 50%; top: 100%; }
-        .rosco-letter:nth-child(14) { left: 38%; top: 98%; }
-        .rosco-letter:nth-child(15) { left: 26%; top: 93%; }
-        .rosco-letter:nth-child(16) { left: 16%; top: 84%; }
-        .rosco-letter:nth-child(17) { left: 8%; top: 73%; }
-        .rosco-letter:nth-child(18) { left: 3%; top: 61%; }
-        .rosco-letter:nth-child(19) { left: 0%; top: 50%; }
-        .rosco-letter:nth-child(20) { left: 3%; top: 39%; }
-        .rosco-letter:nth-child(21) { left: 8%; top: 27%; }
-        .rosco-letter:nth-child(22) { left: 16%; top: 16%; }
-        .rosco-letter:nth-child(23) { left: 26%; top: 7%; }
-        .rosco-letter:nth-child(24) { left: 38%; top: 2%; }
-        .rosco-letter:nth-child(25) { left: 44%; top: 0%; }
-        .rosco-letter:nth-child(26) { left: 56%; top: 0%; }
-
-        /* ESTADOS */
+        /* =====================================================
+           LETRA ACTUAL
+           ===================================================== */
 
         .rosco-letter.current {
-            background: #ff1744 !important;
-            border-color: #ff1744 !important;
-            color: #ffffff !important;
+
+            background:
+                #ff1744 !important;
+
+            border-color:
+                #ff1744 !important;
+
+            color:
+                #ffffff !important;
 
             transform:
                 translate(-50%, -50%)
-                scale(1.12);
+                scale(1.12) !important;
 
             box-shadow:
-                0 0 25px rgba(255, 23, 68, 0.6);
+                0 0 25px
+                rgba(255, 23, 68, 0.7) !important;
+
         }
+
+
+        /* =====================================================
+           CORRECTA
+           ===================================================== */
 
         .rosco-letter.correct {
-            background: #18c964 !important;
-            border-color: #18c964 !important;
-            color: #ffffff !important;
+
+            background:
+                #18c964 !important;
+
+            border-color:
+                #18c964 !important;
+
+            color:
+                #ffffff !important;
+
         }
+
+
+        /* =====================================================
+           INCORRECTA
+           ===================================================== */
 
         .rosco-letter.wrong {
-            background: #ed0b2f !important;
-            border-color: #ed0b2f !important;
-            color: #ffffff !important;
+
+            background:
+                #ed0b2f !important;
+
+            border-color:
+                #ed0b2f !important;
+
+            color:
+                #ffffff !important;
+
         }
+
+
+        /* =====================================================
+           PASAPALABRA
+           ===================================================== */
 
         .rosco-letter.pass {
-            background: #ffd400 !important;
-            border-color: #ffd400 !important;
-            color: #111111 !important;
+
+            background:
+                #ffd400 !important;
+
+            border-color:
+                #ffd400 !important;
+
+            color:
+                #111111 !important;
+
         }
+
+
+        /* =====================================================
+           HOVER
+           ===================================================== */
 
         .rosco-letter:hover {
+
             transform:
                 translate(-50%, -50%)
-                scale(1.08);
+                scale(1.08) !important;
+
         }
 
-        .rosco-letter.current:hover {
-            transform:
-                translate(-50%, -50%)
-                scale(1.14);
-        }
 
-        /* TARJETA CENTRAL */
+        /* =====================================================
+           TARJETA CENTRAL
+           ===================================================== */
 
         .question-card {
-            position: relative;
-            z-index: 10;
 
-            width: 380px;
-            min-height: 310px;
+            position: absolute !important;
 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            left: 50% !important;
 
-            text-align: center;
+            top: 50% !important;
 
-            background: #1d1d22;
-            border: 1px solid #38383f;
-            border-radius: 25px;
+            transform:
+                translate(-50%, -50%) !important;
 
-            padding: 30px;
+            width: 350px !important;
 
-            box-sizing: border-box;
+            min-height: 300px !important;
+
+            box-sizing: border-box !important;
+
+            padding: 28px !important;
+
+            display: flex !important;
+
+            flex-direction: column !important;
+
+            align-items: center !important;
+
+            justify-content: center !important;
+
+            text-align: center !important;
+
+            background:
+                #1d1d22 !important;
+
+            border:
+                1px solid #38383f !important;
+
+            border-radius:
+                24px !important;
 
             box-shadow:
-                0 20px 50px rgba(0,0,0,0.35);
+                0 20px 60px
+                rgba(0, 0, 0, 0.55) !important;
+
+            z-index: 10 !important;
+
         }
+
+
+        /* =====================================================
+           LETRA GRANDE CENTRAL
+           ===================================================== */
 
         .question-letter {
-            width: 58px;
-            height: 58px;
 
-            border-radius: 50%;
+            width: 58px !important;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            height: 58px !important;
 
-            background: #ff1744;
-            color: white;
+            flex-shrink: 0 !important;
 
-            font-size: 32px;
-            font-weight: 900;
+            border-radius: 50% !important;
 
-            margin-bottom: 12px;
+            display: flex !important;
+
+            align-items: center !important;
+
+            justify-content: center !important;
+
+            background:
+                #ff1744 !important;
+
+            color:
+                #ffffff !important;
+
+            font-size: 30px !important;
+
+            font-weight: 900 !important;
+
+            margin-bottom: 10px !important;
+
         }
+
+
+        /* =====================================================
+           TIPO DE PREGUNTA
+           ===================================================== */
 
         .question-type {
-            color: #ff1744;
 
-            font-size: 13px;
-            font-weight: 900;
+            color:
+                #ff1744 !important;
 
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
+            font-size: 12px !important;
 
-            margin-bottom: 15px;
+            font-weight: 900 !important;
+
+            text-transform:
+                uppercase !important;
+
+            letter-spacing:
+                1.5px !important;
+
+            margin-bottom:
+                12px !important;
+
         }
+
+
+        /* =====================================================
+           TEXTO DE LA PREGUNTA
+           ===================================================== */
 
         #question-text {
-            color: white;
 
-            font-size: 18px;
-            font-weight: 700;
-            line-height: 1.45;
+            color:
+                #ffffff !important;
 
-            margin: 0 0 25px 0;
+            font-size:
+                17px !important;
+
+            font-weight:
+                700 !important;
+
+            line-height:
+                1.4 !important;
+
+            margin:
+                0 0 20px 0 !important;
+
+            max-width:
+                290px !important;
+
         }
+
+
+        /* =====================================================
+           BOTONES
+           ===================================================== */
 
         .answer-actions {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            flex-wrap: wrap;
-            width: 100%;
+
+            width:
+                100% !important;
+
+            display:
+                grid !important;
+
+            grid-template-columns:
+                1fr 1fr !important;
+
+            gap:
+                8px !important;
+
         }
 
+
         .answer-btn {
-            border: none;
-            border-radius: 10px;
 
-            padding: 11px 14px;
+            width:
+                100% !important;
 
-            font-size: 13px;
-            font-weight: 800;
+            border:
+                none !important;
 
-            cursor: pointer;
+            border-radius:
+                10px !important;
+
+            padding:
+                11px 8px !important;
+
+            font-size:
+                13px !important;
+
+            font-weight:
+                800 !important;
+
+            cursor:
+                pointer !important;
 
             transition:
                 transform 0.15s ease,
-                opacity 0.15s ease;
+                opacity 0.15s ease !important;
+
         }
+
 
         .answer-btn:hover {
-            transform: translateY(-2px);
-            opacity: 0.9;
+
+            transform:
+                translateY(-2px) !important;
+
+            opacity:
+                0.9 !important;
+
         }
+
 
         .answer-btn.correct {
-            background: #18c964;
-            color: white;
+
+            background:
+                #18c964 !important;
+
+            color:
+                #ffffff !important;
+
         }
+
 
         .answer-btn.pass {
-            background: #ffd400;
-            color: #111;
+
+            background:
+                #ffd400 !important;
+
+            color:
+                #111111 !important;
+
         }
+
 
         .answer-btn.wrong {
-            background: #ed0b2f;
-            color: white;
+
+            background:
+                #ed0b2f !important;
+
+            color:
+                #ffffff !important;
+
+            grid-column:
+                1 / -1 !important;
+
         }
 
-        /* RESPONSIVE */
 
-        @media (max-width: 1000px) {
+        /* =====================================================
+           RESPONSIVE
+           ===================================================== */
 
-            .rondo-main {
-                min-height: 590px;
+        @media (max-width: 1200px) {
+
+            .rondo-layout {
+
+                grid-template-columns:
+                    180px
+                    minmax(0, 1fr) !important;
+
             }
+
+
+            .rondo-sidebar {
+
+                width:
+                    180px !important;
+
+                padding:
+                    14px !important;
+
+            }
+
 
             .rosco {
-                width: 520px;
-                height: 520px;
+
+                width:
+                    500px !important;
+
+                height:
+                    500px !important;
+
             }
+
 
             .rosco-letter {
-                width: 44px !important;
-                height: 44px !important;
-                min-width: 44px !important;
-                min-height: 44px !important;
 
-                font-size: 17px !important;
+                width:
+                    43px !important;
+
+                height:
+                    43px !important;
+
+                min-width:
+                    43px !important;
+
+                min-height:
+                    43px !important;
+
+                font-size:
+                    16px !important;
+
             }
+
 
             .question-card {
-                width: 310px;
-                min-height: 270px;
-                padding: 24px;
+
+                width:
+                    315px !important;
+
             }
 
-            #question-text {
-                font-size: 16px;
-            }
         }
 
-        @media (max-width: 700px) {
+
+        @media (max-width: 850px) {
+
+            .rondo-layout {
+
+                grid-template-columns:
+                    1fr !important;
+
+                overflow-y:
+                    auto !important;
+
+            }
+
+
+            .rondo-sidebar {
+
+                display:
+                    none !important;
+
+            }
+
 
             .rondo-main {
-                min-height: 520px;
+
+                min-height:
+                    650px !important;
+
             }
+
+        }
+
+
+        @media (max-width: 650px) {
+
+            .rondo-topbar {
+
+                padding:
+                    10px !important;
+
+            }
+
+
+            .rondo-tabs {
+
+                gap:
+                    5px !important;
+
+                padding:
+                    5px !important;
+
+            }
+
 
             .rosco {
-                width: 420px;
-                height: 420px;
+
+                width:
+                    430px !important;
+
+                height:
+                    430px !important;
+
             }
+
 
             .rosco-letter {
-                width: 38px !important;
-                height: 38px !important;
-                min-width: 38px !important;
-                min-height: 38px !important;
 
-                font-size: 14px !important;
-                border-width: 2px !important;
+                width:
+                    38px !important;
+
+                height:
+                    38px !important;
+
+                min-width:
+                    38px !important;
+
+                min-height:
+                    38px !important;
+
+                font-size:
+                    14px !important;
+
             }
+
 
             .question-card {
-                width: 270px;
-                min-height: 250px;
-                padding: 20px;
+
+                width:
+                    275px !important;
+
+                min-height:
+                    250px !important;
+
+                padding:
+                    20px !important;
+
             }
+
 
             .question-letter {
-                width: 48px;
-                height: 48px;
-                font-size: 25px;
+
+                width:
+                    48px !important;
+
+                height:
+                    48px !important;
+
+                font-size:
+                    25px !important;
+
             }
 
+
             #question-text {
-                font-size: 14px;
+
+                font-size:
+                    14px !important;
+
             }
+
         }
 
     </style>
+
 </head>
 
+
 <body>
+
+
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
 
 <header class="header">
 
     <div class="header-content">
 
-        <span class="heart">♥</span>
+        <span class="heart">
+            ♥
+        </span>
+
 
         <div>
-            <p class="eyebrow">EL GRAN CUMPLEAÑOS</p>
+
+            <p class="eyebrow">
+                EL GRAN CUMPLEAÑOS
+            </p>
+
 
             <h1>
                 50 AÑOS DE BETT
             </h1>
+
         </div>
 
     </div>
@@ -357,9 +832,16 @@
 </header>
 
 
+<!-- =====================================================
+     CONTENIDO PRINCIPAL
+     ===================================================== -->
+
 <main class="container">
 
-    <!-- BIENVENIDA -->
+
+    <!-- =================================================
+         BIENVENIDA
+         ================================================= -->
 
     <section class="welcome">
 
@@ -367,9 +849,11 @@
             Bienvenidos a los juegos
         </p>
 
+
         <h2>
             ¿Quién conoce mejor a Bett?
         </h2>
+
 
         <p>
             Tres equipos. Tres juegos. Un solo ganador.
@@ -378,13 +862,20 @@
     </section>
 
 
-    <!-- MARCADOR GENERAL -->
+
+    <!-- =================================================
+         MARCADOR GENERAL
+         ================================================= -->
 
     <section class="scoreboard">
 
+
         <div class="section-title">
 
-            <span>🏆</span>
+            <span>
+                🏆
+            </span>
+
 
             <h3>
                 Marcador general
@@ -393,7 +884,11 @@
         </div>
 
 
+
         <div class="teams">
+
+
+            <!-- EQUIPO 1 -->
 
             <div class="team-card team-blue">
 
@@ -401,9 +896,11 @@
                     🔵
                 </div>
 
+
                 <h4>
                     Los Originales
                 </h4>
+
 
                 <span
                     class="score"
@@ -412,6 +909,7 @@
                     0
                 </span>
 
+
                 <small>
                     puntos
                 </small>
@@ -419,15 +917,20 @@
             </div>
 
 
+
+            <!-- EQUIPO 2 -->
+
             <div class="team-card team-green">
 
                 <div class="team-icon">
                     🟢
                 </div>
 
+
                 <h4>
                     Los Herederos
                 </h4>
+
 
                 <span
                     class="score"
@@ -436,6 +939,7 @@
                     0
                 </span>
 
+
                 <small>
                     puntos
                 </small>
@@ -443,15 +947,20 @@
             </div>
 
 
+
+            <!-- EQUIPO 3 -->
+
             <div class="team-card team-purple">
 
                 <div class="team-icon">
                     🟣
                 </div>
 
+
                 <h4>
                     Las Históricas
                 </h4>
+
 
                 <span
                     class="score"
@@ -460,6 +969,7 @@
                     0
                 </span>
 
+
                 <small>
                     puntos
                 </small>
@@ -469,24 +979,36 @@
         </div>
 
 
+
+        <!-- REINICIAR -->
+
         <button
             class="back-button"
             onclick="resetScores()"
-            style="margin-top: 20px;"
+            style="margin-top:20px;"
         >
+
             🔄 Reiniciar marcador general
+
         </button>
 
     </section>
 
 
-    <!-- JUEGOS -->
+
+    <!-- =================================================
+         JUEGOS
+         ================================================= -->
 
     <section class="games">
 
+
         <div class="section-title">
 
-            <span>🎮</span>
+            <span>
+                🎮
+            </span>
+
 
             <h3>
                 Juegos
@@ -495,7 +1017,11 @@
         </div>
 
 
+
         <div class="games-grid">
+
+
+            <!-- KAHOOT -->
 
             <button
                 class="game-card"
@@ -506,11 +1032,13 @@
                     🧠
                 </div>
 
+
                 <div>
 
                     <h4>
                         Kahoot
                     </h4>
+
 
                     <p>
                         ¿Quién conoce mejor a Bett?
@@ -518,12 +1046,16 @@
 
                 </div>
 
+
                 <span class="arrow">
                     →
                 </span>
 
             </button>
 
+
+
+            <!-- PASAPALABRA -->
 
             <button
                 class="game-card"
@@ -534,11 +1066,13 @@
                     🔤
                 </div>
 
+
                 <div>
 
                     <h4>
                         Pasapalabra
                     </h4>
+
 
                     <p>
                         Preguntas de cultura general
@@ -546,12 +1080,16 @@
 
                 </div>
 
+
                 <span class="arrow">
                     →
                 </span>
 
             </button>
 
+
+
+            <!-- CANCIONES -->
 
             <button
                 class="game-card"
@@ -562,17 +1100,20 @@
                     🎵
                 </div>
 
+
                 <div>
 
                     <h4>
                         Canciones
                     </h4>
 
+
                     <p>
                         Adiviná canción, artista y año
                     </p>
 
                 </div>
+
 
                 <span class="arrow">
                     →
@@ -585,19 +1126,27 @@
     </section>
 
 
-    <!-- PUNTAJES POR JUEGO -->
+
+    <!-- =================================================
+         PUNTAJES POR JUEGO
+         ================================================= -->
 
     <section class="details">
 
+
         <div class="section-title">
 
-            <span>📊</span>
+            <span>
+                📊
+            </span>
+
 
             <h3>
                 Puntajes por juego
             </h3>
 
         </div>
+
 
 
         <div class="table-wrapper">
@@ -608,18 +1157,40 @@
 
                     <tr>
 
-                        <th>Equipo</th>
-                        <th>🧠 Kahoot</th>
-                        <th>🔤 Pasapalabra</th>
-                        <th>🎵 Canciones</th>
-                        <th>Total</th>
+                        <th>
+                            Equipo
+                        </th>
+
+
+                        <th>
+                            🧠 Kahoot
+                        </th>
+
+
+                        <th>
+                            🔤 Pasapalabra
+                        </th>
+
+
+                        <th>
+                            🎵 Canciones
+                        </th>
+
+
+                        <th>
+                            Total
+                        </th>
 
                     </tr>
 
                 </thead>
 
 
+
                 <tbody>
+
+
+                    <!-- EQUIPO 1 -->
 
                     <tr>
 
@@ -627,11 +1198,21 @@
                             🔴 Los Originales
                         </td>
 
-                        <td id="kahoot-1">0</td>
 
-                        <td id="rondo-1">0</td>
+                        <td id="kahoot-1">
+                            0
+                        </td>
 
-                        <td id="songs-1">0</td>
+
+                        <td id="rondo-1">
+                            0
+                        </td>
+
+
+                        <td id="songs-1">
+                            0
+                        </td>
+
 
                         <td
                             class="total"
@@ -643,17 +1224,30 @@
                     </tr>
 
 
+
+                    <!-- EQUIPO 2 -->
+
                     <tr>
 
                         <td>
                             🔵 Los Herederos
                         </td>
 
-                        <td id="kahoot-2">0</td>
 
-                        <td id="rondo-2">0</td>
+                        <td id="kahoot-2">
+                            0
+                        </td>
 
-                        <td id="songs-2">0</td>
+
+                        <td id="rondo-2">
+                            0
+                        </td>
+
+
+                        <td id="songs-2">
+                            0
+                        </td>
+
 
                         <td
                             class="total"
@@ -665,17 +1259,30 @@
                     </tr>
 
 
+
+                    <!-- EQUIPO 3 -->
+
                     <tr>
 
                         <td>
                             🟢 Las Históricas
                         </td>
 
-                        <td id="kahoot-3">0</td>
 
-                        <td id="rondo-3">0</td>
+                        <td id="kahoot-3">
+                            0
+                        </td>
 
-                        <td id="songs-3">0</td>
+
+                        <td id="rondo-3">
+                            0
+                        </td>
+
+
+                        <td id="songs-3">
+                            0
+                        </td>
+
 
                         <td
                             class="total"
@@ -697,6 +1304,11 @@
 </main>
 
 
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
 <footer>
 
     <p>
@@ -706,14 +1318,19 @@
 </footer>
 
 
-<!-- MODAL GENERAL -->
+
+<!-- =====================================================
+     MODAL GENERAL
+     ===================================================== -->
 
 <div
     id="game-modal"
     class="modal"
 >
 
+
     <div class="modal-content">
+
 
         <button
             class="close-button"
@@ -723,9 +1340,11 @@
         </button>
 
 
+
         <div id="modal-icon">
             🎮
         </div>
+
 
 
         <h2 id="modal-title">
@@ -733,9 +1352,11 @@
         </h2>
 
 
+
         <div id="modal-description">
             Próximamente...
         </div>
+
 
 
         <button
@@ -750,17 +1371,26 @@
 </div>
 
 
-<!-- MODAL PASAPALABRA -->
+
+<!-- =====================================================
+     MODAL PASAPALABRA
+     ===================================================== -->
 
 <div
     id="rondo-modal"
     class="rondo-modal"
 >
 
+
     <div class="rondo-content">
 
 
+        <!-- =================================================
+             CABECERA DEL PASAPALABRA
+             ================================================= -->
+
         <div class="rondo-topbar">
+
 
             <div>
 
@@ -768,11 +1398,13 @@
                     50 AÑOS DE BETT
                 </p>
 
+
                 <h2>
                     🔤 PASAPALABRA
                 </h2>
 
             </div>
+
 
 
             <div
@@ -783,27 +1415,42 @@
                 "
             >
 
+
+                <!-- FINALIZAR -->
+
                 <button
                     class="back-button"
                     onclick="finishRondo()"
                 >
+
                     🏁 Finalizar Pasapalabra
+
                 </button>
 
+
+
+                <!-- REINICIAR -->
 
                 <button
                     class="back-button"
                     onclick="resetRondo()"
                 >
-                    Reiniciar Pasapalabra
+
+                    🔄 Reiniciar Pasapalabra
+
                 </button>
 
+
+
+                <!-- CERRAR -->
 
                 <button
                     class="close-button rondo-close"
                     onclick="closeRondo()"
                 >
+
                     ×
+
                 </button>
 
             </div>
@@ -811,90 +1458,135 @@
         </div>
 
 
-        <!-- TABS -->
+
+        <!-- =================================================
+             EQUIPOS
+             ================================================= -->
 
         <div class="rondo-tabs">
+
 
             <button
                 class="rondo-tab active"
                 onclick="selectRosco(1)"
             >
+
                 🔴 Los Originales
+
             </button>
+
 
 
             <button
                 class="rondo-tab"
                 onclick="selectRosco(2)"
             >
+
                 🔵 Los Herederos
+
             </button>
+
 
 
             <button
                 class="rondo-tab"
                 onclick="selectRosco(3)"
             >
+
                 🟢 Las Históricas
+
             </button>
 
         </div>
 
 
+
+        <!-- =================================================
+             LAYOUT DEL JUEGO
+             ================================================= -->
+
         <div class="rondo-layout">
 
 
-            <!-- SIDEBAR -->
+            <!-- =================================================
+                 SIDEBAR
+                 ================================================= -->
 
             <aside class="rondo-sidebar">
+
 
                 <p class="side-label">
                     EQUIPO EN TURNO
                 </p>
 
 
+
                 <div
                     class="turn-team"
                     id="turn-team"
                 >
+
                     🔴 Los Originales
+
                 </div>
 
 
+
                 <div class="rondo-score-box">
+
 
                     <span>
                         Aciertos del equipo
                     </span>
 
-                    <strong id="rondo-current-score">
+
+
+                    <strong
+                        id="rondo-current-score"
+                    >
+
                         0
+
                     </strong>
 
                 </div>
 
 
+
+                <!-- INSTRUCCIONES -->
+
                 <div class="rondo-instructions">
+
 
                     <strong>
                         Cómo jugar
                     </strong>
 
+
+
                     <p>
                         Una letra por turno.
                     </p>
+
+
 
                     <p>
                         ✅ Correcto suma 1 punto.
                     </p>
 
+
+
                     <p>
                         🔄 Pasapalabra la deja pendiente.
                     </p>
 
+
+
                     <p>
                         ❌ Incorrecto la marca y continúa.
                     </p>
+
+
 
                     <p>
                         🏁 Al finalizar se asignan 3, 2 y 1 puntos.
@@ -905,9 +1597,15 @@
             </aside>
 
 
-            <!-- ROSCO -->
+
+            <!-- =================================================
+                 ROSCO + PREGUNTA CENTRAL
+                 ================================================= -->
 
             <section class="rondo-main">
+
+
+                <!-- ROSCO -->
 
                 <div
                     class="rosco"
@@ -916,52 +1614,95 @@
                 </div>
 
 
+
+                <!-- =================================================
+                     TARJETA CENTRAL DE PREGUNTA
+                     ================================================= -->
+
                 <div class="question-card">
+
+
+                    <!-- LETRA -->
 
                     <div
                         class="question-letter"
                         id="question-letter"
                     >
+
                         A
+
                     </div>
 
+
+
+                    <!-- TIPO -->
 
                     <div
                         class="question-type"
                         id="question-type"
                     >
-                        CON LA LETRA A
+
+                        EMPIEZA CON A
+
                     </div>
 
 
+
+                    <!-- PREGUNTA -->
+
                     <p id="question-text">
+
                         Seleccioná una letra para comenzar.
+
                     </p>
 
 
+
+                    <!-- =================================================
+                         BOTONES
+                         ================================================= -->
+
                     <div class="answer-actions">
 
+
+                        <!-- CORRECTO -->
+
                         <button
+                            type="button"
                             class="answer-btn correct"
                             onclick="answerQuestion('correct')"
                         >
+
                             ✓ Correcto
+
                         </button>
 
 
+
+                        <!-- PASAPALABRA -->
+
                         <button
+                            type="button"
                             class="answer-btn pass"
                             onclick="answerQuestion('pass')"
                         >
+
                             ↻ Pasapalabra
+
                         </button>
 
 
+
+                        <!-- INCORRECTO -->
+
                         <button
+                            type="button"
                             class="answer-btn wrong"
                             onclick="answerQuestion('wrong')"
                         >
+
                             ✕ Incorrecto
+
                         </button>
 
                     </div>
@@ -977,7 +1718,14 @@
 </div>
 
 
-<script src="script.js?v=8"></script>
+
+<!-- =====================================================
+     JAVASCRIPT
+     ===================================================== -->
+
+<script src="script.js?v=9"></script>
+
 
 </body>
+
 </html>
