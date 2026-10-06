@@ -1,740 +1,53 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>50 años de Bett ❤️</title>
 
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
-
-    <style>
-
-        /* =====================================================
-           PASAPALABRA
-           ===================================================== */
-
-        .rondo-modal {
-            position: fixed !important;
-            inset: 0 !important;
-
-            width: 100vw !important;
-            height: 100vh !important;
-
-            z-index: 9999 !important;
-
-            overflow: hidden !important;
-        }
-
-
-        .rondo-content {
-            width: 100% !important;
-            height: 100% !important;
-
-            display: flex !important;
-            flex-direction: column !important;
-
-            overflow: hidden !important;
-        }
-
-
-        /* =====================================================
-           TOPBAR
-           ===================================================== */
-
-        .rondo-topbar {
-            flex: 0 0 auto !important;
-
-            width: 100% !important;
-
-            box-sizing: border-box !important;
-
-            padding: 14px 24px !important;
-
-            display: flex !important;
-            align-items: center !important;
-            justify-content: space-between !important;
-
-            z-index: 30 !important;
-        }
-
-
-        /* =====================================================
-           TABS
-           ===================================================== */
-
-        .rondo-tabs {
-            flex: 0 0 auto !important;
-
-            width: 100% !important;
-
-            display: flex !important;
-            justify-content: center !important;
-            align-items: center !important;
-
-            gap: 10px !important;
-
-            padding: 6px 20px 12px !important;
-
-            box-sizing: border-box !important;
-
-            z-index: 30 !important;
-        }
-
-
-        /* =====================================================
-           LAYOUT
-           ===================================================== */
-
-        .rondo-layout {
-            flex: 1 1 auto !important;
-
-            width: 100% !important;
-            min-height: 0 !important;
-
-            display: grid !important;
-
-            grid-template-columns:
-                220px
-                minmax(0, 1fr) !important;
-
-            gap: 0 !important;
-
-            box-sizing: border-box !important;
-
-            overflow: hidden !important;
-        }
-
-
-        /* =====================================================
-           SIDEBAR
-           ===================================================== */
-
-        .rondo-sidebar {
-            width: 220px !important;
-
-            box-sizing: border-box !important;
-
-            padding: 20px !important;
-
-            overflow-y: auto !important;
-
-            z-index: 20 !important;
-        }
-
-
-        /* =====================================================
-           ZONA DEL ROSCO
-           ===================================================== */
-
-        .rondo-main {
-            position: relative !important;
-
-            width: 100% !important;
-            height: 100% !important;
-
-            min-height: 0 !important;
-
-            overflow: hidden !important;
-
-            display: block !important;
-        }
-
-
-        /* =====================================================
-           CÍRCULO
-           ===================================================== */
-
-        .rosco {
-            position: absolute !important;
-
-            width: 600px !important;
-            height: 600px !important;
-
-            left: 50% !important;
-            top: 50% !important;
-
-            transform:
-                translate(-50%, -50%) !important;
-
-            margin: 0 !important;
-
-            border-radius: 50% !important;
-
-            z-index: 2 !important;
-        }
-
-
-        /* =====================================================
-           LETRAS
-           ===================================================== */
-
-        .rosco-letter {
-            position: absolute !important;
-
-            width: 48px !important;
-            height: 48px !important;
-
-            min-width: 48px !important;
-            min-height: 48px !important;
-
-            padding: 0 !important;
-            margin: 0 !important;
-
-            box-sizing: border-box !important;
-
-            border-radius: 50% !important;
-
-            border:
-                3px solid #ffffff !important;
-
-            background:
-                #1d1d22 !important;
-
-            color:
-                #ffffff !important;
-
-            font-family:
-                Arial,
-                sans-serif !important;
-
-            font-size:
-                18px !important;
-
-            font-weight:
-                800 !important;
-
-            display:
-                flex !important;
-
-            align-items:
-                center !important;
-
-            justify-content:
-                center !important;
-
-            cursor:
-                pointer !important;
-
-            /*
-             * El JS calcula left/top.
-             * No usar nth-child.
-             */
-
-            transform:
-                translate(-50%, -50%) !important;
-
-            z-index:
-                5 !important;
-
-            transition:
-                transform .2s ease,
-                background .2s ease,
-                border-color .2s ease,
-                box-shadow .2s ease !important;
-        }
-
-
-        /* =====================================================
-           ACTUAL
-           ===================================================== */
-
-        .rosco-letter.current {
-
-            background:
-                #ff1744 !important;
-
-            border-color:
-                #ff1744 !important;
-
-            color:
-                #ffffff !important;
-
-            transform:
-                translate(-50%, -50%)
-                scale(1.12) !important;
-
-            box-shadow:
-                0 0 25px
-                rgba(255,23,68,.7) !important;
-        }
-
-
-        /* =====================================================
-           CORRECTA
-           ===================================================== */
-
-        .rosco-letter.correct {
-
-            background:
-                #18c964 !important;
-
-            border-color:
-                #18c964 !important;
-
-            color:
-                #ffffff !important;
-        }
-
-
-        /* =====================================================
-           INCORRECTA
-           ===================================================== */
-
-        .rosco-letter.wrong {
-
-            background:
-                #ed0b2f !important;
-
-            border-color:
-                #ed0b2f !important;
-
-            color:
-                #ffffff !important;
-        }
-
-
-        /* =====================================================
-           PASAPALABRA
-           ===================================================== */
-
-        .rosco-letter.pass {
-
-            background:
-                #ffd400 !important;
-
-            border-color:
-                #ffd400 !important;
-
-            color:
-                #111111 !important;
-        }
-
-
-        /* =====================================================
-           HOVER
-           ===================================================== */
-
-        .rosco-letter:hover {
-
-            transform:
-                translate(-50%, -50%)
-                scale(1.08) !important;
-        }
-
-
-        /* =====================================================
-           TARJETA CENTRAL
-           ===================================================== */
-
-        .question-card {
-
-            position: absolute !important;
-
-            left: 50% !important;
-            top: 50% !important;
-
-            transform:
-                translate(-50%, -50%) !important;
-
-            width: 350px !important;
-
-            min-height: 300px !important;
-
-            box-sizing:
-                border-box !important;
-
-            padding:
-                28px !important;
-
-            display:
-                flex !important;
-
-            flex-direction:
-                column !important;
-
-            align-items:
-                center !important;
-
-            justify-content:
-                center !important;
-
-            text-align:
-                center !important;
-
-            background:
-                #1d1d22 !important;
-
-            border:
-                1px solid #38383f !important;
-
-            border-radius:
-                24px !important;
-
-            box-shadow:
-                0 20px 60px
-                rgba(0,0,0,.55) !important;
-
-            z-index:
-                10 !important;
-        }
-
-
-        /* =====================================================
-           LETRA CENTRAL
-           ===================================================== */
-
-        .question-letter {
-
-            width:
-                58px !important;
-
-            height:
-                58px !important;
-
-            flex-shrink:
-                0 !important;
-
-            border-radius:
-                50% !important;
-
-            display:
-                flex !important;
-
-            align-items:
-                center !important;
-
-            justify-content:
-                center !important;
-
-            background:
-                #ff1744 !important;
-
-            color:
-                #ffffff !important;
-
-            font-size:
-                30px !important;
-
-            font-weight:
-                900 !important;
-
-            margin-bottom:
-                10px !important;
-        }
-
-
-        /* =====================================================
-           TIPO
-           ===================================================== */
-
-        .question-type {
-
-            color:
-                #ff1744 !important;
-
-            font-size:
-                12px !important;
-
-            font-weight:
-                900 !important;
-
-            text-transform:
-                uppercase !important;
-
-            letter-spacing:
-                1.5px !important;
-
-            margin-bottom:
-                12px !important;
-        }
-
-
-        /* =====================================================
-           PREGUNTA
-           ===================================================== */
-
-        #question-text {
-
-            color:
-                #ffffff !important;
-
-            font-size:
-                17px !important;
-
-            font-weight:
-                700 !important;
-
-            line-height:
-                1.4 !important;
-
-            margin:
-                0 0 20px 0 !important;
-
-            max-width:
-                290px !important;
-        }
-
-
-        /* =====================================================
-           BOTONES
-           ===================================================== */
-
-        .answer-actions {
-
-            width:
-                100% !important;
-
-            display:
-                grid !important;
-
-            grid-template-columns:
-                1fr 1fr !important;
-
-            gap:
-                8px !important;
-        }
-
-
-        .answer-btn {
-
-            width:
-                100% !important;
-
-            border:
-                none !important;
-
-            border-radius:
-                10px !important;
-
-            padding:
-                11px 8px !important;
-
-            font-size:
-                13px !important;
-
-            font-weight:
-                800 !important;
-
-            cursor:
-                pointer !important;
-        }
-
-
-        .answer-btn.correct {
-
-            background:
-                #18c964 !important;
-
-            color:
-                white !important;
-        }
-
-
-        .answer-btn.pass {
-
-            background:
-                #ffd400 !important;
-
-            color:
-                #111111 !important;
-        }
-
-
-        .answer-btn.wrong {
-
-            background:
-                #ed0b2f !important;
-
-            color:
-                white !important;
-
-            grid-column:
-                1 / -1 !important;
-        }
-
-
-        /* =====================================================
-           RESPONSIVE
-           ===================================================== */
-
-        @media (max-width: 1200px) {
-
-            .rondo-layout {
-
-                grid-template-columns:
-                    180px
-                    minmax(0,1fr) !important;
-            }
-
-            .rondo-sidebar {
-
-                width:
-                    180px !important;
-
-                padding:
-                    14px !important;
-            }
-
-            .rosco {
-
-                width:
-                    500px !important;
-
-                height:
-                    500px !important;
-            }
-
-            .rosco-letter {
-
-                width:
-                    43px !important;
-
-                height:
-                    43px !important;
-
-                min-width:
-                    43px !important;
-
-                min-height:
-                    43px !important;
-
-                font-size:
-                    16px !important;
-            }
-
-            .question-card {
-
-                width:
-                    315px !important;
-            }
-        }
-
-
-        @media (max-width: 850px) {
-
-            .rondo-layout {
-
-                grid-template-columns:
-                    1fr !important;
-
-                overflow-y:
-                    auto !important;
-            }
-
-            .rondo-sidebar {
-
-                display:
-                    none !important;
-            }
-
-            .rondo-main {
-
-                min-height:
-                    650px !important;
-            }
-        }
-
-
-        @media (max-width: 650px) {
-
-            .rosco {
-
-                width:
-                    430px !important;
-
-                height:
-                    430px !important;
-            }
-
-            .rosco-letter {
-
-                width:
-                    38px !important;
-
-                height:
-                    38px !important;
-
-                min-width:
-                    38px !important;
-
-                min-height:
-                    38px !important;
-
-                font-size:
-                    14px !important;
-            }
-
-            .question-card {
-
-                width:
-                    275px !important;
-
-                min-height:
-                    250px !important;
-
-                padding:
-                    20px !important;
-            }
-
-            .question-letter {
-
-                width:
-                    48px !important;
-
-                height:
-                    48px !important;
-
-                font-size:
-                    25px !important;
-            }
-
-            #question-text {
-
-                font-size:
-                    14px !important;
-            }
-        }
-
-    </style>
-
+    <link rel="stylesheet" href="style.css">
+
+<style id="rosco-fix">
+.rondo-modal{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;z-index:99999!important;overflow:hidden!important}
+.rondo-content{width:100%!important;height:100%!important;display:flex!important;flex-direction:column!important;overflow:hidden!important}
+.rondo-topbar,.rondo-tabs{flex:0 0 auto!important;position:relative!important;z-index:30!important}
+.rondo-layout{flex:1 1 auto!important;min-height:0!important;width:100%!important;display:grid!important;grid-template-columns:220px minmax(0,1fr)!important;overflow:hidden!important}
+.rondo-sidebar{width:220px!important;min-width:220px!important;box-sizing:border-box!important;position:relative!important;z-index:20!important}
+.rondo-main{position:relative!important;width:100%!important;height:100%!important;min-width:0!important;min-height:0!important;overflow:hidden!important}
+.rosco{position:absolute!important;width:min(620px,72vh)!important;height:min(620px,72vh)!important;left:50%!important;top:50%!important;transform:translate(-50%,-50%)!important;margin:0!important;padding:0!important;border:0!important;border-radius:50%!important;z-index:2!important;pointer-events:none!important}
+.rosco-letter{position:absolute!important;width:48px!important;height:48px!important;min-width:48px!important;min-height:48px!important;padding:0!important;margin:0!important;box-sizing:border-box!important;border-radius:50%!important;border:3px solid #fff!important;background:#1d1d22!important;color:#fff!important;display:flex!important;align-items:center!important;justify-content:center!important;font-family:Arial,sans-serif!important;font-size:18px!important;font-weight:800!important;line-height:1!important;cursor:pointer!important;transform:translate(-50%,-50%)!important;z-index:5!important;pointer-events:auto!important;transition:transform .15s ease,background .15s ease,box-shadow .15s ease!important}
+.rosco-letter.current{background:#ff1744!important;border-color:#ff1744!important;color:#fff!important;transform:translate(-50%,-50%) scale(1.12)!important;box-shadow:0 0 25px rgba(255,23,68,.65)!important}
+.rosco-letter.correct{background:#18c964!important;border-color:#18c964!important;color:#fff!important}
+.rosco-letter.wrong,.rosco-letter.incorrect{background:#ed0b2f!important;border-color:#ed0b2f!important;color:#fff!important}
+.rosco-letter.pass,.rosco-letter.passed{background:#ffd400!important;border-color:#ffd400!important;color:#111!important}
+.rosco-letter:hover{transform:translate(-50%,-50%) scale(1.08)!important}
+.question-card{position:absolute!important;left:50%!important;top:50%!important;transform:translate(-50%,-50%)!important;width:350px!important;min-height:300px!important;box-sizing:border-box!important;padding:28px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;text-align:center!important;z-index:10!important}
+.question-letter{width:58px!important;height:58px!important;flex:0 0 58px!important;border-radius:50%!important;display:flex!important;align-items:center!important;justify-content:center!important;background:#ff1744!important;color:#fff!important;font-size:30px!important;font-weight:900!important;margin-bottom:10px!important}
+.question-type{color:#ff1744!important;font-size:12px!important;font-weight:900!important;text-transform:uppercase!important;letter-spacing:1.5px!important;margin-bottom:12px!important}
+#question-text{color:#fff!important;font-size:17px!important;font-weight:700!important;line-height:1.4!important;margin:0 0 20px 0!important;max-width:290px!important}
+.answer-actions{width:100%!important;display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important}
+.answer-btn{width:100%!important;border:0!important;border-radius:10px!important;padding:11px 8px!important;font-size:13px!important;font-weight:800!important;cursor:pointer!important}
+.answer-btn.correct{background:#18c964!important;color:#fff!important}.answer-btn.pass{background:#ffd400!important;color:#111!important}.answer-btn.wrong{background:#ed0b2f!important;color:#fff!important;grid-column:1/-1!important}
+@media(max-width:1100px){.rondo-layout{grid-template-columns:180px minmax(0,1fr)!important}.rondo-sidebar{width:180px!important;min-width:180px!important}.rosco-letter{width:43px!important;height:43px!important;min-width:43px!important;min-height:43px!important;font-size:16px!important}.question-card{width:315px!important}}
+@media(max-width:800px){.rondo-layout{grid-template-columns:1fr!important}.rondo-sidebar{display:none!important}.rosco{width:min(500px,76vh)!important;height:min(500px,76vh)!important}.question-card{width:280px!important}}
+</style>
 </head>
 
-
 <body>
-
-
-<!-- =====================================================
-     HEADER
-     ===================================================== -->
 
 <header class="header">
 
     <div class="header-content">
 
-        <span class="heart">
-            ♥
-        </span>
+        <span class="heart">♥</span>
 
         <div>
-
-            <p class="eyebrow">
-                EL GRAN CUMPLEAÑOS
-            </p>
+            <p class="eyebrow">EL GRAN CUMPLEAÑOS</p>
 
             <h1>
                 50 AÑOS DE BETT
             </h1>
-
         </div>
 
     </div>
@@ -742,12 +55,7 @@
 </header>
 
 
-<!-- =====================================================
-     CONTENIDO
-     ===================================================== -->
-
 <main class="container">
-
 
     <section class="welcome">
 
@@ -766,10 +74,6 @@
     </section>
 
 
-    <!-- =================================================
-         MARCADOR
-         ================================================= -->
-
     <section class="scoreboard">
 
         <div class="section-title">
@@ -784,7 +88,6 @@
 
 
         <div class="teams">
-
 
             <div class="team-card team-blue">
 
@@ -863,19 +166,13 @@
         <button
             class="back-button"
             onclick="resetScores()"
-            style="margin-top:20px;"
+            style="margin-top: 20px;"
         >
-
             🔄 Reiniciar marcador general
-
         </button>
 
     </section>
 
-
-    <!-- =================================================
-         JUEGOS
-         ================================================= -->
 
     <section class="games">
 
@@ -981,10 +278,6 @@
     </section>
 
 
-    <!-- =================================================
-         TABLA
-         ================================================= -->
-
     <section class="details">
 
         <div class="section-title">
@@ -1006,11 +299,25 @@
 
                     <tr>
 
-                        <th>Equipo</th>
-                        <th>🧠 Kahoot</th>
-                        <th>🔤 Pasapalabra</th>
-                        <th>🎵 Canciones</th>
-                        <th>Total</th>
+                        <th>
+                            Equipo
+                        </th>
+
+                        <th>
+                            🧠 Kahoot
+                        </th>
+
+                        <th>
+                            🔤 Pasapalabra
+                        </th>
+
+                        <th>
+                            🎵 Canciones
+                        </th>
+
+                        <th>
+                            Total
+                        </th>
 
                     </tr>
 
@@ -1018,7 +325,6 @@
 
 
                 <tbody>
-
 
                     <tr>
 
@@ -1123,10 +429,6 @@
 </footer>
 
 
-<!-- =====================================================
-     MODAL GENERAL
-     ===================================================== -->
-
 <div
     id="game-modal"
     class="modal"
@@ -1141,17 +443,21 @@
             ×
         </button>
 
+
         <div id="modal-icon">
             🎮
         </div>
+
 
         <h2 id="modal-title">
             Juego
         </h2>
 
+
         <div id="modal-description">
             Próximamente...
         </div>
+
 
         <button
             class="back-button"
@@ -1165,10 +471,6 @@
 </div>
 
 
-<!-- =====================================================
-     MODAL PASAPALABRA
-     ===================================================== -->
-
 <div
     id="rondo-modal"
     class="rondo-modal"
@@ -1176,8 +478,6 @@
 
     <div class="rondo-content">
 
-
-        <!-- TOPBAR -->
 
         <div class="rondo-topbar">
 
@@ -1196,9 +496,9 @@
 
             <div
                 style="
-                    display:flex;
-                    align-items:center;
-                    gap:10px;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
                 "
             >
 
@@ -1214,7 +514,7 @@
                     class="back-button"
                     onclick="resetRondo()"
                 >
-                    🔄 Reiniciar Pasapalabra
+                    Reiniciar Pasapalabra
                 </button>
 
 
@@ -1230,9 +530,8 @@
         </div>
 
 
-        <!-- EQUIPOS -->
-
         <div class="rondo-tabs">
+
 
             <button
                 class="rondo-tab active"
@@ -1260,14 +559,11 @@
         </div>
 
 
-        <!-- LAYOUT -->
-
         <div class="rondo-layout">
 
 
-            <!-- SIDEBAR -->
-
             <aside class="rondo-sidebar">
+
 
                 <p class="side-label">
                     EQUIPO EN TURNO
@@ -1288,6 +584,7 @@
                         Aciertos del equipo
                     </span>
 
+
                     <strong
                         id="rondo-current-score"
                     >
@@ -1303,21 +600,26 @@
                         Cómo jugar
                     </strong>
 
+
                     <p>
                         Una letra por turno.
                     </p>
+
 
                     <p>
                         ✅ Correcto suma 1 punto.
                     </p>
 
+
                     <p>
                         🔄 Pasapalabra la deja pendiente.
                     </p>
 
+
                     <p>
                         ❌ Incorrecto la marca y continúa.
                     </p>
+
 
                     <p>
                         🏁 Al finalizar se asignan 3, 2 y 1 puntos.
@@ -1328,18 +630,15 @@
             </aside>
 
 
-            <!-- ROSCO -->
-
             <section class="rondo-main">
 
 
                 <div
                     class="rosco"
                     id="rosco"
-                ></div>
+                >
+                </div>
 
-
-                <!-- PREGUNTA CENTRAL -->
 
                 <div class="question-card">
 
@@ -1356,7 +655,7 @@
                         class="question-type"
                         id="question-type"
                     >
-                        EMPIEZA CON A
+                        CON LA LETRA A
                     </div>
 
 
@@ -1369,7 +668,6 @@
 
 
                         <button
-                            type="button"
                             class="answer-btn correct"
                             onclick="answerQuestion('correct')"
                         >
@@ -1378,7 +676,6 @@
 
 
                         <button
-                            type="button"
                             class="answer-btn pass"
                             onclick="answerQuestion('pass')"
                         >
@@ -1387,7 +684,6 @@
 
 
                         <button
-                            type="button"
                             class="answer-btn wrong"
                             onclick="answerQuestion('wrong')"
                         >
@@ -1407,8 +703,7 @@
 </div>
 
 
-<script src="script.js?v=10"></script>
+<script src="script.js?v=11"></script>
 
 </body>
-
 </html>
