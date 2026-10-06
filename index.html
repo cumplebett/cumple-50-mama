@@ -68,16 +68,16 @@
 
         <div class="teams">
 
-            <!-- EQUIPO 1 -->
+            <!-- LOS ORIGINALES -->
 
             <div class="team-card team-blue">
 
                 <div class="team-icon">
-                    🔵
+                    🔴
                 </div>
 
                 <h4>
-                    Equipo 1
+                    Los Originales
                 </h4>
 
                 <span
@@ -94,16 +94,16 @@
             </div>
 
 
-            <!-- EQUIPO 2 -->
+            <!-- LOS HEREDEROS -->
 
             <div class="team-card team-green">
 
                 <div class="team-icon">
-                    🟢
+                    🔵
                 </div>
 
                 <h4>
-                    Equipo 2
+                    Los Herederos
                 </h4>
 
                 <span
@@ -120,16 +120,16 @@
             </div>
 
 
-            <!-- EQUIPO 3 -->
+            <!-- LAS HISTÓRICAS -->
 
             <div class="team-card team-purple">
 
                 <div class="team-icon">
-                    🟣
+                    🟢
                 </div>
 
                 <h4>
-                    Equipo 3
+                    Las Históricas
                 </h4>
 
                 <span
@@ -147,7 +147,6 @@
 
         </div>
 
-        <!-- REINICIAR MARCADOR GENERAL -->
 
         <button
             class="back-button"
@@ -180,108 +179,96 @@
 
             <!-- KAHOOT -->
 
-            <button
-                class="game-card"
-                onclick="openGame('kahoot')"
-            >
+            <div class="game-card">
 
                 <div class="game-icon">
-                    🧠
+                    🎯
                 </div>
 
-                <div>
+                <h4>
+                    Kahoot
+                </h4>
 
-                    <h4>
-                        Kahoot
-                    </h4>
+                <p>
+                    ¿Quién conoce mejor a Bett?
+                </p>
 
-                    <p>
-                        ¿Quién conoce mejor a Bett?
-                    </p>
+                <button
+                    class="primary-button"
+                    onclick="openKahoot()"
+                >
+                    Jugar Kahoot
+                </button>
 
-                </div>
-
-                <span class="arrow">
-                    →
-                </span>
-
-            </button>
+            </div>
 
 
             <!-- PASAPALABRA -->
 
-            <button
-                class="game-card"
-                onclick="openGame('rondo')"
-            >
+            <div class="game-card">
 
                 <div class="game-icon">
                     🔤
                 </div>
 
-                <div>
+                <h4>
+                    Pasapalabra
+                </h4>
 
-                    <h4>
-                        Pasapalabra
-                    </h4>
+                <p>
+                    Respondé todas las letras del rosco.
+                </p>
 
-                    <p>
-                        Preguntas de cultura general
-                    </p>
+                <button
+                    class="primary-button"
+                    onclick="openRondo()"
+                >
+                    Jugar Pasapalabra
+                </button>
 
-                </div>
-
-                <span class="arrow">
-                    →
-                </span>
-
-            </button>
+            </div>
 
 
             <!-- CANCIONES -->
 
-            <button
-                class="game-card"
-                onclick="openGame('songs')"
-            >
+            <div class="game-card">
 
                 <div class="game-icon">
                     🎵
                 </div>
 
-                <div>
+                <h4>
+                    Canciones
+                </h4>
 
-                    <h4>
-                        Canciones
-                    </h4>
+                <p>
+                    Adiviná canción, cantante y año.
+                </p>
 
-                    <p>
-                        Adiviná canción, artista y año
-                    </p>
+                <button
+                    class="primary-button"
+                    onclick="openSongs()"
+                >
+                    Jugar Canciones
+                </button>
 
-                </div>
-
-                <span class="arrow">
-                    →
-                </span>
-
-            </button>
+            </div>
 
         </div>
 
     </section>
 
 
-    <!-- PUNTAJES POR JUEGO -->
+    <!-- TABLA -->
 
-    <section class="details">
+    <section class="results">
 
         <div class="section-title">
 
             <span>📊</span>
 
             <h3>
-                Puntajes por juego
+                Resultados
             </h3>
 
         </div>
@@ -300,15 +287,15 @@
                         </th>
 
                         <th>
-                            🧠 Kahoot
+                            Kahoot
                         </th>
 
                         <th>
-                            🔤 Pasapalabra
+                            Pasapalabra
                         </th>
 
                         <th>
-                            🎵 Canciones
+                            Canciones
                         </th>
 
                         <th>
@@ -322,13 +309,10 @@
 
                 <tbody>
 
-
-                    <!-- EQUIPO 1 -->
-
                     <tr>
 
                         <td>
-                            🔵 Equipo 1
+                            🔴 Los Originales
                         </td>
 
                         <td id="kahoot-1">
@@ -343,22 +327,17 @@
                             0
                         </td>
 
-                        <td
-                            class="total"
-                            id="total-1"
-                        >
+                        <td id="total-1">
                             0
                         </td>
 
                     </tr>
 
 
-                    <!-- EQUIPO 2 -->
-
                     <tr>
 
                         <td>
-                            🟢 Equipo 2
+                            🔵 Los Herederos
                         </td>
 
                         <td id="kahoot-2">
@@ -373,22 +352,17 @@
                             0
                         </td>
 
-                        <td
-                            class="total"
-                            id="total-2"
-                        >
+                        <td id="total-2">
                             0
                         </td>
 
                     </tr>
 
 
-                    <!-- EQUIPO 3 -->
-
                     <tr>
 
                         <td>
-                            🟣 Equipo 3
+                            🟢 Las Históricas
                         </td>
 
                         <td id="kahoot-3">
@@ -403,10 +377,7 @@
                             0
                         </td>
 
-                        <td
-                            class="total"
-                            id="total-3"
-                        >
+                        <td id="total-3">
                             0
                         </td>
 
@@ -420,335 +391,350 @@
 
     </section>
 
+
+    <!-- MODAL KAHOOT -->
+
+    <div
+        id="kahoot-modal"
+        class="modal"
+    >
+
+        <div class="modal-content">
+
+            <button
+                class="close-button"
+                onclick="closeKahoot()"
+            >
+                ×
+            </button>
+
+            <h2>
+                🎯 Kahoot
+            </h2>
+
+            <p>
+                Jugá el Kahoot y después cargá los resultados.
+            </p>
+
+            <a
+                href="https://play.kahoot.it/v2/?quizId=9d7e3a63-484c-4be8-948d-30978619b503"
+                target="_blank"
+                class="primary-button"
+            >
+                Abrir Kahoot
+            </a>
+
+
+            <div class="kahoot-results">
+
+                <h3>
+                    Cargar resultados
+                </h3>
+
+
+                <label>
+                    🥇 Primer puesto
+                </label>
+
+                <select id="kahoot-first">
+
+                    <option value="team1">
+                        Los Originales
+                    </option>
+
+                    <option value="team2">
+                        Los Herederos
+                    </option>
+
+                    <option value="team3">
+                        Las Históricas
+                    </option>
+
+                </select>
+
+
+                <label>
+                    🥈 Segundo puesto
+                </label>
+
+                <select id="kahoot-second">
+
+                    <option value="team1">
+                        Los Originales
+                    </option>
+
+                    <option value="team2">
+                        Los Herederos
+                    </option>
+
+                    <option value="team3">
+                        Las Históricas
+                    </option>
+
+                </select>
+
+
+                <label>
+                    🥉 Tercer puesto
+                </label>
+
+                <select id="kahoot-third">
+
+                    <option value="team1">
+                        Los Originales
+                    </option>
+
+                    <option value="team2">
+                        Los Herederos
+                    </option>
+
+                    <option value="team3">
+                        Las Históricas
+                    </option>
+
+                </select>
+
+
+                <button
+                    class="primary-button"
+                    onclick="saveKahootResult()"
+                >
+                    Guardar resultado
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- MODAL CANCIONES -->
+
+    <div
+        id="songs-modal"
+        class="modal"
+    >
+
+        <div class="modal-content">
+
+            <button
+                class="close-button"
+                onclick="closeSongs()"
+            >
+                ×
+            </button>
+
+            <h2>
+                🎵 Canciones
+            </h2>
+
+            <p>
+                Cargá el resultado final del juego.
+            </p>
+
+
+            <label>
+                🥇 Primer puesto
+            </label>
+
+            <select id="songs-first">
+
+                <option value="team1">
+                    Los Originales
+                </option>
+
+                <option value="team2">
+                    Los Herederos
+                </option>
+
+                <option value="team3">
+                    Las Históricas
+                </option>
+
+            </select>
+
+
+            <label>
+                🥈 Segundo puesto
+            </label>
+
+            <select id="songs-second">
+
+                <option value="team1">
+                    Los Originales
+                </option>
+
+                <option value="team2">
+                    Los Herederos
+                </option>
+
+                <option value="team3">
+                    Las Históricas
+                </option>
+
+            </select>
+
+
+            <label>
+                🥉 Tercer puesto
+            </label>
+
+            <select id="songs-third">
+
+                <option value="team1">
+                    Los Originales
+                </option>
+
+                <option value="team2">
+                    Los Herederos
+                </option>
+
+                <option value="team3">
+                    Las Históricas
+                </option>
+
+            </select>
+
+
+            <button
+                class="primary-button"
+                onclick="saveSongsResult()"
+            >
+                Guardar resultado
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- PASAPALABRA -->
+
+    <section
+        id="rondo-section"
+        class="rondo-section"
+    >
+
+        <div class="section-title">
+
+            <span>🔤</span>
+
+            <h3>
+                Pasapalabra
+            </h3>
+
+        </div>
+
+
+        <div class="rosco-selection">
+
+            <p>
+                Elegí el equipo:
+            </p>
+
+
+            <div class="rosco-tabs">
+
+                <button
+                    onclick="selectRosco(1)"
+                >
+                    🔴 Los Originales
+                </button>
+
+                <button
+                    onclick="selectRosco(2)"
+                >
+                    🔵 Los Herederos
+                </button>
+
+                <button
+                    onclick="selectRosco(3)"
+                >
+                    🟢 Las Históricas
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div
+            id="rondo-game"
+            class="rondo-game"
+        >
+
+            <div
+                id="rosco"
+                class="rosco"
+            >
+            </div>
+
+
+            <div class="question-box">
+
+                <div
+                    id="current-letter"
+                    class="current-letter"
+                >
+                    A
+                </div>
+
+
+                <div
+                    id="rondo-clue"
+                    class="rondo-clue"
+                >
+                    Seleccioná una letra para comenzar.
+                </div>
+
+            </div>
+
+
+            <div class="rondo-buttons">
+
+                <button
+                    class="answer-btn correct"
+                    onclick="answerRondo(true)"
+                >
+                    ✓ Correcto
+                </button>
+
+
+                <button
+                    class="answer-btn pass"
+                    onclick="passRondo()"
+                >
+                    ↻ Pasapalabra
+                </button>
+
+
+                <button
+                    class="answer-btn wrong"
+                    onclick="answerRondo(false)"
+                >
+                    ✕ Incorrecto
+                </button>
+
+            </div>
+
+
+            <button
+                class="back-button"
+                onclick="closeRondo()"
+            >
+                Volver
+            </button>
+
+        </div>
+
+    </section>
+
+
 </main>
 
 
-<!-- FOOTER -->
-
-<footer>
-
-    <p>
-        ❤️ Celebrando 50 años de Bett
-    </p>
-
-</footer>
-
-
-<!-- MODAL GENERAL -->
-
-<div
-    id="game-modal"
-    class="modal"
->
-
-    <div class="modal-content">
-
-        <button
-            class="close-button"
-            onclick="closeGame()"
-        >
-            ×
-        </button>
-
-
-        <div id="modal-icon">
-            🎮
-        </div>
-
-
-        <h2 id="modal-title">
-            Juego
-        </h2>
-
-
-        <div id="modal-description">
-            Próximamente...
-        </div>
-
-
-        <button
-            class="back-button"
-            onclick="closeGame()"
-        >
-            Volver al inicio
-        </button>
-
-    </div>
-
-</div>
-
-
-<!-- MODAL DEL PASAPALABRA -->
-
-<div
-    id="rondo-modal"
-    class="rondo-modal"
->
-
-    <div class="rondo-content">
-
-
-        <!-- CABECERA -->
-
-        <div class="rondo-topbar">
-
-            <div>
-
-                <p class="eyebrow">
-                    50 AÑOS DE BETT
-                </p>
-
-                <h2>
-                    🔤 PASAPALABRA
-                </h2>
-
-            </div>
-
-
-            <div
-                style="
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
-                "
-            >
-
-                <!-- FINALIZAR PASAPALABRA -->
-
-                <button
-                    class="back-button"
-                    onclick="finishRondo()"
-                >
-                    🏁 Finalizar Pasapalabra
-                </button>
-
-
-                <!-- REINICIAR PASAPALABRA -->
-
-                <button
-                    class="back-button"
-                    onclick="resetRondo()"
-                >
-                    Reiniciar Pasapalabra
-                </button>
-
-
-                <!-- CERRAR -->
-
-                <button
-                    class="close-button rondo-close"
-                    onclick="closeRondo()"
-                >
-                    ×
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <!-- EQUIPOS -->
-
-        <div class="rondo-tabs">
-
-
-            <!-- PASAPALABRA 1 -->
-
-            <button
-                class="rondo-tab active"
-                onclick="selectRosco(1)"
-            >
-                🔵 Equipo 1
-            </button>
-
-
-            <!-- PASAPALABRA 2 -->
-
-            <button
-                class="rondo-tab"
-                onclick="selectRosco(2)"
-            >
-                🟢 Equipo 2
-            </button>
-
-
-            <!-- PASAPALABRA 3 -->
-
-            <button
-                class="rondo-tab"
-                onclick="selectRosco(3)"
-            >
-                🟣 Equipo 3
-            </button>
-
-        </div>
-
-
-        <div class="rondo-layout">
-
-
-            <!-- PANEL LATERAL -->
-
-            <aside class="rondo-sidebar">
-
-
-                <p class="side-label">
-                    EQUIPO EN TURNO
-                </p>
-
-
-                <div
-                    class="turn-team"
-                    id="turn-team"
-                >
-                    🔵 Equipo 1
-                </div>
-
-
-                <div class="rondo-score-box">
-
-                    <span>
-                        Aciertos del equipo
-                    </span>
-
-
-                    <strong
-                        id="rondo-current-score"
-                    >
-                        0
-                    </strong>
-
-                </div>
-
-
-                <!-- INSTRUCCIONES -->
-
-                <div class="rondo-instructions">
-
-                    <strong>
-                        Cómo jugar
-                    </strong>
-
-
-                    <p>
-                        Una letra por turno.
-                    </p>
-
-
-                    <p>
-                        ✅ Correcto suma 1 punto.
-                    </p>
-
-
-                    <p>
-                        🔄 Pasapalabra la deja pendiente.
-                    </p>
-
-
-                    <p>
-                        ❌ Incorrecto la marca y continúa.
-                    </p>
-
-
-                    <p>
-                        🏁 Al finalizar se asignan 3, 2 y 1 puntos.
-                    </p>
-
-                </div>
-
-            </aside>
-
-
-            <!-- CENTRO -->
-
-            <section class="rondo-main">
-
-
-                <!-- PASAPALABRA -->
-
-                <div
-                    class="rosco"
-                    id="rosco"
-                >
-                </div>
-
-
-                <!-- PREGUNTA CENTRAL -->
-
-                <div class="question-card">
-
-
-                    <div
-                        class="question-letter"
-                        id="question-letter"
-                    >
-                        A
-                    </div>
-
-
-                    <div
-                        class="question-type"
-                        id="question-type"
-                    >
-                        CON LA LETRA A
-                    </div>
-
-
-                    <p id="question-text">
-                        Seleccioná una letra para comenzar.
-                    </p>
-
-
-                    <!-- BOTONES DE RESPUESTA -->
-
-                    <div class="answer-actions">
-
-
-                        <!-- CORRECTO -->
-
-                        <button
-                            class="answer-btn correct"
-                            onclick="answerQuestion('correct')"
-                        >
-                            ✓ Correcto
-                        </button>
-
-
-                        <!-- PASAPALABRA -->
-
-                        <button
-                            class="answer-btn pass"
-                            onclick="answerQuestion('pass')"
-                        >
-                            ↻ Pasapalabra
-                        </button>
-
-
-                        <!-- INCORRECTO -->
-
-                        <button
-                            class="answer-btn wrong"
-                            onclick="answerQuestion('wrong')"
-                        >
-                            ✕ Incorrecto
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- JAVASCRIPT -->
-
-<script src="script.js?v=7"></script>
+<script src="script.js?v=8"></script>
 
 </body>
 </html>
