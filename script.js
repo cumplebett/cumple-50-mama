@@ -321,110 +321,110 @@ const rosco3 = {
         type: "starts"
     },
     G: {
-        clue: "Apellido del famoso tenista suizo considerado uno de los mejores de todos los tiempos.",
-        answer: "FEDERER",
-        type: "contains"
+        clue: "Estilo artístico y arquitectónico caracterizado por grandes catedrales, arcos apuntados y vitrales.",
+        answer: "GÓTICO",
+        type: "starts"
     },
     H: {
-        clue: "Nombre del país cuya capital es Budapest.",
-        answer: "HUNGRÍA",
+        clue: "Dios griego del inframundo y de los muertos.",
+        answer: "HADES",
         type: "starts"
     },
     I: {
-        clue: "Apellido del célebre pintor español autor del Guernica.",
-        answer: "PICASSO",
-        type: "contains"
+        clue: "Cataratas argentinas ubicadas en la provincia de Misiones.",
+        answer: "IGUAZÚ",
+        type: "starts"
     },
     J: {
-        clue: "Nombre del famoso personaje de historieta argentino creado por Quino.",
-        answer: "MAFALDA",
-        type: "contains"
+        clue: "Piedra ornamental de color verdoso, utilizada como color en el Tutti Frutti.",
+        answer: "JADE",
+        type: "starts"
     },
     K: {
-        clue: "Unidad de medida equivalente a mil gramos.",
-        answer: "KILOGRAMO",
+        clue: "Mineral ficticio de color verde que debilita a Superman.",
+        answer: "KRYPTONITA",
         type: "starts"
     },
     L: {
-        clue: "Apellido del famoso músico argentino conocido como “El Flaco”.",
-        answer: "SPINETTA",
-        type: "contains"
+        clue: "Construcción formada por caminos y pasadizos diseñada para confundir, donde estaba encerrado el Minotauro.",
+        answer: "LABERINTO",
+        type: "starts"
     },
     M: {
-        clue: "Animal mamífero conocido por su capacidad de cambiar de color.",
-        answer: "CAMALEÓN",
-        type: "contains"
+        clue: "Juego interminable en el que se compran casas, hoteles y propiedades hasta dejar en la ruina a tus amigos.",
+        answer: "MONOPOLY",
+        type: "starts"
     },
     N: {
-        clue: "Nombre de la capital de Francia.",
-        answer: "PARÍS",
-        type: "contains"
+        clue: "Río que atraviesa Egipto y fue fundamental para el desarrollo de una de las grandes civilizaciones de la Antigüedad.",
+        answer: "NILO",
+        type: "starts"
     },
     O: {
-        clue: "Elemento químico cuyo símbolo es O.",
-        answer: "OXÍGENO",
+        clue: "Escritor británico, autor de 1984 y Rebelión en la granja.",
+        answer: "ORWELL",
         type: "starts"
     },
     P: {
-        clue: "Apellido del delantero argentino considerado uno de los máximos goleadores de la historia.",
-        answer: "BATISTUTA",
-        type: "contains"
+        clue: "Región del extremo sur de Argentina y Chile, conocida por sus montañas, glaciares y lagos.",
+        answer: "PATAGONIA",
+        type: "starts"
     },
     Q: {
-        clue: "Nombre del personaje principal de la serie Breaking Bad.",
-        answer: "WALTER WHITE",
-        type: "contains"
+        clue: "Número mínimo de miembros presentes necesario en una asamblea para poder tomar decisiones válidas.",
+        answer: "QUÓRUM",
+        type: "starts"
     },
     R: {
-        clue: "Capital de Italia.",
-        answer: "ROMA",
+        clue: "Marca francesa de automóviles.",
+        answer: "RENAULT",
         type: "starts"
     },
     S: {
-        clue: "Nombre del satélite natural de la Tierra.",
-        answer: "LUNA",
-        type: "contains"
-    },
-    T: {
-        clue: "Apellido del actor que interpretó a Jack Sparrow.",
-        answer: "DEPP",
-        type: "contains"
-    },
-    U: {
-        clue: "País sudamericano cuya capital es Montevideo.",
-        answer: "URUGUAY",
+        clue: "Serie o película derivada de otra ya existente, centrada en un personaje secundario o evento paralelo.",
+        answer: "SPINOFF",
         type: "starts"
     },
+    T: {
+        clue: "Juego de piezas que caen y deben encajarse para completar líneas.",
+        answer: "TETRIS",
+        type: "starts"
+    },
+    U: {
+        clue: "Famoso héroe de la mitología griega.",
+        answer: "AQUILES",
+        type: "contains"
+    },
     V: {
-        clue: "Nombre de la ciudad italiana famosa por sus canales y góndolas.",
-        answer: "VENECIA",
+        clue: "Nombre del famoso actor estadounidense, conocido por interpretar a Dominic Toretto en Rápidos y Furiosos.",
+        answer: "VIN DIESEL",
         type: "starts"
     },
     W: {
-        clue: "Apellido del famoso fundador de Microsoft.",
-        answer: "GATES",
-        type: "contains"
-    },
-    X: {
-        clue: "Instrumento musical de láminas metálicas o de madera que se golpean con baquetas.",
-        answer: "XILÓFONO",
+        clue: "Famosa ensalada preparada con manzana, apio, nueces y mayonesa.",
+        answer: "WALDORF",
         type: "starts"
     },
-    Y: {
-        clue: "Nombre de la bebida alcohólica japonesa elaborada a partir de arroz fermentado.",
-        answer: "SAKE",
+    X: {
+        clue: "Medio de transporte protagonista de una canción de Pitbull.",
+        answer: "TAXI",
         type: "contains"
     },
+    Y: {
+        clue: "Antiguo país de Europa que se disolvió durante la década de 1990.",
+        answer: "YUGOSLAVIA",
+        type: "starts"
+    },
     Z: {
-        clue: "Apellido del famoso jugador argentino que fue capitán de la Selección durante varios años.",
-        answer: "ZANETTI",
+        clue: "Disciplina de ejercicio aeróbico que combina baile y música.",
+        answer: "ZUMBA",
         type: "starts"
     }
 };
 
 
 /* =========================================================
-   DATOS DE EQUIPOS
+   EQUIPOS
    ========================================================= */
 
 const TEAM_DATA = {
@@ -459,11 +459,8 @@ const rondoState = {
 };
 
 
-let currentTeam = "team1";
-
-let currentRosco =
-    TEAM_DATA.team1;
-
+let currentTeam = null;
+let currentRosco = null;
 let currentLetterIndex = 0;
 
 
@@ -481,41 +478,40 @@ function loadScores() {
             );
 
 
-        if (!saved) {
-            return;
-        }
+        if (saved) {
+
+            const parsed =
+                JSON.parse(saved);
 
 
-        const parsed =
-            JSON.parse(saved);
+            if (parsed.team1) {
+
+                scores.team1 = {
+                    ...scores.team1,
+                    ...parsed.team1
+                };
+
+            }
 
 
-        if (parsed.team1) {
+            if (parsed.team2) {
 
-            scores.team1 = {
-                ...scores.team1,
-                ...parsed.team1
-            };
+                scores.team2 = {
+                    ...scores.team2,
+                    ...parsed.team2
+                };
 
-        }
-
-
-        if (parsed.team2) {
-
-            scores.team2 = {
-                ...scores.team2,
-                ...parsed.team2
-            };
-
-        }
+            }
 
 
-        if (parsed.team3) {
+            if (parsed.team3) {
 
-            scores.team3 = {
-                ...scores.team3,
-                ...parsed.team3
-            };
+                scores.team3 = {
+                    ...scores.team3,
+                    ...parsed.team3
+                };
+
+            }
 
         }
 
@@ -561,7 +557,7 @@ function getTotal(team) {
 
 
 /* =========================================================
-   MARCADOR
+   ACTUALIZAR MARCADOR
    ========================================================= */
 
 function updateScoreboard() {
@@ -719,6 +715,16 @@ function resetScores() {
     updateScoreboard();
 
 
+    if (
+        typeof updateSongsScoreboard ===
+        "function"
+    ) {
+
+        updateSongsScoreboard();
+
+    }
+
+
     alert(
         "🔄 Marcador reiniciado correctamente."
     );
@@ -742,13 +748,6 @@ function openGame(game) {
 
     }
 
-
-    /*
-     * CANCIONES
-     *
-     * No usamos el modal general.
-     * El juego tiene su propia interfaz.
-     */
 
     if (
         game === "songs"
@@ -1090,6 +1089,8 @@ function closeGame() {
     }
 
 }
+
+
 /* =========================================================
    PASAPALABRA
    ========================================================= */
@@ -1101,62 +1102,17 @@ function openRondo() {
             "rondo-modal"
         );
 
+
     if (!modal) {
+
         return;
+
     }
 
 
     modal.classList.add(
         "active"
     );
-
-
-    rondoState.team1 =
-        createInitialRondoState();
-
-    rondoState.team2 =
-        createInitialRondoState();
-
-    rondoState.team3 =
-        createInitialRondoState();
-
-
-    [
-        "team1",
-        "team2",
-        "team3"
-    ].forEach(
-        team => {
-
-            scores[
-                team
-            ].rondo = 0;
-
-
-            Object.keys(
-                TEAM_DATA[
-                    team
-                ]
-            ).forEach(
-                letter => {
-
-                    TEAM_DATA[
-                        team
-                    ][
-                        letter
-                    ].correct =
-                        undefined;
-
-                }
-            );
-
-        }
-    );
-
-
-    saveScores();
-
-    updateScoreboard();
 
 
     currentTeam =
@@ -1168,7 +1124,7 @@ function openRondo() {
 
 
     currentLetterIndex =
-        0;
+        rondoState.team1.currentIndex;
 
 
     updateRondoTabs();
@@ -1213,6 +1169,43 @@ function selectRosco(
     team
 ) {
 
+    /*
+     * Mantiene compatibilidad con
+     * los botones existentes del HTML,
+     * tanto si mandan team1/team2/team3
+     * como si mandan 1/2/3.
+     */
+
+    if (
+        team === 1 ||
+        team === "1"
+    ) {
+
+        team = "team1";
+
+    }
+
+
+    if (
+        team === 2 ||
+        team === "2"
+    ) {
+
+        team = "team2";
+
+    }
+
+
+    if (
+        team === 3 ||
+        team === "3"
+    ) {
+
+        team = "team3";
+
+    }
+
+
     if (
         !TEAM_DATA[team]
     ) {
@@ -1232,14 +1225,10 @@ function selectRosco(
         ];
 
 
-    const state =
+    currentLetterIndex =
         rondoState[
             team
-        ];
-
-
-    currentLetterIndex =
-        state.currentIndex;
+        ].currentIndex;
 
 
     updateRondoTabs();
@@ -1270,8 +1259,13 @@ function updateRondoTabs() {
                     "active"
                 );
 
+
+                const tabTeam =
+                    tab.dataset.team;
+
+
                 if (
-                    tab.dataset.team ===
+                    tabTeam ===
                     currentTeam
                 ) {
 
@@ -1288,20 +1282,27 @@ function updateRondoTabs() {
 
 
 /* =========================================================
-   UI DEL EQUIPO
+   UI EQUIPO
    ========================================================= */
 
 function updateRondoTeamUI() {
 
+    if (!currentTeam) {
+
+        return;
+
+    }
+
+
     const teamName =
         document.getElementById(
-            "rondo-team-name"
+            "turn-team"
         );
 
 
     const score =
         document.getElementById(
-            "rondo-score"
+            "rondo-current-score"
         );
 
 
@@ -1328,10 +1329,17 @@ function updateRondoTeamUI() {
 
 
 /* =========================================================
-   MARCADOR DEL ROSCO
+   MARCADOR ROSCO
    ========================================================= */
 
 function updateRondoScore() {
+
+    if (!currentTeam) {
+
+        return;
+
+    }
+
 
     const state =
         rondoState[
@@ -1341,19 +1349,7 @@ function updateRondoScore() {
 
     const score =
         document.getElementById(
-            "rondo-score"
-        );
-
-
-    const hits =
-        document.getElementById(
-            "rondo-hits"
-        );
-
-
-    const misses =
-        document.getElementById(
-            "rondo-misses"
+            "rondo-current-score"
         );
 
 
@@ -1364,21 +1360,25 @@ function updateRondoScore() {
 
     }
 
+}
 
-    if (hits) {
 
-        hits.textContent =
-            state.hits;
+/* =========================================================
+   LETRAS
+   ========================================================= */
+
+function getLetters() {
+
+    if (!currentRosco) {
+
+        return [];
 
     }
 
 
-    if (misses) {
-
-        misses.textContent =
-            state.misses;
-
-    }
+    return Object.keys(
+        currentRosco
+    );
 
 }
 
@@ -1389,27 +1389,25 @@ function updateRondoScore() {
 
 function renderRosco() {
 
-    const container =
+    const rosco =
         document.getElementById(
             "rosco"
         );
 
 
-    if (!container) {
+    if (!rosco || !currentRosco) {
 
         return;
 
     }
 
 
-    container.innerHTML =
+    rosco.innerHTML =
         "";
 
 
     const letters =
-        Object.keys(
-            currentRosco
-        );
+        getLetters();
 
 
     const total =
@@ -1436,11 +1434,11 @@ function renderRosco() {
                 "rosco-letter";
 
 
+            button.id =
+                `letter-${letter}`;
+
+
             button.textContent =
-                letter;
-
-
-            button.dataset.letter =
                 letter;
 
 
@@ -1495,7 +1493,7 @@ function renderRosco() {
             );
 
 
-            container.appendChild(
+            rosco.appendChild(
                 button
             );
 
@@ -1516,12 +1514,14 @@ function goToLetter(
     index
 ) {
 
+    const letters =
+        getLetters();
+
+
     if (
         index < 0 ||
         index >=
-        Object.keys(
-            currentRosco
-        ).length
+        letters.length
     ) {
 
         return;
@@ -1533,10 +1533,14 @@ function goToLetter(
         index;
 
 
-    rondoState[
-        currentTeam
-    ].currentIndex =
-        index;
+    if (currentTeam) {
+
+        rondoState[
+            currentTeam
+        ].currentIndex =
+            index;
+
+    }
 
 
     showCurrentQuestion();
@@ -1547,15 +1551,23 @@ function goToLetter(
 
 
 /* =========================================================
-   PREGUNTA ACTUAL
+   PREGUNTA
    ========================================================= */
 
 function showCurrentQuestion() {
 
+    if (
+        !currentRosco ||
+        !currentTeam
+    ) {
+
+        return;
+
+    }
+
+
     const letters =
-        Object.keys(
-            currentRosco
-        );
+        getLetters();
 
 
     if (!letters.length) {
@@ -1584,12 +1596,6 @@ function showCurrentQuestion() {
     }
 
 
-    const state =
-        rondoState[
-            currentTeam
-        ];
-
-
     const letterDisplay =
         document.getElementById(
             "question-letter"
@@ -1608,6 +1614,12 @@ function showCurrentQuestion() {
         );
 
 
+    const phrase =
+        item.type === "contains"
+            ? `CONTIENE LA ${letter}`
+            : `EMPIEZA CON ${letter}`;
+
+
     if (letterDisplay) {
 
         letterDisplay.textContent =
@@ -1619,9 +1631,7 @@ function showCurrentQuestion() {
     if (typeDisplay) {
 
         typeDisplay.textContent =
-            item.type === "contains"
-                ? "CONTIENE"
-                : "COMIENZA CON";
+            phrase;
 
     }
 
@@ -1634,43 +1644,26 @@ function showCurrentQuestion() {
     }
 
 
-    const input =
-        document.getElementById(
-            "answer-input"
-        );
+    updateRoscoLetterStyles();
+
+}
 
 
-    if (input) {
+/* =========================================================
+   ESTADOS VISUALES
+   ========================================================= */
 
-        input.value =
-            "";
-
-        input.focus();
-
-    }
-
-
-    updateRondoLetterStyles();
-
-    updateRondoScore();
-
+function updateRoscoLetterStyles() {
 
     if (
-        state.finished
+        !currentRosco ||
+        !currentTeam
     ) {
 
         return;
 
     }
 
-}
-
-
-/* =========================================================
-   ESTILOS DE LETRAS
-   ========================================================= */
-
-function updateRoscoLetterStyles() {
 
     const state =
         rondoState[
@@ -1678,138 +1671,191 @@ function updateRoscoLetterStyles() {
         ];
 
 
-    document
-        .querySelectorAll(
-            ".rosco-letter"
-        )
-        .forEach(
-            button => {
-
-                const letter =
-                    button.dataset.letter;
+    const letters =
+        getLetters();
 
 
-                button.classList.remove(
-                    "current",
-                    "correct",
-                    "incorrect",
-                    "passed"
+    letters.forEach(
+        letter => {
+
+            const button =
+                document.getElementById(
+                    `letter-${letter}`
                 );
 
 
-                if (
-                    state.answered.includes(
-                        letter
-                    )
-                ) {
+            if (!button) {
 
-                    const item =
-                        currentRosco[
-                            letter
-                        ];
-
-
-                    if (
-                        item.correct
-                    ) {
-
-                        button.classList.add(
-                            "correct"
-                        );
-
-                    } else {
-
-                        button.classList.add(
-                            "incorrect"
-                        );
-
-                    }
-
-                }
-
-
-                if (
-                    state.passed.includes(
-                        letter
-                    )
-                ) {
-
-                    button.classList.add(
-                        "passed"
-                    );
-
-                }
-
-
-                if (
-                    letter ===
-                    Object.keys(
-                        currentRosco
-                    )[
-                        currentLetterIndex
-                    ]
-                ) {
-
-                    button.classList.add(
-                        "current"
-                    );
-
-                }
+                return;
 
             }
-        );
-
-}
 
 
-/* =========================================================
-   RESPONDER PREGUNTA
-   ========================================================= */
+            button.classList.remove(
+                "correct",
+                "incorrect",
+                "wrong",
+                "passed",
+                "pass",
+                "current"
+            );
 
-function answerQuestion() {
+        }
+    );
 
-    const input =
+
+    const currentLetter =
+        letters[
+            currentLetterIndex
+        ];
+
+
+    const currentButton =
         document.getElementById(
-            "answer-input"
+            `letter-${currentLetter}`
         );
 
 
-    if (!input) {
+    if (
+        currentButton &&
+        !state.answered.includes(
+            currentLetter
+        )
+    ) {
 
-        return;
+        currentButton.classList.add(
+            "current"
+        );
 
     }
 
 
-    const answer =
-        input.value
-            .trim()
-            .toUpperCase();
+    state.answered.forEach(
+        letter => {
+
+            const button =
+                document.getElementById(
+                    `letter-${letter}`
+                );
 
 
-    answerRondo(
-        answer
+            if (!button) {
+
+                return;
+
+            }
+
+
+            const item =
+                currentRosco[
+                    letter
+                ];
+
+
+            if (
+                item &&
+                item.correct
+            ) {
+
+                button.classList.add(
+                    "correct"
+                );
+
+            } else {
+
+                button.classList.add(
+                    "wrong"
+                );
+
+                button.classList.add(
+                    "incorrect"
+                );
+
+            }
+
+        }
+    );
+
+
+    state.passed.forEach(
+        letter => {
+
+            const button =
+                document.getElementById(
+                    `letter-${letter}`
+                );
+
+
+            if (button) {
+
+                button.classList.add(
+                    "pass"
+                );
+
+                button.classList.add(
+                    "passed"
+                );
+
+            }
+
+        }
     );
 
 }
 
 
 /* =========================================================
-   RESPONDER ROSCO
+   BOTONES DE RESPUESTA
    ========================================================= */
 
-function answerRondo(
-    answer
+function answerQuestion(
+    result
 ) {
 
-    const state =
-        rondoState[
-            currentTeam
-        ];
+    if (
+        result === "correct"
+    ) {
+
+        answerRondo(true);
+
+        return;
+
+    }
 
 
     if (
-        state.finished
+        result === "wrong"
+    ) {
+
+        answerRondo(false);
+
+        return;
+
+    }
+
+
+    if (
+        result === "pass"
+    ) {
+
+        passRondo();
+
+    }
+
+}
+
+
+/* =========================================================
+   CORRECTO / INCORRECTO
+   ========================================================= */
+
+function answerRondo(
+    isCorrect
+) {
+
+    if (
+        !currentRosco ||
+        !currentTeam
     ) {
 
         return;
@@ -1817,10 +1863,14 @@ function answerRondo(
     }
 
 
+    const state =
+        rondoState[
+            currentTeam
+        ];
+
+
     const letters =
-        Object.keys(
-            currentRosco
-        );
+        getLetters();
 
 
     const letter =
@@ -1835,47 +1885,21 @@ function answerRondo(
         ];
 
 
-    if (!item) {
-
-        return;
-
-    }
-
-
     if (
+        !item ||
         state.answered.includes(
             letter
         )
     ) {
 
-        moveToNextLetter();
-
         return;
 
     }
 
 
-    const normalizedAnswer =
-        normalizeAnswer(
-            answer
-        );
-
-
-    const normalizedCorrect =
-        normalizeAnswer(
-            item.answer
-        );
-
-
-    const isCorrect =
-        normalizedAnswer ===
-        normalizedCorrect;
-
-
     state.passed =
         state.passed.filter(
-            l =>
-                l !== letter
+            l => l !== letter
         );
 
 
@@ -1901,34 +1925,7 @@ function answerRondo(
 
     updateRondoScore();
 
-    updateRoscoLetterStyles();
-
     moveToNextLetter();
-
-}
-
-
-/* =========================================================
-   NORMALIZAR RESPUESTAS DEL ROSCO
-   ========================================================= */
-
-function normalizeAnswer(
-    value
-) {
-
-    return String(
-        value || ""
-    )
-        .normalize("NFD")
-        .replace(
-            /[\u0300-\u036f]/g,
-            ""
-        )
-        .replace(
-            /[^A-Z0-9]/gi,
-            ""
-        )
-        .toUpperCase();
 
 }
 
@@ -1939,14 +1936,9 @@ function normalizeAnswer(
 
 function passRondo() {
 
-    const state =
-        rondoState[
-            currentTeam
-        ];
-
-
     if (
-        state.finished
+        !currentRosco ||
+        !currentTeam
     ) {
 
         return;
@@ -1954,10 +1946,14 @@ function passRondo() {
     }
 
 
+    const state =
+        rondoState[
+            currentTeam
+        ];
+
+
     const letters =
-        Object.keys(
-            currentRosco
-        );
+        getLetters();
 
 
     const letter =
@@ -1967,22 +1963,25 @@ function passRondo() {
 
 
     if (
-        !state.answered.includes(
+        state.answered.includes(
             letter
         )
     ) {
 
-        if (
-            !state.passed.includes(
-                letter
-            )
-        ) {
+        return;
 
-            state.passed.push(
-                letter
-            );
+    }
 
-        }
+
+    if (
+        !state.passed.includes(
+            letter
+        )
+    ) {
+
+        state.passed.push(
+            letter
+        );
 
     }
 
@@ -1998,91 +1997,117 @@ function passRondo() {
 
 function moveToNextLetter() {
 
+    const state =
+        rondoState[
+            currentTeam
+        ];
+
+
     const letters =
-        Object.keys(
-            currentRosco
-        );
-
-
-    if (!letters.length) {
-
-        return;
-
-    }
+        getLetters();
 
 
     let nextIndex =
-        currentLetterIndex;
+        currentLetterIndex + 1;
 
 
-    for (
-        let step = 1;
-        step <= letters.length;
-        step++
+    while (
+        nextIndex <
+        letters.length
     ) {
 
-        const candidate =
-            (
-                currentLetterIndex +
-                step
-            ) %
-            letters.length;
-
-
-        const letter =
+        const nextLetter =
             letters[
-                candidate
-            ];
-
-
-        const state =
-            rondoState[
-                currentTeam
+                nextIndex
             ];
 
 
         if (
             !state.answered.includes(
-                letter
+                nextLetter
+            ) &&
+            !state.passed.includes(
+                nextLetter
             )
         ) {
 
-            nextIndex =
-                candidate;
+            currentLetterIndex =
+                nextIndex;
 
-            break;
+
+            state.currentIndex =
+                nextIndex;
+
+
+            showCurrentQuestion();
+
+            return;
 
         }
+
+
+        nextIndex++;
 
     }
 
 
-    currentLetterIndex =
-        nextIndex;
+    nextIndex = 0;
 
 
-    rondoState[
-        currentTeam
-    ].currentIndex =
-        nextIndex;
+    while (
+        nextIndex <
+        letters.length
+    ) {
+
+        const nextLetter =
+            letters[
+                nextIndex
+            ];
 
 
-    showCurrentQuestion();
+        if (
+            !state.answered.includes(
+                nextLetter
+            ) &&
+            state.passed.includes(
+                nextLetter
+            )
+        ) {
 
-    updateRoscoLetterStyles();
+            currentLetterIndex =
+                nextIndex;
+
+
+            state.currentIndex =
+                nextIndex;
+
+
+            showCurrentQuestion();
+
+            return;
+
+        }
+
+
+        nextIndex++;
+
+    }
+
+
+    finishRondo();
 
 }
 
 
 /* =========================================================
-   RESET ROSCO
+   REINICIAR PASAPALABRA
    ========================================================= */
 
 function resetRondo() {
 
     const confirmation =
         confirm(
-            "¿Seguro que querés reiniciar el Pasapalabra?"
+            "¿Seguro que querés reiniciar los tres roscos?"
         );
 
 
@@ -2303,618 +2328,528 @@ function getTeamName(
 
 
 /* =========================================================
-   =========================================================
-   CANCIONES
-   =========================================================
+   JUEGO DE CANCIONES
+   ========================================================= */
+
+/* =========================================================
+   DATOS DE LAS 49 CANCIONES
    ========================================================= */
 
 const SONGS_DATA = [
 
+    /* =========================
+       80s
+       ========================= */
+
     {
         title: "De música ligera",
-        artists: [
-            "Soda Stereo"
-        ],
+        artists: ["Soda Stereo"],
         decade: "80s",
-        youtubeId: "T_FkEw27XJ0"
+        videoId: ""
     },
 
     {
         title: "La incondicional",
-        artists: [
-            "Luis Miguel"
-        ],
+        artists: ["Luis Miguel"],
         decade: "80s",
-        youtubeId: "by4I_10HbX4"
+        videoId: ""
     },
 
     {
         title: "Me va, me va",
-        artists: [
-            "Julio Iglesias"
-        ],
+        artists: ["Julio Iglesias"],
         decade: "80s",
-        youtubeId: "CCht0AyKxNY"
+        videoId: ""
     },
 
     {
         title: "Mil horas",
-        artists: [
-            "Los Abuelos de la Nada"
-        ],
+        artists: ["Los Abuelos de la Nada"],
         decade: "80s",
-        youtubeId: "CUdw-urZ3zg"
+        videoId: ""
     },
 
     {
         title: "Devuélveme a mi chica",
-        artists: [
-            "Hombres G"
-        ],
+        artists: ["Hombres G"],
         decade: "80s",
-        youtubeId: "U72tra23BF0"
+        videoId: ""
     },
 
     {
         title: "Billie Jean",
-        artists: [
-            "Michael Jackson"
-        ],
+        artists: ["Michael Jackson"],
         decade: "80s",
-        youtubeId: "Zi_XLOBDo_Y"
+        videoId: ""
     },
 
     {
         title: "Never Gonna Give You Up",
-        artists: [
-            "Rick Astley"
-        ],
+        artists: ["Rick Astley"],
         decade: "80s",
-        youtubeId: "dQw4w9WgXcQ"
+        videoId: ""
     },
 
     {
         title: "I Wanna Dance with Somebody",
-        artists: [
-            "Whitney Houston"
-        ],
+        artists: ["Whitney Houston"],
         decade: "80s",
-        youtubeId: "eH3giaIzONA"
+        videoId: ""
     },
 
     {
         title: "Girls Just Want to Have Fun",
-        artists: [
-            "Cyndi Lauper"
-        ],
+        artists: ["Cyndi Lauper"],
         decade: "80s",
-        youtubeId: "PIb6AZdTr-A"
+        videoId: ""
     },
 
     {
         title: "Livin' on a Prayer",
-        artists: [
-            "Bon Jovi"
-        ],
+        artists: ["Bon Jovi"],
         decade: "80s",
-        youtubeId: "lDK9QqIzhwk"
+        videoId: ""
     },
 
 
+    /* =========================
+       90s
+       ========================= */
+
     {
         title: "Rayando el sol",
-        artists: [
-            "Maná"
-        ],
+        artists: ["Maná"],
         decade: "90s",
-        youtubeId: "EDkQB9b3cBw"
+        videoId: ""
     },
 
     {
         title: "Piel Morena",
-        artists: [
-            "Thalía"
-        ],
+        artists: ["Thalía"],
         decade: "90s",
-        youtubeId: "EMAjgSJr4Jg"
+        videoId: ""
     },
 
     {
         title: "Livin' la Vida Loca",
-        artists: [
-            "Ricky Martin"
-        ],
+        artists: ["Ricky Martin"],
         decade: "90s",
-        youtubeId: "p47fEXGabaY"
+        videoId: ""
     },
 
     {
         title: "Vuelve",
-        artists: [
-            "Ricky Martin"
-        ],
+        artists: ["Ricky Martin"],
         decade: "90s",
-        youtubeId: "p7QYo-9SlP0"
+        videoId: ""
     },
 
     {
         title: "Flaca",
-        artists: [
-            "Andrés Calamaro"
-        ],
+        artists: ["Andrés Calamaro"],
         decade: "90s",
-        youtubeId: "UCF9oHXhDMU"
+        videoId: ""
     },
 
     {
         title: "Wannabe",
-        artists: [
-            "Spice Girls"
-        ],
+        artists: ["Spice Girls"],
         decade: "90s",
-        youtubeId: "gJLIiF15wjQ"
+        videoId: ""
     },
 
     {
         title: "...Baby One More Time",
-        artists: [
-            "Britney Spears"
-        ],
+        artists: ["Britney Spears"],
         decade: "90s",
-        youtubeId: "C-u5WLJ9Yk4"
+        videoId: ""
     },
 
     {
         title: "I Want It That Way",
-        artists: [
-            "Backstreet Boys"
-        ],
+        artists: ["Backstreet Boys"],
         decade: "90s",
-        youtubeId: "4fndeDfaWCg"
+        videoId: ""
     },
 
     {
         title: "My Heart Will Go On",
-        artists: [
-            "Celine Dion"
-        ],
+        artists: ["Celine Dion"],
         decade: "90s",
-        youtubeId: "9bFHsd3o1w0"
+        videoId: ""
     },
 
     {
         title: "Smells Like Teen Spirit",
-        artists: [
-            "Nirvana"
-        ],
+        artists: ["Nirvana"],
         decade: "90s",
-        youtubeId: "hTWKbfoikeg"
+        videoId: ""
     },
 
 
+    /* =========================
+       2000s
+       ========================= */
+
     {
         title: "La Tortura",
-        artists: [
-            "Shakira",
-            "Alejandro Sanz"
-        ],
+        artists: ["Shakira", "Alejandro Sanz"],
         decade: "2000s",
-        youtubeId: "Dsp_8Lm1eSk"
+        videoId: ""
     },
 
     {
         title: "Me enamora",
-        artists: [
-            "Juanes"
-        ],
+        artists: ["Juanes"],
         decade: "2000s",
-        youtubeId: "voxgN3Dhjuo"
+        videoId: ""
     },
 
     {
         title: "Ave María",
-        artists: [
-            "David Bisbal"
-        ],
+        artists: ["David Bisbal"],
         decade: "2000s",
-        youtubeId: "gra-sIV1n4U"
+        videoId: ""
     },
 
     {
         title: "Colgando en tus manos",
-        artists: [
-            "Carlos Baute",
-            "Marta Sánchez"
-        ],
+        artists: ["Carlos Baute", "Marta Sánchez"],
         decade: "2000s",
-        youtubeId: "qExd-3oCTl4"
+        videoId: ""
     },
 
     {
         title: "Rosas",
-        artists: [
-            "La Oreja de Van Gogh"
-        ],
+        artists: ["La Oreja de Van Gogh"],
         decade: "2000s",
-        youtubeId: "nYnLVWXmRm8"
+        videoId: ""
     },
 
     {
         title: "Toxic",
-        artists: [
-            "Britney Spears"
-        ],
+        artists: ["Britney Spears"],
         decade: "2000s",
-        youtubeId: "LOZuxwVk7TU"
+        videoId: ""
     },
 
     {
         title: "Crazy in Love",
-        artists: [
-            "Beyoncé",
-            "Jay-Z"
-        ],
+        artists: ["Beyoncé", "Jay-Z"],
         decade: "2000s",
-        youtubeId: "ViwtNLUqkMY"
+        videoId: ""
     },
 
     {
         title: "Umbrella",
-        artists: [
-            "Rihanna"
-        ],
+        artists: ["Rihanna"],
         decade: "2000s",
-        youtubeId: "CvBfHwUxHIk"
+        videoId: ""
     },
 
     {
         title: "Poker Face",
-        artists: [
-            "Lady Gaga"
-        ],
+        artists: ["Lady Gaga"],
         decade: "2000s",
-        youtubeId: "bESGLojNYSo"
+        videoId: ""
     },
 
 
+    /* =========================
+       2010s
+       ========================= */
+
     {
         title: "Despacito",
-        artists: [
-            "Luis Fonsi",
-            "Daddy Yankee"
-        ],
+        artists: ["Luis Fonsi", "Daddy Yankee"],
         decade: "2010s",
-        youtubeId: "kJQP7kiw5Fk"
+        videoId: ""
     },
 
     {
         title: "Bailando",
-        artists: [
-            "Enrique Iglesias"
-        ],
+        artists: ["Enrique Iglesias"],
         decade: "2010s",
-        youtubeId: "NUsoVlDFqZg"
+        videoId: ""
     },
 
     {
         title: "Danza Kuduro",
-        artists: [
-            "Don Omar",
-            "Lucenzo"
-        ],
+        artists: ["Don Omar", "Lucenzo"],
         decade: "2010s",
-        youtubeId: "7zp1TbLFPp8"
+        videoId: ""
     },
 
     {
         title: "Vivir Mi Vida",
-        artists: [
-            "Marc Anthony"
-        ],
+        artists: ["Marc Anthony"],
         decade: "2010s",
-        youtubeId: "YXnjy5YlDwk"
+        videoId: ""
     },
 
     {
         title: "Échame la culpa",
-        artists: [
-            "Luis Fonsi",
-            "Demi Lovato"
-        ],
+        artists: ["Luis Fonsi", "Demi Lovato"],
         decade: "2010s",
-        youtubeId: "TyHvyGVs42U"
+        videoId: ""
     },
 
     {
         title: "Uptown Funk",
-        artists: [
-            "Mark Ronson",
-            "Bruno Mars"
-        ],
+        artists: ["Mark Ronson", "Bruno Mars"],
         decade: "2010s",
-        youtubeId: "OPf0YbXqDm0"
+        videoId: ""
     },
 
     {
         title: "Shape of You",
-        artists: [
-            "Ed Sheeran"
-        ],
+        artists: ["Ed Sheeran"],
         decade: "2010s",
-        youtubeId: "JGwWNGJdvx8"
+        videoId: ""
     },
 
     {
         title: "Rolling in the Deep",
-        artists: [
-            "Adele"
-        ],
+        artists: ["Adele"],
         decade: "2010s",
-        youtubeId: "rYEDA3JcQqw"
+        videoId: ""
     },
 
     {
         title: "Havana",
-        artists: [
-            "Camila Cabello"
-        ],
+        artists: ["Camila Cabello"],
         decade: "2010s",
-        youtubeId: "HCjNJDNzw8Y"
+        videoId: ""
     },
 
     {
         title: "Sorry",
-        artists: [
-            "Justin Bieber"
-        ],
+        artists: ["Justin Bieber"],
         decade: "2010s",
-        youtubeId: "fRh_vgS2dFE"
+        videoId: ""
     },
 
 
+    /* =========================
+       2020s
+       ========================= */
+
     {
         title: "Todo de Ti",
-        artists: [
-            "Rauw Alejandro"
-        ],
+        artists: ["Rauw Alejandro"],
         decade: "2020s",
-        youtubeId: "CFPLIaMpGrY"
+        videoId: ""
     },
 
     {
         title: "Hawái",
-        artists: [
-            "Maluma"
-        ],
+        artists: ["Maluma"],
         decade: "2020s",
-        youtubeId: "pK06OiUFWXg"
+        videoId: ""
     },
 
     {
         title: "Tusa",
-        artists: [
-            "Karol G",
-            "Nicki Minaj"
-        ],
+        artists: ["Karol G", "Nicki Minaj"],
         decade: "2020s",
-        youtubeId: "tbneQDc2H3I"
+        videoId: ""
     },
 
     {
         title: "La Bachata",
-        artists: [
-            "Manuel Turizo"
-        ],
+        artists: ["Manuel Turizo"],
         decade: "2020s",
-        youtubeId: "TqA8D9nJ9xI"
+        videoId: ""
     },
 
     {
         title: "SUPERESTRELLA",
-        artists: [
-            "Aitana"
-        ],
+        artists: ["Aitana"],
         decade: "2020s",
-        youtubeId: "vz_vU53JvvI"
+        videoId: ""
     },
 
     {
         title: "Die With A Smile",
-        artists: [
-            "Lady Gaga",
-            "Bruno Mars"
-        ],
+        artists: ["Lady Gaga", "Bruno Mars"],
         decade: "2020s",
-        youtubeId: "kPa7bsKwL-c"
+        videoId: ""
     },
 
     {
         title: "As It Was",
-        artists: [
-            "Harry Styles"
-        ],
+        artists: ["Harry Styles"],
         decade: "2020s",
-        youtubeId: "H5v3kku4y6Q"
+        videoId: ""
     },
 
     {
         title: "Flowers",
-        artists: [
-            "Miley Cyrus"
-        ],
+        artists: ["Miley Cyrus"],
         decade: "2020s",
-        youtubeId: "G7KNmW9a75Y"
+        videoId: ""
     },
 
     {
         title: "good 4 u",
-        artists: [
-            "Olivia Rodrigo"
-        ],
+        artists: ["Olivia Rodrigo"],
         decade: "2020s",
-        youtubeId: "gNi_6U5Pm_o"
+        videoId: ""
     },
 
     {
         title: "Espresso",
-        artists: [
-            "Sabrina Carpenter"
-        ],
+        artists: ["Sabrina Carpenter"],
         decade: "2020s",
-        youtubeId: "eVli-tstM5E"
+        videoId: ""
     }
 
 ];
 
 
-let songsGame = null;
+/* =========================================================
+   ESTADO DEL JUEGO DE CANCIONES
+   ========================================================= */
 
 let songsPlayer = null;
 
 let songsPlayerReady = false;
 
-let songsApiLoading = false;
+let songsProgressTimer = null;
+
+let songsCurrentIndex = 0;
+
+let songsCurrentSong = null;
+
+let songsUsedIndexes = [];
+
+let songsAnswers = [];
+
+let songsGameOpen = false;
 
 
 /* =========================================================
-   YOUTUBE API
+   NORMALIZACIÓN DE RESPUESTAS
    ========================================================= */
 
-function loadYouTubeApiForSongs() {
-
-    if (
-        window.YT &&
-        window.YT.Player
-    ) {
-
-        if (songsGame) {
-
-            createSongsPlayer();
-
-        }
-
-        return;
-
-    }
-
-
-    if (songsApiLoading) {
-
-        return;
-
-    }
-
-
-    songsApiLoading =
-        true;
-
-
-    const oldReady =
-        window.onYouTubeIframeAPIReady;
-
-
-    window.onYouTubeIframeAPIReady =
-        function() {
-
-            if (
-                typeof oldReady ===
-                "function"
-            ) {
-
-                oldReady();
-
-            }
-
-
-            if (songsGame) {
-
-                createSongsPlayer();
-
-            }
-
-        };
-
-
-    const tag =
-        document.createElement(
-            "script"
-        );
-
-
-    tag.src =
-        "https://www.youtube.com/iframe_api";
-
-
-    document.head.appendChild(
-        tag
-    );
-
-}
-
-
-/* =========================================================
-   NORMALIZAR RESPUESTAS DE CANCIONES
-   ========================================================= */
-
-function normalizeSongText(
+function normalizeSongAnswer(
     value
 ) {
 
-    return String(
-        value || ""
-    )
-        .normalize("NFD")
+    if (
+        value === null ||
+        value === undefined
+    ) {
+
+        return "";
+
+    }
+
+
+    let text =
+        String(value)
+            .toLowerCase()
+            .trim();
+
+
+    /*
+     * Acentos y diacríticos.
+     */
+
+    text =
+        text.normalize(
+            "NFD"
+        )
         .replace(
             /[\u0300-\u036f]/g,
             ""
-        )
-        .toLowerCase()
-        .replace(
+        );
+
+
+    /*
+     * Apóstrofes.
+     */
+
+    text =
+        text.replace(
+            /['’`´]/g,
+            ""
+        );
+
+
+    /*
+     * & = y
+     */
+
+    text =
+        text.replace(
             /&/g,
             " y "
-        )
-        .replace(
-            /[’']/g,
-            ""
-        )
-        .replace(
-            /[^a-z0-9\s]/g,
+        );
+
+
+    /*
+     * Puntuación.
+     */
+
+    text =
+        text.replace(
+            /[.,!?¿¡:;()[\]{}"\/\\_-]/g,
             " "
-        )
-        .replace(
-            /\b(?:the|a|an|el|la|los|las|un|una|de|del|al)\b/g,
-            " "
-        )
-        .replace(
+        );
+
+
+    /*
+     * Espacios múltiples.
+     */
+
+    text =
+        text.replace(
             /\s+/g,
             " "
         )
         .trim();
 
+
+    /*
+     * Artículos iniciales.
+     *
+     * También se eliminan:
+     * de / del / al
+     *
+     * para aceptar cosas como:
+     * "Musica Ligera"
+     * por "De Musica Ligera".
+     */
+
+    text =
+        text.replace(
+            /^(el|la|los|las|un|una|unos|unas|de|del|al)\s+/,
+            ""
+        );
+
+
+    return text;
+
 }
 
 
-function songTextMatches(
-    answer,
-    expected
+/* =========================================================
+   COMPARAR RESPUESTAS
+   ========================================================= */
+
+function songAnswersMatch(
+    userAnswer,
+    acceptedAnswers
 ) {
 
-    const a =
-        normalizeSongText(
-            answer
+    const normalizedUser =
+        normalizeSongAnswer(
+            userAnswer
         );
 
 
-    const e =
-        normalizeSongText(
-            expected
-        );
-
-
-    if (
-        !a ||
-        !e
-    ) {
+    if (!normalizedUser) {
 
         return false;
 
@@ -2922,185 +2857,354 @@ function songTextMatches(
 
 
     if (
-        a === e
-    ) {
-
-        return true;
-
-    }
-
-
-    if (
-        a.replace(
-            /\s/g,
-            ""
-        ) ===
-        e.replace(
-            /\s/g,
-            ""
+        !Array.isArray(
+            acceptedAnswers
         )
     ) {
 
-        return true;
-
-    }
-
-
-    return false;
-
-}
-
-
-/* =========================================================
-   DATOS DE UNA CANCIÓN
-   ========================================================= */
-
-function getSongDataPoints(
-    song
-) {
-
-    const points = [
-
-        {
-            key: "decade",
-            label: "Década",
-            answer: song.decade
-        }
-
-    ];
-
-
-    song.artists.forEach(
-        function(
-            artist,
-            index
-        ) {
-
-            points.push({
-
-                key:
-                    "artist-" +
-                    index,
-
-                label:
-                    song.artists.length > 1
-                        ?
-                        `Artista ${index + 1}`
-                        :
-                        "Artista",
-
-                answer:
-                    artist
-
-            });
-
-        }
-    );
-
-
-    points.push({
-
-        key: "title",
-
-        label:
-            "Canción",
-
-        answer:
-            song.title
-
-    });
-
-
-    return points;
-
-}
-
-
-/* =========================================================
-   MEZCLAR CANCIONES
-   ========================================================= */
-
-function shuffleSongs(
-    list
-) {
-
-    const copy =
-        [...list];
-
-
-    for (
-        let i =
-            copy.length - 1;
-
-        i > 0;
-
-        i--
-    ) {
-
-        const j =
-            Math.floor(
-                Math.random() *
-                (i + 1)
-            );
-
-
-        [
-            copy[i],
-            copy[j]
-        ] =
-        [
-            copy[j],
-            copy[i]
+        acceptedAnswers = [
+            acceptedAnswers
         ];
 
     }
 
 
-    return copy;
+    return acceptedAnswers.some(
+        answer => {
+
+            const normalizedAnswer =
+                normalizeSongAnswer(
+                    answer
+                );
+
+
+            if (
+                normalizedUser ===
+                normalizedAnswer
+            ) {
+
+                return true;
+
+            }
+
+
+            /*
+             * Variaciones razonables.
+             */
+
+            if (
+                normalizedUser
+                    .replace(
+                        /\s+/g,
+                        ""
+                    ) ===
+                normalizedAnswer
+                    .replace(
+                        /\s+/g,
+                        ""
+                    )
+            ) {
+
+                return true;
+
+            }
+
+
+            return false;
+
+        }
+    );
 
 }
 
 
 /* =========================================================
-   ESTADO DEL JUEGO
+   RESPUESTAS ACEPTADAS
    ========================================================= */
 
-function createSongsGameState() {
+function getSongTitleAnswers(
+    song
+) {
+
+    const title =
+        song.title;
+
+
+    const answers = [
+        title
+    ];
+
+
+    /*
+     * Variaciones conocidas.
+     */
+
+    if (
+        title ===
+        "De música ligera"
+    ) {
+
+        answers.push(
+            "Musica ligera"
+        );
+
+    }
+
+
+    if (
+        title ===
+        "I Wanna Dance with Somebody"
+    ) {
+
+        answers.push(
+            "I Wanna Dance With Somebody Who Loves Me"
+        );
+
+    }
+
+
+    if (
+        title ===
+        "Livin' on a Prayer"
+    ) {
+
+        answers.push(
+            "Living on a Prayer"
+        );
+
+    }
+
+
+    if (
+        title ===
+        "Livin' la Vida Loca"
+    ) {
+
+        answers.push(
+            "Living la Vida Loca"
+        );
+
+    }
+
+
+    if (
+        title ===
+        "...Baby One More Time"
+    ) {
+
+        answers.push(
+            "Baby One More Time"
+        );
+
+    }
+
+
+    if (
+        title ===
+        "good 4 u"
+    ) {
+
+        answers.push(
+            "Good 4 U",
+            "Good for You"
+        );
+
+    }
+
+
+    if (
+        title ===
+        "Die With A Smile"
+    ) {
+
+        answers.push(
+            "Die With a Smile"
+        );
+
+    }
+
+
+    return answers;
+
+}
+
+
+/* =========================================================
+   DÉCADAS ACEPTADAS
+   ========================================================= */
+
+function getSongDecadeAnswers(
+    decade
+) {
+
+    if (
+        decade === "80s"
+    ) {
+
+        return [
+            "80",
+            "80s",
+            "1980",
+            "1980s",
+            "años 80",
+            "anos 80",
+            "decada de los 80",
+            "década de los 80"
+        ];
+
+    }
+
+
+    if (
+        decade === "90s"
+    ) {
+
+        return [
+            "90",
+            "90s",
+            "1990",
+            "1990s",
+            "años 90",
+            "anos 90",
+            "decada de los 90",
+            "década de los 90"
+        ];
+
+    }
+
+
+    if (
+        decade === "2000s"
+    ) {
+
+        return [
+            "2000",
+            "2000s",
+            "años 2000",
+            "anos 2000",
+            "decada de los 2000",
+            "década de los 2000"
+        ];
+
+    }
+
+
+    if (
+        decade === "2010s"
+    ) {
+
+        return [
+            "2010",
+            "2010s",
+            "años 2010",
+            "anos 2010",
+            "decada de los 2010",
+            "década de los 2010"
+        ];
+
+    }
+
+
+    if (
+        decade === "2020s"
+    ) {
+
+        return [
+            "2020",
+            "2020s",
+            "años 2020",
+            "anos 2020",
+            "decada de los 2020",
+            "década de los 2020"
+        ];
+
+    }
+
+
+    return [
+        decade
+    ];
+
+}
+
+
+/* =========================================================
+   OBTENER CANCIÓN ALEATORIA SIN REPETIR
+   ========================================================= */
+
+function getRandomSong() {
+
+    if (
+        songsUsedIndexes.length >=
+        SONGS_DATA.length
+    ) {
+
+        songsUsedIndexes = [];
+
+    }
+
+
+    const availableIndexes =
+        SONGS_DATA
+            .map(
+                (
+                    song,
+                    index
+                ) => index
+            )
+            .filter(
+                index =>
+                    !songsUsedIndexes.includes(
+                        index
+                    )
+            );
+
+
+    const randomPosition =
+        Math.floor(
+            Math.random() *
+            availableIndexes.length
+        );
+
+
+    const selectedIndex =
+        availableIndexes[
+            randomPosition
+        ];
+
+
+    songsUsedIndexes.push(
+        selectedIndex
+    );
+
 
     return {
-
-        queue:
-            shuffleSongs(
-                SONGS_DATA
-            ),
-
-        index: 0,
-
-        locked: {},
-
-        awarded: {},
-
-        current: null
-
+        song:
+            SONGS_DATA[
+                selectedIndex
+            ],
+        index:
+            selectedIndex
     };
 
 }
 
 
 /* =========================================================
-   ABRIR CANCIONES
+   NUEVO JUEGO
    ========================================================= */
 
-function openSongsGame() {
+function startNewSongsGame() {
 
-    songsGame =
-        createSongsGameState();
+    songsUsedIndexes = [];
 
+    songsCurrentIndex = 0;
 
-    renderSongsGame();
+    songsCurrentSong = null;
 
+    songsAnswers = [];
 
-    loadYouTubeApiForSongs();
+    songsGameOpen = true;
 
 
     loadNextSong();
@@ -3109,10 +3213,118 @@ function openSongsGame() {
 
 
 /* =========================================================
-   INTERFAZ CANCIONES
+   CARGAR NUEVA CANCIÓN
    ========================================================= */
 
-function renderSongsGame() {
+function loadNextSong() {
+
+    const selected =
+        getRandomSong();
+
+
+    songsCurrentSong =
+        selected.song;
+
+
+    songsCurrentIndex =
+        selected.index;
+
+
+    songsAnswers = [];
+
+
+    /*
+     * Un dato por cada respuesta:
+     *
+     * década
+     * artista 1
+     * artista 2...
+     * canción
+     */
+
+    songsAnswers.push({
+        type: "decade",
+        label: "Década",
+        accepted:
+            getSongDecadeAnswers(
+                songsCurrentSong.decade
+            ),
+        locked: false,
+        awarded: false
+    });
+
+
+    songsCurrentSong.artists.forEach(
+        (
+            artist,
+            index
+        ) => {
+
+            songsAnswers.push({
+
+                type:
+                    "artist",
+
+                artistIndex:
+                    index,
+
+                label:
+                    songsCurrentSong.artists.length >
+                    1
+                        ? `Artista ${index + 1}`
+                        : "Artista",
+
+                accepted: [
+                    artist
+                ],
+
+                locked: false,
+
+                awarded: false
+
+            });
+
+        }
+    );
+
+
+    songsAnswers.push({
+
+        type:
+            "title",
+
+        label:
+            "Canción",
+
+        accepted:
+            getSongTitleAnswers(
+                songsCurrentSong
+            ),
+
+        locked:
+            false,
+
+        awarded:
+            false
+
+    });
+
+
+    updateSongsInterface();
+
+    loadSongIntoPlayer();
+
+}
+
+
+/* =========================================================
+   ABRIR JUEGO
+   ========================================================= */
+
+function openSongsGame() {
+
+    injectSongsStyles();
+
 
     let modal =
         document.getElementById(
@@ -3139,8 +3351,13 @@ function renderSongsGame() {
     }
 
 
-    modal.className =
-        "songs-modal active";
+    songsGameOpen =
+        true;
+
+
+    modal.classList.add(
+        "active"
+    );
 
 
     modal.innerHTML = `
@@ -3160,7 +3377,7 @@ function renderSongsGame() {
                     </h2>
 
                     <p id="songs-status">
-                        Cargando canción...
+                        Canción 1 de 49
                     </p>
 
                 </div>
@@ -3169,6 +3386,7 @@ function renderSongsGame() {
                 <button
                     class="songs-close"
                     onclick="closeSongsGame()"
+                    type="button"
                 >
                     ✕
                 </button>
@@ -3176,36 +3394,150 @@ function renderSongsGame() {
             </div>
 
 
-            <div class="songs-player-wrap">
+            <!-- =====================================
+                 MARCADOR PROPIO DE CANCIONES
+                 ===================================== -->
 
-                <div
-                    id="songs-youtube-player"
-                ></div>
+            <div class="songs-scoreboard">
+
+                <div class="songs-team-score">
+
+                    <div
+                        class="songs-team-score-name"
+                    >
+                        Los Originales
+                    </div>
+
+                    <div
+                        id="songs-score-team1"
+                        class="songs-team-score-points"
+                    >
+                        0
+                    </div>
+
+                </div>
+
+
+                <div class="songs-team-score">
+
+                    <div
+                        class="songs-team-score-name"
+                    >
+                        Los Herederos
+                    </div>
+
+                    <div
+                        id="songs-score-team2"
+                        class="songs-team-score-points"
+                    >
+                        0
+                    </div>
+
+                </div>
+
+
+                <div class="songs-team-score">
+
+                    <div
+                        class="songs-team-score-name"
+                    >
+                        Las Históricas
+                    </div>
+
+                    <div
+                        id="songs-score-team3"
+                        class="songs-team-score-points"
+                    >
+                        0
+                    </div>
+
+                </div>
 
             </div>
 
 
+            <!-- =====================================
+                 REPRODUCTOR DE AUDIO
+                 ===================================== -->
+
+            <div class="songs-audio-player">
+
+                <div
+                    id="songs-play-icon"
+                    class="songs-audio-icon"
+                >
+                    🎵
+                </div>
+
+
+                <div
+                    class="songs-audio-info"
+                >
+
+                    <strong>
+                        Reproducir canción
+                    </strong>
+
+                    <span>
+                        El nombre de la canción
+                        no aparece
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="songs-audio-progress"
+                >
+
+                    <div
+                        id="songs-progress-bar"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================
+                 YOUTUBE INVISIBLE
+                 ===================================== -->
+
+            <div
+                id="songs-youtube-player"
+                class="songs-youtube-hidden"
+            ></div>
+
+
+            <!-- =====================================
+                 CONTROLES
+                 ===================================== -->
+
             <div class="songs-controls">
 
                 <button
+                    type="button"
                     onclick="songsPlay()"
                 >
-                    ▶ Play desde 0
+                    ▶ Desde 0
                 </button>
 
                 <button
+                    type="button"
                     onclick="songsPause()"
                 >
                     ⏸ Pausar
                 </button>
 
                 <button
+                    type="button"
                     onclick="songsContinue()"
                 >
                     ▶ Continuar
                 </button>
 
                 <button
+                    type="button"
                     onclick="songsRestart()"
                 >
                     ↺ Reiniciar
@@ -3214,27 +3546,55 @@ function renderSongsGame() {
             </div>
 
 
+            <!-- =====================================
+                 RESPUESTAS
+                 ===================================== -->
+
             <div
                 id="songs-fields"
                 class="songs-fields"
             ></div>
 
 
-            <div class="songs-bottom">
+            <!-- =====================================
+                 ACCIONES
+                 ===================================== -->
+
+            <div
+                class="songs-bottom"
+            >
 
                 <button
+                    type="button"
                     class="songs-next"
                     onclick="nextSong()"
                 >
                     🎵 Nueva canción
                 </button>
 
-                <button
-                    class="songs-close-bottom"
-                    onclick="closeSongsGame()"
+
+                <div
+                    class="songs-bottom-right"
                 >
-                    Cerrar juego
-                </button>
+
+                    <button
+                        type="button"
+                        class="songs-reset"
+                        onclick="resetScores()"
+                    >
+                        🔄 Reiniciar marcador general
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="songs-close-bottom"
+                        onclick="closeSongsGame()"
+                    >
+                        Cerrar juego
+                    </button>
+
+                </div>
 
             </div>
 
@@ -3243,13 +3603,543 @@ function renderSongsGame() {
     `;
 
 
-    injectSongsStyles();
+    updateSongsScoreboard();
+
+
+    if (
+        !songsCurrentSong
+    ) {
+
+        songsUsedIndexes = [];
+
+        loadNextSong();
+
+    } else {
+
+        updateSongsInterface();
+
+        loadSongIntoPlayer();
+
+    }
 
 }
 
 
 /* =========================================================
-   ESTILOS CANCIONES
+   CERRAR CANCIONES
+   ========================================================= */
+
+function closeSongsGame() {
+
+    songsGameOpen =
+        false;
+
+
+    if (
+        songsProgressTimer
+    ) {
+
+        clearInterval(
+            songsProgressTimer
+        );
+
+        songsProgressTimer =
+            null;
+
+    }
+
+
+    if (
+        songsPlayer &&
+        typeof songsPlayer.stopVideo ===
+        "function"
+    ) {
+
+        try {
+
+            songsPlayer.stopVideo();
+
+        } catch (error) {
+
+            console.warn(
+                "No se pudo detener YouTube:",
+                error
+            );
+
+        }
+
+    }
+
+
+    const modal =
+        document.getElementById(
+            "songs-modal"
+        );
+
+
+    if (modal) {
+
+        modal.classList.remove(
+            "active"
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   ACTUALIZAR MARCADOR DE CANCIONES
+   ========================================================= */
+
+function updateSongsScoreboard() {
+
+    const team1 =
+        document.getElementById(
+            "songs-score-team1"
+        );
+
+
+    const team2 =
+        document.getElementById(
+            "songs-score-team2"
+        );
+
+
+    const team3 =
+        document.getElementById(
+            "songs-score-team3"
+        );
+
+
+    if (team1) {
+
+        team1.textContent =
+            scores.team1.songs;
+
+    }
+
+
+    if (team2) {
+
+        team2.textContent =
+            scores.team2.songs;
+
+    }
+
+
+    if (team3) {
+
+        team3.textContent =
+            scores.team3.songs;
+
+    }
+
+}
+
+
+/* =========================================================
+   ACTUALIZAR INTERFAZ
+   ========================================================= */
+
+function updateSongsInterface() {
+
+    const status =
+        document.getElementById(
+            "songs-status"
+        );
+
+
+    if (status) {
+
+        status.textContent =
+            `Canción ${
+                songsUsedIndexes.length
+            } de ${
+                SONGS_DATA.length
+            }`;
+
+    }
+
+
+    const fields =
+        document.getElementById(
+            "songs-fields"
+        );
+
+
+    if (!fields) {
+
+        return;
+
+    }
+
+
+    fields.innerHTML =
+        "";
+
+
+    songsAnswers.forEach(
+        (
+            answer,
+            index
+        ) => {
+
+            const field =
+                document.createElement(
+                    "div"
+                );
+
+
+            field.className =
+                "song-field";
+
+
+            if (
+                answer.locked
+            ) {
+
+                field.classList.add(
+                    "locked"
+                );
+
+            }
+
+
+            let selectorHTML = `
+
+                <select
+                    id="song-team-${index}"
+                >
+
+                    <option value="">
+                        Equipo
+                    </option>
+
+                    <option value="team1">
+                        Los Originales
+                    </option>
+
+                    <option value="team2">
+                        Los Herederos
+                    </option>
+
+                    <option value="team3">
+                        Las Históricas
+                    </option>
+
+                </select>
+
+            `;
+
+
+            field.innerHTML = `
+
+                <h4>
+                    ${answer.label}
+                </h4>
+
+                <small>
+                    1 punto · rebote si falla
+                </small>
+
+                <div
+                    class="song-field-row"
+                >
+
+                    <input
+                        id="song-answer-${index}"
+                        type="text"
+                        placeholder="Respuesta..."
+                        ${
+                            answer.locked
+                                ? "disabled"
+                                : ""
+                        }
+                    >
+
+                    <button
+                        type="button"
+                        onclick="checkSongAnswer(${index})"
+                        ${
+                            answer.locked
+                                ? "disabled"
+                                : ""
+                        }
+                    >
+                        ✓
+                    </button>
+
+                </div>
+
+                ${
+                    answer.locked
+                        ? ""
+                        : selectorHTML
+                }
+
+                <div
+                    id="song-result-${index}"
+                    class="song-result"
+                ></div>
+
+            `;
+
+
+            fields.appendChild(
+                field
+            );
+
+
+            const input =
+                document.getElementById(
+                    `song-answer-${index}`
+                );
+
+
+            if (input) {
+
+                input.addEventListener(
+                    "keydown",
+                    event => {
+
+                        if (
+                            event.key ===
+                            "Enter"
+                        ) {
+
+                            checkSongAnswer(
+                                index
+                            );
+
+                        }
+
+                    }
+                );
+
+            }
+
+        }
+    );
+
+
+    updateSongsScoreboard();
+
+}
+
+
+/* =========================================================
+   COMPROBAR RESPUESTA
+   ========================================================= */
+
+function checkSongAnswer(
+    answerIndex
+) {
+
+    const answer =
+        songsAnswers[
+            answerIndex
+        ];
+
+
+    if (
+        !answer ||
+        answer.locked
+    ) {
+
+        return;
+
+    }
+
+
+    const input =
+        document.getElementById(
+            `song-answer-${answerIndex}`
+        );
+
+
+    const teamSelect =
+        document.getElementById(
+            `song-team-${answerIndex}`
+        );
+
+
+    const result =
+        document.getElementById(
+            `song-result-${answerIndex}`
+        );
+
+
+    if (
+        !input ||
+        !teamSelect ||
+        !result
+    ) {
+
+        return;
+
+    }
+
+
+    const userAnswer =
+        input.value.trim();
+
+
+    const team =
+        teamSelect.value;
+
+
+    if (!userAnswer) {
+
+        result.textContent =
+            "⚠️ Escribí una respuesta.";
+
+        result.className =
+            "song-result song-wrong";
+
+        return;
+
+    }
+
+
+    if (!team) {
+
+        result.textContent =
+            "⚠️ Seleccioná el equipo.";
+
+        result.className =
+            "song-result song-wrong";
+
+        return;
+
+    }
+
+
+    const correct =
+        songAnswersMatch(
+            userAnswer,
+            answer.accepted
+        );
+
+
+    if (correct) {
+
+        answer.locked =
+            true;
+
+        answer.awarded =
+            true;
+
+        answer.team =
+            team;
+
+
+        addPoints(
+            team,
+            "songs",
+            1
+        );
+
+
+        updateSongsScoreboard();
+
+
+        result.textContent =
+            `✓ Correcto · +1 para ${
+                getTeamName(
+                    team
+                )
+            }`;
+
+
+        result.className =
+            "song-result song-ok";
+
+
+        input.disabled =
+            true;
+
+
+        teamSelect.disabled =
+            true;
+
+
+        const field =
+            input.closest(
+                ".song-field"
+            );
+
+
+        if (field) {
+
+            field.classList.add(
+                "locked"
+            );
+
+        }
+
+
+        const button =
+            field?.querySelector(
+                "button"
+            );
+
+
+        if (button) {
+
+            button.disabled =
+                true;
+
+        }
+
+    } else {
+
+        /*
+         * No resta puntos.
+         * El dato queda disponible
+         * para rebote.
+         */
+
+        result.textContent =
+            "✕ Incorrecto · rebote";
+
+
+        result.className =
+            "song-result song-wrong";
+
+
+        input.value =
+            "";
+
+
+        input.focus();
+
+    }
+
+}
+
+
+/* =========================================================
+   SIGUIENTE CANCIÓN
+   ========================================================= */
+
+function nextSong() {
+
+    if (
+        songsUsedIndexes.length >=
+        SONGS_DATA.length
+    ) {
+
+        songsUsedIndexes = [];
+
+    }
+
+
+    loadNextSong();
+
+}
+/* =========================================================
+   ESTILOS DEL JUEGO DE CANCIONES
    ========================================================= */
 
 function injectSongsStyles() {
@@ -3277,425 +4167,785 @@ function injectSongsStyles() {
 
     style.textContent = `
 
+        /* =========================================
+           MODAL GENERAL
+           ========================================= */
+
         #songs-modal {
 
-            position: fixed;
+            position:fixed;
 
-            inset: 0;
+            inset:0;
 
-            background:
-                rgba(0,0,0,.88);
+            width:100vw;
 
-            z-index: 99999;
+            height:100vh;
 
-            display: flex;
+            background:#0B0B0B;
 
-            align-items: center;
+            color:#FFFFFF;
 
-            justify-content: center;
+            z-index:99999;
 
-            padding: 22px;
+            overflow-y:auto;
 
-            font-family: inherit;
+            font-family:inherit;
 
         }
 
 
         .songs-panel {
 
-            width:
-                min(1100px,96vw);
+            width:100%;
 
-            max-height: 94vh;
+            min-height:100vh;
 
-            overflow: auto;
+            box-sizing:border-box;
 
-            background: #111;
+            background:#0B0B0B;
 
-            border:
-                2px solid #B6FF00;
-
-            border-radius: 22px;
-
-            box-shadow:
-                0 0 40px
-                rgba(
-                    182,
-                    255,
-                    0,
-                    .18
-                );
-
-            color: #fff;
-
-            padding: 25px;
+            padding:28px 36px 40px;
 
         }
 
 
+        /* =========================================
+           ENCABEZADO
+           ========================================= */
+
         .songs-head {
 
-            display: flex;
+            display:flex;
 
-            justify-content:
-                space-between;
+            justify-content:space-between;
 
-            gap: 20px;
+            align-items:flex-start;
 
-            align-items:
-                flex-start;
-
-            margin-bottom: 20px;
+            margin-bottom:22px;
 
         }
 
 
         .songs-kicker {
 
-            color: #B6FF00;
+            color:#E30613;
 
-            font-weight: 800;
+            font-size:14px;
 
-            letter-spacing: 1.5px;
+            font-weight:900;
 
-            font-size: 13px;
+            letter-spacing:1.5px;
 
         }
 
 
         .songs-head h2 {
 
-            margin:
-                5px 0;
+            margin:5px 0 4px;
 
-            font-size: 32px;
+            font-size:38px;
+
+            line-height:1.1;
+
+            font-weight:900;
 
         }
 
 
         .songs-head p {
 
-            margin: 0;
+            margin:0;
 
-            color: #bbb;
+            color:#999999;
+
+            font-size:16px;
 
         }
 
 
         .songs-close {
 
-            background: #222;
+            width:46px;
 
-            border:
-                1px solid #555;
+            height:46px;
 
-            color: #fff;
+            border-radius:12px;
 
-            border-radius: 10px;
+            border:1px solid #3A3A3A;
 
-            width: 42px;
+            background:#171717;
 
-            height: 42px;
+            color:#FFFFFF;
 
-            font-size: 20px;
+            font-size:22px;
 
-            cursor: pointer;
-
-        }
-
-
-        .songs-player-wrap {
-
-            width: 100%;
-
-            aspect-ratio: 16 / 9;
-
-            background: #000;
-
-            border-radius: 14px;
-
-            overflow: hidden;
+            cursor:pointer;
 
         }
 
 
-        .songs-player-wrap > div,
+        .songs-close:hover {
 
-        .songs-player-wrap iframe {
+            background:#E30613;
 
-            width:
-                100% !important;
-
-            height:
-                100% !important;
-
-            display: block;
+            border-color:#E30613;
 
         }
 
+
+        /* =========================================
+           MARCADOR
+           ========================================= */
+
+        .songs-scoreboard {
+
+            display:grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap:14px;
+
+            margin-bottom:20px;
+
+        }
+
+
+        .songs-team-score {
+
+            background:#151515;
+
+            border:1px solid #303030;
+
+            border-radius:14px;
+
+            padding:15px 18px;
+
+            display:flex;
+
+            align-items:center;
+
+            justify-content:space-between;
+
+        }
+
+
+        .songs-team-score-name {
+
+            font-size:16px;
+
+            font-weight:800;
+
+        }
+
+
+        .songs-team-score-points {
+
+            color:#E30613;
+
+            font-size:29px;
+
+            font-weight:900;
+
+        }
+
+
+        /* =========================================
+           REPRODUCTOR DE AUDIO
+           ========================================= */
+
+        .songs-audio-player {
+
+            width:100%;
+
+            height:118px;
+
+            box-sizing:border-box;
+
+            position:relative;
+
+            display:flex;
+
+            align-items:center;
+
+            gap:18px;
+
+            padding:20px 24px;
+
+            background:#171717;
+
+            border:1px solid #303030;
+
+            border-radius:17px;
+
+            overflow:hidden;
+
+        }
+
+
+        .songs-audio-icon {
+
+            width:62px;
+
+            height:62px;
+
+            min-width:62px;
+
+            border-radius:50%;
+
+            background:#E30613;
+
+            display:flex;
+
+            align-items:center;
+
+            justify-content:center;
+
+            font-size:28px;
+
+        }
+
+
+        .songs-audio-info {
+
+            display:flex;
+
+            flex-direction:column;
+
+            gap:5px;
+
+        }
+
+
+        .songs-audio-info strong {
+
+            font-size:19px;
+
+            font-weight:900;
+
+        }
+
+
+        .songs-audio-info span {
+
+            color:#999999;
+
+            font-size:14px;
+
+        }
+
+
+        .songs-audio-progress {
+
+            position:absolute;
+
+            left:0;
+
+            bottom:0;
+
+            width:100%;
+
+            height:5px;
+
+            background:#292929;
+
+        }
+
+
+        #songs-progress-bar {
+
+            width:0%;
+
+            height:100%;
+
+            background:#E30613;
+
+            transition:
+                width .2s linear;
+
+        }
+
+
+        /* =========================================
+           YOUTUBE INVISIBLE
+           ========================================= */
+
+        .songs-youtube-hidden {
+
+            position:absolute !important;
+
+            width:1px !important;
+
+            height:1px !important;
+
+            left:-10000px !important;
+
+            top:-10000px !important;
+
+            opacity:0 !important;
+
+            pointer-events:none !important;
+
+            overflow:hidden !important;
+
+        }
+
+
+        /* =========================================
+           CONTROLES
+           ========================================= */
 
         .songs-controls {
 
-            display: grid;
+            display:grid;
 
             grid-template-columns:
-                repeat(4,1fr);
+                repeat(4, 1fr);
 
-            gap: 10px;
+            gap:10px;
 
-            margin: 14px 0;
-
-        }
-
-
-        .songs-controls button,
-
-        .songs-next,
-
-        .songs-close-bottom {
-
-            border: 0;
-
-            border-radius: 10px;
-
-            padding:
-                12px 10px;
-
-            font-weight: 800;
-
-            cursor: pointer;
+            margin:15px 0 20px;
 
         }
 
 
         .songs-controls button {
 
-            background: #242424;
+            border:0;
 
-            color: #fff;
+            border-radius:10px;
+
+            padding:14px 10px;
+
+            background:#202020;
+
+            color:#FFFFFF;
+
+            font-size:15px;
+
+            font-weight:900;
+
+            cursor:pointer;
+
+            transition:
+                background .15s ease,
+                transform .15s ease;
 
         }
 
 
         .songs-controls button:hover {
 
-            background: #333;
+            background:#E30613;
+
+            transform:translateY(-1px);
 
         }
 
 
-        .songs-next {
+        .songs-controls button:active {
 
-            background: #B6FF00;
-
-            color: #0B0B0B;
+            transform:translateY(0);
 
         }
 
 
-        .songs-close-bottom {
-
-            background: #242424;
-
-            color: #fff;
-
-        }
-
+        /* =========================================
+           CAMPOS
+           ========================================= */
 
         .songs-fields {
 
-            display: grid;
+            display:grid;
 
             grid-template-columns:
                 repeat(
                     auto-fit,
-                    minmax(
-                        220px,
-                        1fr
-                    )
+                    minmax(230px, 1fr)
                 );
 
-            gap: 12px;
+            gap:14px;
 
-            margin-top: 15px;
+            margin-top:8px;
 
         }
 
 
         .song-field {
 
-            background: #181818;
+            background:#151515;
 
-            border:
-                1px solid #333;
+            border:1px solid #303030;
 
-            border-radius: 14px;
+            border-radius:14px;
 
-            padding: 15px;
+            padding:17px;
+
+            transition:
+                border-color .15s ease;
 
         }
 
 
         .song-field.locked {
 
-            border-color:
-                #B6FF00;
+            border-color:#E30613;
 
         }
 
 
         .song-field h4 {
 
-            margin:
-                0 0 9px;
+            margin:0 0 7px;
+
+            font-size:18px;
+
+            font-weight:900;
 
         }
 
 
         .song-field small {
 
-            display: block;
+            display:block;
 
-            color: #aaa;
+            color:#999999;
 
-            margin-bottom: 9px;
+            margin-bottom:11px;
+
+            font-size:13px;
 
         }
 
 
         .song-field-row {
 
-            display: flex;
+            display:flex;
 
-            gap: 8px;
+            gap:8px;
 
         }
 
 
         .song-field input {
 
-            flex: 1;
+            flex:1;
 
-            min-width: 0;
+            min-width:0;
 
-            background: #0d0d0d;
+            box-sizing:border-box;
 
-            color: #fff;
+            background:#0D0D0D;
 
-            border:
-                1px solid #444;
+            color:#FFFFFF;
 
-            border-radius: 8px;
+            border:1px solid #444444;
 
-            padding: 10px;
+            border-radius:8px;
+
+            padding:11px;
+
+            outline:none;
+
+            font-size:14px;
+
+        }
+
+
+        .song-field input:focus {
+
+            border-color:#E30613;
+
+        }
+
+
+        .song-field input:disabled {
+
+            opacity:.65;
 
         }
 
 
         .song-field select {
 
-            width: 100%;
+            width:100%;
 
-            background: #0d0d0d;
+            box-sizing:border-box;
 
-            color: #fff;
+            margin-top:8px;
 
-            border:
-                1px solid #444;
+            background:#0D0D0D;
 
-            border-radius: 8px;
+            color:#FFFFFF;
 
-            padding: 10px;
+            border:1px solid #444444;
 
-            margin-top: 8px;
+            border-radius:8px;
+
+            padding:11px;
+
+            outline:none;
+
+            font-size:14px;
+
+        }
+
+
+        .song-field select:focus {
+
+            border-color:#E30613;
 
         }
 
 
         .song-field button {
 
-            background: #B6FF00;
+            min-width:48px;
 
-            color: #0B0B0B;
+            border:0;
 
-            border: 0;
+            border-radius:8px;
 
-            border-radius: 8px;
+            padding:10px 14px;
 
-            padding:
-                10px 12px;
+            background:#E30613;
 
-            font-weight: 900;
+            color:#FFFFFF;
 
-            cursor: pointer;
+            font-weight:900;
+
+            cursor:pointer;
+
+        }
+
+
+        .song-field button:hover {
+
+            background:#FF1828;
+
+        }
+
+
+        .song-field button:disabled {
+
+            opacity:.5;
+
+            cursor:not-allowed;
 
         }
 
 
         .song-result {
 
-            margin-top: 9px;
+            min-height:20px;
 
-            font-weight: 800;
+            margin-top:9px;
+
+            font-size:14px;
+
+            font-weight:800;
 
         }
 
 
         .song-ok {
 
-            color: #B6FF00;
+            color:#FFFFFF;
 
         }
 
 
         .song-wrong {
 
-            color: #ff7070;
+            color:#FF6B73;
 
         }
 
+
+        /* =========================================
+           PARTE INFERIOR
+           ========================================= */
 
         .songs-bottom {
 
-            display: flex;
+            display:flex;
 
-            justify-content:
-                flex-end;
+            justify-content:space-between;
 
-            gap: 10px;
+            align-items:center;
 
-            margin-top: 18px;
+            gap:12px;
 
-        }
-
-
-        .songs-bottom button {
-
-            min-width: 160px;
+            margin-top:22px;
 
         }
 
 
-        @media(max-width:700px) {
+        .songs-next {
 
-            .songs-controls {
+            border:0;
 
-                grid-template-columns:
-                    repeat(2,1fr);
+            border-radius:10px;
 
-            }
+            padding:14px 18px;
 
+            background:#E30613;
+
+            color:#FFFFFF;
+
+            font-size:15px;
+
+            font-weight:900;
+
+            cursor:pointer;
+
+        }
+
+
+        .songs-next:hover {
+
+            background:#FF1828;
+
+        }
+
+
+        .songs-bottom-right {
+
+            display:flex;
+
+            gap:10px;
+
+        }
+
+
+        .songs-reset {
+
+            border:1px solid #444444;
+
+            border-radius:10px;
+
+            padding:13px 16px;
+
+            background:#202020;
+
+            color:#FFFFFF;
+
+            font-weight:800;
+
+            cursor:pointer;
+
+        }
+
+
+        .songs-reset:hover {
+
+            background:#333333;
+
+        }
+
+
+        .songs-close-bottom {
+
+            border:0;
+
+            border-radius:10px;
+
+            padding:13px 16px;
+
+            background:#292929;
+
+            color:#FFFFFF;
+
+            font-weight:800;
+
+            cursor:pointer;
+
+        }
+
+
+        .songs-close-bottom:hover {
+
+            background:#444444;
+
+        }
+
+
+        /* =========================================
+           RESPONSIVE
+           ========================================= */
+
+        @media(max-width:850px) {
 
             .songs-panel {
 
-                padding: 16px;
+                padding:20px;
 
             }
 
 
             .songs-head h2 {
 
-                font-size: 25px;
+                font-size:29px;
+
+            }
+
+
+            .songs-scoreboard {
+
+                grid-template-columns:1fr;
+
+            }
+
+
+            .songs-controls {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+
+            .songs-bottom {
+
+                flex-direction:column;
+
+                align-items:stretch;
+
+            }
+
+
+            .songs-bottom-right {
+
+                flex-direction:column;
+
+            }
+
+        }
+
+
+        @media(max-width:550px) {
+
+            .songs-controls {
+
+                grid-template-columns:1fr;
+
+            }
+
+
+            .songs-audio-player {
+
+                height:100px;
+
+            }
+
+
+            .songs-audio-icon {
+
+                width:52px;
+
+                height:52px;
+
+                min-width:52px;
 
             }
 
@@ -3712,7 +4962,329 @@ function injectSongsStyles() {
 
 
 /* =========================================================
-   CREAR REPRODUCTOR YOUTUBE
+   IDs DE YOUTUBE
+   =========================================================
+
+   YouTube queda totalmente oculto.
+   Solamente se utiliza como fuente de audio.
+
+   Si algún video deja de estar disponible,
+   se puede cambiar únicamente su ID acá.
+   ========================================================= */
+
+const SONGS_YOUTUBE_IDS = {
+
+    "De música ligera":
+        "T_FkEw27XJ0",
+
+    "La incondicional":
+        "by4I_10HbX4",
+
+    "Me va, me va":
+        "CCht0AyKxNY",
+
+    "Mil horas":
+        "CUdw-urZ3zg",
+
+    "Devuélveme a mi chica":
+        "U72tra23BF0",
+
+    "Billie Jean":
+        "Zi_XLOBDo_Y",
+
+    "Never Gonna Give You Up":
+        "dQw4w9WgXcQ",
+
+    "I Wanna Dance with Somebody":
+        "eH3giaIzONA",
+
+    "Girls Just Want to Have Fun":
+        "PIb6AZdTr-A",
+
+    "Livin' on a Prayer":
+        "lDK9QqIzhwk",
+
+    "Rayando el sol":
+        "EDkQB9b3cBw",
+
+    "Piel Morena":
+        "EMAjgSJr4Jg",
+
+    "Livin' la Vida Loca":
+        "p47fEXGabaY",
+
+    "Vuelve":
+        "p7QYo-9SlP0",
+
+    "Flaca":
+        "UCF9oHXhDMU",
+
+    "Wannabe":
+        "gJLIiF15wjQ",
+
+    "...Baby One More Time":
+        "C-u5WLJ9Yk4",
+
+    "I Want It That Way":
+        "4fndeDfaWCg",
+
+    "My Heart Will Go On":
+        "9bFHsd3o1w0",
+
+    "Smells Like Teen Spirit":
+        "hTWKbfoikeg",
+
+    "La Tortura":
+        "Dsp_8Lm1eSk",
+
+    "Me enamora":
+        "voxgN3Dhjuo",
+
+    "Ave María":
+        "gra-sIV1n4U",
+
+    "Colgando en tus manos":
+        "qExd-3oCTl4",
+
+    "Rosas":
+        "nYnLVWXmRm8",
+
+    "Toxic":
+        "LOZuxwVk7TU",
+
+    "Crazy in Love":
+        "ViwtNLUqkMY",
+
+    "Umbrella":
+        "CvBfHwUxHIk",
+
+    "Poker Face":
+        "bESGLojNYSo",
+
+    "Despacito":
+        "kJQP7kiw5Fk",
+
+    "Bailando":
+        "NUsoVlDFqZg",
+
+    "Danza Kuduro":
+        "7zp1TbLFPp8",
+
+    "Vivir Mi Vida":
+        "YXnjy5YlDwk",
+
+    "Échame la culpa":
+        "TyHvyGVs42U",
+
+    "Uptown Funk":
+        "OPf0YbXqDm0",
+
+    "Shape of You":
+        "JGwWNGJdvx8",
+
+    "Rolling in the Deep":
+        "rYEDA3JcQqw",
+
+    "Havana":
+        "HCjNJDNzw8Y",
+
+    "Sorry":
+        "fRh_vgS2dFE",
+
+    "Todo de Ti":
+        "CFPLIaMpGrY",
+
+    "Hawái":
+        "pK06OiUFWXg",
+
+    "Tusa":
+        "tbneQDc2H3I",
+
+    "La Bachata":
+        "TqA8D9nJ9xI",
+
+    "SUPERESTRELLA":
+        "vz_vU53JvvI",
+
+    "Die With A Smile":
+        "kPa7bsKwL-c",
+
+    "As It Was":
+        "H5v3kku4y6Q",
+
+    "Flowers":
+        "G7KNmW9a75Y",
+
+    "good 4 u":
+        "gNi_6U5Pm_o",
+
+    "Espresso":
+        "eVli-tstM5E"
+
+};
+
+
+/* =========================================================
+   CARGAR API DE YOUTUBE
+   ========================================================= */
+
+function loadYouTubeAPI() {
+
+    if (
+        window.YT &&
+        window.YT.Player
+    ) {
+
+        createSongsPlayer();
+
+        return;
+
+    }
+
+
+    if (
+        document.getElementById(
+            "youtube-iframe-api"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    const script =
+        document.createElement(
+            "script"
+        );
+
+
+    script.id =
+        "youtube-iframe-api";
+
+
+    script.src =
+        "https://www.youtube.com/iframe_api";
+
+
+    document.head.appendChild(
+        script
+    );
+
+}
+
+
+/* =========================================================
+   CALLBACK DE YOUTUBE
+   ========================================================= */
+
+window.onYouTubeIframeAPIReady =
+    function() {
+
+        createSongsPlayer();
+
+    };
+
+
+/* =========================================================
+   CARGAR CANCIÓN EN EL REPRODUCTOR
+   ========================================================= */
+
+function loadSongIntoPlayer() {
+
+    const host =
+        document.getElementById(
+            "songs-youtube-player"
+        );
+
+
+    if (!host) {
+
+        return;
+
+    }
+
+
+    if (
+        songsProgressTimer
+    ) {
+
+        clearInterval(
+            songsProgressTimer
+        );
+
+        songsProgressTimer =
+            null;
+
+    }
+
+
+    if (
+        songsPlayer &&
+        typeof songsPlayer.destroy ===
+        "function"
+    ) {
+
+        try {
+
+            songsPlayer.destroy();
+
+        } catch (error) {
+
+            console.warn(
+                "No se pudo destruir el reproductor anterior.",
+                error
+            );
+
+        }
+
+    }
+
+
+    songsPlayer =
+        null;
+
+
+    songsPlayerReady =
+        false;
+
+
+    const videoId =
+        SONGS_YOUTUBE_IDS[
+            songsCurrentSong.title
+        ];
+
+
+    if (!videoId) {
+
+        console.warn(
+            "No hay ID de YouTube para:",
+            songsCurrentSong.title
+        );
+
+        return;
+
+    }
+
+
+    if (
+        window.YT &&
+        window.YT.Player
+    ) {
+
+        createSongsPlayer();
+
+    } else {
+
+        loadYouTubeAPI();
+
+    }
+
+}
+
+
+/* =========================================================
+   CREAR REPRODUCTOR INVISIBLE
    ========================================================= */
 
 function createSongsPlayer() {
@@ -3725,8 +5297,30 @@ function createSongsPlayer() {
 
     if (
         !host ||
-        !songsGame ||
-        !songsGame.current
+        !songsCurrentSong
+    ) {
+
+        return;
+
+    }
+
+
+    const videoId =
+        SONGS_YOUTUBE_IDS[
+            songsCurrentSong.title
+        ];
+
+
+    if (!videoId) {
+
+        return;
+
+    }
+
+
+    if (
+        !window.YT ||
+        !window.YT.Player
     ) {
 
         return;
@@ -3744,7 +5338,7 @@ function createSongsPlayer() {
 
             songsPlayer.destroy();
 
-        } catch(error) {}
+        } catch (error) {}
 
     }
 
@@ -3755,23 +5349,33 @@ function createSongsPlayer() {
 
     songsPlayer =
         new YT.Player(
-            "songs-youtube-player",
+            host,
             {
 
-                height: "100%",
+                height:"1",
 
-                width: "100%",
+                width:"1",
 
                 videoId:
-                    songsGame.current.youtubeId,
+                    videoId,
 
                 playerVars: {
 
-                    playsinline: 1,
+                    autoplay:0,
 
-                    controls: 1,
+                    controls:0,
 
-                    rel: 0
+                    disablekb:1,
+
+                    fs:0,
+
+                    playsinline:1,
+
+                    rel:0,
+
+                    modestbranding:1,
+
+                    iv_load_policy:3
 
                 },
 
@@ -3783,12 +5387,88 @@ function createSongsPlayer() {
                             songsPlayerReady =
                                 true;
 
+
                             songsRestart();
+
+
+                            if (
+                                songsProgressTimer
+                            ) {
+
+                                clearInterval(
+                                    songsProgressTimer
+                                );
+
+                            }
+
+
+                            songsProgressTimer =
+                                setInterval(
+                                    updateSongsProgress,
+                                    500
+                                );
 
                         },
 
+
+                    onStateChange:
+                        function(event) {
+
+                            const icon =
+                                document.getElementById(
+                                    "songs-play-icon"
+                                );
+
+
+                            if (!icon) {
+
+                                return;
+
+                            }
+
+
+                            if (
+                                event.data ===
+                                YT.PlayerState.PLAYING
+                            ) {
+
+                                icon.textContent =
+                                    "▶";
+
+                            } else {
+
+                                icon.textContent =
+                                    "🎵";
+
+                            }
+
+                        },
+
+
+                    onError:
+                        function(event) {
+
+                            console.warn(
+                                "Error del reproductor de YouTube:",
+                                event.data
+                            );
+
+                        },
+
+
                     onAutoplayBlocked:
-                        function() {}
+                        function() {
+
+                            /*
+                             * No hacemos nada.
+                             *
+                             * El usuario debe tocar
+                             * "Desde 0", que sí es
+                             * una acción iniciada
+                             * por el usuario.
+                             */
+
+                        }
 
                 }
 
@@ -3799,12 +5479,40 @@ function createSongsPlayer() {
 
 
 /* =========================================================
-   SIGUIENTE CANCIÓN
+   BARRA DE PROGRESO
    ========================================================= */
 
-function loadNextSong() {
+function updateSongsProgress() {
 
-    if (!songsGame) {
+    if (
+        !songsPlayerReady ||
+        !songsPlayer ||
+        !songsCurrentSong
+    ) {
+
+        return;
+
+    }
+
+
+    let currentTime =
+        0;
+
+
+    let duration =
+        0;
+
+
+    try {
+
+        currentTime =
+            songsPlayer.getCurrentTime();
+
+
+        duration =
+            songsPlayer.getDuration();
+
+    } catch (error) {
 
         return;
 
@@ -3812,97 +5520,38 @@ function loadNextSong() {
 
 
     if (
-        songsGame.index >=
-        songsGame.queue.length
+        !duration ||
+        duration <= 0
     ) {
-
-        const status =
-            document.getElementById(
-                "songs-status"
-            );
-
-
-        const fields =
-            document.getElementById(
-                "songs-fields"
-            );
-
-
-        if (status) {
-
-            status.textContent =
-                "🎉 Terminaron las canciones disponibles.";
-
-        }
-
-
-        if (fields) {
-
-            fields.innerHTML = `
-
-                <div
-                    class="song-field"
-                    style="grid-column:1/-1;"
-                >
-
-                    <h4>
-                        Juego terminado
-                    </h4>
-
-                    <small>
-                        Se usaron todas las canciones
-                        sin repetir.
-                    </small>
-
-                </div>
-
-            `;
-
-        }
-
 
         return;
 
     }
 
 
-    songsGame.current =
-        songsGame.queue[
-            songsGame.index
-        ];
+    const percentage =
+        (
+            currentTime /
+            duration
+        ) * 100;
 
 
-    songsGame.index++;
-
-
-    songsGame.locked = {};
-
-    songsGame.awarded = {};
-
-
-    const status =
+    const bar =
         document.getElementById(
-            "songs-status"
+            "songs-progress-bar"
         );
 
 
-    if (status) {
+    if (bar) {
 
-        status.textContent =
-            `Canción ${songsGame.index} de ${songsGame.queue.length}`;
-
-    }
-
-
-    renderSongFields();
-
-
-    if (
-        window.YT &&
-        window.YT.Player
-    ) {
-
-        createSongsPlayer();
+        bar.style.width =
+            `${Math.min(
+                100,
+                Math.max(
+                    0,
+                    percentage
+                )
+            )}%`;
 
     }
 
@@ -3910,331 +5559,7 @@ function loadNextSong() {
 
 
 /* =========================================================
-   CAMPOS DE RESPUESTA
-   ========================================================= */
-
-function renderSongFields() {
-
-    const container =
-        document.getElementById(
-            "songs-fields"
-        );
-
-
-    if (
-        !container ||
-        !songsGame ||
-        !songsGame.current
-    ) {
-
-        return;
-
-    }
-
-
-    const points =
-        getSongDataPoints(
-            songsGame.current
-        );
-
-
-    container.innerHTML =
-        points
-            .map(
-                function(point) {
-
-                    return `
-
-                        <div
-                            class="song-field"
-                            id="song-field-${point.key}"
-                        >
-
-                            <h4>
-                                ${point.label}
-                            </h4>
-
-                            <small>
-                                1 punto · rebote
-                                si falla
-                            </small>
-
-
-                            <div
-                                class="song-field-row"
-                            >
-
-                                <input
-                                    id="song-input-${point.key}"
-                                    autocomplete="off"
-                                    placeholder="Respuesta..."
-                                    onkeydown="
-                                        if(event.key==='Enter')
-                                        checkSongAnswer('${point.key}')
-                                    "
-                                >
-
-
-                                <button
-                                    onclick="
-                                        checkSongAnswer(
-                                            '${point.key}'
-                                        )
-                                    "
-                                >
-                                    OK
-                                </button>
-
-                            </div>
-
-
-                            <select
-                                id="song-team-${point.key}"
-                            >
-
-                                <option value="">
-                                    Seleccionar equipo
-                                </option>
-
-                                <option value="team1">
-                                    Los Originales
-                                </option>
-
-                                <option value="team2">
-                                    Los Herederos
-                                </option>
-
-                                <option value="team3">
-                                    Las Históricas
-                                </option>
-
-                            </select>
-
-
-                            <div
-                                id="song-result-${point.key}"
-                                class="song-result"
-                            ></div>
-
-                        </div>
-
-                    `;
-
-                }
-            )
-            .join("");
-
-}
-
-
-/* =========================================================
-   COMPROBAR RESPUESTA
-   ========================================================= */
-
-function checkSongAnswer(
-    key
-) {
-
-    if (
-        !songsGame ||
-        !songsGame.current ||
-        songsGame.locked[key]
-    ) {
-
-        return;
-
-    }
-
-
-    const points =
-        getSongDataPoints(
-            songsGame.current
-        );
-
-
-    const point =
-        points.find(
-            function(p) {
-
-                return p.key === key;
-
-            }
-        );
-
-
-    if (!point) {
-
-        return;
-
-    }
-
-
-    const input =
-        document.getElementById(
-            "song-input-" +
-            key
-        );
-
-
-    const select =
-        document.getElementById(
-            "song-team-" +
-            key
-        );
-
-
-    const result =
-        document.getElementById(
-            "song-result-" +
-            key
-        );
-
-
-    if (
-        !input ||
-        !select ||
-        !result
-    ) {
-
-        return;
-
-    }
-
-
-    const team =
-        select.value;
-
-
-    if (!team) {
-
-        result.className =
-            "song-result song-wrong";
-
-
-        result.textContent =
-            "⚠️ Elegí el equipo.";
-
-        return;
-
-    }
-
-
-    const correct =
-        songTextMatches(
-            input.value,
-            point.answer
-        );
-
-
-    if (correct) {
-
-        songsGame.locked[key] =
-            true;
-
-
-        songsGame.awarded[key] =
-            team;
-
-
-        addPoints(
-            team,
-            "songs",
-            1
-        );
-
-
-        const field =
-            document.getElementById(
-                "song-field-" +
-                key
-            );
-
-
-        if (field) {
-
-            field.classList.add(
-                "locked"
-            );
-
-        }
-
-
-        input.disabled =
-            true;
-
-
-        select.disabled =
-            true;
-
-
-        result.className =
-            "song-result song-ok";
-
-
-        result.textContent =
-            `✓ Correcto · +1 para ${
-                getTeamName(team)
-            }`;
-
-
-        const allCorrect =
-            points.every(
-                function(p) {
-
-                    return songsGame.locked[
-                        p.key
-                    ];
-
-                }
-            );
-
-
-        if (allCorrect) {
-
-            setTimeout(
-                nextSong,
-                700
-            );
-
-        }
-
-
-    } else {
-
-        result.className =
-            "song-result song-wrong";
-
-
-        result.textContent =
-            "✗ Incorrecto · rebote para este dato.";
-
-        input.select();
-
-    }
-
-}
-
-
-/* =========================================================
-   NUEVA CANCIÓN
-   ========================================================= */
-
-function nextSong() {
-
-    if (!songsGame) {
-
-        return;
-
-    }
-
-
-    loadNextSong();
-
-}
-
-
-/* =========================================================
-   CONTROLES DEL REPRODUCTOR
+   REPRODUCIR DESDE 0
    ========================================================= */
 
 function songsPlay() {
@@ -4249,55 +5574,35 @@ function songsPlay() {
     }
 
 
-    songsPlayer.seekTo(
-        0,
-        true
-    );
-
-
-    songsPlayer.playVideo();
-
-}
-
-
-function songsPause() {
-
-    if (
-        songsPlayerReady &&
-        songsPlayer
-    ) {
-
-        songsPlayer.pauseVideo();
-
-    }
-
-}
-
-
-function songsContinue() {
-
-    if (
-        songsPlayerReady &&
-        songsPlayer
-    ) {
-
-        songsPlayer.playVideo();
-
-    }
-
-}
-
-
-function songsRestart() {
-
-    if (
-        songsPlayerReady &&
-        songsPlayer
-    ) {
+    try {
 
         songsPlayer.seekTo(
             0,
             true
+        );
+
+
+        songsPlayer.playVideo();
+
+
+        const bar =
+            document.getElementById(
+                "songs-progress-bar"
+            );
+
+
+        if (bar) {
+
+            bar.style.width =
+                "0%";
+
+        }
+
+    } catch (error) {
+
+        console.warn(
+            "No se pudo reproducir la canción.",
+            error
         );
 
     }
@@ -4306,10 +5611,138 @@ function songsRestart() {
 
 
 /* =========================================================
-   CERRAR CANCIONES
+   PAUSAR
+   ========================================================= */
+
+function songsPause() {
+
+    if (
+        !songsPlayerReady ||
+        !songsPlayer
+    ) {
+
+        return;
+
+    }
+
+
+    try {
+
+        songsPlayer.pauseVideo();
+
+    } catch (error) {
+
+        console.warn(
+            "No se pudo pausar la canción.",
+            error
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   CONTINUAR
+   ========================================================= */
+
+function songsContinue() {
+
+    if (
+        !songsPlayerReady ||
+        !songsPlayer
+    ) {
+
+        return;
+
+    }
+
+
+    try {
+
+        songsPlayer.playVideo();
+
+    } catch (error) {
+
+        console.warn(
+            "No se pudo continuar la canción.",
+            error
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   REINICIAR A 0
+   ========================================================= */
+
+function songsRestart() {
+
+    if (
+        !songsPlayerReady ||
+        !songsPlayer
+    ) {
+
+        return;
+
+    }
+
+
+    try {
+
+        songsPlayer.seekTo(
+            0,
+            true
+        );
+
+    } catch (error) {
+
+        return;
+
+    }
+
+
+    const bar =
+        document.getElementById(
+            "songs-progress-bar"
+        );
+
+
+    if (bar) {
+
+        bar.style.width =
+            "0%";
+
+    }
+
+}
+
+
+/* =========================================================
+   CERRAR JUEGO DE CANCIONES
    ========================================================= */
 
 function closeSongsGame() {
+
+    songsGameOpen =
+        false;
+
+
+    if (
+        songsProgressTimer
+    ) {
+
+        clearInterval(
+            songsProgressTimer
+        );
+
+        songsProgressTimer =
+            null;
+
+    }
+
 
     if (
         songsPlayer &&
@@ -4321,7 +5754,7 @@ function closeSongsGame() {
 
             songsPlayer.destroy();
 
-        } catch(error) {}
+        } catch (error) {}
 
     }
 
@@ -4334,10 +5767,6 @@ function closeSongsGame() {
         false;
 
 
-    songsGame =
-        null;
-
-
     const modal =
         document.getElementById(
             "songs-modal"
@@ -4346,7 +5775,9 @@ function closeSongsGame() {
 
     if (modal) {
 
-        modal.remove();
+        modal.classList.remove(
+            "active"
+        );
 
     }
 
@@ -4354,7 +5785,7 @@ function closeSongsGame() {
 
 
 /* =========================================================
-   INICIO
+   INICIALIZACIÓN
    ========================================================= */
 
 document.addEventListener(
