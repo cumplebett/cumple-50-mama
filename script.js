@@ -4004,15 +4004,9 @@ function checkSongAnswer(
             team;
 
 
-        addPoints(
-            team,
-            "songs",
-            1
-        );
+      songsGamePoints[team] += 1;
 
-
-        updateSongsScoreboard();
-
+updateSongsScoreboard();
 
         result.textContent =
             `✓ Correcto · +1 para ${
