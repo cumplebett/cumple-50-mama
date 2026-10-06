@@ -3639,22 +3639,21 @@ function openSongsGame() {
     updateSongsScoreboard();
 
 
-    if (
-        !songsCurrentSong
-    ) {
+   if (
+    !songsCurrentSong
+) {
 
-        songsUsedIndexes = [];
+    songsUsedIndexes = [];
 
-        loadNextSong();
+    songsGameFinished = false;
 
-    } else {
+    songsGamePoints.team1 = 0;
+    songsGamePoints.team2 = 0;
+    songsGamePoints.team3 = 0;
 
-        updateSongsInterface();
+    loadNextSong();
 
-        loadSongIntoPlayer();
-
-    }
-
+}
 }
 
 
