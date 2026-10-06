@@ -40,7 +40,7 @@
 
 
 /* =========================================================
-   LAYOUT ORIGINAL
+   LAYOUT
    ========================================================= */
 
 .rondo-layout{
@@ -50,7 +50,6 @@
 
     display:grid!important;
 
-    /* Volvemos al ancho original */
     grid-template-columns:220px minmax(0,1fr)!important;
 
     overflow:hidden!important;
@@ -70,7 +69,6 @@
     position:relative!important;
     z-index:20!important;
 
-    /* Como estaba originalmente */
     padding-left:0!important;
     padding-right:10px!important;
 }
@@ -100,22 +98,8 @@
 .rosco{
     position:absolute!important;
 
-    /*
-       Rosco grande.
-       92vh permite aprovechar prácticamente
-       toda la altura disponible.
-    */
-
     width:min(720px,92vh)!important;
     height:min(720px,92vh)!important;
-
-    /*
-       El centro de la columna derecha queda
-       demasiado a la derecha.
-       
-       Lo movemos hacia el centro real
-       de la pantalla.
-    */
 
     left:calc(50% - 110px)!important;
     top:50%!important;
@@ -238,10 +222,12 @@
     position:absolute!important;
 
     /*
-       Misma posición que el centro del rosco.
+       Movido hacia la derecha.
+       Antes: calc(50% - 110px)
+       Ahora: calc(50% - 40px)
     */
 
-    left:calc(50% - 110px)!important;
+    left:calc(50% - 40px)!important;
     top:50%!important;
 
     transform:translate(-50%,-50%)!important;
@@ -385,7 +371,7 @@
     }
 
     .question-card{
-        left:calc(50% - 95px)!important;
+        left:calc(50% - 25px)!important;
         width:315px!important;
     }
 
@@ -1116,7 +1102,7 @@
 </div>
 
 
-<script src="script.js?v=13"></script>
+<script src="script.js?v=14"></script>
 
 </body>
 </html>
