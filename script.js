@@ -1,12 +1,12 @@
-/* =========================================
+/* =========================================================
    50 AÑOS DE BETT
-   SISTEMA PRINCIPAL
-   ========================================= */
+   SCRIPT PRINCIPAL
+   ========================================================= */
 
 
-/* =========================================
-   PUNTAJES GENERALES
-   ========================================= */
+/* =========================================================
+   PUNTAJES
+   ========================================================= */
 
 const scores = {
 
@@ -31,10 +31,9 @@ const scores = {
 };
 
 
-/* =========================================
+/* =========================================================
    ROSCO 1
-   LOS HEREDEROS
-   ========================================= */
+   ========================================================= */
 
 const rosco1 = [
 
@@ -90,7 +89,7 @@ const rosco1 = [
     {
         letter: "H",
         type: "EMPIEZA CON H",
-        question: "Famoso director británico considerado el indiscutible \"Maestro del Suspenso\".",
+        question: "Famoso director británico considerado el indiscutible Maestro del Suspenso.",
         answer: "HITCHCOCK"
     },
 
@@ -111,7 +110,7 @@ const rosco1 = [
     {
         letter: "K",
         type: "EMPIEZA CON K",
-        question: "Famosa banda de heavy metal conocida por sus rostros pintados y sangre.",
+        question: "Famosa banda de heavy metal conocida por sus rostros pintados.",
         answer: "KISS"
     },
 
@@ -125,28 +124,28 @@ const rosco1 = [
     {
         letter: "M",
         type: "EMPIEZA CON M",
-        question: "Apellido del célebre pintor francés, uno de los máximos exponentes y fundadores del movimiento impresionista.",
+        question: "Apellido del célebre pintor francés, uno de los máximos exponentes del impresionismo.",
         answer: "MONET"
     },
 
     {
         letter: "N",
         type: "EMPIEZA CON N",
-        question: "Apellido del científico británico, padre de la mecánica clásica y de la ley de gravitación universal.",
+        question: "Apellido del científico británico, padre de la mecánica clásica.",
         answer: "NEWTON"
     },
 
     {
         letter: "O",
         type: "EMPIEZA CON O",
-        question: "Famoso metal precioso cuyo símbolo químico en la tabla periódica es \"Au\".",
+        question: "Famoso metal precioso cuyo símbolo químico es Au.",
         answer: "ORO"
     },
 
     {
         letter: "P",
         type: "EMPIEZA CON P",
-        question: "Padre absoluto del tango contemporáneo y virtuoso maestro indiscutido del bandoneón.",
+        question: "Padre absoluto del tango contemporáneo y maestro del bandoneón.",
         answer: "PIAZZOLLA"
     },
 
@@ -167,14 +166,14 @@ const rosco1 = [
     {
         letter: "S",
         type: "EMPIEZA CON S",
-        question: "Nombre del ogro verde protagonista de la exitosa saga de DreamWorks.",
+        question: "Nombre del ogro verde protagonista de la saga de DreamWorks.",
         answer: "SHREK"
     },
 
     {
         letter: "T",
         type: "EMPIEZA CON T",
-        question: "Histórica provincia norteña donde se declaró formalmente la independencia nacional en 1816.",
+        question: "Provincia norteña donde se declaró la independencia argentina en 1816.",
         answer: "TUCUMÁN"
     },
 
@@ -202,31 +201,30 @@ const rosco1 = [
     {
         letter: "X",
         type: "EMPIEZA CON X",
-        question: "Instrumento musical de percusión compuesto por láminas afinadas que se golpean con baquetas.",
+        question: "Instrumento musical de percusión compuesto por láminas afinadas.",
         answer: "XILÓFONO"
     },
 
     {
         letter: "Y",
         type: "CONTIENE LA Y",
-        question: "¿Qué país ganó la primera Copa del Mundo de fútbol, disputada en 1930?",
+        question: "¿Qué país ganó la primera Copa del Mundo de fútbol?",
         answer: "URUGUAY"
     },
 
     {
         letter: "Z",
         type: "EMPIEZA CON Z",
-        question: "Viento cálido, seco y molesto que desciende de la cordillera afectando la zona cuyana.",
+        question: "Viento cálido y seco que desciende de la cordillera en la región de Cuyo.",
         answer: "ZONDA"
     }
 
 ];
 
 
-/* =========================================
+/* =========================================================
    ROSCO 2
-   LAS HISTÓRICAS
-   ========================================= */
+   ========================================================= */
 
 const rosco2 = [
 
@@ -261,7 +259,7 @@ const rosco2 = [
     {
         letter: "E",
         type: "EMPIEZA CON E",
-        question: "Apellido del físico alemán creador de la célebre teoría de la relatividad.",
+        question: "Apellido del físico alemán creador de la teoría de la relatividad.",
         answer: "EINSTEIN"
     },
 
@@ -275,14 +273,14 @@ const rosco2 = [
     {
         letter: "G",
         type: "EMPIEZA CON G",
-        question: "Conjunto de islas volcánicas del océano Pacífico famoso por las investigaciones de Charles Darwin.",
+        question: "Conjunto de islas volcánicas famosas por las investigaciones de Charles Darwin.",
         answer: "GALÁPAGOS"
     },
 
     {
         letter: "H",
         type: "EMPIEZA CON H",
-        question: "Nombre de la academia de magia a la que asiste Harry Potter en sus aventuras.",
+        question: "Nombre de la academia de magia a la que asiste Harry Potter.",
         answer: "HOGWARTS"
     },
 
@@ -296,7 +294,7 @@ const rosco2 = [
     {
         letter: "J",
         type: "EMPIEZA CON J",
-        question: "Dios romano equivalente al dios griego Zeus, soberano del Olimpo.",
+        question: "Planeta más grande del Sistema Solar.",
         answer: "JÚPITER"
     },
 
@@ -310,14 +308,14 @@ const rosco2 = [
     {
         letter: "L",
         type: "EMPIEZA CON L",
-        question: "Capa más externa, rígida y sólida de la Tierra sobre la que se asientan los continentes.",
+        question: "Capa más externa, rígida y sólida de la Tierra.",
         answer: "LITÓSFERA"
     },
 
     {
         letter: "M",
         type: "EMPIEZA CON M",
-        question: "Planeta de nuestro sistema solar conocido popularmente como el “Planeta Rojo”.",
+        question: "Planeta conocido como el Planeta Rojo.",
         answer: "MARTE"
     },
 
@@ -331,28 +329,28 @@ const rosco2 = [
     {
         letter: "O",
         type: "EMPIEZA CON O",
-        question: "Continente que ocupa la región formada por Australia, Nueva Zelanda y numerosas islas del Pacífico.",
+        question: "Continente que incluye Australia y Nueva Zelanda.",
         answer: "OCEANÍA"
     },
 
     {
         letter: "P",
         type: "EMPIEZA CON P",
-        question: "Océano más profundo y extenso de todo el planeta Tierra.",
+        question: "Océano más profundo y extenso del planeta.",
         answer: "PACÍFICO"
     },
 
     {
         letter: "Q",
         type: "EMPIEZA CON Q",
-        question: "Célebre novela cumbre de la literatura española escrita por Miguel de Cervantes.",
+        question: "Célebre novela de Miguel de Cervantes.",
         answer: "QUIJOTE"
     },
 
     {
         letter: "R",
         type: "EMPIEZA CON R",
-        question: "Movimiento cultural y artístico europeo de los siglos XV y XVI que marcó la transición entre la Edad Media y la Edad Moderna.",
+        question: "Movimiento cultural y artístico europeo de los siglos XV y XVI.",
         answer: "RENACIMIENTO"
     },
 
@@ -366,7 +364,7 @@ const rosco2 = [
     {
         letter: "T",
         type: "EMPIEZA CON T",
-        question: "Sigla del compuesto químico trinitrotolueno, un potente explosivo.",
+        question: "Sigla del compuesto químico trinitrotolueno.",
         answer: "TNT"
     },
 
@@ -380,45 +378,44 @@ const rosco2 = [
     {
         letter: "V",
         type: "EMPIEZA CON V",
-        question: "Famoso acuerdo de paz firmado en 1919 que puso fin formalmente a la Primera Guerra Mundial.",
+        question: "Acuerdo de paz firmado en 1919 que puso fin formalmente a la Primera Guerra Mundial.",
         answer: "VERSALLES"
     },
 
     {
         letter: "W",
         type: "EMPIEZA CON W",
-        question: "Nombre del entrañable robot solitario de Pixar que limpia la Tierra en el futuro.",
+        question: "Robot protagonista de una película de Pixar que limpia la Tierra.",
         answer: "WALL-E"
     },
 
     {
         letter: "X",
         type: "CONTIENE LA X",
-        question: "País caracterizado por su consumo de picante.",
+        question: "País caracterizado por su gastronomía picante.",
         answer: "MÉXICO"
     },
 
     {
         letter: "Y",
         type: "CONTIENE LA Y",
-        question: "Famoso personaje de Looney Tunes que intenta atrapar al Correcaminos.",
+        question: "Personaje de Looney Tunes que intenta atrapar al Correcaminos.",
         answer: "COYOTE"
     },
 
     {
         letter: "Z",
         type: "EMPIEZA CON Z",
-        question: "Apellido del creador de la red social Facebook.",
+        question: "Apellido del creador de Facebook.",
         answer: "ZUCKERBERG"
     }
 
 ];
 
 
-/* =========================================
+/* =========================================================
    ROSCO 3
-   LOS ORIGINALES
-   ========================================= */
+   ========================================================= */
 
 const rosco3 = [
 
@@ -488,7 +485,7 @@ const rosco3 = [
     {
         letter: "J",
         type: "EMPIEZA CON J",
-        question: "Piedra ornamental de color verdoso, utilizada como color en el Tutti Frutti.",
+        question: "Piedra ornamental de color verdoso.",
         answer: "JADE"
     },
 
@@ -502,21 +499,21 @@ const rosco3 = [
     {
         letter: "L",
         type: "EMPIEZA CON L",
-        question: "Construcción formada por caminos y pasadizos diseñada para confundir, donde estaba encerrado el Minotauro.",
+        question: "Construcción formada por caminos y pasadizos donde estaba encerrado el Minotauro.",
         answer: "LABERINTO"
     },
 
     {
         letter: "M",
         type: "EMPIEZA CON M",
-        question: "Juego interminable en el que se compran casas, hoteles y propiedades hasta dejar en la ruina a tus amigos.",
+        question: "Juego en el que se compran propiedades, casas y hoteles.",
         answer: "MONOPOLY"
     },
 
     {
         letter: "N",
         type: "EMPIEZA CON N",
-        question: "Río que atraviesa Egipto y fue fundamental para el desarrollo de una de las grandes civilizaciones de la Antigüedad.",
+        question: "Río fundamental para el desarrollo de la civilización egipcia.",
         answer: "NILO"
     },
 
@@ -530,14 +527,14 @@ const rosco3 = [
     {
         letter: "P",
         type: "EMPIEZA CON P",
-        question: "Región del extremo sur de Argentina y Chile, conocida por sus montañas, glaciares y lagos.",
+        question: "Región del extremo sur de Argentina y Chile.",
         answer: "PATAGONIA"
     },
 
     {
         letter: "Q",
         type: "EMPIEZA CON Q",
-        question: "Número mínimo de miembros presentes necesario en una asamblea para poder tomar decisiones válidas.",
+        question: "Número mínimo de miembros presentes necesario para tomar decisiones válidas en una asamblea.",
         answer: "QUÓRUM"
     },
 
@@ -551,7 +548,7 @@ const rosco3 = [
     {
         letter: "S",
         type: "EMPIEZA CON S",
-        question: "Serie o película derivada de otra ya existente, centrada en un personaje secundario o evento paralelo.",
+        question: "Serie o película derivada de otra existente.",
         answer: "SPINOFF"
     },
 
@@ -572,7 +569,7 @@ const rosco3 = [
     {
         letter: "V",
         type: "EMPIEZA CON V",
-        question: "Nombre del famoso actor estadounidense, conocido por interpretar a Dominic Toretto en Rápidos y Furiosos.",
+        question: "Actor estadounidense conocido por interpretar a Dominic Toretto.",
         answer: "VIN DIESEL"
     },
 
@@ -607,9 +604,9 @@ const rosco3 = [
 ];
 
 
-/* =========================================
-   MAPEO EQUIPOS → ROSCOS
-   ========================================= */
+/* =========================================================
+   EQUIPOS
+   ========================================================= */
 
 const TEAM_DATA = {
 
@@ -631,15 +628,15 @@ const TEAM_DATA = {
 };
 
 
-/* =========================================
+/* =========================================================
    VARIABLES
-   ========================================= */
+   ========================================================= */
 
 let currentTeam = "team1";
 
 let currentIndex = 0;
 
-let roscoStates = {};
+let rondoStates = {};
 
 let rondoHits = {
 
@@ -652,9 +649,9 @@ let rondoHits = {
 let rondoAwarded = false;
 
 
-/* =========================================
-   OBTENER ROSCO DEL EQUIPO
-   ========================================= */
+/* =========================================================
+   OBTENER ROSCO
+   ========================================================= */
 
 function getCurrentRosco() {
 
@@ -663,9 +660,9 @@ function getCurrentRosco() {
 }
 
 
-/* =========================================
-   CREAR ESTADOS
-   ========================================= */
+/* =========================================================
+   ESTADO INICIAL
+   ========================================================= */
 
 function createInitialRondoState() {
 
@@ -688,42 +685,39 @@ function createInitialRondoState() {
 }
 
 
-/* =========================================
+/* =========================================================
    CARGAR PUNTAJES
-   ========================================= */
+   ========================================================= */
 
 function loadScores() {
 
-    const savedScores =
+    const saved =
         localStorage.getItem(
             "bettScoresV2"
         );
 
-    if (savedScores) {
+    if (saved) {
 
         try {
 
-            const parsedScores =
-                JSON.parse(savedScores);
+            const parsed =
+                JSON.parse(saved);
 
             scores.team1 =
-                parsedScores.team1 ||
+                parsed.team1 ||
                 scores.team1;
 
             scores.team2 =
-                parsedScores.team2 ||
+                parsed.team2 ||
                 scores.team2;
 
             scores.team3 =
-                parsedScores.team3 ||
+                parsed.team3 ||
                 scores.team3;
 
         } catch (error) {
 
-            console.error(
-                "No se pudieron cargar los puntajes:",
-                error
-            );
+            console.error(error);
 
         }
 
@@ -734,9 +728,9 @@ function loadScores() {
 }
 
 
-/* =========================================
-   GUARDAR PUNTAJES
-   ========================================= */
+/* =========================================================
+   GUARDAR
+   ========================================================= */
 
 function saveScores() {
 
@@ -748,9 +742,9 @@ function saveScores() {
 }
 
 
-/* =========================================
+/* =========================================================
    TOTAL
-   ========================================= */
+   ========================================================= */
 
 function getTotal(team) {
 
@@ -763,9 +757,9 @@ function getTotal(team) {
 }
 
 
-/* =========================================
-   ACTUALIZAR MARCADOR
-   ========================================= */
+/* =========================================================
+   MARCADOR
+   ========================================================= */
 
 function updateScoreboard() {
 
@@ -778,22 +772,25 @@ function updateScoreboard() {
         const team =
             "team" + i;
 
-        const scoreElement =
+        const total =
+            getTotal(team);
+
+        const score =
             document.getElementById(
                 "score-team-" + i
             );
 
-        const kahootElement =
+        const kahoot =
             document.getElementById(
                 "kahoot-" + i
             );
 
-        const rondoElement =
+        const rondo =
             document.getElementById(
                 "rondo-" + i
             );
 
-        const songsElement =
+        const songs =
             document.getElementById(
                 "songs-" + i
             );
@@ -803,39 +800,30 @@ function updateScoreboard() {
                 "total-" + i
             );
 
-        if (scoreElement) {
 
-            scoreElement.textContent =
-                getTotal(team);
-
+        if (score) {
+            score.textContent =
+                total;
         }
 
-        if (kahootElement) {
-
-            kahootElement.textContent =
+        if (kahoot) {
+            kahoot.textContent =
                 scores[team].kahoot;
-
         }
 
-        if (rondoElement) {
-
-            rondoElement.textContent =
+        if (rondo) {
+            rondo.textContent =
                 scores[team].rondo;
-
         }
 
-        if (songsElement) {
-
-            songsElement.textContent =
+        if (songs) {
+            songs.textContent =
                 scores[team].songs;
-
         }
 
         if (totalElement) {
-
             totalElement.textContent =
-                getTotal(team);
-
+                total;
         }
 
     }
@@ -845,9 +833,9 @@ function updateScoreboard() {
 }
 
 
-/* =========================================
+/* =========================================================
    SUMAR PUNTOS
-   ========================================= */
+   ========================================================= */
 
 function addPoints(
     team,
@@ -855,14 +843,8 @@ function addPoints(
     points
 ) {
 
-    if (!scores[team]) {
-        return;
-    }
-
     scores[team][game] =
-        Number(
-            scores[team][game] || 0
-        ) +
+        Number(scores[team][game] || 0) +
         Number(points || 0);
 
     saveScores();
@@ -872,20 +854,22 @@ function addPoints(
 }
 
 
-/* =========================================
-   REINICIAR MARCADOR
-   ========================================= */
+/* =========================================================
+   RESET MARCADOR
+   ========================================================= */
 
 function resetScores() {
 
-    const confirmReset =
-        confirm(
+    if (
+        !confirm(
             "¿Seguro que querés reiniciar todos los puntajes?"
-        );
+        )
+    ) {
 
-    if (!confirmReset) {
         return;
+
     }
+
 
     for (
         const team of [
@@ -901,6 +885,7 @@ function resetScores() {
 
     }
 
+
     saveScores();
 
     updateScoreboard();
@@ -908,66 +893,22 @@ function resetScores() {
 }
 
 
-/* =========================================
-   REINICIAR PASAPALABRA
-   ========================================= */
-
-function resetRondo() {
-
-    const confirmReset =
-        confirm(
-            "¿Seguro que querés reiniciar el Pasapalabra completo?"
-        );
-
-    if (!confirmReset) {
-        return;
-    }
-
-    roscoStates =
-        createInitialRondoState();
-
-    rondoHits.team1 = 0;
-    rondoHits.team2 = 0;
-    rondoHits.team3 = 0;
-
-    scores.team1.rondo = 0;
-    scores.team2.rondo = 0;
-    scores.team3.rondo = 0;
-
-    rondoAwarded = false;
-
-    currentTeam = "team1";
-
-    currentIndex = 0;
-
-    saveScores();
-
-    updateScoreboard();
-
-    updateRondoTabs();
-
-    updateRondoTeamUI();
-
-    renderRosco();
-
-    showQuestion(0);
-
-}
-
-
-/* =========================================
+/* =========================================================
    ABRIR JUEGO
-   ========================================= */
+   ========================================================= */
 
 function openGame(game) {
 
-    if (game === "rondo") {
+    if (
+        game === "rondo"
+    ) {
 
         openRondo();
 
         return;
 
     }
+
 
     const modal =
         document.getElementById(
@@ -989,9 +930,13 @@ function openGame(game) {
             "modal-icon"
         );
 
-    if (game === "kahoot") {
 
-        icon.textContent = "🧠";
+    if (
+        game === "kahoot"
+    ) {
+
+        icon.textContent =
+            "🧠";
 
         title.textContent =
             "Kahoot";
@@ -1001,9 +946,13 @@ function openGame(game) {
 
     }
 
-    if (game === "songs") {
 
-        icon.textContent = "🎵";
+    if (
+        game === "songs"
+    ) {
+
+        icon.textContent =
+            "🎵";
 
         title.textContent =
             "Canciones";
@@ -1013,6 +962,7 @@ function openGame(game) {
 
     }
 
+
     modal.classList.add(
         "active"
     );
@@ -1020,9 +970,9 @@ function openGame(game) {
 }
 
 
-/* =========================================
-   CERRAR MODAL
-   ========================================= */
+/* =========================================================
+   CERRAR JUEGO
+   ========================================================= */
 
 function closeGame() {
 
@@ -1042,9 +992,9 @@ function closeGame() {
 }
 
 
-/* =========================================
-   ABRIR PASAPALABRA
-   ========================================= */
+/* =========================================================
+   ABRIR RONDO
+   ========================================================= */
 
 function openRondo() {
 
@@ -1060,19 +1010,22 @@ function openRondo() {
     document.body.style.overflow =
         "hidden";
 
+
     if (
         Object.keys(
-            roscoStates
+            rondoStates
         ).length === 0
     ) {
 
-        roscoStates =
+        rondoStates =
             createInitialRondoState();
 
     }
 
+
     currentTeam =
         "team1";
+
 
     currentIndex =
         findNextAvailableLetter(
@@ -1080,11 +1033,13 @@ function openRondo() {
             0
         );
 
+
     updateRondoTabs();
 
     updateRondoTeamUI();
 
     renderRosco();
+
 
     if (
         currentIndex !== -1
@@ -1099,9 +1054,9 @@ function openRondo() {
 }
 
 
-/* =========================================
-   CERRAR PASAPALABRA
-   ========================================= */
+/* =========================================================
+   CERRAR RONDO
+   ========================================================= */
 
 function closeRondo() {
 
@@ -1120,9 +1075,9 @@ function closeRondo() {
 }
 
 
-/* =========================================
-   CAMBIAR EQUIPO / ROSCO
-   ========================================= */
+/* =========================================================
+   CAMBIAR ROSCO
+   ========================================================= */
 
 function selectRosco(number) {
 
@@ -1130,8 +1085,10 @@ function selectRosco(number) {
         return;
     }
 
+
     currentTeam =
         "team" + number;
+
 
     currentIndex =
         findNextAvailableLetter(
@@ -1139,11 +1096,13 @@ function selectRosco(number) {
             0
         );
 
+
     updateRondoTabs();
 
     updateRondoTeamUI();
 
     renderRosco();
+
 
     if (
         currentIndex !== -1
@@ -1162,9 +1121,9 @@ function selectRosco(number) {
 }
 
 
-/* =========================================
-   ACTUALIZAR TABS
-   ========================================= */
+/* =========================================================
+   TABS
+   ========================================================= */
 
 function updateRondoTabs() {
 
@@ -1173,13 +1132,14 @@ function updateRondoTabs() {
             ".rondo-tab"
         );
 
+
     tabs.forEach(
         (
-            button,
+            tab,
             index
         ) => {
 
-            button.classList.toggle(
+            tab.classList.toggle(
                 "active",
                 "team" +
                 (index + 1) ===
@@ -1192,9 +1152,9 @@ function updateRondoTabs() {
 }
 
 
-/* =========================================
-   BUSCAR SIGUIENTE LETRA
-   ========================================= */
+/* =========================================================
+   SIGUIENTE LETRA
+   ========================================================= */
 
 function findNextAvailableLetter(
     team,
@@ -1202,18 +1162,17 @@ function findNextAvailableLetter(
 ) {
 
     const states =
-        roscoStates[team];
+        rondoStates[team];
+
 
     if (!states) {
         return -1;
     }
 
+
     const length =
         states.length;
 
-    if (!length) {
-        return -1;
-    }
 
     const start =
         (
@@ -1223,7 +1182,7 @@ function findNextAvailableLetter(
         length;
 
 
-    /* PRIMERO: PENDIENTES */
+    /* PENDIENTES */
 
     for (
         let step = 0;
@@ -1237,6 +1196,7 @@ function findNextAvailableLetter(
                 step
             ) %
             length;
+
 
         if (
             states[index] ===
@@ -1250,7 +1210,7 @@ function findNextAvailableLetter(
     }
 
 
-    /* DESPUÉS: PASAPALABRA */
+    /* PASADAS */
 
     for (
         let step = 0;
@@ -1265,6 +1225,7 @@ function findNextAvailableLetter(
             ) %
             length;
 
+
         if (
             states[index] ===
             "pass"
@@ -1276,14 +1237,15 @@ function findNextAvailableLetter(
 
     }
 
+
     return -1;
 
 }
 
 
-/* =========================================
-   CREAR ROSCO VISUAL
-   ========================================= */
+/* =========================================================
+   ⭐ RENDERIZAR ROSCO
+   ========================================================= */
 
 function renderRosco() {
 
@@ -1292,16 +1254,53 @@ function renderRosco() {
             "rosco"
         );
 
+
     if (!rosco) {
         return;
     }
 
+
     const data =
         getCurrentRosco();
+
 
     rosco.innerHTML =
         "";
 
+
+    /*
+     * RADIO REAL DEL ROSCO.
+     *
+     * El contenedor mide 600px.
+     *
+     * Las letras se colocan a 47%
+     * del radio para que queden
+     * completamente dentro del círculo.
+     */
+
+    const radius =
+        47;
+
+
+    /*
+     * 26 LETRAS.
+     *
+     * -90 grados = arriba.
+     *
+     * Cada letra avanza:
+     *
+     * 360 / 26 = 13.846°
+     *
+     * Por lo tanto:
+     *
+     * A arriba
+     * B derecha-arriba
+     * C derecha-arriba
+     * ...
+     * N abajo
+     * ...
+     * Z izquierda-arriba
+     */
 
     data.forEach(
         (
@@ -1309,25 +1308,19 @@ function renderRosco() {
             index
         ) => {
 
+
             const button =
                 document.createElement(
                     "button"
                 );
 
 
-            /*
-             * IMPORTANTE:
-             * Ahora usamos rosco-letter,
-             * que es exactamente la clase
-             * que utiliza el CSS.
-             */
+            button.type =
+                "button";
+
 
             button.className =
                 "rosco-letter";
-
-
-            button.type =
-                "button";
 
 
             button.textContent =
@@ -1338,8 +1331,62 @@ function renderRosco() {
                 index;
 
 
+            /* =========================================
+               CÁLCULO CIRCULAR
+               ========================================= */
+
+            const angle =
+                -90 +
+                (
+                    index *
+                    (
+                        360 /
+                        data.length
+                    )
+                );
+
+
+            const radians =
+                angle *
+                Math.PI /
+                180;
+
+
+            const x =
+                50 +
+                radius *
+                Math.cos(
+                    radians
+                );
+
+
+            const y =
+                50 +
+                radius *
+                Math.sin(
+                    radians
+                );
+
+
+            /*
+             * POSICIÓN DIRECTAMENTE
+             * SOBRE EL BOTÓN.
+             */
+
+            button.style.left =
+                x + "%";
+
+
+            button.style.top =
+                y + "%";
+
+
+            /* =========================================
+               ESTADO
+               ========================================= */
+
             const state =
-                roscoStates[
+                rondoStates[
                     currentTeam
                 ]?.[
                     index
@@ -1352,9 +1399,12 @@ function renderRosco() {
             );
 
 
+            /* =========================================
+               LETRA ACTUAL
+               ========================================= */
+
             if (
-                index ===
-                currentIndex &&
+                index === currentIndex &&
                 (
                     state === "pending" ||
                     state === "pass"
@@ -1368,17 +1418,26 @@ function renderRosco() {
             }
 
 
+            /* =========================================
+               CLICK
+               ========================================= */
+
             button.addEventListener(
                 "click",
                 function() {
 
-                    if (rondoAwarded) {
+
+                    if (
+                        rondoAwarded
+                    ) {
+
                         return;
+
                     }
 
 
                     const currentState =
-                        roscoStates[
+                        rondoStates[
                             currentTeam
                         ][
                             index
@@ -1422,9 +1481,9 @@ function renderRosco() {
 }
 
 
-/* =========================================
+/* =========================================================
    MOSTRAR PREGUNTA
-   ========================================= */
+   ========================================================= */
 
 function showQuestion(
     index
@@ -1432,6 +1491,7 @@ function showQuestion(
 
     const data =
         getCurrentRosco();
+
 
     if (
         !data[index]
@@ -1441,16 +1501,9 @@ function showQuestion(
 
     }
 
+
     const item =
         data[index];
-
-
-    const state =
-        roscoStates[
-            currentTeam
-        ]?.[
-            index
-        ];
 
 
     const questionLetter =
@@ -1458,10 +1511,12 @@ function showQuestion(
             "question-letter"
         );
 
+
     const questionType =
         document.getElementById(
             "question-type"
         );
+
 
     const questionText =
         document.getElementById(
@@ -1469,7 +1524,9 @@ function showQuestion(
         );
 
 
-    if (questionLetter) {
+    if (
+        questionLetter
+    ) {
 
         questionLetter.textContent =
             item.letter;
@@ -1477,7 +1534,9 @@ function showQuestion(
     }
 
 
-    if (questionType) {
+    if (
+        questionType
+    ) {
 
         questionType.textContent =
             item.type;
@@ -1485,56 +1544,37 @@ function showQuestion(
     }
 
 
-    if (questionText) {
+    if (
+        questionText
+    ) {
 
         questionText.textContent =
             item.question;
 
     }
 
-
-    document
-        .querySelectorAll(
-            ".rosco-letter"
-        )
-        .forEach(
-            button => {
-
-                const buttonIndex =
-                    Number(
-                        button.dataset.index
-                    );
-
-                button.classList.toggle(
-                    "current",
-                    buttonIndex === index &&
-                    (
-                        state === "pending" ||
-                        state === "pass"
-                    )
-                );
-
-            }
-        );
-
 }
 
 
-/* =========================================
+/* =========================================================
    RESPONDER
-   ========================================= */
+   ========================================================= */
 
 function answerQuestion(
     result
 ) {
 
-    if (rondoAwarded) {
+    if (
+        rondoAwarded
+    ) {
+
         return;
+
     }
 
 
     const states =
-        roscoStates[
+        rondoStates[
             currentTeam
         ];
 
@@ -1546,9 +1586,9 @@ function answerQuestion(
 
     if (
         states[currentIndex] !==
-        "pending" &&
+            "pending" &&
         states[currentIndex] !==
-        "pass"
+            "pass"
     ) {
 
         return;
@@ -1559,18 +1599,19 @@ function answerQuestion(
     /* CORRECTO */
 
     if (
-        result === "correct"
+        result ===
+        "correct"
     ) {
 
         states[currentIndex] =
             "correct";
 
+
         rondoHits[currentTeam] =
             Number(
                 rondoHits[currentTeam] ||
                 0
-            ) +
-            1;
+            ) + 1;
 
     }
 
@@ -1578,7 +1619,8 @@ function answerQuestion(
     /* INCORRECTO */
 
     if (
-        result === "wrong"
+        result ===
+        "wrong"
     ) {
 
         states[currentIndex] =
@@ -1590,7 +1632,8 @@ function answerQuestion(
     /* PASAPALABRA */
 
     if (
-        result === "pass"
+        result ===
+        "pass"
     ) {
 
         states[currentIndex] =
@@ -1618,9 +1661,11 @@ function answerQuestion(
         currentIndex =
             nextIndex;
 
+
         showQuestion(
             currentIndex
         );
+
 
         renderRosco();
 
@@ -1634,47 +1679,49 @@ function answerQuestion(
 }
 
 
-/* =========================================
-   TERMINÓ EL ROSCO DEL EQUIPO
-   ========================================= */
+/* =========================================================
+   EQUIPO TERMINÓ
+   ========================================================= */
 
 function finishCurrentTeam() {
 
-    const questionLetter =
+    const letter =
         document.getElementById(
             "question-letter"
         );
 
-    const questionType =
+
+    const type =
         document.getElementById(
             "question-type"
         );
 
-    const questionText =
+
+    const text =
         document.getElementById(
             "question-text"
         );
 
 
-    if (questionLetter) {
+    if (letter) {
 
-        questionLetter.textContent =
+        letter.textContent =
             "✓";
 
     }
 
 
-    if (questionType) {
+    if (type) {
 
-        questionType.textContent =
+        type.textContent =
             "PASAPALABRA COMPLETADO";
 
     }
 
 
-    if (questionText) {
+    if (text) {
 
-        questionText.textContent =
+        text.textContent =
             TEAM_DATA[
                 currentTeam
             ].name +
@@ -1686,40 +1733,39 @@ function finishCurrentTeam() {
 
     }
 
-
-    renderRosco();
-
 }
 
 
-/* =========================================
-   ACTUALIZAR EQUIPO
-   ========================================= */
+/* =========================================================
+   EQUIPO ACTUAL
+   ========================================================= */
 
 function updateRondoTeamUI() {
 
-    const turnTeam =
+    const element =
         document.getElementById(
             "turn-team"
         );
 
-    if (turnTeam) {
 
-        turnTeam.textContent =
+    if (element) {
+
+        element.textContent =
             TEAM_DATA[
                 currentTeam
             ].name;
 
     }
 
+
     updateRondoScore();
 
 }
 
 
-/* =========================================
-   ACTUALIZAR ACIERTOS
-   ========================================= */
+/* =========================================================
+   ACIERTOS
+   ========================================================= */
 
 function updateRondoScore() {
 
@@ -1728,9 +1774,11 @@ function updateRondoScore() {
             "rondo-current-score"
         );
 
+
     if (!element) {
         return;
     }
+
 
     element.textContent =
         String(
@@ -1744,26 +1792,94 @@ function updateRondoScore() {
 }
 
 
-/* =========================================
-   FINALIZAR PASAPALABRA
-   ========================================= */
+/* =========================================================
+   REINICIAR PASAPALABRA
+   ========================================================= */
 
-function finishRondo() {
+function resetRondo() {
 
-    if (rondoAwarded) {
+    if (
+        !confirm(
+            "¿Seguro que querés reiniciar el Pasapalabra?"
+        )
+    ) {
 
         return;
 
     }
 
 
-    const confirmFinish =
-        confirm(
+    rondoStates =
+        createInitialRondoState();
+
+
+    rondoHits.team1 =
+        0;
+
+    rondoHits.team2 =
+        0;
+
+    rondoHits.team3 =
+        0;
+
+
+    scores.team1.rondo =
+        0;
+
+    scores.team2.rondo =
+        0;
+
+    scores.team3.rondo =
+        0;
+
+
+    rondoAwarded =
+        false;
+
+
+    currentTeam =
+        "team1";
+
+
+    currentIndex =
+        0;
+
+
+    saveScores();
+
+    updateScoreboard();
+
+    updateRondoTabs();
+
+    updateRondoTeamUI();
+
+    renderRosco();
+
+    showQuestion(0);
+
+}
+
+
+/* =========================================================
+   FINALIZAR
+   ========================================================= */
+
+function finishRondo() {
+
+    if (
+        rondoAwarded
+    ) {
+
+        return;
+
+    }
+
+
+    if (
+        !confirm(
             "¿Seguro que querés finalizar el Pasapalabra? Se asignarán 3, 2 y 1 puntos según los aciertos."
-        );
-
-
-    if (!confirmFinish) {
+        )
+    ) {
 
         return;
 
@@ -1778,23 +1894,29 @@ function finishRondo() {
 
         {
             team: "team1",
-            hits: Number(
-                rondoHits.team1 || 0
-            )
+            hits:
+                Number(
+                    rondoHits.team1 ||
+                    0
+                )
         },
 
         {
             team: "team2",
-            hits: Number(
-                rondoHits.team2 || 0
-            )
+            hits:
+                Number(
+                    rondoHits.team2 ||
+                    0
+                )
         },
 
         {
             team: "team3",
-            hits: Number(
-                rondoHits.team3 || 0
-            )
+            hits:
+                Number(
+                    rondoHits.team3 ||
+                    0
+                )
         }
 
     ];
@@ -1830,41 +1952,43 @@ function finishRondo() {
     );
 
 
-    const questionLetter =
+    const letter =
         document.getElementById(
             "question-letter"
         );
 
-    const questionType =
+
+    const type =
         document.getElementById(
             "question-type"
         );
 
-    const questionText =
+
+    const text =
         document.getElementById(
             "question-text"
         );
 
 
-    if (questionLetter) {
+    if (letter) {
 
-        questionLetter.textContent =
+        letter.textContent =
             "🏁";
 
     }
 
 
-    if (questionType) {
+    if (type) {
 
-        questionType.textContent =
+        type.textContent =
             "PASAPALABRA FINALIZADO";
 
     }
 
 
-    if (questionText) {
+    if (text) {
 
-        questionText.textContent =
+        text.textContent =
             "🔴 Los Originales: " +
             rondoHits.team1 +
             " aciertos · " +
@@ -1885,9 +2009,9 @@ function finishRondo() {
 }
 
 
-/* =========================================
+/* =========================================================
    CLICK FUERA DEL MODAL
-   ========================================= */
+   ========================================================= */
 
 document.addEventListener(
     "click",
@@ -1897,6 +2021,7 @@ document.addEventListener(
             document.getElementById(
                 "game-modal"
             );
+
 
         if (
             event.target ===
@@ -1911,9 +2036,9 @@ document.addEventListener(
 );
 
 
-/* =========================================
+/* =========================================================
    ESC
-   ========================================= */
+   ========================================================= */
 
 document.addEventListener(
     "keydown",
@@ -1934,11 +2059,12 @@ document.addEventListener(
 );
 
 
-/* =========================================
-   INICIALIZACIÓN
-   ========================================= */
+/* =========================================================
+   INICIO
+   ========================================================= */
 
-roscoStates =
+rondoStates =
     createInitialRondoState();
+
 
 loadScores();
