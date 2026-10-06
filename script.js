@@ -3217,6 +3217,11 @@ function startNewSongsGame() {
 
     songsGameOpen = true;
 
+    songsGameFinished = false;
+
+    songsGamePoints.team1 = 0;
+    songsGamePoints.team2 = 0;
+    songsGamePoints.team3 = 0;
 
     loadNextSong();
 
