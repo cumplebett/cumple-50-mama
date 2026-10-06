@@ -415,10 +415,14 @@ const rosco3 = {
 };
 
 
+/* =========================================================
+   ASIGNACIÓN DE EQUIPOS
+   ========================================================= */
+
 const TEAM_DATA = {
-    team1: rosco1,
-    team2: rosco2,
-    team3: rosco3
+    team1: rosco3, // 🔴 Los Originales — ROSCO 3
+    team2: rosco1, // 🔵 Los Herederos — ROSCO 1
+    team3: rosco2  // 🟢 Las Históricas — ROSCO 2
 };
 
 
@@ -507,25 +511,62 @@ function getTotal(team) {
    ========================================================= */
 
 function updateScoreboard() {
-    const team1Total = document.getElementById("team1-total");
-    const team2Total = document.getElementById("team2-total");
-    const team3Total = document.getElementById("team3-total");
 
-    if (team1Total) {
-        team1Total.textContent = getTotal("team1");
-    }
+    const totals = {
+        team1: getTotal("team1"),
+        team2: getTotal("team2"),
+        team3: getTotal("team3")
+    };
 
-    if (team2Total) {
-        team2Total.textContent = getTotal("team2");
-    }
+    Object.keys(totals).forEach(team => {
 
-    if (team3Total) {
-        team3Total.textContent = getTotal("team3");
-    }
+        const number = team.replace("team", "");
+        const total = totals[team];
+
+        const scoreCard =
+            document.getElementById(`score-team-${number}`);
+
+        const totalCell =
+            document.getElementById(`total-${number}`);
+
+        const kahootCell =
+            document.getElementById(`kahoot-${number}`);
+
+        const rondoCell =
+            document.getElementById(`rondo-${number}`);
+
+        const songsCell =
+            document.getElementById(`songs-${number}`);
+
+
+        if (scoreCard) {
+            scoreCard.textContent = total;
+        }
+
+        if (totalCell) {
+            totalCell.textContent = total;
+        }
+
+        if (kahootCell) {
+            kahootCell.textContent = scores[team].kahoot;
+        }
+
+        if (rondoCell) {
+            rondoCell.textContent = scores[team].rondo;
+        }
+
+        if (songsCell) {
+            songsCell.textContent = scores[team].songs;
+        }
+
+    });
+
+    updateRondoSidebar();
 }
 
 
 function addPoints(team, game, points) {
+
     if (!scores[team] || scores[team][game] === undefined) {
         return;
     }
@@ -542,6 +583,7 @@ function addPoints(team, game, points) {
    ========================================================= */
 
 function resetScores() {
+
     const confirmation = confirm(
         "¿Seguro que querés reiniciar el marcador general?\n\nSe van a borrar los puntos de Kahoot, Pasapalabra y Canciones."
     );
@@ -574,6 +616,7 @@ function resetScores() {
    ========================================================= */
 
 function openGame(game) {
+
     if (game === "rondo") {
         openRondo();
         return;
@@ -589,6 +632,7 @@ function openGame(game) {
     }
 
     if (game === "kahoot") {
+
         if (icon) {
             icon.textContent = "🧠";
         }
@@ -598,7 +642,9 @@ function openGame(game) {
         }
 
         if (description) {
+
             description.innerHTML = `
+
                 <div style="text-align:center;">
 
                     <p>
@@ -614,11 +660,14 @@ function openGame(game) {
                         🧠 Abrir Kahoot
                     </button>
 
+
                     <h3 style="margin-bottom: 15px;">
                         🏆 Resultado
                     </h3>
 
+
                     <div style="margin-bottom: 12px;">
+
                         <label>
                             🥇 1° puesto — 3 puntos
                         </label>
@@ -628,14 +677,29 @@ function openGame(game) {
                             class="kahoot-select"
                             style="width:100%; padding:12px; margin-top:6px; border-radius:8px;"
                         >
-                            <option value="">Seleccionar equipo</option>
-                            <option value="team1">Equipo 1</option>
-                            <option value="team2">Equipo 2</option>
-                            <option value="team3">Equipo 3</option>
+                            <option value="">
+                                Seleccionar equipo
+                            </option>
+
+                            <option value="team1">
+                                Los Originales
+                            </option>
+
+                            <option value="team2">
+                                Los Herederos
+                            </option>
+
+                            <option value="team3">
+                                Las Históricas
+                            </option>
+
                         </select>
+
                     </div>
 
+
                     <div style="margin-bottom: 12px;">
+
                         <label>
                             🥈 2° puesto — 2 puntos
                         </label>
@@ -645,14 +709,29 @@ function openGame(game) {
                             class="kahoot-select"
                             style="width:100%; padding:12px; margin-top:6px; border-radius:8px;"
                         >
-                            <option value="">Seleccionar equipo</option>
-                            <option value="team1">Equipo 1</option>
-                            <option value="team2">Equipo 2</option>
-                            <option value="team3">Equipo 3</option>
+                            <option value="">
+                                Seleccionar equipo
+                            </option>
+
+                            <option value="team1">
+                                Los Originales
+                            </option>
+
+                            <option value="team2">
+                                Los Herederos
+                            </option>
+
+                            <option value="team3">
+                                Las Históricas
+                            </option>
+
                         </select>
+
                     </div>
 
+
                     <div style="margin-bottom: 20px;">
+
                         <label>
                             🥉 3° puesto — 1 punto
                         </label>
@@ -662,12 +741,26 @@ function openGame(game) {
                             class="kahoot-select"
                             style="width:100%; padding:12px; margin-top:6px; border-radius:8px;"
                         >
-                            <option value="">Seleccionar equipo</option>
-                            <option value="team1">Equipo 1</option>
-                            <option value="team2">Equipo 2</option>
-                            <option value="team3">Equipo 3</option>
+                            <option value="">
+                                Seleccionar equipo
+                            </option>
+
+                            <option value="team1">
+                                Los Originales
+                            </option>
+
+                            <option value="team2">
+                                Los Herederos
+                            </option>
+
+                            <option value="team3">
+                                Las Históricas
+                            </option>
+
                         </select>
+
                     </div>
+
 
                     <button
                         class="back-button"
@@ -677,11 +770,14 @@ function openGame(game) {
                     </button>
 
                 </div>
+
             `;
         }
     }
 
+
     if (game === "songs") {
+
         if (icon) {
             icon.textContent = "🎵";
         }
@@ -691,6 +787,7 @@ function openGame(game) {
         }
 
         if (description) {
+
             description.innerHTML = `
                 <p>
                     Adiviná la canción, el artista y el año o década.
@@ -698,6 +795,7 @@ function openGame(game) {
             `;
         }
     }
+
 
     modal.classList.add("active");
 }
@@ -708,41 +806,52 @@ function openGame(game) {
    ========================================================= */
 
 function saveKahootResult() {
-    const first = document.getElementById("kahoot-team-1");
-    const second = document.getElementById("kahoot-team-2");
-    const third = document.getElementById("kahoot-team-3");
+
+    const first =
+        document.getElementById("kahoot-team-1");
+
+    const second =
+        document.getElementById("kahoot-team-2");
+
+    const third =
+        document.getElementById("kahoot-team-3");
+
 
     if (!first || !second || !third) {
         alert("No se pudo cargar el resultado.");
         return;
     }
 
+
     const teamFirst = first.value;
     const teamSecond = second.value;
     const teamThird = third.value;
+
 
     if (!teamFirst || !teamSecond || !teamThird) {
         alert("⚠️ Tenés que seleccionar los tres puestos.");
         return;
     }
 
-    /*
-     * Se permite que el mismo equipo aparezca
-     * en más de una posición.
-     */
 
     scores.team1.kahoot = 0;
     scores.team2.kahoot = 0;
     scores.team3.kahoot = 0;
 
+
     scores[teamFirst].kahoot += 3;
     scores[teamSecond].kahoot += 2;
     scores[teamThird].kahoot += 1;
 
+
     saveScores();
     updateScoreboard();
 
-    alert("🏆 Resultado de Kahoot guardado correctamente.");
+
+    alert(
+        "🏆 Resultado de Kahoot guardado correctamente."
+    );
+
 
     closeGame();
 }
@@ -753,7 +862,9 @@ function saveKahootResult() {
    ========================================================= */
 
 function closeGame() {
-    const modal = document.getElementById("game-modal");
+
+    const modal =
+        document.getElementById("game-modal");
 
     if (modal) {
         modal.classList.remove("active");
@@ -766,18 +877,22 @@ function closeGame() {
    ========================================================= */
 
 function openRondo() {
-    const modal = document.getElementById("rondo-modal");
+
+    const modal =
+        document.getElementById("rondo-modal");
 
     if (modal) {
         modal.classList.add("active");
     }
 
-    showRoscoSelection();
+    selectRosco("team1");
 }
 
 
 function closeRondo() {
-    const modal = document.getElementById("rondo-modal");
+
+    const modal =
+        document.getElementById("rondo-modal");
 
     if (modal) {
         modal.classList.remove("active");
@@ -785,147 +900,299 @@ function closeRondo() {
 }
 
 
+function resetRondo() {
+
+    if (!currentTeam) {
+        selectRosco("team1");
+        return;
+    }
+
+    rondoState[currentTeam] =
+        createInitialRondoState();
+
+    currentLetterIndex = 0;
+    currentRosco = TEAM_DATA[currentTeam];
+
+
+    Object.keys(currentRosco).forEach(letter => {
+        delete currentRosco[letter].correct;
+    });
+
+
+    renderRosco();
+    updateRondoSidebar();
+}
+
+
 function showRoscoSelection() {
-    const selection = document.getElementById("rosco-selection");
-    const game = document.getElementById("rondo-game");
 
-    if (selection) {
-        selection.style.display = "block";
-    }
+    // La selección de equipo está siempre visible
+    // en las pestañas del HTML.
 
-    if (game) {
-        game.style.display = "none";
-    }
 }
 
 
 function selectRosco(team) {
+
     if (!TEAM_DATA[team]) {
         return;
     }
 
+
     currentTeam = team;
-    currentRosco = TEAM_DATA[team];
+
+    currentRosco =
+        TEAM_DATA[team];
 
     currentLetterIndex = 0;
 
-    rondoState[team] = createInitialRondoState();
 
-    const selection = document.getElementById("rosco-selection");
-    const game = document.getElementById("rondo-game");
+    rondoState[team] =
+        createInitialRondoState();
 
-    if (selection) {
-        selection.style.display = "none";
-    }
 
-    if (game) {
-        game.style.display = "block";
-    }
+    Object.keys(currentRosco).forEach(letter => {
+        delete currentRosco[letter].correct;
+    });
+
 
     renderRosco();
+
+    updateRondoSidebar();
+
+
+    document
+        .querySelectorAll(".rondo-tab")
+        .forEach((tab, index) => {
+
+            tab.classList.toggle(
+                "active",
+                index ===
+                Number(team.replace("team", "")) - 1
+            );
+
+        });
 }
 
 
+function updateRondoSidebar() {
+
+    if (!currentTeam) {
+        return;
+    }
+
+
+    const teamLabel =
+        document.getElementById("turn-team");
+
+    const scoreLabel =
+        document.getElementById("rondo-current-score");
+
+
+    if (teamLabel) {
+
+        const icons = {
+            team1: "🔴",
+            team2: "🔵",
+            team3: "🟢"
+        };
+
+
+        teamLabel.textContent =
+            `${icons[currentTeam]} ${getTeamName(currentTeam)}`;
+    }
+
+
+    if (scoreLabel) {
+
+        scoreLabel.textContent =
+            rondoState[currentTeam].hits;
+
+    }
+
+}
+
+
+/* =========================================================
+   ROSCO
+   ========================================================= */
+
 function getLetters() {
+
     return Object.keys(currentRosco);
+
 }
 
 
 function renderRosco() {
-    const container = document.getElementById("rosco");
+
+    const container =
+        document.getElementById("rosco");
+
 
     if (!container) {
         return;
     }
 
+
     container.innerHTML = "";
 
-    const letters = getLetters();
+
+    const letters =
+        getLetters();
+
 
     letters.forEach((letter, index) => {
-        const button = document.createElement("button");
 
-        button.className = "rosco-letter";
-        button.textContent = letter;
-        button.id = `letter-${letter}`;
+        const button =
+            document.createElement("button");
+
+
+        button.className =
+            "rosco-letter";
+
+
+        button.textContent =
+            letter;
+
+
+        button.id =
+            `letter-${letter}`;
+
 
         button.onclick = function () {
+
             goToLetter(index);
+
         };
 
+
         container.appendChild(button);
+
     });
+
 
     showCurrentQuestion();
 }
 
 
 function goToLetter(index) {
+
     if (!currentRosco) {
         return;
     }
 
-    const letters = getLetters();
 
-    if (index < 0 || index >= letters.length) {
+    const letters =
+        getLetters();
+
+
+    if (
+        index < 0 ||
+        index >= letters.length
+    ) {
         return;
     }
 
-    currentLetterIndex = index;
+
+    currentLetterIndex =
+        index;
+
 
     showCurrentQuestion();
 }
 
 
 function showCurrentQuestion() {
+
     if (!currentRosco || !currentTeam) {
         return;
     }
 
-    const letters = getLetters();
-    const letter = letters[currentLetterIndex];
-    const item = currentRosco[letter];
+
+    const letters =
+        getLetters();
+
+
+    const letter =
+        letters[currentLetterIndex];
+
+
+    const item =
+        currentRosco[letter];
+
 
     if (!item) {
         return;
     }
 
-    const clue = document.getElementById("rondo-clue");
-    const letterDisplay = document.getElementById("current-letter");
+
+    const letterDisplay =
+        document.getElementById("question-letter") ||
+        document.getElementById("current-letter");
+
+
+    const typeDisplay =
+        document.getElementById("question-type");
+
+
+    const clue =
+        document.getElementById("question-text") ||
+        document.getElementById("rondo-clue");
+
 
     if (letterDisplay) {
-        letterDisplay.textContent = letter;
+        letterDisplay.textContent =
+            letter;
     }
+
+
+    const phrase =
+        item.type === "contains"
+            ? `CONTIENE LA ${letter}`
+            : `CON LA LETRA ${letter}`;
+
+
+    if (typeDisplay) {
+        typeDisplay.textContent =
+            phrase;
+    }
+
 
     if (clue) {
-        const phrase =
-            item.type === "contains"
-                ? `Contiene la ${letter}`
-                : `Empieza con ${letter}`;
-
-        clue.innerHTML = `
-            <strong>${phrase}:</strong>
-            ${item.clue}
-        `;
+        clue.innerHTML =
+            item.clue;
     }
 
+
     updateRoscoLetterStyles();
+    updateRondoSidebar();
 }
 
 
 function updateRoscoLetterStyles() {
+
     if (!currentRosco || !currentTeam) {
         return;
     }
 
-    const state = rondoState[currentTeam];
+
+    const state =
+        rondoState[currentTeam];
+
 
     Object.keys(currentRosco).forEach(letter => {
-        const button = document.getElementById(`letter-${letter}`);
+
+        const button =
+            document.getElementById(
+                `letter-${letter}`
+            );
+
 
         if (!button) {
             return;
         }
+
 
         button.classList.remove(
             "correct",
@@ -933,85 +1200,159 @@ function updateRoscoLetterStyles() {
             "passed",
             "current"
         );
+
     });
 
-    const letters = getLetters();
-    const currentLetter = letters[currentLetterIndex];
 
-    const currentButton = document.getElementById(
-        `letter-${currentLetter}`
-    );
+    const letters =
+        getLetters();
+
+
+    const currentLetter =
+        letters[currentLetterIndex];
+
+
+    const currentButton =
+        document.getElementById(
+            `letter-${currentLetter}`
+        );
+
 
     if (currentButton) {
-        currentButton.classList.add("current");
+
+        currentButton.classList.add(
+            "current"
+        );
+
     }
 
+
     state.answered.forEach(letter => {
-        const button = document.getElementById(`letter-${letter}`);
+
+        const button =
+            document.getElementById(
+                `letter-${letter}`
+            );
+
 
         if (!button) {
             return;
         }
 
-        const item = currentRosco[letter];
+
+        const item =
+            currentRosco[letter];
+
 
         if (item.correct) {
-            button.classList.add("correct");
+
+            button.classList.add(
+                "correct"
+            );
+
         } else {
-            button.classList.add("incorrect");
+
+            button.classList.add(
+                "incorrect"
+            );
+
         }
+
     });
+
 
     state.passed.forEach(letter => {
-        const button = document.getElementById(`letter-${letter}`);
+
+        const button =
+            document.getElementById(
+                `letter-${letter}`
+            );
+
 
         if (button) {
-            button.classList.add("passed");
+
+            button.classList.add(
+                "passed"
+            );
+
         }
+
     });
+
 }
-
-
 /* =========================================================
    RESPUESTAS DEL ROSCO
    ========================================================= */
 
 function answerRondo(isCorrect) {
+
     if (!currentRosco || !currentTeam) {
         return;
     }
 
     const state = rondoState[currentTeam];
-    const letters = getLetters();
-    const letter = letters[currentLetterIndex];
-    const item = currentRosco[letter];
 
-    if (!item || state.answered.includes(letter)) {
+    const letters = getLetters();
+
+    const letter =
+        letters[currentLetterIndex];
+
+    const item =
+        currentRosco[letter];
+
+
+    if (
+        !item ||
+        state.answered.includes(letter)
+    ) {
         return;
     }
+
 
     item.correct = isCorrect;
 
     state.answered.push(letter);
 
+
     if (isCorrect) {
+
         state.hits++;
+
     } else {
+
         state.misses++;
+
     }
+
+
+    updateRondoSidebar();
 
     moveToNextLetter();
 }
 
 
+/* =========================================================
+   PASAPALABRA
+   ========================================================= */
+
 function passRondo() {
+
     if (!currentRosco || !currentTeam) {
         return;
     }
 
-    const state = rondoState[currentTeam];
-    const letters = getLetters();
-    const letter = letters[currentLetterIndex];
+
+    const state =
+        rondoState[currentTeam];
+
+
+    const letters =
+        getLetters();
+
+
+    const letter =
+        letters[currentLetterIndex];
+
 
     if (
         state.answered.includes(letter) ||
@@ -1020,56 +1361,165 @@ function passRondo() {
         return;
     }
 
+
     state.passed.push(letter);
+
 
     moveToNextLetter();
 }
 
 
+/* =========================================================
+   BOTONES DEL HTML
+   ========================================================= */
+
+/*
+ * El HTML utiliza:
+ *
+ * answerQuestion('correct')
+ * answerQuestion('pass')
+ * answerQuestion('wrong')
+ *
+ * Estas funciones traducen esos botones
+ * al funcionamiento interno del rosco.
+ */
+
+function answerQuestion(action) {
+
+    if (action === "correct") {
+
+        answerRondo(true);
+
+        return;
+    }
+
+
+    if (action === "wrong") {
+
+        answerRondo(false);
+
+        return;
+    }
+
+
+    if (action === "pass") {
+
+        passRondo();
+
+        return;
+    }
+
+}
+
+
+/* =========================================================
+   AVANZAR A LA SIGUIENTE LETRA
+   ========================================================= */
+
 function moveToNextLetter() {
-    const state = rondoState[currentTeam];
-    const letters = getLetters();
 
-    let nextIndex = currentLetterIndex + 1;
+    if (!currentTeam || !currentRosco) {
+        return;
+    }
 
-    while (nextIndex < letters.length) {
-        const nextLetter = letters[nextIndex];
+
+    const state =
+        rondoState[currentTeam];
+
+
+    const letters =
+        getLetters();
+
+
+    let nextIndex =
+        currentLetterIndex + 1;
+
+
+    /*
+     * Primero busca hacia adelante.
+     */
+
+    while (
+        nextIndex <
+        letters.length
+    ) {
+
+        const nextLetter =
+            letters[nextIndex];
+
 
         if (
-            !state.answered.includes(nextLetter) &&
-            !state.passed.includes(nextLetter)
+            !state.answered.includes(
+                nextLetter
+            ) &&
+            !state.passed.includes(
+                nextLetter
+            )
         ) {
-            currentLetterIndex = nextIndex;
+
+            currentLetterIndex =
+                nextIndex;
+
+
             showCurrentQuestion();
+
             return;
         }
 
+
         nextIndex++;
+
     }
 
+
     /*
-     * Si no quedan letras hacia adelante,
-     * busca desde el principio.
+     * Si llegó al final,
+     * vuelve a buscar desde A.
      */
 
     nextIndex = 0;
 
-    while (nextIndex < letters.length) {
-        const nextLetter = letters[nextIndex];
+
+    while (
+        nextIndex <
+        letters.length
+    ) {
+
+        const nextLetter =
+            letters[nextIndex];
+
 
         if (
-            !state.answered.includes(nextLetter) &&
-            !state.passed.includes(nextLetter)
+            !state.answered.includes(
+                nextLetter
+            ) &&
+            !state.passed.includes(
+                nextLetter
+            )
         ) {
-            currentLetterIndex = nextIndex;
+
+            currentLetterIndex =
+                nextIndex;
+
+
             showCurrentQuestion();
+
             return;
         }
 
+
         nextIndex++;
+
     }
 
+
+    /*
+     * Si no quedan letras,
+     * termina automáticamente.
+     */
+
     finishRondo();
+
 }
 
 
@@ -1078,97 +1528,185 @@ function moveToNextLetter() {
    ========================================================= */
 
 function finishRondo() {
+
     if (!currentTeam) {
         return;
     }
 
-    const state = rondoState[currentTeam];
+
+    const state =
+        rondoState[currentTeam];
+
 
     if (state.finished) {
         return;
     }
 
+
     state.finished = true;
 
-    const hits = state.hits;
 
-    let points = 0;
+    const hits =
+        state.hits;
+
 
     /*
-     * El puntaje del rosco se determina
-     * por cantidad de respuestas correctas.
+     * El puntaje del Pasapalabra
+     * es igual a la cantidad de respuestas
+     * correctas.
      */
 
-    if (hits > 0) {
-        points = hits;
-    }
+    const points =
+        hits > 0
+            ? hits
+            : 0;
 
-    scores[currentTeam].rondo = points;
+
+    scores[currentTeam].rondo =
+        points;
+
 
     saveScores();
+
     updateScoreboard();
 
+
     showRondoResults();
+
 }
 
 
-function showRondoResults() {
-    const state = rondoState[currentTeam];
+/* =========================================================
+   RESULTADO DEL PASAPALABRA
+   ========================================================= */
 
-    const game = document.getElementById("rondo-game");
+function showRondoResults() {
+
+    const state =
+        rondoState[currentTeam];
+
+
+    const game =
+        document.getElementById(
+            "rondo-game"
+        );
+
 
     if (!game) {
         return;
     }
 
+
     game.innerHTML = `
-        <div style="text-align:center;">
 
-            <h2>🎉 Pasapalabra terminado</h2>
+        <div
+            style="
+                text-align:center;
+                padding:30px;
+            "
+        >
 
-            <p style="font-size:20px; margin-top:20px;">
-                <strong>${getTeamName(currentTeam)}</strong>
+            <h2>
+                🎉 Pasapalabra terminado
+            </h2>
+
+
+            <p
+                style="
+                    font-size:20px;
+                    margin-top:20px;
+                "
+            >
+                <strong>
+                    ${getTeamName(currentTeam)}
+                </strong>
             </p>
 
-            <p style="font-size:18px;">
-                ✅ Correctas: ${state.hits}
+
+            <p
+                style="
+                    font-size:18px;
+                    margin-top:20px;
+                "
+            >
+                ✅ Correctas:
+                <strong>
+                    ${state.hits}
+                </strong>
             </p>
 
-            <p style="font-size:18px;">
-                ❌ Incorrectas: ${state.misses}
+
+            <p
+                style="
+                    font-size:18px;
+                "
+            >
+                ❌ Incorrectas:
+                <strong>
+                    ${state.misses}
+                </strong>
             </p>
 
-            <p style="font-size:22px; margin-top:20px;">
-                🏆 Puntos obtenidos: <strong>${state.hits}</strong>
+
+            <p
+                style="
+                    font-size:22px;
+                    margin-top:20px;
+                "
+            >
+                🏆 Puntos obtenidos:
+                <strong>
+                    ${state.hits}
+                </strong>
             </p>
+
 
             <button
                 class="back-button"
                 onclick="closeRondo()"
-                style="margin-top:20px;"
+                style="
+                    margin-top:20px;
+                "
             >
                 Cerrar
             </button>
 
         </div>
+
     `;
+
 }
 
 
+/* =========================================================
+   NOMBRES DE LOS EQUIPOS
+   ========================================================= */
+
 function getTeamName(team) {
+
     if (team === "team1") {
-        return "Equipo 1";
+
+        return "Los Originales";
+
     }
+
 
     if (team === "team2") {
-        return "Equipo 2";
+
+        return "Los Herederos";
+
     }
+
 
     if (team === "team3") {
-        return "Equipo 3";
+
+        return "Las Históricas";
+
     }
 
+
     return team;
+
 }
 
 
@@ -1176,7 +1714,13 @@ function getTeamName(team) {
    INICIALIZACIÓN
    ========================================================= */
 
-document.addEventListener("DOMContentLoaded", function () {
-    loadScores();
-    updateScoreboard();
-});
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        loadScores();
+
+        updateScoreboard();
+
+    }
+);
