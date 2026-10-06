@@ -2201,41 +2201,86 @@ function resetRondo() {
    ========================================================= */
 
 function finishRondo() {
-
     if (!currentTeam) {
-
         return;
-
     }
 
+    const teams = [
+        "team1",
+        "team2",
+        "team3"
+    ];
 
-    const state =
-        rondoState[
-            currentTeam
-        ];
+    /*
+     * Ordenamos los tres equipos
+     * según la cantidad de aciertos.
+     */
+    const results = teams.map(team => ({
+        team: team,
+        hits: rondoState[team].hits
+    }));
 
+    results.sort((a, b) => b.hits - a.hits);
 
-    if (
-        state.finished
-    ) {
+    /*
+     * 1° = 3 puntos
+     * 2° = 2 puntos
+     * 3° = 1 punto
+     */
+    scores[results[0].team].rondo = 3;
+    scores[results[1].team].rondo = 2;
+    scores[results[2].team].rondo = 1;
 
+    /*
+     * Los tres roscos quedan finalizados.
+     */
+    teams.forEach(team => {
+        rondoState[team].finished = true;
+    });
+
+    saveScores();
+    updateScoreboard();
+
+    const game = document.getElementById("rondo-game");
+
+    if (!game) {
         return;
-
     }
 
+    game.innerHTML = `
+        <div style="text-align:center;">
 
-    state.finished =
-        true;
+            <h2>🎉 Pasapalabra terminado</h2>
 
+            <p style="font-size:20px; margin-top:20px;">
+                🥇 ${getTeamName(results[0].team)}
+                — ${results[0].hits} aciertos
+                — <strong>3 puntos</strong>
+            </p>
 
-    const hits =
-        state.hits;
+            <p style="font-size:20px;">
+                🥈 ${getTeamName(results[1].team)}
+                — ${results[1].hits} aciertos
+                — <strong>2 puntos</strong>
+            </p>
 
+            <p style="font-size:20px;">
+                🥉 ${getTeamName(results[2].team)}
+                — ${results[2].hits} aciertos
+                — <strong>1 punto</strong>
+            </p>
 
-    scores[
-        currentTeam
-    ].rondo =
-        hits;
+            <button
+                class="back-button"
+                onclick="closeRondo()"
+                style="margin-top:20px;"
+            >
+                Cerrar
+            </button>
+
+        </div>
+    `;
+}
 
 
     saveScores();
