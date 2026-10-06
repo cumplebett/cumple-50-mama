@@ -57,7 +57,7 @@
 
 
 /* =========================================================
-   SIDEBAR
+   PANEL IZQUIERDO
    ========================================================= */
 
 .rondo-sidebar{
@@ -69,7 +69,11 @@
     position:relative!important;
     z-index:20!important;
 
-    padding-left:0!important;
+    /*
+       Solo movemos el contenido del panel
+       hacia adentro.
+    */
+    padding-left:25px!important;
     padding-right:10px!important;
 }
 
@@ -215,19 +219,17 @@
 
 
 /* =========================================================
-   TARJETA CENTRAL
+   TARJETA DE PREGUNTA
    ========================================================= */
 
 .question-card{
     position:absolute!important;
 
     /*
-       Movido hacia la derecha.
-       Antes: calc(50% - 110px)
-       Ahora: calc(50% - 40px)
+       VUELVE A LA POSICIÓN CENTRADA ANTERIOR.
+       NO mover este valor.
     */
-
-    left:calc(50% - 40px)!important;
+    left:calc(50% - 110px)!important;
     top:50%!important;
 
     transform:translate(-50%,-50%)!important;
@@ -361,6 +363,9 @@
     .rondo-sidebar{
         width:190px!important;
         min-width:190px!important;
+
+        padding-left:20px!important;
+        padding-right:10px!important;
     }
 
     .rosco{
@@ -371,7 +376,7 @@
     }
 
     .question-card{
-        left:calc(50% - 25px)!important;
+        left:calc(50% - 95px)!important;
         width:315px!important;
     }
 
@@ -1102,7 +1107,7 @@
 </div>
 
 
-<script src="script.js?v=14"></script>
+<script src="script.js?v=15"></script>
 
 </body>
 </html>
