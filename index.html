@@ -9,18 +9,13 @@
     <link rel="stylesheet" href="style.css">
 
 <style id="rosco-fix">
-
-/* =========================================================
-   PASAPALABRA
-   ========================================================= */
-
 .rondo-modal{
     position:fixed!important;
     inset:0!important;
     width:100vw!important;
     height:100vh!important;
     z-index:99999!important;
-    overflow:hidden!important;
+    overflow:hidden!important
 }
 
 .rondo-content{
@@ -28,408 +23,254 @@
     height:100%!important;
     display:flex!important;
     flex-direction:column!important;
-    overflow:hidden!important;
+    overflow:hidden!important
 }
 
 .rondo-topbar,
 .rondo-tabs{
     flex:0 0 auto!important;
     position:relative!important;
-    z-index:30!important;
+    z-index:30!important
 }
-
-
-/* =========================================================
-   LAYOUT
-   ========================================================= */
 
 .rondo-layout{
     flex:1 1 auto!important;
     min-height:0!important;
     width:100%!important;
-
     display:grid!important;
-
     grid-template-columns:220px minmax(0,1fr)!important;
-
-    overflow:hidden!important;
+    overflow:hidden!important
 }
-
-
-/* =========================================================
-   PANEL IZQUIERDO
-   ========================================================= */
 
 .rondo-sidebar{
     width:220px!important;
     min-width:220px!important;
-
     box-sizing:border-box!important;
-
     position:relative!important;
-    z-index:20!important;
-
-    padding-left:0!important;
-    padding-right:10px!important;
-
-    /*
-       SOLO MOVEMOS EL PANEL HACIA LA DERECHA.
-       Esto NO modifica la posición del rosco
-       ni la tarjeta de preguntas.
-    */
-    transform:translateX(190px)!important;
+    z-index:20!important
 }
-
-
-/* =========================================================
-   ZONA PRINCIPAL
-   ========================================================= */
 
 .rondo-main{
     position:relative!important;
-
     width:100%!important;
     height:100%!important;
-
     min-width:0!important;
     min-height:0!important;
-
-    overflow:hidden!important;
+    overflow:hidden!important
 }
-
-
-/* =========================================================
-   ROSCO
-   ========================================================= */
 
 .rosco{
     position:absolute!important;
-
-    width:min(720px,92vh)!important;
-    height:min(720px,92vh)!important;
-
-    left:calc(50% - 110px)!important;
+    width:min(620px,72vh)!important;
+    height:min(620px,72vh)!important;
+    left:50%!important;
     top:50%!important;
-
     transform:translate(-50%,-50%)!important;
-
     margin:0!important;
     padding:0!important;
-
     border:0!important;
     border-radius:50%!important;
-
     z-index:2!important;
-
-    pointer-events:none!important;
+    pointer-events:none!important
 }
-
-
-/* =========================================================
-   LETRAS
-   ========================================================= */
 
 .rosco-letter{
     position:absolute!important;
-
     width:48px!important;
     height:48px!important;
-
     min-width:48px!important;
     min-height:48px!important;
-
     padding:0!important;
     margin:0!important;
-
     box-sizing:border-box!important;
-
     border-radius:50%!important;
-
     border:3px solid #fff!important;
-
     background:#1d1d22!important;
     color:#fff!important;
-
     display:flex!important;
     align-items:center!important;
     justify-content:center!important;
-
     font-family:Arial,sans-serif!important;
-
     font-size:18px!important;
     font-weight:800!important;
-
     line-height:1!important;
-
     cursor:pointer!important;
-
     transform:translate(-50%,-50%)!important;
-
     z-index:5!important;
-
     pointer-events:auto!important;
-
-    transition:
-        transform .15s ease,
-        background .15s ease,
-        box-shadow .15s ease!important;
+    transition:transform .15s ease,background .15s ease,box-shadow .15s ease!important
 }
-
-
-/* =========================================================
-   ESTADOS
-   ========================================================= */
 
 .rosco-letter.current{
     background:#ff1744!important;
     border-color:#ff1744!important;
     color:#fff!important;
-
-    transform:
-        translate(-50%,-50%)
-        scale(1.12)!important;
-
-    box-shadow:
-        0 0 25px
-        rgba(255,23,68,.65)!important;
+    transform:translate(-50%,-50%) scale(1.12)!important;
+    box-shadow:0 0 25px rgba(255,23,68,.65)!important
 }
 
 .rosco-letter.correct{
     background:#18c964!important;
     border-color:#18c964!important;
-    color:#fff!important;
+    color:#fff!important
 }
 
 .rosco-letter.wrong,
 .rosco-letter.incorrect{
     background:#ed0b2f!important;
     border-color:#ed0b2f!important;
-    color:#fff!important;
+    color:#fff!important
 }
 
 .rosco-letter.pass,
 .rosco-letter.passed{
     background:#ffd400!important;
     border-color:#ffd400!important;
-    color:#111!important;
+    color:#111!important
 }
 
 .rosco-letter:hover{
-    transform:
-        translate(-50%,-50%)
-        scale(1.08)!important;
+    transform:translate(-50%,-50%) scale(1.08)!important
 }
-
-
-/* =========================================================
-   TARJETA DE PREGUNTA
-   ========================================================= */
 
 .question-card{
     position:absolute!important;
-
-    /* CENTRADA — NO TOCAR */
-    left:calc(50% - 110px)!important;
+    left:50%!important;
     top:50%!important;
-
     transform:translate(-50%,-50%)!important;
-
     width:350px!important;
     min-height:300px!important;
-
     box-sizing:border-box!important;
-
     padding:28px!important;
-
     display:flex!important;
     flex-direction:column!important;
-
     align-items:center!important;
     justify-content:center!important;
-
     text-align:center!important;
-
-    z-index:10!important;
+    z-index:10!important
 }
-
 
 .question-letter{
     width:58px!important;
     height:58px!important;
-
     flex:0 0 58px!important;
-
     border-radius:50%!important;
-
     display:flex!important;
     align-items:center!important;
     justify-content:center!important;
-
     background:#ff1744!important;
     color:#fff!important;
-
     font-size:30px!important;
     font-weight:900!important;
-
-    margin-bottom:10px!important;
+    margin-bottom:10px!important
 }
-
 
 .question-type{
     color:#ff1744!important;
-
     font-size:12px!important;
     font-weight:900!important;
-
     text-transform:uppercase!important;
-
     letter-spacing:1.5px!important;
-
-    margin-bottom:12px!important;
+    margin-bottom:12px!important
 }
-
 
 #question-text{
     color:#fff!important;
-
     font-size:17px!important;
     font-weight:700!important;
-
     line-height:1.4!important;
-
     margin:0 0 20px 0!important;
-
-    max-width:290px!important;
+    max-width:290px!important
 }
-
-
-/* =========================================================
-   BOTONES
-   ========================================================= */
 
 .answer-actions{
     width:100%!important;
-
     display:grid!important;
-
     grid-template-columns:1fr 1fr!important;
-
-    gap:8px!important;
+    gap:8px!important
 }
 
 .answer-btn{
     width:100%!important;
-
     border:0!important;
-
     border-radius:10px!important;
-
     padding:11px 8px!important;
-
     font-size:13px!important;
     font-weight:800!important;
-
-    cursor:pointer!important;
+    cursor:pointer!important
 }
 
 .answer-btn.correct{
     background:#18c964!important;
-    color:#fff!important;
+    color:#fff!important
 }
 
 .answer-btn.pass{
     background:#ffd400!important;
-    color:#111!important;
+    color:#111!important
 }
 
 .answer-btn.wrong{
     background:#ed0b2f!important;
     color:#fff!important;
-
-    grid-column:1/-1!important;
+    grid-column:1/-1!important
 }
-
-
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
 
 @media(max-width:1100px){
 
     .rondo-layout{
-        grid-template-columns:190px minmax(0,1fr)!important;
+        grid-template-columns:180px minmax(0,1fr)!important
     }
 
     .rondo-sidebar{
-        width:190px!important;
-        min-width:190px!important;
-
-        transform:translateX(150px)!important;
-    }
-
-    .rosco{
-        width:min(650px,82vh)!important;
-        height:min(650px,82vh)!important;
-
-        left:calc(50% - 95px)!important;
-    }
-
-    .question-card{
-        left:calc(50% - 95px)!important;
-        width:315px!important;
+        width:180px!important;
+        min-width:180px!important
     }
 
     .rosco-letter{
         width:43px!important;
         height:43px!important;
-
         min-width:43px!important;
         min-height:43px!important;
+        font-size:16px!important
+    }
 
-        font-size:16px!important;
+    .question-card{
+        width:315px!important
     }
 
 }
-
 
 @media(max-width:800px){
 
     .rondo-layout{
-        grid-template-columns:1fr!important;
+        grid-template-columns:1fr!important
     }
 
     .rondo-sidebar{
-        display:none!important;
+        display:none!important
     }
 
     .rosco{
         width:min(500px,76vh)!important;
-        height:min(500px,76vh)!important;
-
-        left:50%!important;
+        height:min(500px,76vh)!important
     }
 
     .question-card{
-        width:280px!important;
-        left:50%!important;
+        width:280px!important
     }
 
 }
-
 </style>
 </head>
 
-
 <body>
-
 
 <header class="header">
 
     <div class="header-content">
 
-        <span class="heart">
-            ♥
-        </span>
+        <span class="heart">♥</span>
 
         <div>
 
@@ -449,7 +290,6 @@
 
 
 <main class="container">
-
 
     <section class="welcome">
 
@@ -482,7 +322,6 @@
 
 
         <div class="teams">
-
 
             <div class="team-card team-blue">
 
@@ -583,7 +422,6 @@
 
 
         <div class="games-grid">
-
 
             <button
                 class="game-card"
@@ -824,10 +662,6 @@
 </footer>
 
 
-<!-- =========================================================
-     MODAL GENERAL
-     ========================================================= -->
-
 <div
     id="game-modal"
     class="modal"
@@ -842,21 +676,17 @@
             ×
         </button>
 
-
         <div id="modal-icon">
             🎮
         </div>
-
 
         <h2 id="modal-title">
             Juego
         </h2>
 
-
         <div id="modal-description">
             Próximamente...
         </div>
-
 
         <button
             class="back-button"
@@ -870,17 +700,12 @@
 </div>
 
 
-<!-- =========================================================
-     MODAL PASAPALABRA
-     ========================================================= -->
-
 <div
     id="rondo-modal"
     class="rondo-modal"
 >
 
     <div class="rondo-content">
-
 
         <div class="rondo-topbar">
 
@@ -912,14 +737,12 @@
                     🏁 Finalizar Pasapalabra
                 </button>
 
-
                 <button
                     class="back-button"
                     onclick="resetRondo()"
                 >
                     Reiniciar Pasapalabra
                 </button>
-
 
                 <button
                     class="close-button rondo-close"
@@ -935,7 +758,6 @@
 
         <div class="rondo-tabs">
 
-
             <button
                 class="rondo-tab active"
                 onclick="selectRosco(1)"
@@ -943,14 +765,12 @@
                 🔴 Los Originales
             </button>
 
-
             <button
                 class="rondo-tab"
                 onclick="selectRosco(2)"
             >
                 🔵 Los Herederos
             </button>
-
 
             <button
                 class="rondo-tab"
@@ -964,14 +784,11 @@
 
         <div class="rondo-layout">
 
-
             <aside class="rondo-sidebar">
-
 
                 <p class="side-label">
                     EQUIPO EN TURNO
                 </p>
-
 
                 <div
                     class="turn-team"
@@ -980,13 +797,11 @@
                     🔴 Los Originales
                 </div>
 
-
                 <div class="rondo-score-box">
 
                     <span>
                         Aciertos del equipo
                     </span>
-
 
                     <strong
                         id="rondo-current-score"
@@ -1003,26 +818,21 @@
                         Cómo jugar
                     </strong>
 
-
                     <p>
                         Una letra por turno.
                     </p>
-
 
                     <p>
                         ✅ Correcto suma 1 punto.
                     </p>
 
-
                     <p>
                         🔄 Pasapalabra la deja pendiente.
                     </p>
 
-
                     <p>
                         ❌ Incorrecto la marca y continúa.
                     </p>
-
 
                     <p>
                         🏁 Al finalizar se asignan 3, 2 y 1 puntos.
@@ -1035,16 +845,13 @@
 
             <section class="rondo-main">
 
-
                 <div
                     class="rosco"
                     id="rosco"
-                >
-                </div>
+                ></div>
 
 
                 <div class="question-card">
-
 
                     <div
                         class="question-letter"
@@ -1053,14 +860,12 @@
                         A
                     </div>
 
-
                     <div
                         class="question-type"
                         id="question-type"
                     >
                         CON LA LETRA A
                     </div>
-
 
                     <p id="question-text">
                         Seleccioná una letra para comenzar.
@@ -1069,7 +874,6 @@
 
                     <div class="answer-actions">
 
-
                         <button
                             class="answer-btn correct"
                             onclick="answerQuestion('correct')"
@@ -1077,14 +881,12 @@
                             ✓ Correcto
                         </button>
 
-
                         <button
                             class="answer-btn pass"
                             onclick="answerQuestion('pass')"
                         >
                             ↻ Pasapalabra
                         </button>
-
 
                         <button
                             class="answer-btn wrong"
@@ -1106,7 +908,7 @@
 </div>
 
 
-<script src="script.js?v=18"></script>
+<script src="script.js?v=17"></script>
 
 </body>
 </html>
