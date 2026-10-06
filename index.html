@@ -1,46 +1,355 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>50 años de Bett ❤️</title>
 
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
+    <link rel="stylesheet" href="style.css">
 
+    <style>
+
+        /* =========================================================
+           PASAPALABRA — ROSCO
+           ========================================================= */
+
+        .rondo-main {
+            position: relative;
+            width: 100%;
+            min-height: 680px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .rosco {
+            position: absolute;
+            width: 620px;
+            height: 620px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .rosco-letter {
+            position: absolute !important;
+
+            width: 52px !important;
+            height: 52px !important;
+            min-width: 52px !important;
+            min-height: 52px !important;
+
+            padding: 0 !important;
+            margin: 0 !important;
+
+            border-radius: 50% !important;
+            border: 3px solid #ffffff !important;
+
+            background: #1d1d22 !important;
+            color: #ffffff !important;
+
+            font-size: 20px !important;
+            font-weight: 800 !important;
+            font-family: Arial, sans-serif !important;
+
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+
+            cursor: pointer !important;
+
+            box-sizing: border-box !important;
+
+            transform: translate(-50%, -50%);
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease,
+                border-color 0.2s ease,
+                box-shadow 0.2s ease;
+
+            z-index: 5;
+        }
+
+        /* POSICIONES */
+
+        .rosco-letter:nth-child(1)  { left: 50%; top: 0%; }
+        .rosco-letter:nth-child(2)  { left: 62%; top: 2%; }
+        .rosco-letter:nth-child(3)  { left: 74%; top: 7%; }
+        .rosco-letter:nth-child(4)  { left: 84%; top: 16%; }
+        .rosco-letter:nth-child(5)  { left: 92%; top: 27%; }
+        .rosco-letter:nth-child(6)  { left: 97%; top: 39%; }
+        .rosco-letter:nth-child(7)  { left: 100%; top: 50%; }
+        .rosco-letter:nth-child(8)  { left: 97%; top: 61%; }
+        .rosco-letter:nth-child(9)  { left: 92%; top: 73%; }
+        .rosco-letter:nth-child(10) { left: 84%; top: 84%; }
+        .rosco-letter:nth-child(11) { left: 74%; top: 93%; }
+        .rosco-letter:nth-child(12) { left: 62%; top: 98%; }
+        .rosco-letter:nth-child(13) { left: 50%; top: 100%; }
+        .rosco-letter:nth-child(14) { left: 38%; top: 98%; }
+        .rosco-letter:nth-child(15) { left: 26%; top: 93%; }
+        .rosco-letter:nth-child(16) { left: 16%; top: 84%; }
+        .rosco-letter:nth-child(17) { left: 8%; top: 73%; }
+        .rosco-letter:nth-child(18) { left: 3%; top: 61%; }
+        .rosco-letter:nth-child(19) { left: 0%; top: 50%; }
+        .rosco-letter:nth-child(20) { left: 3%; top: 39%; }
+        .rosco-letter:nth-child(21) { left: 8%; top: 27%; }
+        .rosco-letter:nth-child(22) { left: 16%; top: 16%; }
+        .rosco-letter:nth-child(23) { left: 26%; top: 7%; }
+        .rosco-letter:nth-child(24) { left: 38%; top: 2%; }
+        .rosco-letter:nth-child(25) { left: 44%; top: 0%; }
+        .rosco-letter:nth-child(26) { left: 56%; top: 0%; }
+
+        /* ESTADOS */
+
+        .rosco-letter.current {
+            background: #ff1744 !important;
+            border-color: #ff1744 !important;
+            color: #ffffff !important;
+
+            transform:
+                translate(-50%, -50%)
+                scale(1.12);
+
+            box-shadow:
+                0 0 25px rgba(255, 23, 68, 0.6);
+        }
+
+        .rosco-letter.correct {
+            background: #18c964 !important;
+            border-color: #18c964 !important;
+            color: #ffffff !important;
+        }
+
+        .rosco-letter.wrong {
+            background: #ed0b2f !important;
+            border-color: #ed0b2f !important;
+            color: #ffffff !important;
+        }
+
+        .rosco-letter.pass {
+            background: #ffd400 !important;
+            border-color: #ffd400 !important;
+            color: #111111 !important;
+        }
+
+        .rosco-letter:hover {
+            transform:
+                translate(-50%, -50%)
+                scale(1.08);
+        }
+
+        .rosco-letter.current:hover {
+            transform:
+                translate(-50%, -50%)
+                scale(1.14);
+        }
+
+        /* TARJETA CENTRAL */
+
+        .question-card {
+            position: relative;
+            z-index: 10;
+
+            width: 380px;
+            min-height: 310px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            background: #1d1d22;
+            border: 1px solid #38383f;
+            border-radius: 25px;
+
+            padding: 30px;
+
+            box-sizing: border-box;
+
+            box-shadow:
+                0 20px 50px rgba(0,0,0,0.35);
+        }
+
+        .question-letter {
+            width: 58px;
+            height: 58px;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #ff1744;
+            color: white;
+
+            font-size: 32px;
+            font-weight: 900;
+
+            margin-bottom: 12px;
+        }
+
+        .question-type {
+            color: #ff1744;
+
+            font-size: 13px;
+            font-weight: 900;
+
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+
+            margin-bottom: 15px;
+        }
+
+        #question-text {
+            color: white;
+
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.45;
+
+            margin: 0 0 25px 0;
+        }
+
+        .answer-actions {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .answer-btn {
+            border: none;
+            border-radius: 10px;
+
+            padding: 11px 14px;
+
+            font-size: 13px;
+            font-weight: 800;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.15s ease,
+                opacity 0.15s ease;
+        }
+
+        .answer-btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        .answer-btn.correct {
+            background: #18c964;
+            color: white;
+        }
+
+        .answer-btn.pass {
+            background: #ffd400;
+            color: #111;
+        }
+
+        .answer-btn.wrong {
+            background: #ed0b2f;
+            color: white;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 1000px) {
+
+            .rondo-main {
+                min-height: 590px;
+            }
+
+            .rosco {
+                width: 520px;
+                height: 520px;
+            }
+
+            .rosco-letter {
+                width: 44px !important;
+                height: 44px !important;
+                min-width: 44px !important;
+                min-height: 44px !important;
+
+                font-size: 17px !important;
+            }
+
+            .question-card {
+                width: 310px;
+                min-height: 270px;
+                padding: 24px;
+            }
+
+            #question-text {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            .rondo-main {
+                min-height: 520px;
+            }
+
+            .rosco {
+                width: 420px;
+                height: 420px;
+            }
+
+            .rosco-letter {
+                width: 38px !important;
+                height: 38px !important;
+                min-width: 38px !important;
+                min-height: 38px !important;
+
+                font-size: 14px !important;
+                border-width: 2px !important;
+            }
+
+            .question-card {
+                width: 270px;
+                min-height: 250px;
+                padding: 20px;
+            }
+
+            .question-letter {
+                width: 48px;
+                height: 48px;
+                font-size: 25px;
+            }
+
+            #question-text {
+                font-size: 14px;
+            }
+        }
+
+    </style>
 </head>
 
-
 <body>
-
 
 <header class="header">
 
     <div class="header-content">
 
-        <span class="heart">
-            ♥
-        </span>
+        <span class="heart">♥</span>
 
         <div>
-
-            <p class="eyebrow">
-                EL GRAN CUMPLEAÑOS
-            </p>
+            <p class="eyebrow">EL GRAN CUMPLEAÑOS</p>
 
             <h1>
                 50 AÑOS DE BETT
             </h1>
-
         </div>
 
     </div>
@@ -48,13 +357,9 @@
 </header>
 
 
-
 <main class="container">
 
-
-    <!-- =========================================
-         BIENVENIDA
-         ========================================= -->
+    <!-- BIENVENIDA -->
 
     <section class="welcome">
 
@@ -73,18 +378,13 @@
     </section>
 
 
-
-    <!-- =========================================
-         MARCADOR GENERAL
-         ========================================= -->
+    <!-- MARCADOR GENERAL -->
 
     <section class="scoreboard">
 
         <div class="section-title">
 
-            <span>
-                🏆
-            </span>
+            <span>🏆</span>
 
             <h3>
                 Marcador general
@@ -94,9 +394,6 @@
 
 
         <div class="teams">
-
-
-            <!-- EQUIPO 1 -->
 
             <div class="team-card team-blue">
 
@@ -122,9 +419,6 @@
             </div>
 
 
-
-            <!-- EQUIPO 2 -->
-
             <div class="team-card team-green">
 
                 <div class="team-icon">
@@ -148,9 +442,6 @@
 
             </div>
 
-
-
-            <!-- EQUIPO 3 -->
 
             <div class="team-card team-purple">
 
@@ -178,9 +469,6 @@
         </div>
 
 
-
-        <!-- REINICIAR MARCADOR -->
-
         <button
             class="back-button"
             onclick="resetScores()"
@@ -192,18 +480,13 @@
     </section>
 
 
-
-    <!-- =========================================
-         JUEGOS
-         ========================================= -->
+    <!-- JUEGOS -->
 
     <section class="games">
 
         <div class="section-title">
 
-            <span>
-                🎮
-            </span>
+            <span>🎮</span>
 
             <h3>
                 Juegos
@@ -213,9 +496,6 @@
 
 
         <div class="games-grid">
-
-
-            <!-- KAHOOT -->
 
             <button
                 class="game-card"
@@ -245,9 +525,6 @@
             </button>
 
 
-
-            <!-- PASAPALABRA -->
-
             <button
                 class="game-card"
                 onclick="openGame('rondo')"
@@ -276,9 +553,6 @@
             </button>
 
 
-
-            <!-- CANCIONES -->
-
             <button
                 class="game-card"
                 onclick="openGame('songs')"
@@ -306,24 +580,18 @@
 
             </button>
 
-
         </div>
 
     </section>
 
 
-
-    <!-- =========================================
-         PUNTAJES POR JUEGO
-         ========================================= -->
+    <!-- PUNTAJES POR JUEGO -->
 
     <section class="details">
 
         <div class="section-title">
 
-            <span>
-                📊
-            </span>
+            <span>📊</span>
 
             <h3>
                 Puntajes por juego
@@ -340,25 +608,11 @@
 
                     <tr>
 
-                        <th>
-                            Equipo
-                        </th>
-
-                        <th>
-                            🧠 Kahoot
-                        </th>
-
-                        <th>
-                            🔤 Pasapalabra
-                        </th>
-
-                        <th>
-                            🎵 Canciones
-                        </th>
-
-                        <th>
-                            Total
-                        </th>
+                        <th>Equipo</th>
+                        <th>🧠 Kahoot</th>
+                        <th>🔤 Pasapalabra</th>
+                        <th>🎵 Canciones</th>
+                        <th>Total</th>
 
                     </tr>
 
@@ -367,26 +621,17 @@
 
                 <tbody>
 
-
-                    <!-- EQUIPO 1 -->
-
                     <tr>
 
                         <td>
                             🔴 Los Originales
                         </td>
 
-                        <td id="kahoot-1">
-                            0
-                        </td>
+                        <td id="kahoot-1">0</td>
 
-                        <td id="rondo-1">
-                            0
-                        </td>
+                        <td id="rondo-1">0</td>
 
-                        <td id="songs-1">
-                            0
-                        </td>
+                        <td id="songs-1">0</td>
 
                         <td
                             class="total"
@@ -398,26 +643,17 @@
                     </tr>
 
 
-
-                    <!-- EQUIPO 2 -->
-
                     <tr>
 
                         <td>
                             🔵 Los Herederos
                         </td>
 
-                        <td id="kahoot-2">
-                            0
-                        </td>
+                        <td id="kahoot-2">0</td>
 
-                        <td id="rondo-2">
-                            0
-                        </td>
+                        <td id="rondo-2">0</td>
 
-                        <td id="songs-2">
-                            0
-                        </td>
+                        <td id="songs-2">0</td>
 
                         <td
                             class="total"
@@ -429,26 +665,17 @@
                     </tr>
 
 
-
-                    <!-- EQUIPO 3 -->
-
                     <tr>
 
                         <td>
                             🟢 Las Históricas
                         </td>
 
-                        <td id="kahoot-3">
-                            0
-                        </td>
+                        <td id="kahoot-3">0</td>
 
-                        <td id="rondo-3">
-                            0
-                        </td>
+                        <td id="rondo-3">0</td>
 
-                        <td id="songs-3">
-                            0
-                        </td>
+                        <td id="songs-3">0</td>
 
                         <td
                             class="total"
@@ -459,7 +686,6 @@
 
                     </tr>
 
-
                 </tbody>
 
             </table>
@@ -468,14 +694,8 @@
 
     </section>
 
-
 </main>
 
-
-
-<!-- =========================================
-     FOOTER
-     ========================================= -->
 
 <footer>
 
@@ -486,10 +706,7 @@
 </footer>
 
 
-
-<!-- =========================================
-     MODAL GENERAL
-     ========================================= -->
+<!-- MODAL GENERAL -->
 
 <div
     id="game-modal"
@@ -497,7 +714,6 @@
 >
 
     <div class="modal-content">
-
 
         <button
             class="close-button"
@@ -529,16 +745,12 @@
             Volver al inicio
         </button>
 
-
     </div>
 
 </div>
 
 
-
-<!-- =========================================
-     MODAL PASAPALABRA
-     ========================================= -->
+<!-- MODAL PASAPALABRA -->
 
 <div
     id="rondo-modal"
@@ -547,8 +759,6 @@
 
     <div class="rondo-content">
 
-
-        <!-- CABECERA -->
 
         <div class="rondo-topbar">
 
@@ -567,14 +777,11 @@
 
             <div
                 style="
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
+                    display:flex;
+                    align-items:center;
+                    gap:10px;
                 "
             >
-
-
-                <!-- FINALIZAR -->
 
                 <button
                     class="back-button"
@@ -584,8 +791,6 @@
                 </button>
 
 
-                <!-- REINICIAR -->
-
                 <button
                     class="back-button"
                     onclick="resetRondo()"
@@ -594,8 +799,6 @@
                 </button>
 
 
-                <!-- CERRAR -->
-
                 <button
                     class="close-button rondo-close"
                     onclick="closeRondo()"
@@ -603,65 +806,47 @@
                     ×
                 </button>
 
-
             </div>
 
         </div>
 
 
-
-        <!-- =========================================
-             EQUIPOS
-             ========================================= -->
+        <!-- TABS -->
 
         <div class="rondo-tabs">
 
-
-            <!-- LOS ORIGINALES -->
-
             <button
                 class="rondo-tab active"
-                onclick="selectRosco('team1')"
+                onclick="selectRosco(1)"
             >
                 🔴 Los Originales
             </button>
 
 
-            <!-- LOS HEREDEROS -->
-
             <button
                 class="rondo-tab"
-                onclick="selectRosco('team2')"
+                onclick="selectRosco(2)"
             >
                 🔵 Los Herederos
             </button>
 
 
-            <!-- LAS HISTÓRICAS -->
-
             <button
                 class="rondo-tab"
-                onclick="selectRosco('team3')"
+                onclick="selectRosco(3)"
             >
                 🟢 Las Históricas
             </button>
 
-
         </div>
 
-
-
-        <!-- =========================================
-             CONTENIDO
-             ========================================= -->
 
         <div class="rondo-layout">
 
 
-            <!-- PANEL LATERAL -->
+            <!-- SIDEBAR -->
 
             <aside class="rondo-sidebar">
-
 
                 <p class="side-label">
                     EQUIPO EN TURNO
@@ -682,7 +867,6 @@
                         Aciertos del equipo
                     </span>
 
-
                     <strong id="rondo-current-score">
                         0
                     </strong>
@@ -690,35 +874,27 @@
                 </div>
 
 
-
-                <!-- INSTRUCCIONES -->
-
                 <div class="rondo-instructions">
 
                     <strong>
                         Cómo jugar
                     </strong>
 
-
                     <p>
                         Una letra por turno.
                     </p>
-
 
                     <p>
                         ✅ Correcto suma 1 punto.
                     </p>
 
-
                     <p>
                         🔄 Pasapalabra la deja pendiente.
                     </p>
 
-
                     <p>
                         ❌ Incorrecto la marca y continúa.
                     </p>
-
 
                     <p>
                         🏁 Al finalizar se asignan 3, 2 y 1 puntos.
@@ -726,19 +902,12 @@
 
                 </div>
 
-
             </aside>
 
 
-
-            <!-- =====================================
-                 CENTRO
-                 ===================================== -->
+            <!-- ROSCO -->
 
             <section class="rondo-main">
-
-
-                <!-- ROSCO -->
 
                 <div
                     class="rosco"
@@ -747,11 +916,7 @@
                 </div>
 
 
-
-                <!-- PREGUNTA -->
-
                 <div class="question-card">
-
 
                     <div
                         class="question-letter"
@@ -774,11 +939,7 @@
                     </p>
 
 
-
-                    <!-- BOTONES -->
-
                     <div class="answer-actions">
-
 
                         <button
                             class="answer-btn correct"
@@ -803,14 +964,11 @@
                             ✕ Incorrecto
                         </button>
 
-
                     </div>
 
                 </div>
 
-
             </section>
-
 
         </div>
 
@@ -819,14 +977,7 @@
 </div>
 
 
-
-<!-- =========================================
-     JAVASCRIPT
-     ========================================= -->
-
 <script src="script.js?v=8"></script>
 
-
 </body>
-
 </html>
