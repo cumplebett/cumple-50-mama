@@ -5871,7 +5871,7 @@ function finishSongsGame() {
     closeSongsGame();
 }
 
-}
+
 function closeSongsGame() {
 
     songsGameOpen = false;
