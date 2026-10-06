@@ -2283,59 +2283,6 @@ function finishRondo() {
 }
 
 
-    saveScores();
-
-    updateScoreboard();
-
-
-    const letterDisplay =
-        document.getElementById(
-            "question-letter"
-        );
-
-
-    const typeDisplay =
-        document.getElementById(
-            "question-type"
-        );
-
-
-    const questionDisplay =
-        document.getElementById(
-            "question-text"
-        );
-
-
-    if (letterDisplay) {
-
-        letterDisplay.textContent =
-            "✓";
-
-    }
-
-
-    if (typeDisplay) {
-
-        typeDisplay.textContent =
-            "PASAPALABRA FINALIZADO";
-
-    }
-
-
-    if (questionDisplay) {
-
-        questionDisplay.textContent =
-            `${getTeamName(
-                currentTeam
-            )} terminó con ${hits} aciertos.`;
-
-    }
-
-
-    renderRosco();
-
-}
-
 
 /* =========================================================
    NOMBRE EQUIPO
