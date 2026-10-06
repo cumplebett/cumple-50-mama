@@ -69,12 +69,15 @@
     position:relative!important;
     z-index:20!important;
 
-    /*
-       Solo movemos el contenido del panel
-       hacia adentro.
-    */
-    padding-left:25px!important;
+    padding-left:0!important;
     padding-right:10px!important;
+
+    /*
+       SOLO MOVEMOS EL PANEL HACIA LA DERECHA.
+       Esto NO modifica la posición del rosco
+       ni la tarjeta de preguntas.
+    */
+    transform:translateX(190px)!important;
 }
 
 
@@ -225,10 +228,7 @@
 .question-card{
     position:absolute!important;
 
-    /*
-       VUELVE A LA POSICIÓN CENTRADA ANTERIOR.
-       NO mover este valor.
-    */
+    /* CENTRADA — NO TOCAR */
     left:calc(50% - 110px)!important;
     top:50%!important;
 
@@ -364,8 +364,7 @@
         width:190px!important;
         min-width:190px!important;
 
-        padding-left:20px!important;
-        padding-right:10px!important;
+        transform:translateX(150px)!important;
     }
 
     .rosco{
@@ -1107,7 +1106,7 @@
 </div>
 
 
-<script src="script.js?v=15"></script>
+<script src="script.js?v=16"></script>
 
 </body>
 </html>
