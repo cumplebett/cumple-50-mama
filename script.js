@@ -3639,46 +3639,41 @@ function openSongsGame() {
                  ===================================== -->
 
             <div
-                class="songs-bottom"
-            >
+                <div class="songs-bottom">
 
-                <button
-                    type="button"
-                    class="songs-next"
-                    onclick="nextSong()"
-                >
-                    🎵 Nueva canción
-                </button>
+    <button
+        type="button"
+        class="songs-next"
+        onclick="nextSong()"
+    >
+        🎵 Nueva canción
+    </button>
 
+    <button
+        type="button"
+        class="songs-finish"
+        onclick="finishSongsGame()"
+    >
+        🏁 Finalizar juego
+    </button>
 
-                <div
-                    class="songs-bottom-right"
-                >
+    <button
+        type="button"
+        class="songs-restart-game"
+        onclick="resetSongsGame()"
+    >
+        🔄 Reiniciar juego
+    </button>
 
-                    <button
-                        type="button"
-                        class="songs-reset"
-                        onclick="resetScores()"
-                    >
-                        🔄 Reiniciar marcador general
-                    </button>
+    <button
+        type="button"
+        class="songs-close-bottom"
+        onclick="closeSongsGame()"
+    >
+        Cerrar juego
+    </button>
 
-
-                    <button
-                        type="button"
-                        class="songs-close-bottom"
-                        onclick="closeSongsGame()"
-                    >
-                        Cerrar juego
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    `;
+</div>
 
 
     updateSongsScoreboard();
