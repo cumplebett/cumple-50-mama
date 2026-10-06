@@ -321,73 +321,73 @@ const rosco3 = {
         type: "starts"
     },
     G: {
-        clue: "Estilo artístico y arquitectónico caracterizado por grandes catedrales, arcos apuntados y vitrales.",
-        answer: "GÓTICO",
-        type: "starts"
+        clue: "Apellido del famoso tenista suizo considerado uno de los mejores de todos los tiempos.",
+        answer: "FEDERER",
+        type: "contains"
     },
     H: {
-        clue: "Dios griego del inframundo y de los muertos.",
-        answer: "HADES",
+        clue: "Nombre del país cuya capital es Budapest.",
+        answer: "HUNGRÍA",
         type: "starts"
     },
     I: {
-        clue: "Isla argentina donde se encuentra la ciudad de Ushuaia.",
-        answer: "TIERRA DEL FUEGO",
+        clue: "Apellido del célebre pintor español autor del Guernica.",
+        answer: "PICASSO",
         type: "contains"
     },
     J: {
-        clue: "Nombre del famoso boxeador estadounidense apodado “The Greatest”.",
-        answer: "ALI",
-        type: "contains"
-    },
-    K: {
-        clue: "Arte marcial japonés cuyo nombre significa “camino de la suavidad”.",
-        answer: "JUDO",
-        type: "contains"
-    },
-    L: {
-        clue: "Apellido del cantante británico, exintegrante de The Beatles.",
-        answer: "LENNON",
-        type: "starts"
-    },
-    M: {
-        clue: "Capital de España.",
-        answer: "MADRID",
-        type: "starts"
-    },
-    N: {
-        clue: "Nombre del barco de la película Titanic.",
-        answer: "TITANIC",
-        type: "contains"
-    },
-    O: {
-        clue: "Apellido del célebre escritor colombiano autor de Cien años de soledad.",
-        answer: "GABO",
-        type: "contains"
-    },
-    P: {
-        clue: "Famoso personaje de historieta argentina creado por Quino.",
+        clue: "Nombre del famoso personaje de historieta argentino creado por Quino.",
         answer: "MAFALDA",
         type: "contains"
     },
+    K: {
+        clue: "Unidad de medida equivalente a mil gramos.",
+        answer: "KILOGRAMO",
+        type: "starts"
+    },
+    L: {
+        clue: "Apellido del famoso músico argentino conocido como “El Flaco”.",
+        answer: "SPINETTA",
+        type: "contains"
+    },
+    M: {
+        clue: "Animal mamífero conocido por su capacidad de cambiar de color.",
+        answer: "CAMALEÓN",
+        type: "contains"
+    },
+    N: {
+        clue: "Nombre de la capital de Francia.",
+        answer: "PARÍS",
+        type: "contains"
+    },
+    O: {
+        clue: "Elemento químico cuyo símbolo es O.",
+        answer: "OXÍGENO",
+        type: "starts"
+    },
+    P: {
+        clue: "Apellido del delantero argentino considerado uno de los máximos goleadores de la historia.",
+        answer: "BATISTUTA",
+        type: "contains"
+    },
     Q: {
-        clue: "Nombre de la reina protagonista de la película Frozen.",
-        answer: "ELSA",
+        clue: "Nombre del personaje principal de la serie Breaking Bad.",
+        answer: "WALTER WHITE",
         type: "contains"
     },
     R: {
-        clue: "Planeta conocido como el planeta rojo.",
-        answer: "MARTE",
-        type: "contains"
+        clue: "Capital de Italia.",
+        answer: "ROMA",
+        type: "starts"
     },
     S: {
-        clue: "Apellido del famoso científico que formuló las leyes del movimiento.",
-        answer: "NEWTON",
+        clue: "Nombre del satélite natural de la Tierra.",
+        answer: "LUNA",
         type: "contains"
     },
     T: {
-        clue: "Nombre de la torre parisina símbolo de Francia.",
-        answer: "EIFFEL",
+        clue: "Apellido del actor que interpretó a Jack Sparrow.",
+        answer: "DEPP",
         type: "contains"
     },
     U: {
@@ -396,35 +396,35 @@ const rosco3 = {
         type: "starts"
     },
     V: {
-        clue: "Combustible fósil líquido utilizado principalmente en motores.",
-        answer: "NAFTA",
-        type: "contains"
+        clue: "Nombre de la ciudad italiana famosa por sus canales y góndolas.",
+        answer: "VENECIA",
+        type: "starts"
     },
     W: {
-        clue: "Famosa ensalada preparada con manzana, apio, nueces y mayonesa.",
-        answer: "WALDORF",
-        type: "starts"
-    },
-    X: {
-        clue: "Medio de transporte protagonista de una canción de Pitbull.",
-        answer: "TAXI",
+        clue: "Apellido del famoso fundador de Microsoft.",
+        answer: "GATES",
         type: "contains"
     },
-    Y: {
-        clue: "Antiguo país de Europa que se disolvió durante la década de 1990.",
-        answer: "YUGOSLAVIA",
+    X: {
+        clue: "Instrumento musical de láminas metálicas o de madera que se golpean con baquetas.",
+        answer: "XILÓFONO",
         type: "starts"
     },
+    Y: {
+        clue: "Nombre de la bebida alcohólica japonesa elaborada a partir de arroz fermentado.",
+        answer: "SAKE",
+        type: "contains"
+    },
     Z: {
-        clue: "Disciplina de ejercicio aeróbico que combina baile y música.",
-        answer: "ZUMBA",
+        clue: "Apellido del famoso jugador argentino que fue capitán de la Selección durante varios años.",
+        answer: "ZANETTI",
         type: "starts"
     }
 };
 
 
 /* =========================================================
-   EQUIPOS
+   DATOS DE EQUIPOS
    ========================================================= */
 
 const TEAM_DATA = {
@@ -435,7 +435,7 @@ const TEAM_DATA = {
 
 
 /* =========================================================
-   ESTADO
+   ESTADO DEL ROSCO
    ========================================================= */
 
 function createInitialRondoState() {
@@ -459,13 +459,16 @@ const rondoState = {
 };
 
 
-let currentTeam = null;
-let currentRosco = null;
+let currentTeam = "team1";
+
+let currentRosco =
+    TEAM_DATA.team1;
+
 let currentLetterIndex = 0;
 
 
 /* =========================================================
-   STORAGE
+   CARGAR PUNTAJES
    ========================================================= */
 
 function loadScores() {
@@ -473,39 +476,46 @@ function loadScores() {
     try {
 
         const saved =
-            localStorage.getItem("bettScores");
+            localStorage.getItem(
+                "bettScores"
+            );
 
-        if (saved) {
 
-            const parsed =
-                JSON.parse(saved);
+        if (!saved) {
+            return;
+        }
 
-            if (parsed.team1) {
 
-                scores.team1 = {
-                    ...scores.team1,
-                    ...parsed.team1
-                };
+        const parsed =
+            JSON.parse(saved);
 
-            }
 
-            if (parsed.team2) {
+        if (parsed.team1) {
 
-                scores.team2 = {
-                    ...scores.team2,
-                    ...parsed.team2
-                };
+            scores.team1 = {
+                ...scores.team1,
+                ...parsed.team1
+            };
 
-            }
+        }
 
-            if (parsed.team3) {
 
-                scores.team3 = {
-                    ...scores.team3,
-                    ...parsed.team3
-                };
+        if (parsed.team2) {
 
-            }
+            scores.team2 = {
+                ...scores.team2,
+                ...parsed.team2
+            };
+
+        }
+
+
+        if (parsed.team3) {
+
+            scores.team3 = {
+                ...scores.team3,
+                ...parsed.team3
+            };
 
         }
 
@@ -521,6 +531,10 @@ function loadScores() {
 }
 
 
+/* =========================================================
+   GUARDAR PUNTAJES
+   ========================================================= */
+
 function saveScores() {
 
     localStorage.setItem(
@@ -530,6 +544,10 @@ function saveScores() {
 
 }
 
+
+/* =========================================================
+   TOTAL
+   ========================================================= */
 
 function getTotal(team) {
 
@@ -557,25 +575,30 @@ function updateScoreboard() {
         const team =
             "team" + i;
 
+
         const total =
             document.getElementById(
                 "score-team-" + i
             );
+
 
         const kahoot =
             document.getElementById(
                 "kahoot-" + i
             );
 
+
         const rondo =
             document.getElementById(
                 "rondo-" + i
             );
 
+
         const songs =
             document.getElementById(
                 "songs-" + i
             );
+
 
         const totalCell =
             document.getElementById(
@@ -584,34 +607,52 @@ function updateScoreboard() {
 
 
         if (total) {
+
             total.textContent =
                 getTotal(team);
+
         }
+
 
         if (kahoot) {
+
             kahoot.textContent =
                 scores[team].kahoot;
+
         }
+
 
         if (rondo) {
+
             rondo.textContent =
                 scores[team].rondo;
+
         }
+
 
         if (songs) {
+
             songs.textContent =
                 scores[team].songs;
+
         }
 
+
         if (totalCell) {
+
             totalCell.textContent =
                 getTotal(team);
+
         }
 
     }
 
 }
 
+
+/* =========================================================
+   SUMAR PUNTOS
+   ========================================================= */
 
 function addPoints(
     team,
@@ -623,10 +664,14 @@ function addPoints(
         !scores[team] ||
         scores[team][game] === undefined
     ) {
+
         return;
+
     }
 
+
     scores[team][game] += points;
+
 
     saveScores();
 
@@ -646,8 +691,11 @@ function resetScores() {
             "¿Seguro que querés reiniciar el marcador general?"
         );
 
+
     if (!confirmation) {
+
         return;
+
     }
 
 
@@ -669,6 +717,7 @@ function resetScores() {
     saveScores();
 
     updateScoreboard();
+
 
     alert(
         "🔄 Marcador reiniciado correctamente."
@@ -694,20 +743,41 @@ function openGame(game) {
     }
 
 
+    /*
+     * CANCIONES
+     *
+     * No usamos el modal general.
+     * El juego tiene su propia interfaz.
+     */
+
+    if (
+        game === "songs"
+    ) {
+
+        openSongsGame();
+
+        return;
+
+    }
+
+
     const modal =
         document.getElementById(
             "game-modal"
         );
+
 
     const title =
         document.getElementById(
             "modal-title"
         );
 
+
     const description =
         document.getElementById(
             "modal-description"
         );
+
 
     const icon =
         document.getElementById(
@@ -716,7 +786,9 @@ function openGame(game) {
 
 
     if (!modal) {
+
         return;
+
     }
 
 
@@ -725,12 +797,20 @@ function openGame(game) {
     ) {
 
         if (icon) {
-            icon.textContent = "🧠";
+
+            icon.textContent =
+                "🧠";
+
         }
 
+
         if (title) {
-            title.textContent = "Kahoot";
+
+            title.textContent =
+                "Kahoot";
+
         }
+
 
         if (description) {
 
@@ -881,6 +961,7 @@ function openGame(game) {
                     </button>
 
                 </div>
+
             `;
 
         }
@@ -888,12 +969,3401 @@ function openGame(game) {
     }
 
 
+    modal.classList.add(
+        "active"
+    );
+
+}
+
+
+/* =========================================================
+   KAHOOT
+   ========================================================= */
+
+function saveKahootResult() {
+
+    const first =
+        document.getElementById(
+            "kahoot-team-1"
+        );
+
+
+    const second =
+        document.getElementById(
+            "kahoot-team-2"
+        );
+
+
+    const third =
+        document.getElementById(
+            "kahoot-team-3"
+        );
+
+
     if (
-        game === "songs"
+        !first ||
+        !second ||
+        !third
     ) {
 
-        openSongsGame();
+        alert(
+            "No se pudo cargar el resultado."
+        );
 
         return;
 
     }
+
+
+    const teamFirst =
+        first.value;
+
+
+    const teamSecond =
+        second.value;
+
+
+    const teamThird =
+        third.value;
+
+
+    if (
+        !teamFirst ||
+        !teamSecond ||
+        !teamThird
+    ) {
+
+        alert(
+            "⚠️ Tenés que seleccionar los tres puestos."
+        );
+
+        return;
+
+    }
+
+
+    scores.team1.kahoot = 0;
+    scores.team2.kahoot = 0;
+    scores.team3.kahoot = 0;
+
+
+    scores[teamFirst].kahoot += 3;
+
+    scores[teamSecond].kahoot += 2;
+
+    scores[teamThird].kahoot += 1;
+
+
+    saveScores();
+
+    updateScoreboard();
+
+
+    alert(
+        "🏆 Resultado de Kahoot guardado correctamente."
+    );
+
+
+    closeGame();
+
+}
+
+
+/* =========================================================
+   CERRAR MODAL
+   ========================================================= */
+
+function closeGame() {
+
+    const modal =
+        document.getElementById(
+            "game-modal"
+        );
+
+
+    if (modal) {
+
+        modal.classList.remove(
+            "active"
+        );
+
+    }
+
+}
+/* =========================================================
+   PASAPALABRA
+   ========================================================= */
+
+function openRondo() {
+
+    const modal =
+        document.getElementById(
+            "rondo-modal"
+        );
+
+    if (!modal) {
+        return;
+    }
+
+
+    modal.classList.add(
+        "active"
+    );
+
+
+    rondoState.team1 =
+        createInitialRondoState();
+
+    rondoState.team2 =
+        createInitialRondoState();
+
+    rondoState.team3 =
+        createInitialRondoState();
+
+
+    [
+        "team1",
+        "team2",
+        "team3"
+    ].forEach(
+        team => {
+
+            scores[
+                team
+            ].rondo = 0;
+
+
+            Object.keys(
+                TEAM_DATA[
+                    team
+                ]
+            ).forEach(
+                letter => {
+
+                    TEAM_DATA[
+                        team
+                    ][
+                        letter
+                    ].correct =
+                        undefined;
+
+                }
+            );
+
+        }
+    );
+
+
+    saveScores();
+
+    updateScoreboard();
+
+
+    currentTeam =
+        "team1";
+
+
+    currentRosco =
+        TEAM_DATA.team1;
+
+
+    currentLetterIndex =
+        0;
+
+
+    updateRondoTabs();
+
+    updateRondoTeamUI();
+
+    renderRosco();
+
+    showCurrentQuestion();
+
+}
+
+
+/* =========================================================
+   CERRAR PASAPALABRA
+   ========================================================= */
+
+function closeRondo() {
+
+    const modal =
+        document.getElementById(
+            "rondo-modal"
+        );
+
+
+    if (modal) {
+
+        modal.classList.remove(
+            "active"
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   SELECCIONAR ROSCO
+   ========================================================= */
+
+function selectRosco(
+    team
+) {
+
+    if (
+        !TEAM_DATA[team]
+    ) {
+
+        return;
+
+    }
+
+
+    currentTeam =
+        team;
+
+
+    currentRosco =
+        TEAM_DATA[
+            team
+        ];
+
+
+    const state =
+        rondoState[
+            team
+        ];
+
+
+    currentLetterIndex =
+        state.currentIndex;
+
+
+    updateRondoTabs();
+
+    updateRondoTeamUI();
+
+    renderRosco();
+
+    showCurrentQuestion();
+
+}
+
+
+/* =========================================================
+   TABS
+   ========================================================= */
+
+function updateRondoTabs() {
+
+    document
+        .querySelectorAll(
+            ".rondo-tab"
+        )
+        .forEach(
+            tab => {
+
+                tab.classList.remove(
+                    "active"
+                );
+
+                if (
+                    tab.dataset.team ===
+                    currentTeam
+                ) {
+
+                    tab.classList.add(
+                        "active"
+                    );
+
+                }
+
+            }
+        );
+
+}
+
+
+/* =========================================================
+   UI DEL EQUIPO
+   ========================================================= */
+
+function updateRondoTeamUI() {
+
+    const teamName =
+        document.getElementById(
+            "rondo-team-name"
+        );
+
+
+    const score =
+        document.getElementById(
+            "rondo-score"
+        );
+
+
+    if (teamName) {
+
+        teamName.textContent =
+            getTeamName(
+                currentTeam
+            );
+
+    }
+
+
+    if (score) {
+
+        score.textContent =
+            rondoState[
+                currentTeam
+            ].hits;
+
+    }
+
+}
+
+
+/* =========================================================
+   MARCADOR DEL ROSCO
+   ========================================================= */
+
+function updateRondoScore() {
+
+    const state =
+        rondoState[
+            currentTeam
+        ];
+
+
+    const score =
+        document.getElementById(
+            "rondo-score"
+        );
+
+
+    const hits =
+        document.getElementById(
+            "rondo-hits"
+        );
+
+
+    const misses =
+        document.getElementById(
+            "rondo-misses"
+        );
+
+
+    if (score) {
+
+        score.textContent =
+            state.hits;
+
+    }
+
+
+    if (hits) {
+
+        hits.textContent =
+            state.hits;
+
+    }
+
+
+    if (misses) {
+
+        misses.textContent =
+            state.misses;
+
+    }
+
+}
+
+
+/* =========================================================
+   RENDER ROSCO
+   ========================================================= */
+
+function renderRosco() {
+
+    const container =
+        document.getElementById(
+            "rosco"
+        );
+
+
+    if (!container) {
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+        "";
+
+
+    const letters =
+        Object.keys(
+            currentRosco
+        );
+
+
+    const total =
+        letters.length;
+
+
+    const radius =
+        45;
+
+
+    letters.forEach(
+        (
+            letter,
+            index
+        ) => {
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+
+            button.className =
+                "rosco-letter";
+
+
+            button.textContent =
+                letter;
+
+
+            button.dataset.letter =
+                letter;
+
+
+            const angle =
+                -90 +
+                (
+                    index *
+                    360 /
+                    total
+                );
+
+
+            const radians =
+                angle *
+                Math.PI /
+                180;
+
+
+            const x =
+                50 +
+                radius *
+                Math.cos(
+                    radians
+                );
+
+
+            const y =
+                50 +
+                radius *
+                Math.sin(
+                    radians
+                );
+
+
+            button.style.left =
+                `${x}%`;
+
+
+            button.style.top =
+                `${y}%`;
+
+
+            button.addEventListener(
+                "click",
+                function() {
+
+                    goToLetter(
+                        index
+                    );
+
+                }
+            );
+
+
+            container.appendChild(
+                button
+            );
+
+        }
+    );
+
+
+    updateRoscoLetterStyles();
+
+}
+
+
+/* =========================================================
+   IR A LETRA
+   ========================================================= */
+
+function goToLetter(
+    index
+) {
+
+    if (
+        index < 0 ||
+        index >=
+        Object.keys(
+            currentRosco
+        ).length
+    ) {
+
+        return;
+
+    }
+
+
+    currentLetterIndex =
+        index;
+
+
+    rondoState[
+        currentTeam
+    ].currentIndex =
+        index;
+
+
+    showCurrentQuestion();
+
+    updateRoscoLetterStyles();
+
+}
+
+
+/* =========================================================
+   PREGUNTA ACTUAL
+   ========================================================= */
+
+function showCurrentQuestion() {
+
+    const letters =
+        Object.keys(
+            currentRosco
+        );
+
+
+    if (!letters.length) {
+
+        return;
+
+    }
+
+
+    const letter =
+        letters[
+            currentLetterIndex
+        ];
+
+
+    const item =
+        currentRosco[
+            letter
+        ];
+
+
+    if (!item) {
+
+        return;
+
+    }
+
+
+    const state =
+        rondoState[
+            currentTeam
+        ];
+
+
+    const letterDisplay =
+        document.getElementById(
+            "question-letter"
+        );
+
+
+    const typeDisplay =
+        document.getElementById(
+            "question-type"
+        );
+
+
+    const questionDisplay =
+        document.getElementById(
+            "question-text"
+        );
+
+
+    if (letterDisplay) {
+
+        letterDisplay.textContent =
+            letter;
+
+    }
+
+
+    if (typeDisplay) {
+
+        typeDisplay.textContent =
+            item.type === "contains"
+                ? "CONTIENE"
+                : "COMIENZA CON";
+
+    }
+
+
+    if (questionDisplay) {
+
+        questionDisplay.textContent =
+            item.clue;
+
+    }
+
+
+    const input =
+        document.getElementById(
+            "answer-input"
+        );
+
+
+    if (input) {
+
+        input.value =
+            "";
+
+        input.focus();
+
+    }
+
+
+    updateRondoLetterStyles();
+
+    updateRondoScore();
+
+
+    if (
+        state.finished
+    ) {
+
+        return;
+
+    }
+
+}
+
+
+/* =========================================================
+   ESTILOS DE LETRAS
+   ========================================================= */
+
+function updateRoscoLetterStyles() {
+
+    const state =
+        rondoState[
+            currentTeam
+        ];
+
+
+    document
+        .querySelectorAll(
+            ".rosco-letter"
+        )
+        .forEach(
+            button => {
+
+                const letter =
+                    button.dataset.letter;
+
+
+                button.classList.remove(
+                    "current",
+                    "correct",
+                    "incorrect",
+                    "passed"
+                );
+
+
+                if (
+                    state.answered.includes(
+                        letter
+                    )
+                ) {
+
+                    const item =
+                        currentRosco[
+                            letter
+                        ];
+
+
+                    if (
+                        item.correct
+                    ) {
+
+                        button.classList.add(
+                            "correct"
+                        );
+
+                    } else {
+
+                        button.classList.add(
+                            "incorrect"
+                        );
+
+                    }
+
+                }
+
+
+                if (
+                    state.passed.includes(
+                        letter
+                    )
+                ) {
+
+                    button.classList.add(
+                        "passed"
+                    );
+
+                }
+
+
+                if (
+                    letter ===
+                    Object.keys(
+                        currentRosco
+                    )[
+                        currentLetterIndex
+                    ]
+                ) {
+
+                    button.classList.add(
+                        "current"
+                    );
+
+                }
+
+            }
+        );
+
+}
+
+
+/* =========================================================
+   RESPONDER PREGUNTA
+   ========================================================= */
+
+function answerQuestion() {
+
+    const input =
+        document.getElementById(
+            "answer-input"
+        );
+
+
+    if (!input) {
+
+        return;
+
+    }
+
+
+    const answer =
+        input.value
+            .trim()
+            .toUpperCase();
+
+
+    answerRondo(
+        answer
+    );
+
+}
+
+
+/* =========================================================
+   RESPONDER ROSCO
+   ========================================================= */
+
+function answerRondo(
+    answer
+) {
+
+    const state =
+        rondoState[
+            currentTeam
+        ];
+
+
+    if (
+        state.finished
+    ) {
+
+        return;
+
+    }
+
+
+    const letters =
+        Object.keys(
+            currentRosco
+        );
+
+
+    const letter =
+        letters[
+            currentLetterIndex
+        ];
+
+
+    const item =
+        currentRosco[
+            letter
+        ];
+
+
+    if (!item) {
+
+        return;
+
+    }
+
+
+    if (
+        state.answered.includes(
+            letter
+        )
+    ) {
+
+        moveToNextLetter();
+
+        return;
+
+    }
+
+
+    const normalizedAnswer =
+        normalizeAnswer(
+            answer
+        );
+
+
+    const normalizedCorrect =
+        normalizeAnswer(
+            item.answer
+        );
+
+
+    const isCorrect =
+        normalizedAnswer ===
+        normalizedCorrect;
+
+
+    state.passed =
+        state.passed.filter(
+            l =>
+                l !== letter
+        );
+
+
+    item.correct =
+        isCorrect;
+
+
+    state.answered.push(
+        letter
+    );
+
+
+    if (isCorrect) {
+
+        state.hits++;
+
+    } else {
+
+        state.misses++;
+
+    }
+
+
+    updateRondoScore();
+
+    updateRoscoLetterStyles();
+
+    moveToNextLetter();
+
+}
+
+
+/* =========================================================
+   NORMALIZAR RESPUESTAS DEL ROSCO
+   ========================================================= */
+
+function normalizeAnswer(
+    value
+) {
+
+    return String(
+        value || ""
+    )
+        .normalize("NFD")
+        .replace(
+            /[\u0300-\u036f]/g,
+            ""
+        )
+        .replace(
+            /[^A-Z0-9]/gi,
+            ""
+        )
+        .toUpperCase();
+
+}
+
+
+/* =========================================================
+   PASAPALABRA
+   ========================================================= */
+
+function passRondo() {
+
+    const state =
+        rondoState[
+            currentTeam
+        ];
+
+
+    if (
+        state.finished
+    ) {
+
+        return;
+
+    }
+
+
+    const letters =
+        Object.keys(
+            currentRosco
+        );
+
+
+    const letter =
+        letters[
+            currentLetterIndex
+        ];
+
+
+    if (
+        !state.answered.includes(
+            letter
+        )
+    ) {
+
+        if (
+            !state.passed.includes(
+                letter
+            )
+        ) {
+
+            state.passed.push(
+                letter
+            );
+
+        }
+
+    }
+
+
+    moveToNextLetter();
+
+}
+
+
+/* =========================================================
+   SIGUIENTE LETRA
+   ========================================================= */
+
+function moveToNextLetter() {
+
+    const letters =
+        Object.keys(
+            currentRosco
+        );
+
+
+    if (!letters.length) {
+
+        return;
+
+    }
+
+
+    let nextIndex =
+        currentLetterIndex;
+
+
+    for (
+        let step = 1;
+        step <= letters.length;
+        step++
+    ) {
+
+        const candidate =
+            (
+                currentLetterIndex +
+                step
+            ) %
+            letters.length;
+
+
+        const letter =
+            letters[
+                candidate
+            ];
+
+
+        const state =
+            rondoState[
+                currentTeam
+            ];
+
+
+        if (
+            !state.answered.includes(
+                letter
+            )
+        ) {
+
+            nextIndex =
+                candidate;
+
+            break;
+
+        }
+
+    }
+
+
+    currentLetterIndex =
+        nextIndex;
+
+
+    rondoState[
+        currentTeam
+    ].currentIndex =
+        nextIndex;
+
+
+    showCurrentQuestion();
+
+    updateRoscoLetterStyles();
+
+}
+
+
+/* =========================================================
+   RESET ROSCO
+   ========================================================= */
+
+function resetRondo() {
+
+    const confirmation =
+        confirm(
+            "¿Seguro que querés reiniciar el Pasapalabra?"
+        );
+
+
+    if (!confirmation) {
+
+        return;
+
+    }
+
+
+    rondoState.team1 =
+        createInitialRondoState();
+
+
+    rondoState.team2 =
+        createInitialRondoState();
+
+
+    rondoState.team3 =
+        createInitialRondoState();
+
+
+    [
+        "team1",
+        "team2",
+        "team3"
+    ].forEach(
+        team => {
+
+            scores[
+                team
+            ].rondo = 0;
+
+
+            Object.keys(
+                TEAM_DATA[
+                    team
+                ]
+            ).forEach(
+                letter => {
+
+                    TEAM_DATA[
+                        team
+                    ][
+                        letter
+                    ].correct =
+                        undefined;
+
+                }
+            );
+
+        }
+    );
+
+
+    saveScores();
+
+    updateScoreboard();
+
+
+    currentTeam =
+        "team1";
+
+
+    currentRosco =
+        TEAM_DATA.team1;
+
+
+    currentLetterIndex =
+        0;
+
+
+    updateRondoTabs();
+
+    updateRondoTeamUI();
+
+    renderRosco();
+
+    showCurrentQuestion();
+
+}
+
+
+/* =========================================================
+   FINALIZAR PASAPALABRA
+   ========================================================= */
+
+function finishRondo() {
+
+    if (!currentTeam) {
+
+        return;
+
+    }
+
+
+    const state =
+        rondoState[
+            currentTeam
+        ];
+
+
+    if (
+        state.finished
+    ) {
+
+        return;
+
+    }
+
+
+    state.finished =
+        true;
+
+
+    const hits =
+        state.hits;
+
+
+    scores[
+        currentTeam
+    ].rondo =
+        hits;
+
+
+    saveScores();
+
+    updateScoreboard();
+
+
+    const letterDisplay =
+        document.getElementById(
+            "question-letter"
+        );
+
+
+    const typeDisplay =
+        document.getElementById(
+            "question-type"
+        );
+
+
+    const questionDisplay =
+        document.getElementById(
+            "question-text"
+        );
+
+
+    if (letterDisplay) {
+
+        letterDisplay.textContent =
+            "✓";
+
+    }
+
+
+    if (typeDisplay) {
+
+        typeDisplay.textContent =
+            "PASAPALABRA FINALIZADO";
+
+    }
+
+
+    if (questionDisplay) {
+
+        questionDisplay.textContent =
+            `${getTeamName(
+                currentTeam
+            )} terminó con ${hits} aciertos.`;
+
+    }
+
+
+    renderRosco();
+
+}
+
+
+/* =========================================================
+   NOMBRE EQUIPO
+   ========================================================= */
+
+function getTeamName(
+    team
+) {
+
+    if (
+        team === "team1"
+    ) {
+
+        return "🔴 Los Originales";
+
+    }
+
+
+    if (
+        team === "team2"
+    ) {
+
+        return "🔵 Los Herederos";
+
+    }
+
+
+    if (
+        team === "team3"
+    ) {
+
+        return "🟢 Las Históricas";
+
+    }
+
+
+    return team;
+
+}
+
+
+/* =========================================================
+   =========================================================
+   CANCIONES
+   =========================================================
+   ========================================================= */
+
+const SONGS_DATA = [
+
+    {
+        title: "De música ligera",
+        artists: [
+            "Soda Stereo"
+        ],
+        decade: "80s",
+        youtubeId: "T_FkEw27XJ0"
+    },
+
+    {
+        title: "La incondicional",
+        artists: [
+            "Luis Miguel"
+        ],
+        decade: "80s",
+        youtubeId: "by4I_10HbX4"
+    },
+
+    {
+        title: "Me va, me va",
+        artists: [
+            "Julio Iglesias"
+        ],
+        decade: "80s",
+        youtubeId: "CCht0AyKxNY"
+    },
+
+    {
+        title: "Mil horas",
+        artists: [
+            "Los Abuelos de la Nada"
+        ],
+        decade: "80s",
+        youtubeId: "CUdw-urZ3zg"
+    },
+
+    {
+        title: "Devuélveme a mi chica",
+        artists: [
+            "Hombres G"
+        ],
+        decade: "80s",
+        youtubeId: "U72tra23BF0"
+    },
+
+    {
+        title: "Billie Jean",
+        artists: [
+            "Michael Jackson"
+        ],
+        decade: "80s",
+        youtubeId: "Zi_XLOBDo_Y"
+    },
+
+    {
+        title: "Never Gonna Give You Up",
+        artists: [
+            "Rick Astley"
+        ],
+        decade: "80s",
+        youtubeId: "dQw4w9WgXcQ"
+    },
+
+    {
+        title: "I Wanna Dance with Somebody",
+        artists: [
+            "Whitney Houston"
+        ],
+        decade: "80s",
+        youtubeId: "eH3giaIzONA"
+    },
+
+    {
+        title: "Girls Just Want to Have Fun",
+        artists: [
+            "Cyndi Lauper"
+        ],
+        decade: "80s",
+        youtubeId: "PIb6AZdTr-A"
+    },
+
+    {
+        title: "Livin' on a Prayer",
+        artists: [
+            "Bon Jovi"
+        ],
+        decade: "80s",
+        youtubeId: "lDK9QqIzhwk"
+    },
+
+
+    {
+        title: "Rayando el sol",
+        artists: [
+            "Maná"
+        ],
+        decade: "90s",
+        youtubeId: "EDkQB9b3cBw"
+    },
+
+    {
+        title: "Piel Morena",
+        artists: [
+            "Thalía"
+        ],
+        decade: "90s",
+        youtubeId: "EMAjgSJr4Jg"
+    },
+
+    {
+        title: "Livin' la Vida Loca",
+        artists: [
+            "Ricky Martin"
+        ],
+        decade: "90s",
+        youtubeId: "p47fEXGabaY"
+    },
+
+    {
+        title: "Vuelve",
+        artists: [
+            "Ricky Martin"
+        ],
+        decade: "90s",
+        youtubeId: "p7QYo-9SlP0"
+    },
+
+    {
+        title: "Flaca",
+        artists: [
+            "Andrés Calamaro"
+        ],
+        decade: "90s",
+        youtubeId: "UCF9oHXhDMU"
+    },
+
+    {
+        title: "Wannabe",
+        artists: [
+            "Spice Girls"
+        ],
+        decade: "90s",
+        youtubeId: "gJLIiF15wjQ"
+    },
+
+    {
+        title: "...Baby One More Time",
+        artists: [
+            "Britney Spears"
+        ],
+        decade: "90s",
+        youtubeId: "C-u5WLJ9Yk4"
+    },
+
+    {
+        title: "I Want It That Way",
+        artists: [
+            "Backstreet Boys"
+        ],
+        decade: "90s",
+        youtubeId: "4fndeDfaWCg"
+    },
+
+    {
+        title: "My Heart Will Go On",
+        artists: [
+            "Celine Dion"
+        ],
+        decade: "90s",
+        youtubeId: "9bFHsd3o1w0"
+    },
+
+    {
+        title: "Smells Like Teen Spirit",
+        artists: [
+            "Nirvana"
+        ],
+        decade: "90s",
+        youtubeId: "hTWKbfoikeg"
+    },
+
+
+    {
+        title: "La Tortura",
+        artists: [
+            "Shakira",
+            "Alejandro Sanz"
+        ],
+        decade: "2000s",
+        youtubeId: "Dsp_8Lm1eSk"
+    },
+
+    {
+        title: "Me enamora",
+        artists: [
+            "Juanes"
+        ],
+        decade: "2000s",
+        youtubeId: "voxgN3Dhjuo"
+    },
+
+    {
+        title: "Ave María",
+        artists: [
+            "David Bisbal"
+        ],
+        decade: "2000s",
+        youtubeId: "gra-sIV1n4U"
+    },
+
+    {
+        title: "Colgando en tus manos",
+        artists: [
+            "Carlos Baute",
+            "Marta Sánchez"
+        ],
+        decade: "2000s",
+        youtubeId: "qExd-3oCTl4"
+    },
+
+    {
+        title: "Rosas",
+        artists: [
+            "La Oreja de Van Gogh"
+        ],
+        decade: "2000s",
+        youtubeId: "nYnLVWXmRm8"
+    },
+
+    {
+        title: "Toxic",
+        artists: [
+            "Britney Spears"
+        ],
+        decade: "2000s",
+        youtubeId: "LOZuxwVk7TU"
+    },
+
+    {
+        title: "Crazy in Love",
+        artists: [
+            "Beyoncé",
+            "Jay-Z"
+        ],
+        decade: "2000s",
+        youtubeId: "ViwtNLUqkMY"
+    },
+
+    {
+        title: "Umbrella",
+        artists: [
+            "Rihanna"
+        ],
+        decade: "2000s",
+        youtubeId: "CvBfHwUxHIk"
+    },
+
+    {
+        title: "Poker Face",
+        artists: [
+            "Lady Gaga"
+        ],
+        decade: "2000s",
+        youtubeId: "bESGLojNYSo"
+    },
+
+
+    {
+        title: "Despacito",
+        artists: [
+            "Luis Fonsi",
+            "Daddy Yankee"
+        ],
+        decade: "2010s",
+        youtubeId: "kJQP7kiw5Fk"
+    },
+
+    {
+        title: "Bailando",
+        artists: [
+            "Enrique Iglesias"
+        ],
+        decade: "2010s",
+        youtubeId: "NUsoVlDFqZg"
+    },
+
+    {
+        title: "Danza Kuduro",
+        artists: [
+            "Don Omar",
+            "Lucenzo"
+        ],
+        decade: "2010s",
+        youtubeId: "7zp1TbLFPp8"
+    },
+
+    {
+        title: "Vivir Mi Vida",
+        artists: [
+            "Marc Anthony"
+        ],
+        decade: "2010s",
+        youtubeId: "YXnjy5YlDwk"
+    },
+
+    {
+        title: "Échame la culpa",
+        artists: [
+            "Luis Fonsi",
+            "Demi Lovato"
+        ],
+        decade: "2010s",
+        youtubeId: "TyHvyGVs42U"
+    },
+
+    {
+        title: "Uptown Funk",
+        artists: [
+            "Mark Ronson",
+            "Bruno Mars"
+        ],
+        decade: "2010s",
+        youtubeId: "OPf0YbXqDm0"
+    },
+
+    {
+        title: "Shape of You",
+        artists: [
+            "Ed Sheeran"
+        ],
+        decade: "2010s",
+        youtubeId: "JGwWNGJdvx8"
+    },
+
+    {
+        title: "Rolling in the Deep",
+        artists: [
+            "Adele"
+        ],
+        decade: "2010s",
+        youtubeId: "rYEDA3JcQqw"
+    },
+
+    {
+        title: "Havana",
+        artists: [
+            "Camila Cabello"
+        ],
+        decade: "2010s",
+        youtubeId: "HCjNJDNzw8Y"
+    },
+
+    {
+        title: "Sorry",
+        artists: [
+            "Justin Bieber"
+        ],
+        decade: "2010s",
+        youtubeId: "fRh_vgS2dFE"
+    },
+
+
+    {
+        title: "Todo de Ti",
+        artists: [
+            "Rauw Alejandro"
+        ],
+        decade: "2020s",
+        youtubeId: "CFPLIaMpGrY"
+    },
+
+    {
+        title: "Hawái",
+        artists: [
+            "Maluma"
+        ],
+        decade: "2020s",
+        youtubeId: "pK06OiUFWXg"
+    },
+
+    {
+        title: "Tusa",
+        artists: [
+            "Karol G",
+            "Nicki Minaj"
+        ],
+        decade: "2020s",
+        youtubeId: "tbneQDc2H3I"
+    },
+
+    {
+        title: "La Bachata",
+        artists: [
+            "Manuel Turizo"
+        ],
+        decade: "2020s",
+        youtubeId: "TqA8D9nJ9xI"
+    },
+
+    {
+        title: "SUPERESTRELLA",
+        artists: [
+            "Aitana"
+        ],
+        decade: "2020s",
+        youtubeId: "vz_vU53JvvI"
+    },
+
+    {
+        title: "Die With A Smile",
+        artists: [
+            "Lady Gaga",
+            "Bruno Mars"
+        ],
+        decade: "2020s",
+        youtubeId: "kPa7bsKwL-c"
+    },
+
+    {
+        title: "As It Was",
+        artists: [
+            "Harry Styles"
+        ],
+        decade: "2020s",
+        youtubeId: "H5v3kku4y6Q"
+    },
+
+    {
+        title: "Flowers",
+        artists: [
+            "Miley Cyrus"
+        ],
+        decade: "2020s",
+        youtubeId: "G7KNmW9a75Y"
+    },
+
+    {
+        title: "good 4 u",
+        artists: [
+            "Olivia Rodrigo"
+        ],
+        decade: "2020s",
+        youtubeId: "gNi_6U5Pm_o"
+    },
+
+    {
+        title: "Espresso",
+        artists: [
+            "Sabrina Carpenter"
+        ],
+        decade: "2020s",
+        youtubeId: "eVli-tstM5E"
+    }
+
+];
+
+
+let songsGame = null;
+
+let songsPlayer = null;
+
+let songsPlayerReady = false;
+
+let songsApiLoading = false;
+
+
+/* =========================================================
+   YOUTUBE API
+   ========================================================= */
+
+function loadYouTubeApiForSongs() {
+
+    if (
+        window.YT &&
+        window.YT.Player
+    ) {
+
+        if (songsGame) {
+
+            createSongsPlayer();
+
+        }
+
+        return;
+
+    }
+
+
+    if (songsApiLoading) {
+
+        return;
+
+    }
+
+
+    songsApiLoading =
+        true;
+
+
+    const oldReady =
+        window.onYouTubeIframeAPIReady;
+
+
+    window.onYouTubeIframeAPIReady =
+        function() {
+
+            if (
+                typeof oldReady ===
+                "function"
+            ) {
+
+                oldReady();
+
+            }
+
+
+            if (songsGame) {
+
+                createSongsPlayer();
+
+            }
+
+        };
+
+
+    const tag =
+        document.createElement(
+            "script"
+        );
+
+
+    tag.src =
+        "https://www.youtube.com/iframe_api";
+
+
+    document.head.appendChild(
+        tag
+    );
+
+}
+
+
+/* =========================================================
+   NORMALIZAR RESPUESTAS DE CANCIONES
+   ========================================================= */
+
+function normalizeSongText(
+    value
+) {
+
+    return String(
+        value || ""
+    )
+        .normalize("NFD")
+        .replace(
+            /[\u0300-\u036f]/g,
+            ""
+        )
+        .toLowerCase()
+        .replace(
+            /&/g,
+            " y "
+        )
+        .replace(
+            /[’']/g,
+            ""
+        )
+        .replace(
+            /[^a-z0-9\s]/g,
+            " "
+        )
+        .replace(
+            /\b(?:the|a|an|el|la|los|las|un|una|de|del|al)\b/g,
+            " "
+        )
+        .replace(
+            /\s+/g,
+            " "
+        )
+        .trim();
+
+}
+
+
+function songTextMatches(
+    answer,
+    expected
+) {
+
+    const a =
+        normalizeSongText(
+            answer
+        );
+
+
+    const e =
+        normalizeSongText(
+            expected
+        );
+
+
+    if (
+        !a ||
+        !e
+    ) {
+
+        return false;
+
+    }
+
+
+    if (
+        a === e
+    ) {
+
+        return true;
+
+    }
+
+
+    if (
+        a.replace(
+            /\s/g,
+            ""
+        ) ===
+        e.replace(
+            /\s/g,
+            ""
+        )
+    ) {
+
+        return true;
+
+    }
+
+
+    return false;
+
+}
+
+
+/* =========================================================
+   DATOS DE UNA CANCIÓN
+   ========================================================= */
+
+function getSongDataPoints(
+    song
+) {
+
+    const points = [
+
+        {
+            key: "decade",
+            label: "Década",
+            answer: song.decade
+        }
+
+    ];
+
+
+    song.artists.forEach(
+        function(
+            artist,
+            index
+        ) {
+
+            points.push({
+
+                key:
+                    "artist-" +
+                    index,
+
+                label:
+                    song.artists.length > 1
+                        ?
+                        `Artista ${index + 1}`
+                        :
+                        "Artista",
+
+                answer:
+                    artist
+
+            });
+
+        }
+    );
+
+
+    points.push({
+
+        key: "title",
+
+        label:
+            "Canción",
+
+        answer:
+            song.title
+
+    });
+
+
+    return points;
+
+}
+
+
+/* =========================================================
+   MEZCLAR CANCIONES
+   ========================================================= */
+
+function shuffleSongs(
+    list
+) {
+
+    const copy =
+        [...list];
+
+
+    for (
+        let i =
+            copy.length - 1;
+
+        i > 0;
+
+        i--
+    ) {
+
+        const j =
+            Math.floor(
+                Math.random() *
+                (i + 1)
+            );
+
+
+        [
+            copy[i],
+            copy[j]
+        ] =
+        [
+            copy[j],
+            copy[i]
+        ];
+
+    }
+
+
+    return copy;
+
+}
+
+
+/* =========================================================
+   ESTADO DEL JUEGO
+   ========================================================= */
+
+function createSongsGameState() {
+
+    return {
+
+        queue:
+            shuffleSongs(
+                SONGS_DATA
+            ),
+
+        index: 0,
+
+        locked: {},
+
+        awarded: {},
+
+        current: null
+
+    };
+
+}
+
+
+/* =========================================================
+   ABRIR CANCIONES
+   ========================================================= */
+
+function openSongsGame() {
+
+    songsGame =
+        createSongsGameState();
+
+
+    renderSongsGame();
+
+
+    loadYouTubeApiForSongs();
+
+
+    loadNextSong();
+
+}
+
+
+/* =========================================================
+   INTERFAZ CANCIONES
+   ========================================================= */
+
+function renderSongsGame() {
+
+    let modal =
+        document.getElementById(
+            "songs-modal"
+        );
+
+
+    if (!modal) {
+
+        modal =
+            document.createElement(
+                "div"
+            );
+
+
+        modal.id =
+            "songs-modal";
+
+
+        document.body.appendChild(
+            modal
+        );
+
+    }
+
+
+    modal.className =
+        "songs-modal active";
+
+
+    modal.innerHTML = `
+
+        <div class="songs-panel">
+
+            <div class="songs-head">
+
+                <div>
+
+                    <div class="songs-kicker">
+                        🎵 50 AÑOS DE BETT
+                    </div>
+
+                    <h2>
+                        Juego de canciones
+                    </h2>
+
+                    <p id="songs-status">
+                        Cargando canción...
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="songs-close"
+                    onclick="closeSongsGame()"
+                >
+                    ✕
+                </button>
+
+            </div>
+
+
+            <div class="songs-player-wrap">
+
+                <div
+                    id="songs-youtube-player"
+                ></div>
+
+            </div>
+
+
+            <div class="songs-controls">
+
+                <button
+                    onclick="songsPlay()"
+                >
+                    ▶ Play desde 0
+                </button>
+
+                <button
+                    onclick="songsPause()"
+                >
+                    ⏸ Pausar
+                </button>
+
+                <button
+                    onclick="songsContinue()"
+                >
+                    ▶ Continuar
+                </button>
+
+                <button
+                    onclick="songsRestart()"
+                >
+                    ↺ Reiniciar
+                </button>
+
+            </div>
+
+
+            <div
+                id="songs-fields"
+                class="songs-fields"
+            ></div>
+
+
+            <div class="songs-bottom">
+
+                <button
+                    class="songs-next"
+                    onclick="nextSong()"
+                >
+                    🎵 Nueva canción
+                </button>
+
+                <button
+                    class="songs-close-bottom"
+                    onclick="closeSongsGame()"
+                >
+                    Cerrar juego
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    injectSongsStyles();
+
+}
+
+
+/* =========================================================
+   ESTILOS CANCIONES
+   ========================================================= */
+
+function injectSongsStyles() {
+
+    if (
+        document.getElementById(
+            "songs-inline-styles"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    const style =
+        document.createElement(
+            "style"
+        );
+
+
+    style.id =
+        "songs-inline-styles";
+
+
+    style.textContent = `
+
+        #songs-modal {
+
+            position: fixed;
+
+            inset: 0;
+
+            background:
+                rgba(0,0,0,.88);
+
+            z-index: 99999;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 22px;
+
+            font-family: inherit;
+
+        }
+
+
+        .songs-panel {
+
+            width:
+                min(1100px,96vw);
+
+            max-height: 94vh;
+
+            overflow: auto;
+
+            background: #111;
+
+            border:
+                2px solid #B6FF00;
+
+            border-radius: 22px;
+
+            box-shadow:
+                0 0 40px
+                rgba(
+                    182,
+                    255,
+                    0,
+                    .18
+                );
+
+            color: #fff;
+
+            padding: 25px;
+
+        }
+
+
+        .songs-head {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            gap: 20px;
+
+            align-items:
+                flex-start;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .songs-kicker {
+
+            color: #B6FF00;
+
+            font-weight: 800;
+
+            letter-spacing: 1.5px;
+
+            font-size: 13px;
+
+        }
+
+
+        .songs-head h2 {
+
+            margin:
+                5px 0;
+
+            font-size: 32px;
+
+        }
+
+
+        .songs-head p {
+
+            margin: 0;
+
+            color: #bbb;
+
+        }
+
+
+        .songs-close {
+
+            background: #222;
+
+            border:
+                1px solid #555;
+
+            color: #fff;
+
+            border-radius: 10px;
+
+            width: 42px;
+
+            height: 42px;
+
+            font-size: 20px;
+
+            cursor: pointer;
+
+        }
+
+
+        .songs-player-wrap {
+
+            width: 100%;
+
+            aspect-ratio: 16 / 9;
+
+            background: #000;
+
+            border-radius: 14px;
+
+            overflow: hidden;
+
+        }
+
+
+        .songs-player-wrap > div,
+
+        .songs-player-wrap iframe {
+
+            width:
+                100% !important;
+
+            height:
+                100% !important;
+
+            display: block;
+
+        }
+
+
+        .songs-controls {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4,1fr);
+
+            gap: 10px;
+
+            margin: 14px 0;
+
+        }
+
+
+        .songs-controls button,
+
+        .songs-next,
+
+        .songs-close-bottom {
+
+            border: 0;
+
+            border-radius: 10px;
+
+            padding:
+                12px 10px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+        }
+
+
+        .songs-controls button {
+
+            background: #242424;
+
+            color: #fff;
+
+        }
+
+
+        .songs-controls button:hover {
+
+            background: #333;
+
+        }
+
+
+        .songs-next {
+
+            background: #B6FF00;
+
+            color: #0B0B0B;
+
+        }
+
+
+        .songs-close-bottom {
+
+            background: #242424;
+
+            color: #fff;
+
+        }
+
+
+        .songs-fields {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(
+                        220px,
+                        1fr
+                    )
+                );
+
+            gap: 12px;
+
+            margin-top: 15px;
+
+        }
+
+
+        .song-field {
+
+            background: #181818;
+
+            border:
+                1px solid #333;
+
+            border-radius: 14px;
+
+            padding: 15px;
+
+        }
+
+
+        .song-field.locked {
+
+            border-color:
+                #B6FF00;
+
+        }
+
+
+        .song-field h4 {
+
+            margin:
+                0 0 9px;
+
+        }
+
+
+        .song-field small {
+
+            display: block;
+
+            color: #aaa;
+
+            margin-bottom: 9px;
+
+        }
+
+
+        .song-field-row {
+
+            display: flex;
+
+            gap: 8px;
+
+        }
+
+
+        .song-field input {
+
+            flex: 1;
+
+            min-width: 0;
+
+            background: #0d0d0d;
+
+            color: #fff;
+
+            border:
+                1px solid #444;
+
+            border-radius: 8px;
+
+            padding: 10px;
+
+        }
+
+
+        .song-field select {
+
+            width: 100%;
+
+            background: #0d0d0d;
+
+            color: #fff;
+
+            border:
+                1px solid #444;
+
+            border-radius: 8px;
+
+            padding: 10px;
+
+            margin-top: 8px;
+
+        }
+
+
+        .song-field button {
+
+            background: #B6FF00;
+
+            color: #0B0B0B;
+
+            border: 0;
+
+            border-radius: 8px;
+
+            padding:
+                10px 12px;
+
+            font-weight: 900;
+
+            cursor: pointer;
+
+        }
+
+
+        .song-result {
+
+            margin-top: 9px;
+
+            font-weight: 800;
+
+        }
+
+
+        .song-ok {
+
+            color: #B6FF00;
+
+        }
+
+
+        .song-wrong {
+
+            color: #ff7070;
+
+        }
+
+
+        .songs-bottom {
+
+            display: flex;
+
+            justify-content:
+                flex-end;
+
+            gap: 10px;
+
+            margin-top: 18px;
+
+        }
+
+
+        .songs-bottom button {
+
+            min-width: 160px;
+
+        }
+
+
+        @media(max-width:700px) {
+
+            .songs-controls {
+
+                grid-template-columns:
+                    repeat(2,1fr);
+
+            }
+
+
+            .songs-panel {
+
+                padding: 16px;
+
+            }
+
+
+            .songs-head h2 {
+
+                font-size: 25px;
+
+            }
+
+        }
+
+    `;
+
+
+    document.head.appendChild(
+        style
+    );
+
+}
+
+
+/* =========================================================
+   CREAR REPRODUCTOR YOUTUBE
+   ========================================================= */
+
+function createSongsPlayer() {
+
+    const host =
+        document.getElementById(
+            "songs-youtube-player"
+        );
+
+
+    if (
+        !host ||
+        !songsGame ||
+        !songsGame.current
+    ) {
+
+        return;
+
+    }
+
+
+    if (
+        songsPlayer &&
+        typeof songsPlayer.destroy ===
+        "function"
+    ) {
+
+        try {
+
+            songsPlayer.destroy();
+
+        } catch(error) {}
+
+    }
+
+
+    songsPlayerReady =
+        false;
+
+
+    songsPlayer =
+        new YT.Player(
+            "songs-youtube-player",
+            {
+
+                height: "100%",
+
+                width: "100%",
+
+                videoId:
+                    songsGame.current.youtubeId,
+
+                playerVars: {
+
+                    playsinline: 1,
+
+                    controls: 1,
+
+                    rel: 0
+
+                },
+
+                events: {
+
+                    onReady:
+                        function() {
+
+                            songsPlayerReady =
+                                true;
+
+                            songsRestart();
+
+                        },
+
+                    onAutoplayBlocked:
+                        function() {}
+
+                }
+
+            }
+        );
+
+}
+
+
+/* =========================================================
+   SIGUIENTE CANCIÓN
+   ========================================================= */
+
+function loadNextSong() {
+
+    if (!songsGame) {
+
+        return;
+
+    }
+
+
+    if (
+        songsGame.index >=
+        songsGame.queue.length
+    ) {
+
+        const status =
+            document.getElementById(
+                "songs-status"
+            );
+
+
+        const fields =
+            document.getElementById(
+                "songs-fields"
+            );
+
+
+        if (status) {
+
+            status.textContent =
+                "🎉 Terminaron las canciones disponibles.";
+
+        }
+
+
+        if (fields) {
+
+            fields.innerHTML = `
+
+                <div
+                    class="song-field"
+                    style="grid-column:1/-1;"
+                >
+
+                    <h4>
+                        Juego terminado
+                    </h4>
+
+                    <small>
+                        Se usaron todas las canciones
+                        sin repetir.
+                    </small>
+
+                </div>
+
+            `;
+
+        }
+
+
+        return;
+
+    }
+
+
+    songsGame.current =
+        songsGame.queue[
+            songsGame.index
+        ];
+
+
+    songsGame.index++;
+
+
+    songsGame.locked = {};
+
+    songsGame.awarded = {};
+
+
+    const status =
+        document.getElementById(
+            "songs-status"
+        );
+
+
+    if (status) {
+
+        status.textContent =
+            `Canción ${songsGame.index} de ${songsGame.queue.length}`;
+
+    }
+
+
+    renderSongFields();
+
+
+    if (
+        window.YT &&
+        window.YT.Player
+    ) {
+
+        createSongsPlayer();
+
+    }
+
+}
+
+
+/* =========================================================
+   CAMPOS DE RESPUESTA
+   ========================================================= */
+
+function renderSongFields() {
+
+    const container =
+        document.getElementById(
+            "songs-fields"
+        );
+
+
+    if (
+        !container ||
+        !songsGame ||
+        !songsGame.current
+    ) {
+
+        return;
+
+    }
+
+
+    const points =
+        getSongDataPoints(
+            songsGame.current
+        );
+
+
+    container.innerHTML =
+        points
+            .map(
+                function(point) {
+
+                    return `
+
+                        <div
+                            class="song-field"
+                            id="song-field-${point.key}"
+                        >
+
+                            <h4>
+                                ${point.label}
+                            </h4>
+
+                            <small>
+                                1 punto · rebote
+                                si falla
+                            </small>
+
+
+                            <div
+                                class="song-field-row"
+                            >
+
+                                <input
+                                    id="song-input-${point.key}"
+                                    autocomplete="off"
+                                    placeholder="Respuesta..."
+                                    onkeydown="
+                                        if(event.key==='Enter')
+                                        checkSongAnswer('${point.key}')
+                                    "
+                                >
+
+
+                                <button
+                                    onclick="
+                                        checkSongAnswer(
+                                            '${point.key}'
+                                        )
+                                    "
+                                >
+                                    OK
+                                </button>
+
+                            </div>
+
+
+                            <select
+                                id="song-team-${point.key}"
+                            >
+
+                                <option value="">
+                                    Seleccionar equipo
+                                </option>
+
+                                <option value="team1">
+                                    Los Originales
+                                </option>
+
+                                <option value="team2">
+                                    Los Herederos
+                                </option>
+
+                                <option value="team3">
+                                    Las Históricas
+                                </option>
+
+                            </select>
+
+
+                            <div
+                                id="song-result-${point.key}"
+                                class="song-result"
+                            ></div>
+
+                        </div>
+
+                    `;
+
+                }
+            )
+            .join("");
+
+}
+
+
+/* =========================================================
+   COMPROBAR RESPUESTA
+   ========================================================= */
+
+function checkSongAnswer(
+    key
+) {
+
+    if (
+        !songsGame ||
+        !songsGame.current ||
+        songsGame.locked[key]
+    ) {
+
+        return;
+
+    }
+
+
+    const points =
+        getSongDataPoints(
+            songsGame.current
+        );
+
+
+    const point =
+        points.find(
+            function(p) {
+
+                return p.key === key;
+
+            }
+        );
+
+
+    if (!point) {
+
+        return;
+
+    }
+
+
+    const input =
+        document.getElementById(
+            "song-input-" +
+            key
+        );
+
+
+    const select =
+        document.getElementById(
+            "song-team-" +
+            key
+        );
+
+
+    const result =
+        document.getElementById(
+            "song-result-" +
+            key
+        );
+
+
+    if (
+        !input ||
+        !select ||
+        !result
+    ) {
+
+        return;
+
+    }
+
+
+    const team =
+        select.value;
+
+
+    if (!team) {
+
+        result.className =
+            "song-result song-wrong";
+
+
+        result.textContent =
+            "⚠️ Elegí el equipo.";
+
+        return;
+
+    }
+
+
+    const correct =
+        songTextMatches(
+            input.value,
+            point.answer
+        );
+
+
+    if (correct) {
+
+        songsGame.locked[key] =
+            true;
+
+
+        songsGame.awarded[key] =
+            team;
+
+
+        addPoints(
+            team,
+            "songs",
+            1
+        );
+
+
+        const field =
+            document.getElementById(
+                "song-field-" +
+                key
+            );
+
+
+        if (field) {
+
+            field.classList.add(
+                "locked"
+            );
+
+        }
+
+
+        input.disabled =
+            true;
+
+
+        select.disabled =
+            true;
+
+
+        result.className =
+            "song-result song-ok";
+
+
+        result.textContent =
+            `✓ Correcto · +1 para ${
+                getTeamName(team)
+            }`;
+
+
+        const allCorrect =
+            points.every(
+                function(p) {
+
+                    return songsGame.locked[
+                        p.key
+                    ];
+
+                }
+            );
+
+
+        if (allCorrect) {
+
+            setTimeout(
+                nextSong,
+                700
+            );
+
+        }
+
+
+    } else {
+
+        result.className =
+            "song-result song-wrong";
+
+
+        result.textContent =
+            "✗ Incorrecto · rebote para este dato.";
+
+        input.select();
+
+    }
+
+}
+
+
+/* =========================================================
+   NUEVA CANCIÓN
+   ========================================================= */
+
+function nextSong() {
+
+    if (!songsGame) {
+
+        return;
+
+    }
+
+
+    loadNextSong();
+
+}
+
+
+/* =========================================================
+   CONTROLES DEL REPRODUCTOR
+   ========================================================= */
+
+function songsPlay() {
+
+    if (
+        !songsPlayerReady ||
+        !songsPlayer
+    ) {
+
+        return;
+
+    }
+
+
+    songsPlayer.seekTo(
+        0,
+        true
+    );
+
+
+    songsPlayer.playVideo();
+
+}
+
+
+function songsPause() {
+
+    if (
+        songsPlayerReady &&
+        songsPlayer
+    ) {
+
+        songsPlayer.pauseVideo();
+
+    }
+
+}
+
+
+function songsContinue() {
+
+    if (
+        songsPlayerReady &&
+        songsPlayer
+    ) {
+
+        songsPlayer.playVideo();
+
+    }
+
+}
+
+
+function songsRestart() {
+
+    if (
+        songsPlayerReady &&
+        songsPlayer
+    ) {
+
+        songsPlayer.seekTo(
+            0,
+            true
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   CERRAR CANCIONES
+   ========================================================= */
+
+function closeSongsGame() {
+
+    if (
+        songsPlayer &&
+        typeof songsPlayer.destroy ===
+        "function"
+    ) {
+
+        try {
+
+            songsPlayer.destroy();
+
+        } catch(error) {}
+
+    }
+
+
+    songsPlayer =
+        null;
+
+
+    songsPlayerReady =
+        false;
+
+
+    songsGame =
+        null;
+
+
+    const modal =
+        document.getElementById(
+            "songs-modal"
+        );
+
+
+    if (modal) {
+
+        modal.remove();
+
+    }
+
+}
+
+
+/* =========================================================
+   INICIO
+   ========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        loadScores();
+
+        updateScoreboard();
+
+    }
+);
