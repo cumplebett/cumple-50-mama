@@ -3713,42 +3713,38 @@ function updateSongsScoreboard() {
             "songs-score-team1"
         );
 
-
     const team2 =
         document.getElementById(
             "songs-score-team2"
         );
-
 
     const team3 =
         document.getElementById(
             "songs-score-team3"
         );
 
+    /*
+     * Este marcador muestra solamente
+     * los puntos de la partida actual.
+     *
+     * El marcador general se actualiza
+     * recién cuando se finaliza el juego.
+     */
 
     if (team1) {
-
         team1.textContent =
-            scores.team1.songs;
-
+            songsGamePoints.team1;
     }
-
 
     if (team2) {
-
         team2.textContent =
-            scores.team2.songs;
-
+            songsGamePoints.team2;
     }
-
 
     if (team3) {
-
         team3.textContent =
-            scores.team3.songs;
-
+            songsGamePoints.team3;
     }
-
 }
 
 
